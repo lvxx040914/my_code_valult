@@ -1,0 +1,1689 @@
+% ======================================================
+% 第 91 天
+% ======================================================
+\setday{91}{考研数学中的差分方程典型题}
+
+\oneproblem{
+    设 $y_t = t^2 + 2t - 3$，求 $\Delta y_t, \Delta^2 y_t$.
+}
+
+\oneproblem{
+    差分方程 $y_{t+1} - y_t = t 2^t$ 的通解是\underline{\qquad}
+}
+
+\oneproblem{
+    差分方程 $2y_{t+1} + 10y_t - 5t = 0$ 的通解是\underline{\qquad}
+}
+
+\oneproblem{
+    某公司每年的工资总额比上一年增加 $20\%$ 的基础上再追加 $2$ 百万. 若以 $W_t$ 表示第 $t$ 年的工资总额（单位：百万元），则 $W_t$ 满足的差分方程是\underline{\qquad}
+}
+
+\oneproblem{
+    设银行存款的年利率为 $r=0.05$，并依年复利计算，某基金会希望通过存款 $A$ 万元，实现第一年提取 $19$ 万元，第二年提取 $28$ 万元，…，第 $n$ 年提取 $(10+9n)$ 万元，并能按此规律一直提取下去，问 $A$ 至少应为多少万元？
+}
+
+\oneproblem{
+    差分方程 $y_{t+1} - 2y_t = 2^t$ 的通解 $y_t = \underline{\qquad}$.
+}
+
+\oneproblem{
+    差分方程 $\Delta^2 y_x - y_x = 5$ 的解为：\underline{\qquad}.
+}
+
+\oneproblem{
+    差分方程 $\Delta y_t = t$ 的通解为\underline{\qquad}.
+}
+
+\oneproblem{
+    求 $y(t+3) - 7y(t+2) + 16y(t+1) - 12y(t) = 0$ 的通解.
+}
+
+\oneproblem{
+    求 $y(t+2) - 2y(t+1) + 4y(t) = 0$ 的通解.
+}
+
+\oneproblem{
+    求差分方程 $y(t+1) - y(t) = 2^t$ 的通解.
+}
+
+\oneproblem{
+    求差分方程 $y(t+1) - y(t) = 3 + 2t$ 的通解.
+}
+
+\oneproblem{
+    求差分方程 $y(t+1) - y(t) = 2^t(t+1) + 1$ 的通解.
+}
+
+\oneproblem{
+    求差分方程 $y(t+1) - 3y(t) = \sin\frac{\pi}{2}t$ 的通解.
+}
+
+\oneproblem{
+    求差分方程 $y(t+1) - y(t) = 3^t \sin\frac{\pi}{2}$ 的通解.
+}
+
+% ======================================================
+% 第 92 天
+% ======================================================
+\setday{92}{中值定理的综合应用之等式的证明}
+
+\oneproblem{
+    设函数 $f(x)$ 在区间 $[0,1]$ 上连续，且 $I=\int_0^1 f(x)dx\neq 0$。证明：在 $(0,1)$ 内存在不同的两点 $x_1,x_2$，使得 $\frac{1}{f(x_1)}+\frac{1}{f(x_2)}=\frac{2}{I}$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(-1,1)$ 内具有二阶连续导数且 $f''(x)\neq 0$，试证:
+    \begin{enumerate}[label=(\arabic*)]
+        \item 对于 $(-1,1)$ 内的任一 $x\neq 0$，存在唯一的 $\theta(x)\in(0,1)$，使得 $f(x)=f(0)+xf'(\theta(x)x)$ 成立；
+        \item $\lim_{x\to 0}\theta(x)=\frac{1}{2}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可导，如果 $a\ge 0$，证明: $(a,b)$ 内存在三个数 $x_1,x_2,x_3$，使得下列等式成立：
+    $$f'(x_1)=(b+a)\frac{f'(x_2)}{2x_2}=(b^2+ba+a^2)\frac{f'(x_3)}{3x_3^2}.$$
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[-2,2]$ 上二阶可导，且 $|f(x)|<1$，又 $f^2(0)+[f'(0)]^2=4$。试证在 $(-2,2)$ 内至少存在一点 $\xi$，使得 $f(\xi)+f''(\xi)=0$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(a,+\infty)$ 内有二阶导数，且 $f(a+1)=0$，$\lim_{x\to a^+}f(x)=0$，$\lim_{x\to +\infty}f(x)=0$。证明：在 $(a,+\infty)$ 内至少有一点 $\xi$，满足 $f''(\xi)=0$.
+}
+
+\oneproblem{
+    已知 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可导，证明：存在 $\xi\in(0,1)$，使得 $f'(\xi)f(1-\xi)=f(\xi)f'(1-\xi)$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,1]$ 上连续，$f(x)$ 在 $(0,1)$ 内可导，且 $f(0)=0$，$f(1)=1$。证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 存在 $x_0\in(0,1)$ 使得 $f(x_0)=2-3x_0$；
+        \item 存在 $\xi,\eta\in(0,1)$，且 $\xi\neq\eta$，使得 $[1+f'(\xi)][1+f'(\eta)]=4$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,+\infty)$ 上可微，$f(0)=0$，且存在常数 $A>0$，使得 $|f'(x)|\leq A|f(x)|$ 在 $[0,+\infty)$ 上成立，试证明在 $(0,+\infty)$ 上有 $f(x)\equiv 0$.
+}
+
+\oneproblem{
+    假设函数 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内二阶可导，过点 $A(0,f(0))$，与点 $B(1,f(1))$ 的直线与曲线 $y=f(x)$ 相交于点 $C(c,f(c))$，其中 $0<c<1$。证明：在 $(0,1)$ 内至少存在一点 $\xi$，使 $f''(\xi)=0$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在闭区间 $[a,b]$ 上连续，在开区间 $(a,b)$ 内可导，且 $f'(x)>0$。若极限 $\lim_{x\to a^+}\frac{f(2x-a)}{x-a}$ 存在，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 在 $(a,b)$ 内 $f(x)>0$；
+        \item 在 $(a,b)$ 内存在点 $\xi$，使 $\frac{b^2-a^2}{\int_a^b f(x)dx}=\frac{2\xi}{f(\xi)}$；
+        \item 在 $(a,b)$ 内存在与（2）中 $\xi$ 相异的点 $\eta$，使 $f'(\eta)(b^2-a^2)=\frac{2\xi}{\xi-a}\int_a^b f(x)dx$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[0,3]$ 上连续，在 $(0,3)$ 内存在二阶导数，且 $2f(0)=\int_0^2 f(x)dx=f(2)+f(3)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：存在 $\eta\in(0,2)$，使得 $f(\eta)=f(0)$.
+        \item 证明：存在 $\xi\in(0,3)$，使得 $f''(\xi)=0$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内二阶可导，且 $f(a)=f(b)=0$，$\int_a^b f(x)dx=0$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明: 存在互不相同的点 $x_1,x_2\in(a,b)$，使得 $f'(x_i)=f(x_i),\ i=1,2$；
+        \item 证明: 存在 $\xi\in(a,b),\ \xi\neq x_i,\ i=1,2$，使得 $f''(\xi)=f(\xi)$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(0,+\infty)$ 内可微，且 $\lim_{x\to\infty}(f(x)+f'(x))=0$，证明: $\lim_{x\to\infty}f(x)=0$.
+}
+
+\oneproblem{
+    设 $f(x)$ 有连续的三阶导数，且在等式 $f(x+h)=f(x)+hf'(x+\theta h),\ 0<\theta<1$ 中，$\theta$ 与 $h$ 无关，则 $f(x)$ 必为一次函数或二次函数.
+}
+
+\oneproblem{
+    函数 $f(x)$ 在 $[0,1]$ 上具有连续导数，且 $\int_0^1 f(x)dx=\frac{5}{2},\int_0^1 xf(x)dx=\frac{3}{2}$ 证明: 存在 $\xi\in(0,1)$，使得 $f'(\xi)=3$.
+}
+
+% ======================================================
+% 第 93 天
+% ======================================================
+\setday{93}{中值定理的综合应用之不等式的证明}
+
+\oneproblem{
+    设 $f''(x)<0, f(0)=0$，证明: 对任何 $x_1>0,x_2>0$，有 $f(x_1+x_2)<f(x_1)+f(x_2)$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,2]$ 上有二阶连续导数，且 $f(a)\ge f(a+b), f''(x)\le 0$. 证明：对于 $0<a<b<a+b<2$，恒有 $\frac{af(a)+bf(b)}{a+b}\ge f(a+b)$.
+}
+
+\oneproblem{
+    用微分中值定理证明：当 $s>0$ 时，
+    $$\frac{n^{s+1}}{s+1}<1^s+2^s+\cdots+n^s<\frac{(n+1)^{s+1}}{s+1}.$$
+}
+
+\oneproblem{
+    证明不等式 $\frac{(n+1)^n}{n!}<e^n,\ n=1,2,\cdots$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(0,+\infty)$ 内二阶可导，且对任意的 $x\in(0,+\infty)$，有 $|f(x)|\le A, |f''(x)|\le B$，其中 $A,B$ 为大于 $0$ 的常数. 证明 $|f'(x)|\le 2\sqrt{AB}\ (x>0)$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $x_0$ 的一个邻域内存在四阶导数，且 $|f^{(4)}(x)|\le M$. 证明: 对于该邻域内异于 $x_0$ 的任何 $x$，均有
+    $$\left|f''(x_0)-\frac{f(x)-2f(x_0)+f(x')}{(x-x_0)^2}\right|\le\frac{M}{12}(x-x_0)^2,$$
+    其中 $x'$ 是与 $x$ 关于 $x_0$ 对称的点.
+}
+
+\oneproblem{
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明不等式: $\frac{x}{1+x}<\ln(1+x)<x,\ x>0$.
+        \item 证明: $\lim_{n\to\infty}\left(\frac{1}{n}+\frac{1}{n+1}+\cdots+\frac{1}{2n}\right)=\ln 2$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f,g$ 为 $\mathbb{R}$ 上的非负连续可微函数，满足: $\forall x\in\mathbb{R}$，成立 $f'(x)\ge 6+f(x)-f^2(x),\ g'(x)\le 6+g(x)-g^2(x)$. 证明:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\forall\varepsilon\in(0,1)$ 以及 $x\in\mathbb{R}$，存在 $\xi\in(-\infty,x)$ 使得 $f(\xi)\ge 3-\varepsilon$.
+        \item $\forall x\in\mathbb{R}$，成立 $f(x)\ge 3$.
+        \item $\forall x\in\mathbb{R}$，存在 $\eta\in(-\infty,x)$ 使得 $g(\eta)\le 3$.
+        \item $\forall x\in\mathbb{R}$，成立 $g(x)\le 3$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f$ 在 $[0,1]$ 上连续，且 $\int_0^1 f(x)dx=0,\ \int_0^1 xf(x)dx=1$. 试证:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\exists x_0\in[0,1]$ 使得 $|f(x_0)|>4$；
+        \item $\exists x_1\in[0,1]$ 使得 $|f(x_1)|=4$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $\alpha>0, f(x)$ 在 $[0,1]$ 上非负，有二阶导函数，$f(0)=0$，且在 $[0,1]$ 上不恒为零。求证: 存在 $\xi\in(0,1)$ 使得 $\xi f''(\xi)+(\alpha+1)f'(\xi)>\alpha f(\xi)$.
+}
+
+\oneproblem{
+    设 $a>1$，函数 $f:(0,+\infty)\to(0,+\infty)$ 可微，求证: 存在趋于无穷的正数列 $\{x_n\}$ 使得 $f'(x_n)<f(ax_n),\ n=1,2,\cdots$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $\mathbb{R}$ 上有二阶导函数，$f(x),f'(x),f''(x)$ 均大于零，假设存在正数 $a,b$，使得 $f''(x)\le af(x)+bf'(x)$ 对于一切 $x\in\mathbb{R}$ 成立.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求证: $\lim_{x\to-\infty}f'(x)=0$；
+        \item 求证: 存在常数 $c$ 使得 $f'(x)\le cf(x)$；
+        \item 求使上面不等式成立的最小常数 $c$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 94 天
+% ======================================================
+\setday{94}{行列式计算与相关性质}
+
+\oneproblem{
+    四阶行列式
+    $\begin{vmatrix}
+    a_1 & 0 & 0 & b_1\\
+    0 & a_2 & b_2 & 0\\
+    0 & b_3 & a_3 & 0\\
+    b_4 & 0 & 0 & a_4
+    \end{vmatrix}$
+    的值等于( ).
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $a_1a_2a_3a_4-b_1b_2b_3b_4$
+        \item $a_1a_2a_3a_4+b_1b_2b_3b_4$
+        \item $(a_1a_2-b_1b_2)(a_3a_4-b_3b_4)$
+        \item $(a_2a_3-b_2b_3)(a_1a_4-b_1b_4)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    记行列式
+    $\begin{vmatrix}
+    x-2 & x-1 & x-2 & x-3\\
+    2x-2 & 2x-1 & 2x-2 & 2x-3\\
+    3x-3 & 3x-2 & 4x-5 & 3x-5\\
+    4x & 4x-3 & 5x-7 & 4x-3
+    \end{vmatrix}$
+    为 $f(x)$，则方程 $f(x)=0$ 的根的个数为( )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 1
+        \item 2
+        \item 3
+        \item 4
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $A$ 为 $n$ 阶方阵，且 $A$ 的行列式 $|A|=a\neq 0$，而 $A^*$ 是 $A$ 的伴随矩阵，则 $|A^*|=$ ( )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $a$
+        \item $\frac{1}{a}$
+        \item $a^{n-1}$
+        \item $a^n$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $n$ 阶矩阵 $A$ 非奇异 ($n\ge 2$)，$A^*$ 是矩阵 $A$ 的伴随矩阵，则 ( )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $(A^*)^*=|A|^{n-1}A$
+        \item $(A^*)^*=|A|^{n+1}A$
+        \item $(A^*)^*=|A|^{n-2}A$
+        \item $(A^*)^*=|A|^{n+2}A$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    若 $\alpha_1,\alpha_2,\alpha_3,\beta_1,\beta_2$ 都是四维列向量，且四阶行列式 $|\alpha_1\ \alpha_2\ \alpha_3\ \beta_1|=m,\ |\alpha_1\ \alpha_2\ \beta_2\ \alpha_3|=n$，则四阶行列式 $|\alpha_3\ \alpha_2\ \alpha_1\ (\beta_1+\beta_2)|$ 等于( )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $m+n$
+        \item $-(m+n)$
+        \item $n-m$
+        \item $m-n$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设行列式 $D=\begin{vmatrix}3&0&4&0\\2&2&2&2\\0&-7&0&0\\5&3&-2&2\end{vmatrix}$，则第四行各元素余子式之和的值为\underline{\qquad}.
+}
+
+\oneproblem{
+    设 $A$ 是三阶方阵，$A^*$ 是 $A$ 的伴随矩阵，$A$ 的行列式 $|A|=\frac{1}{2}$，则行列式 $|(3A)^{-1}-2A^*|=\underline{\qquad}$.
+}
+
+\oneproblem{
+    设 $4\times 4$ 阶矩阵 $A=(\alpha,\gamma_2,\gamma_3,\gamma_4),\ B=(\beta,\gamma_2,\gamma_3,\gamma_4)$，其中 $\alpha,\beta,\gamma_2,\gamma_3,\gamma_4$ 均为 $4$ 维列向量，且已知行列式 $|A|=4,|B|=1$，则行列式 $|A+B|=\underline{\qquad}$.
+}
+
+\oneproblem{
+    设 $A$ 为 $m$ 阶方阵，$B$ 为 $n$ 阶方阵，且 $|A|=a,\ |B|=b,\ C=\begin{pmatrix}0&A\\B&0\end{pmatrix}$，则 $|C|=\underline{\qquad}$.
+}
+
+\oneproblem{
+    多项式 $f(x)=\begin{vmatrix}x&x&1&2x\\1&x&2&-1\\2&1&x&1\\2&-1&1&x\end{vmatrix}$ 中 $x^3$ 项的系数为\underline{\qquad}.
+}
+
+\oneproblem{
+    设 $A$ 是 $n$ 阶方阵，$2,4,6,\cdots,2n$ 是 $A$ 的 $n$ 个特征值，$I$ 是 $n$ 阶单位阵，则行列式 $|A-3I|$\underline{\qquad}.
+}
+
+\oneproblem{
+    设 $A=(a_{ij})$ 为 $3$ 阶矩阵，$A_{ij}$ 为其代数余子式，若 $A$ 的每行元素之和为 $2$，且 $|A|=3$，则 $A_{11}+A_{21}+A_{31}=\underline{\qquad}$.
+}
+
+\oneproblem{
+    设 $A$ 是 $n$ 阶矩阵，满足 $AA^T=E$（$E$ 是 $n$ 阶单位阵，$A^T$ 是 $A$ 的转置矩阵），$|A|<0$，求 $|A+I|$.
+}
+
+\oneproblem{
+    计算下列行列式:
+    \begin{enumerate}[label=(\arabic*),itemsep = 8cm]
+        \item $\begin{vmatrix}1&1&1&0\\1&1&0&1\\1&0&1&1\\0&1&1&1\end{vmatrix}$.
+        \item $\begin{vmatrix}1&-1&1&x-1\\1&-1&x+1&-1\\1&x-1&1&-1\\x+1&-1&1&-1\end{vmatrix}$.
+        \item $\begin{vmatrix}1-a&a&0&0&0\\-1&1-a&a&0&0\\0&-1&1-a&a&0\\0&0&-1&1-a&a\\0&0&0&-1&1-a\end{vmatrix}$.
+        \item $\begin{vmatrix}a&b&0&\cdots&0&0\\0&a&b&\cdots&0&0\\0&0&a&\cdots&0&0\\\cdots&\cdots&\cdots&\cdots&\cdots&\cdots\\0&0&0&\cdots&a&b\\b&0&0&\cdots&0&a\end{vmatrix}_n$.
+        \item $\begin{vmatrix}2&0&\cdots&0&2\\-1&2&\cdots&0&2\\\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\cdots&2&2\\0&0&\cdots&-1&2\end{vmatrix}_n$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $A$ 为 $10\times 10$ 矩阵
+    $\begin{pmatrix}
+    0 & 1 & 0 & 0 & 0\\
+    0 & 0 & 1 & 0 & 0\\
+    \cdots & \cdots & \cdots & \cdots & \cdots\\
+    0 & 0 & 0 & 0 & 1\\
+    10^{10} & 0 & 0 & 0 & 0
+    \end{pmatrix},$
+    计算行列式 $|A-\lambda E|$，其中 $E$ 是 $10$ 阶单位矩阵，$\lambda$ 为常数.
+}
+
+\oneproblem{
+    已知实矩阵 $A=(a_{ij})_{3\times 3}$ 满足条件:
+    \begin{enumerate}[label=(\arabic*)]
+        \item $A_{ij}=a_{ij}\ (i,j=1,2,3)$，其中 $A_{ij}$ 是 $a_{ij}$ 的代数余子式;
+        \item $a_{11}\neq 0$. 计算行列式 $|A|$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $A$ 为 $n$ 阶非零方阵，$A^*$ 是 $A$ 的伴随矩阵，$A^T$ 是 $A$ 的转置矩阵，当 $A^*=A^T$ 时，证明 $|A|\neq 0$.
+}
+
+% ======================================================
+% 第 95 天
+% ======================================================
+\setday{95}{矩阵及其运算}
+
+\oneproblem{
+设 $n$ 阶方阵 $A,B,C$ 满足关系式 $ABC=E$，其中 $E$ 是 $n$ 阶单位阵，则必有( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $ACB=E$
+    \item $CBA=E$
+    \item $BAC=E$
+    \item $BCA=E$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B,A+B,A^{-1}+B^{-1}$ 均为 $n$ 阶可逆矩阵，则
+$
+\left(A^{-1}+B^{-1}\right)^{-1}=(\quad).
+$
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $A^{-1}+B^{-1}$
+    \item $A+B$
+    \item $A(A+B)^{-1}B$
+    \item $(A+B)^{-1}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+已知 $Q=\begin{pmatrix}1&2&3\\2&4&t\\3&6&9\end{pmatrix}$，$P$ 为三阶非零矩阵，且满足 $PQ=0$，则( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $t=6$ 时 $P$ 的秩必为 $1$
+    \item $t=6$ 时 $P$ 的秩必为 $2$
+    \item $t\neq 6$ 时 $P$ 的秩必为 $1$
+    \item $t\neq 6$ 时 $P$ 的秩必为 $2$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设矩阵 $A=(a_{ij})_{3\times 3}$ 满足 $A^*=A^T$，其中 $A^*$ 是 $A$ 的伴随矩阵，$A^T$ 为 $A$ 的转置矩阵. 若 $a_{11},a_{12},a_{13}$ 为三个相等的正数，则 $a_{11}$ 为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\dfrac{\sqrt{3}}{3}$
+    \item $3$
+    \item $\dfrac{1}{3}$
+    \item $\sqrt{3}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶非零矩阵，$E$ 为 $n$ 阶单位矩阵. 若 $A^3=O$，则( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $E-A$ 不可逆，则 $E+A$ 不可逆
+    \item $E-A$ 不可逆，则 $E+A$ 可逆
+    \item $E-A$ 可逆，则 $E+A$ 可逆
+    \item $E-A$ 可逆，则 $E+A$ 不可逆
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 为 $n$ 阶实矩阵，下列不成立的是 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $r\begin{pmatrix}A&O\\O&A^TA\end{pmatrix}=2r(A)$
+    \item $r\begin{pmatrix}A&AB\\O&A^T\end{pmatrix}=2r(A)$
+    \item $r\begin{pmatrix}A&BA\\O&AA^T\end{pmatrix}=2r(A)$
+    \item $r\begin{pmatrix}A&O\\BA&A^T\end{pmatrix}=2r(A)$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 均为 $2$ 阶矩阵，$A^*,B^*$ 分别为 $A,B$ 的伴随矩阵。若 $|A|=2,|B|=3$，则分块矩阵 $\begin{pmatrix}O&A\\B&O\end{pmatrix}$ 的伴随矩阵为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\begin{pmatrix}O&3B^*\\2A^*&O\end{pmatrix}$
+    \item $\begin{pmatrix}O&2B^*\\3A^*&O\end{pmatrix}$
+    \item $\begin{pmatrix}O&3A^*\\2B^*&O\end{pmatrix}$
+    \item $\begin{pmatrix}O&2A^*\\3B^*&O\end{pmatrix}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,P$ 均为 $3$ 阶矩阵，$P^T$ 为 $P$ 的转置矩阵，且
+$
+P^TAP=\begin{pmatrix}1&0&0\\0&1&0\\0&0&2\end{pmatrix},
+$
+若 $P=(\alpha_1,\alpha_2,\alpha_3),\ Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，则 $Q^TAQ$ 为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\begin{pmatrix}2&1&0\\1&1&0\\0&0&2\end{pmatrix}$
+    \item $\begin{pmatrix}1&1&0\\1&2&0\\0&0&2\end{pmatrix}$
+    \item $\begin{pmatrix}2&0&0\\0&1&0\\0&0&2\end{pmatrix}$
+    \item $\begin{pmatrix}1&0&0\\0&2&0\\0&0&2\end{pmatrix}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 为 $n$ 阶矩阵，$A^*,B^*$ 分别为 $A,B$ 对应的伴随矩阵，分块矩阵 $C=\begin{pmatrix}A&0\\0&B\end{pmatrix}$，则 $C$ 的伴随矩阵 $C^*=$ ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\begin{pmatrix}|A|A^*&0\\0&|B|B^*\end{pmatrix}$
+    \item $\begin{pmatrix}|B|B^*&0\\0&|A|A^*\end{pmatrix}$
+    \item $\begin{pmatrix}|A|B^*&0\\0&|B|A^*\end{pmatrix}$
+    \item $\begin{pmatrix}|B|A^*&0\\0&|A|B^*\end{pmatrix}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 为 $3$ 阶矩阵，$P$ 为 $3$ 阶可逆矩阵，且 $P^{-1}AP=\begin{pmatrix}1&0&0\\0&1&0\\0&0&2\end{pmatrix}$，若 $P=(\alpha_1,\alpha_2,\alpha_3),\ Q=(\alpha_1+\alpha_2,\alpha_2,\alpha_3)$，则 $Q^{-1}AQ=(\ )$
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\begin{pmatrix}1&0&0\\0&2&0\\0&0&1\end{pmatrix}$
+    \item $\begin{pmatrix}1&0&0\\0&1&0\\0&0&2\end{pmatrix}$
+    \item $\begin{pmatrix}2&0&0\\0&1&0\\0&0&2\end{pmatrix}$
+    \item $\begin{pmatrix}2&0&0\\0&2&0\\0&0&1\end{pmatrix}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}0&-1&0\\1&0&0\\0&0&-1\end{pmatrix},B=P^{-1}AP$，其中 $P$ 为三阶可逆矩阵，则 $B^{2004}-2A^2=\underline{\qquad}.$
+}
+
+\oneproblem{
+设 $A=(a_{ij})$ 是 $3$ 阶非零矩阵，$|A|$ 为 $A$ 的行列式，$A_{ij}$ 为 $a_{ij}$ 的代数余子式. 若 $a_{ij}+A_{ij}=0\ (i,j=1,2,3)$，则 $|A|=\underline{\qquad}.$
+}
+
+\oneproblem{
+设 $A$ 为 $3$ 阶矩阵，交换 $A$ 的第 $2$ 行和第 $3$ 行，再将第 $2$ 列的 $-1$ 倍加到第 $1$ 列，得到矩阵
+$
+\begin{pmatrix}
+-2&1&-1\\
+1&-1&0\\
+-1&0&0
+\end{pmatrix},
+$
+则 $A^{-1}$ 的迹 $\operatorname{tr}\left(A^{-1}\right)=\underline{\qquad}.$
+}
+
+\oneproblem{
+设 $n$ 维向量 $\alpha=(a,0,\cdots,0,a)^T,a<0$；$E$ 为 $n$ 阶单位矩阵，矩阵
+$
+A=E-\alpha\alpha^T,B=E+\frac{1}{a}\alpha\alpha^T,
+$
+其中 $A$ 的逆矩阵为 $B$，则 $a=\underline{\qquad}.$
+}
+
+\oneproblem{
+设矩阵 $A=\begin{pmatrix}2&1&0\\1&2&0\\0&0&1\end{pmatrix}$，矩阵 $B$ 满足 $ABA^*=2BA^*+E$，其中 $A^*$ 为 $A$ 的伴随矩阵，$E$ 是单位矩阵，则 $|B|=\underline{\qquad}.$
+}
+
+\oneproblem{
+设 $A,B$ 均为 $n$ 阶矩阵，$|A|=2,|B|=-3$，则
+$
+|2A^*B^{-1}|=\underline{\qquad}.
+$
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}1&0&0&0\\-2&3&0&0\\0&-4&5&0\\0&0&-6&7\end{pmatrix}$，$E$ 为 $4$ 阶单位矩阵，且 $B=(E+A)^{-1}(E-A)$，则 $(E+B)^{-1}=\underline{\qquad}.$
+}
+
+\oneproblem{
+已知三阶矩阵 $A$ 的逆矩阵为 $A^{-1}=\begin{pmatrix}1&1&1\\1&2&1\\1&1&3\end{pmatrix}$，试求伴随矩阵 $A^*$ 的逆矩阵.
+}
+
+\oneproblem{
+设 $(2E-C^{-1}B)A^T=C^{-1}$，其中 $E$ 是 $4$ 阶单位矩阵，$A^T$ 是 $4$ 阶矩阵 $A$ 的转置矩阵，
+$
+B=\begin{pmatrix}1&2&-3&-2\\0&1&2&-3\\0&0&1&2\\0&0&0&1\end{pmatrix},C=\begin{pmatrix}1&2&0&1\\0&1&2&0\\0&0&1&2\\0&0&0&1\end{pmatrix},
+$
+求 $A$.
+}
+
+\oneproblem{
+设矩阵 $A$ 的伴随矩阵 $A^*=\begin{pmatrix}1&0&0&0\\0&1&0&0\\1&0&1&0\\0&-3&0&8\end{pmatrix}$，且 $ABA^{-1}=BA^{-1}+3E$，其中 $E$ 为 $4$ 阶单位矩阵，求矩阵 $B$.
+}
+
+\oneproblem{
+设 $n$ 矩阵 $A$ 和 $B$ 满足条件 $A+B=AB$，
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明 $A-E$ 为可逆矩阵，其中 $E$ 是 $n$ 阶单位矩阵；
+    \item 已知 $B=\begin{pmatrix}1&-3&0\\2&1&0\\0&0&2\end{pmatrix}$，求矩阵 $A$.
+\end{enumerate}
+}
+
+\oneproblem{
+已知 $n$ 阶方阵 $A$ 满足矩阵方程 $A^2-3A-2E=0$，其中 $A$ 给定，而 $E$ 是单位矩阵. 证明 $A$ 可逆，并求出其逆矩阵 $A^{-1}$.
+}
+
+\oneproblem{
+设四阶矩阵 $B=\begin{pmatrix}1&-1&0&0\\0&1&-1&0\\0&0&1&-1\\0&0&0&1\end{pmatrix}$，$C=\begin{pmatrix}2&1&3&4\\0&2&1&3\\0&0&2&1\\0&0&0&2\end{pmatrix}$ 且矩阵 $A$ 满足关系式 $A\left(E-C^{-1}B\right)^TC^T=E$，其中 $E$ 为四阶单位矩阵，$C^{-1}$ 表示 $C$ 的逆矩阵，$C^T$ 表示 $C$ 的转置矩阵，将上述关系化简并求矩阵 $A$.
+}
+
+\oneproblem{
+设 $A=E-\xi\xi^T$，其中 $E$ 是 $n$ 阶单位矩阵，$\xi$ 是 $n$ 维非零列向量，$\xi^T$ 是 $\xi$ 的转置，证明：
+\begin{enumerate}[label=(\arabic*)]
+    \item $A^2=A$ 的充要条件是 $\xi^T\xi=1$；
+    \item 当 $\xi^T\xi=1$ 时，$A$ 是不可逆矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶非奇异矩阵，$\alpha$ 为 $n$ 维列向量，$b$ 为常量，记分块矩阵
+$
+P=\begin{pmatrix}E&0\\-\alpha^TA^*&|A|\end{pmatrix},\ Q=\begin{pmatrix}A&\alpha\\\alpha^T&b\end{pmatrix},
+$
+其中 $A^*$ 是矩阵 $A$ 的伴随矩阵，$E$ 为 $n$ 阶单位矩阵.
+\begin{enumerate}[label=(\arabic*)]
+    \item 计算并化简 $PQ$；
+    \item 证明：矩阵 $Q$ 可逆的充分必要条件是 $\alpha^TA^{-1}\alpha\neq b$.
+\end{enumerate}
+}
+
+% ======================================================
+% 第 97 天
+% ======================================================
+\setday{97}{线性方程组}
+
+\oneproblem{
+设 $n$ 元齐次线性方程组 $AX=0$ 的系数矩阵 $A$ 的秩为 $r$，则 $AX=0$ 有非零解的充分必要条件是( ).
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $r=n$
+    \item $r<n$
+    \item $r\ge n$
+    \item $r>n$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+已知 $\beta_1$ 和 $\beta_2$ 是非齐次线性方程组 $AX=b$ 的两个不同的解，$\alpha_1,\alpha_2$ 是对应导出组 $AX=0$ 基础解系，$k_1,k_2$ 为任意常数，则方程组 $AX=b$ 的通解（一般解）必是( ).
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $k_1\alpha_1+k_2(\alpha_1+\alpha_2)+\dfrac{\beta_1-\beta_2}{2}$
+    \item $k_1\alpha_1+k_2(\alpha_1-\alpha_2)+\dfrac{\beta_1+\beta_2}{2}$
+    \item $k_1\alpha_1+k_2(\beta_1+\beta_2)+\dfrac{\beta_1-\beta_2}{2}$
+    \item $k_1\alpha_1+k_2(\beta_1-\beta_2)+\dfrac{\beta_1+\beta_2}{2}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 是 $m\times n$ 矩阵，$Ax=0$ 是非齐次线性方程组 $Ax=b$ 所对应的齐次线性方程组,则下列结论正确的是( ).
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 若 $Ax=0$ 仅有零解，则 $Ax=b$ 有唯一解
+    \item 若 $Ax=0$ 有非零解，则 $Ax=b$ 有无穷多个解
+    \item 若 $Ax=b$ 有无穷多个解，则 $Ax=0$ 仅有零解
+    \item 若 $Ax=b$ 有无穷多个解，则 $Ax=0$ 有非零解
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+要使 $\xi_1=\begin{pmatrix}1\\0\\2\end{pmatrix},\xi_2=\begin{pmatrix}0\\1\\-1\end{pmatrix}$ 都是线性方程组 $AX=0$ 的解，只要系数矩阵 $A$ 为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\begin{pmatrix}-2&1&1\end{pmatrix}$
+    \item $\begin{pmatrix}2&0&-1\\0&1&1\end{pmatrix}$
+    \item $\begin{pmatrix}-1&0&2\\0&1&-1\end{pmatrix}$
+    \item $\begin{pmatrix}0&1&-1\\4&-2&-2\\0&1&1\end{pmatrix}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设矩阵 $A_{m\times n}$ 的秩为 $R(A)=m<n$，$E_m$ 为 $m$ 阶单位矩阵，下述结论中正确的是( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $A$ 的任意 $m$ 个列向量必线性无关
+    \item $A$ 的任意一个 $m$ 阶子式不等于零
+    \item 若矩阵 $B$ 满足 $BA=0$，则 $B=0$
+    \item $A$ 通过初等行变换，必可以化为 $(E_m,0)$ 的形式
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $\alpha_1=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix},\alpha_2=\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix},\alpha_3=\begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}$，则三条直线
+$
+a_1x+b_1y+c_1=0,a_2x+b_2y+c_2=0,a_3x+b_3y+c_3=0
+$
+（其中 $a_i^2+b_i^2\neq 0,\ i=1,2,3$）交于一点的充要条件是( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\alpha_1,\alpha_2,\alpha_3$ 线性相关
+    \item $\alpha_1,\alpha_2,\alpha_3$ 线性无关
+    \item $r(\alpha_1,\alpha_2,\alpha_3)=r(\alpha_1,\alpha_2)$
+    \item $\alpha_1,\alpha_2,\alpha_3$ 线性相关，$\alpha_1,\alpha_2$ 线性无关
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+非齐次线性方程组 $AX=b$ 中未知量个数为 $n$，方程个数为 $m$，系数矩阵 $A$ 的秩为 $r$，则( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $r=m$ 时，方程组 $AX=b$ 有解
+    \item $r=n$ 时，方程组 $AX=b$ 有唯一解
+    \item $m=n$ 时，方程组 $AX=b$ 有唯一解
+    \item $r<n$ 时，方程组 $AX=b$ 有无穷多解
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+齐次线性方程组
+$
+\begin{cases}
+\lambda x_1+x_2+\lambda^2x_3=0\\
+x_1+\lambda x_2+x_3=0\\
+x_1+x_2+\lambda x_3=0
+\end{cases}
+$
+的系数矩阵记为 $A$，若存在三阶矩阵 $B\neq 0$，使得 $AB=0$，则( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\lambda=-2$ 且 $|B|=0$
+    \item $\lambda=-2$ 且 $|B|\neq 0$
+    \item $\lambda=1$ 且 $|B|=0$
+    \item $\lambda=1$ 且 $|B|\neq 0$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶实矩阵，$A^T$ 是 $A$ 的转置矩阵，则对于线性方程组 $(I):Ax=0$ 和 $(II):x^TAx=0$，必有( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $(II)$ 的解都是 $(I)$ 的解，$(I)$ 的解也是 $(II)$ 的解
+    \item $(II)$ 的解都是 $(I)$ 的解，但 $(I)$ 解不是 $(II)$ 的解
+    \item $(I)$ 解不是 $(II)$ 的解，$(II)$ 的解也不是 $(I)$ 的解
+    \item $(I)$ 解是 $(II)$ 的解，但 $(II)$ 的解不是 $(I)$ 的解
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 是 $n$ 阶矩阵，$\alpha$ 是 $n$ 维列向量. 若秩 $\begin{pmatrix}A&\alpha\\\alpha^T&0\end{pmatrix}=$ 秩$(A)$，则线性方程组( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $AX=\alpha$ 必有无穷多解
+    \item $AX=\alpha$ 必有惟一解
+    \item $\begin{pmatrix}A&\alpha\\\alpha^T&0\end{pmatrix}\begin{pmatrix}X\\y\end{pmatrix}=0$ 仅有零解
+    \item $\begin{pmatrix}A&\alpha\\\alpha^T&0\end{pmatrix}\begin{pmatrix}X\\y\end{pmatrix}=0$ 必有非零解
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设有齐次线性方程组 $Ax=0$ 和 $Bx=0$，其中 $A,B$ 均为 $m\times n$ 矩阵，现有 4 个命题:
+\begin{enumerate}[label=\arabic*.]
+    \item 若 $Ax=0$ 的解均是 $Bx=0$ 的解，则 $r(A)\ge r(B)$
+    \item 若 $r(A)\ge r(B)$，则 $Ax=0$ 的解均是 $Bx=0$ 的解
+    \item 若 $Ax=0$ 与 $Bx=0$ 同解，则 $r(A)=r(B)$
+    \item 若 $r(A)=r(B)$，则 $Ax=0$ 与 $Bx=0$ 同解
+\end{enumerate}
+以上命题中正确的是 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item \ding{172}\ding{173}
+    \item \ding{172}\ding{174}
+    \item \ding{173}\ding{175}
+    \item \ding{174}\ding{175}
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $n$ 阶矩阵 $A$ 的伴随矩阵 $A^*\neq 0$，若 $\xi_1,\xi_2,\xi_3,\xi_4$ 是非齐次线性方程组 $Ax=b$ 的互不相等的解，则对应的齐次线性方程组 $Ax=0$ 的基础解系( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 不存在
+    \item 仅含一个非零解向量
+    \item 含有两个线性无关的解向量
+    \item 含有三个线性无关的解向量
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设矩阵 $A=\begin{pmatrix}1&1&1\\1&2&a\\1&4&a^2\end{pmatrix},\ b=\begin{pmatrix}1\\d\\d^2\end{pmatrix}$，若集合 $\Omega=\{1,2\}$，则线性方程组 $Ax=b$ 有无穷多个解的充分必要条件为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $a\notin\Omega,d\notin\Omega$
+    \item $a\notin\Omega,d\in\Omega$
+    \item $a\in\Omega,d\notin\Omega$
+    \item $a\in\Omega,d\in\Omega$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 均为 $n$ 阶矩阵，$E$ 为单位矩阵，如果方程组 $Ax=0$ 和 $Bx=0$ 同解，则 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 方程组 $\begin{pmatrix}A&O\\E&B\end{pmatrix}y=0$ 只有零解
+    \item 方程组 $\begin{pmatrix}E&A\\O&AB\end{pmatrix}y=0$ 只有零解
+    \item 方程组 $\begin{pmatrix}A&B\\O&B\end{pmatrix}y=0$ 与 $\begin{pmatrix}B&A\\O&A\end{pmatrix}y=0$ 同解
+    \item 方程组 $\begin{pmatrix}AB&B\\O&A\end{pmatrix}y=0$ 与 $\begin{pmatrix}BA&A\\O&B\end{pmatrix}y=0$ 同解
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 为四阶矩阵，$A^*$ 为 $A$ 的伴随矩阵，若线性方程组 $Ax=0$ 的基础解系中只有 2 个向量，则 $A^*$ 的秩是( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $0$
+    \item $1$
+    \item $2$
+    \item $3$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+若线性方程组
+$
+\begin{cases}
+x_1+x_2=-a_1\\
+x_2+x_3=a_2\\
+x_3+x_4=-a_3\\
+x_4+x_1=a_4
+\end{cases}
+$
+有解，则常数 $a_1,a_2,a_3,a_4$ 应满足条件\underline{\qquad}.
+}
+
+\oneproblem{
+设 $n$ 阶矩阵 $A$ 的各行元素之和均为零，且 $A$ 的秩为 $n-1$，则线性方程组 $AX=0$ 的通解为\underline{\qquad}.
+}
+
+\oneproblem{
+设 $a_i\neq a_j\ (i\neq j;\ i,j=1,2,\cdots,n)$，
+$
+A=\begin{pmatrix}
+1&1&1&\cdots&1\\
+a_1&a_2&a_3&\cdots&a_n\\
+a_1^2&a_2^2&a_3^2&\cdots&a_n^2\\
+\cdots&\cdots&\cdots&\cdots&\cdots\\
+a_1^{n-1}&a_2^{n-1}&a_3^{n-1}&\cdots&a_n^{n-1}
+\end{pmatrix},\ X=\begin{pmatrix}x_1\\x_2\\x_3\\\vdots\\x_n\end{pmatrix},\ B=\begin{pmatrix}1\\1\\1\\\vdots\\1\end{pmatrix}
+$
+则线性方程组 $A^TX=B$ 的解是\underline{\qquad}.
+}
+
+\oneproblem{
+设 $A=(a_{ij})_{3\times 3}$ 是实正交矩阵，且 $a_{11}=1,\ b=(1,0,0)^T$，则线性方程组 $Ax=b$ 的解是\underline{\qquad}.
+}
+
+\oneproblem{
+问 $a,b$ 取何值时，线性方程组
+$
+\begin{cases}
+x_1+x_2+x_3+x_4=0\\
+x_2+2x_3+2x_4=1\\
+-x_2+(a-3)x_3-2x_4=b\\
+3x_1+2x_2+x_3+ax_4=-1
+\end{cases}
+$
+有唯一解？无解？有无穷多组解？并求出有无穷多解时的通解.
+}
+
+\oneproblem{
+设 $\alpha_1=\begin{pmatrix}1+\lambda\\1\\1\end{pmatrix},\alpha_2=\begin{pmatrix}1\\1+\lambda\\1\end{pmatrix},\alpha_3=\begin{pmatrix}1\\1\\1+\lambda\end{pmatrix},\beta=\begin{pmatrix}0\\\lambda\\\lambda^2\end{pmatrix}$，问 $\lambda$ 取何值时，
+\begin{enumerate}[label=(\arabic*)]
+    \item $\beta$ 可由 $\alpha_1,\alpha_2,\alpha_3$ 线性表示，且表达式唯一？
+    \item $\beta$ 可由 $\alpha_1,\alpha_2,\alpha_3$ 线性表示，且表达式不唯一？
+    \item $\beta$ 不能由 $\alpha_1,\alpha_2,\alpha_3$ 线性表示？
+\end{enumerate}
+}
+
+\oneproblem{
+已知三阶矩阵 $B\neq 0$，且 $B$ 的每一个列向量都是方程组
+$
+\begin{cases}
+x_1+2x_2-2x_3=0\\
+2x_1-x_2+\lambda x_3=0\\
+3x_1+x_2-x_3=0
+\end{cases}
+$
+的解:
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $\lambda$ 的值;
+    \item 证明 $|B|=0$.
+\end{enumerate}
+}
+
+\oneproblem{
+已知 $R^3$ 的两个基为
+$
+\alpha_1=\begin{pmatrix}1\\1\\1\end{pmatrix},\alpha_2=\begin{pmatrix}1\\0\\-1\end{pmatrix},\alpha_3=\begin{pmatrix}1\\0\\1\end{pmatrix},\beta_1=\begin{pmatrix}1\\2\\1\end{pmatrix},\beta_2=\begin{pmatrix}2\\3\\4\end{pmatrix},\beta_3=\begin{pmatrix}3\\4\\3\end{pmatrix},
+$
+求由基 $\alpha_1,\alpha_2,\alpha_3$ 到基 $\beta_1,\beta_2,\beta_3$ 的过渡矩阵.
+}
+
+\oneproblem{
+设四元线性齐次方程组 $(I)$ 为 $\begin{cases}x_1+x_2=0\\x_2-x_4=0\end{cases}$，又已知某线性齐次方程组 $(II)$ 的通解为 $k_1(0,1,1,0)^T+k_2(-1,2,2,1)^T$,
+\begin{enumerate}[label=(\arabic*)]
+    \item 求线性方程组 $(I)$ 的基础解系.
+    \item 问线性方程组 $(I)$ 及 $(II)$ 是否有非零公共解？若有，求出所有的非零公共解；若没有，说明理由.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A$ 是 $n\times m$ 矩阵，$B$ 是 $m\times n$ 矩阵，其中 $n<m$，$E$ 是 $n$ 阶单位矩阵，若 $AB=E$，证明 $B$ 的列向量组线性无关.
+}
+
+\oneproblem{
+设 $\alpha_1,\alpha_2,\alpha_3$ 是齐次线性方程组 $AX=0$ 的一个基础解系，证明 $\alpha_1+\alpha_2,\alpha_2+\alpha_3,\alpha_3+\alpha_1$ 也是该方程组的一个基础解系.
+}
+
+\oneproblem{
+设向量 $\alpha_1,\alpha_2,\cdots,\alpha_t$ 是齐次线性方程组 $AX=0$ 的一个基础解系，向量 $\beta$ 不是方程组 $AX=0$ 的解，即 $A\beta\neq 0$，试证明：向量组 $\beta,\beta+\alpha_1,\beta+\alpha_2,\cdots,\beta+\alpha_t$，线性无关.
+}
+
+\oneproblem{
+设矩阵 $A$ 和 $B$ 相似，且 $A=\begin{pmatrix}1&-1&1\\2&4&-2\\-3&-3&a\end{pmatrix},B=\begin{pmatrix}2&0&0\\0&2&0\\0&0&b\end{pmatrix}$,
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $a,b$ 的值;
+    \item 求可逆矩阵 $P$，使 $P^{-1}AP=B$.
+\end{enumerate}
+}
+
+\oneproblem{
+\vspace{-3cm}
+已知线性方程组 $(I)
+\begin{cases}
+a_{11}x_1+a_{12}x_2+\cdots+a_{1,2n}x_{2n}=0\\
+a_{21}x_1+a_{22}x_2+\cdots+a_{2,2n}x_{2n}=0\\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+a_{n1}x_1+a_{n2}x_2+\cdots+a_{n,2n}x_{2n}=0
+\end{cases}
+$
+的一个基础解系为\\
+
+\vspace{1cm}
+$
+(b_{11},b_{12},\cdots,b_{1,2n})^T,(b_{21},b_{22},\cdots,b_{2,2n})^T,\cdots,(b_{n1},b_{n2},\cdots,b_{n,2n})^T,
+$
+试写出线性方程组 
+\vspace{1cm}
+\\$(II)
+\begin{cases}
+b_{11}y_1+b_{12}y_2+\cdots+b_{1,2n}y_{2n}=0\\
+b_{21}y_1+b_{22}y_2+\cdots+b_{2,2n}y_{2n}=0\\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+b_{n1}y_1+b_{n2}y_2+\cdots+b_{n,2n}y_{2n}=0
+\end{cases}
+$
+的通解，并说明理由.
+}
+
+\oneproblem{
+已知下列非齐次线性方程组 $(I)$ 和 $(II)$，\\
+$
+(I):\begin{cases}
+x_1+x_2-2x_4=-6\\
+4x_1-x_2-x_3-x_4=1\\
+3x_1-x_2-x_3=3
+\end{cases},\quad
+(II):\begin{cases}
+x_1+mx_2-x_3-x_4=-5\\
+nx_2-x_3-2x_4=-11\\
+x_3-2x_4=-t+1
+\end{cases},
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 求解方程组 $(I)$，用其导出组的基础解系表示通解;
+    \item 当方程组 $(II)$ 中的参数 $m,n,t$ 为何值时，方程组 $(I)$ 与 $(II)$ 同解.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $\alpha=\begin{pmatrix}1\\2\\1\end{pmatrix},\beta=\begin{pmatrix}1\\1/2\\0\end{pmatrix},\gamma=\begin{pmatrix}0\\0\\8\end{pmatrix},A=\alpha\beta^T,B=\beta^T\alpha$，其中 $\beta^T$ 是 $\beta$ 的转置，求解方程 $2B^2A^2x=A^4x+B^4x+\gamma$.
+}
+
+\oneproblem{
+设 $\alpha_1,\alpha_2,\cdots,\alpha_s$ 为线性方程组 $Ax=0$ 的一个基础解系，
+$
+\beta_1=t_1\alpha_1+t_2\alpha_2,\ \beta_2=t_1\alpha_2+t_2\alpha_3,\ \cdots,\ \beta_s=t_1\alpha_s+t_2\alpha_1,
+$
+其中 $t_1,t_2$ 为实常数. 试问 $t_1,t_2$ 满足什么条件时， $\beta_1,\beta_2,\cdots,\beta_s$ 也为 $Ax=0$ 的一个基础解系.
+}
+
+\oneproblem{
+设四元齐次方程组 $(I):\begin{cases}2x_1+3x_2-x_3=0\\x_1+2x_2+x_3-x_4=0\end{cases}$，且已知另一四元齐次线性方程组 $(II)$ 的一个基础解系为
+$
+\alpha_1=(2,-1,a+2,1)^T,\ \alpha_2=(-1,2,4,a+8)^T.
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 求方程组 $(I)$ 的一个基础解系;
+    \item 当 $a$ 为何值时，方程组 $(I)$ 与 $(II)$ 有非零公共解?在有非零公共解时，求出全部非零公共解.
+\end{enumerate}
+}
+
+\oneproblem{
+已知非齐次线性方程组
+$
+\begin{cases}
+x_1+x_2+x_3+x_4=-1\\
+4x_1+3x_2+5x_3-x_4=-1\\
+ax_1+x_2+3x_3+bx_4=1
+\end{cases}
+$
+有 3 个线性无关的解.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明方程组系数矩阵 $A$ 的秩 $r(A)=2$;
+    \item 求 $a,b$ 的值及方程组的通解.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $n$ 元线性方程组 $Ax=b$，其中
+$
+A=\begin{pmatrix}
+2a&1&&&&\\
+a^2&2a&1&&&\\
+&a^2&2a&1&&\\
+&&\ddots&\ddots&\ddots&\\
+&&&a^2&2a&1\\
+&&&&a^2&2a
+\end{pmatrix}_{n\times n},\ x=\begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix},\ b=\begin{pmatrix}1\\0\\\vdots\\0\end{pmatrix}.
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明行列式 $|A|=(n+1)a^n$;
+    \item 当 $a$ 为何值时，该方程组有惟一解，并求 $x_1$.
+    \item 当 $a$ 为何值时，该方程组有无穷多解，并求其通解.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}1&a\\1&0\end{pmatrix},\ B=\begin{pmatrix}0&1\\1&b\end{pmatrix}$，当 $a,b$ 为何值时，存在矩阵 $C$ 使得 $AC-CA=B$，并求所有矩阵 $C$.
+}
+
+% ======================================================
+% 第 98 天
+% ======================================================
+\setday{98}{特征值与特征向量}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶可逆矩阵，$\lambda$ 是 $A$ 的一个特征根，则 $A$ 的伴随矩阵 $A^*$ 的特征根之一是( ).
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\lambda^{-1}|A|^n$
+    \item $\lambda^{-1}|A|$
+    \item $\lambda|A|$
+    \item $\lambda|A|^n$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+$n$ 阶方阵 $A$ 具有 $n$ 个不同的特征值是 $A$ 与对角阵相似的( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 充分必要条件
+    \item 充分而非必要条件
+    \item 必要而非充分条件
+    \item 既非充分也非必要条件
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $\lambda=2$ 是非奇异矩阵 $A$ 的一个特征值，则矩阵 $\left(\dfrac{1}{3}A^2\right)^{-1}$ 有一特征值等于( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\dfrac{4}{3}$
+    \item $\dfrac{3}{4}$
+    \item $\dfrac{1}{2}$
+    \item $\dfrac{1}{4}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 均为 $n$ 阶矩阵，且 $A$ 与 $B$ 相似，$E$ 为 $n$ 阶单位矩阵，则 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\lambda E-A=\lambda E-B$
+    \item $A$ 与 $B$ 有相同的特征值和特征向量
+    \item $A$ 与 $B$ 都相似于一个对角矩阵
+    \item 对于任意常数 $t,tE-A$ 与 $tE-B$ 相似
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 是 $n$ 阶实对称矩阵，$P$ 是 $n$ 阶可逆矩阵. 已知 $n$ 维向量 $\alpha$ 是 $A$ 的属于特征值 $\lambda$ 的特征向量，则矩阵 $(P^{-1}AP)^T$ 属于特征值 $\lambda$ 的特征向量是( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $P^{-1}\alpha$
+    \item $P^T\alpha$
+    \item $P\alpha$
+    \item $(P^{-1})^T\alpha$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设矩阵 $B=\begin{pmatrix}0&0&1\\0&1&0\\1&0&0\end{pmatrix}$. 已知矩阵 $A$ 相似于 $B$，则秩$(A-2E)$与秩$(A-E)$之和等于( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $2$
+    \item $3$
+    \item $4$
+    \item $5$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $\lambda_1,\lambda_2$ 是矩阵 $A$ 的两个不同的特征值，对应的特征向量分别为 $\alpha_1,\alpha_2$，则 $\alpha_1,\ A(\alpha_1+\alpha_2)$ 线性无关的充分必要条件是( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\lambda_1\neq 0$
+    \item $\lambda_2\neq 0$
+    \item $\lambda_1=0$
+    \item $\lambda_2=0$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}1&2\\2&1\end{pmatrix}$，则在实数域上与 $A$ 合同的矩阵为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\begin{pmatrix}-2&1\\1&-2\end{pmatrix}$
+    \item $\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$
+    \item $\begin{pmatrix}2&1\\1&2\end{pmatrix}$
+    \item $\begin{pmatrix}1&-2\\-2&1\end{pmatrix}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 是可逆矩阵，且 $A$ 与 $B$ 相似，则下列结论错误的是( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $A^T$ 与 $B^T$ 相似
+    \item $A^{-1}$ 与 $B^{-1}$ 相似
+    \item $A+A^T$ 与 $B+B^T$ 相似
+    \item $A+A^{-1}$ 与 $B+B^{-1}$ 相似
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $\alpha$ 为 $n$ 维单位列向量，$E$ 为 $n$ 阶单位矩阵，则 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $E-\alpha\alpha^T$ 不可逆
+    \item $E+\alpha\alpha^T$ 不可逆
+    \item $E+2\alpha\alpha^T$ 不可逆
+    \item $E-2\alpha\alpha^T$ 不可逆
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 为 $3$ 阶矩阵，$\Lambda=\begin{pmatrix}1&0&0\\0&-1&0\\0&0&0\end{pmatrix}$，则 $A$ 的特征值为 $1,-1,0$ 的充分必要条件是 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 存在可逆矩阵 $P,Q$，使得 $A=P\Lambda Q$
+    \item 存在可逆矩阵 $P$，使得 $A=P\Lambda P^{-1}$
+    \item 存在正交矩阵 $Q$，使得 $A=Q\Lambda Q^{-1}$
+    \item 存在可逆矩阵 $P$，使得 $A=P\Lambda P^T$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 4 阶矩阵 $A=(a_{ij})$ 不可逆，$a_{12}$ 的代数余子式 $A_{12}\neq 0$，$\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 为矩阵 $A$ 的列向量组，$A^*$ 为 $A$ 的伴随矩阵，则方程组 $A^*x=0$ 的通解为 ( )
+\begin{enumerate}[label=(\Alph*)]
+    \item $x=k_1\alpha_1+k_2\alpha_2+k_3\alpha_3$，其中 $k_1,k_2,k_3$ 为任意常数
+    \item $x=k_1\alpha_1+k_2\alpha_2+k_3\alpha_4$，其中 $k_1,k_2,k_3$ 为任意常数
+    \item $x=k_1\alpha_1+k_2\alpha_3+k_3\alpha_4$，其中 $k_1,k_2,k_3$ 为任意常数
+    \item $x=k_1\alpha_2+k_2\alpha_3+k_3\alpha_4$，其中 $k_1,k_2,k_3$ 为任意常数
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A$ 为 $2$ 阶矩阵，$\alpha_1,\alpha_2$ 为线性无关的 $2$ 维列向量，$A\alpha_1=0,A\alpha_2=2\alpha_1+\alpha_2$. 则 $A$ 的非零特征值为\underline{\qquad}.
+}
+
+\oneproblem{
+二阶矩阵 $A$ 有两个不同的特征值，$\alpha_1,\alpha_2$ 是 $A$ 的线性无关的特征向量，$A^2(\alpha_1+\alpha_2)=(\alpha_1+\alpha_2)$，则 $|A|=\underline{\qquad}$.
+}
+
+\oneproblem{
+已知四阶矩阵 $A$ 与 $B$ 相似，矩阵为 $A$ 的特征值 $\dfrac{1}{2},\dfrac{1}{3},\dfrac{1}{4},\dfrac{1}{5}$，则行列式 $|B^{-1}-E|=\underline{\qquad}$.
+}
+
+\oneproblem{
+设 $a=(1,0,-1)^T$，矩阵 $A=\alpha\alpha^T,n$ 为正整数，则 $|aE-A^n|=\underline{\qquad}$.
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶矩阵，$|A|\neq 0$，$A^*$ 为 $A$ 的伴随矩阵，$E$ 为 $n$ 阶单位矩阵，若 $A$ 有特征值 $\lambda$，则 $\left(A^*\right)^2+E$ 必有特征值\underline{\qquad}.
+}
+
+\oneproblem{
+设三阶实对称矩阵 $A$ 的特征值为 $\lambda_1=-1,\lambda_2=\lambda_3=1$，对应于 $\lambda_1$ 的特征向量为 $\xi_1=(0,1,1)^T$，求 $A$.
+}
+
+\oneproblem{
+设 4 阶方阵 $A$ 满足条件 $AA^T=2E,|A|<0$，其中 $E$ 是 4 阶单位阵，求方阵 $A$ 的伴随矩阵 $A^*$ 的一个特征值.
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}a&-1&c\\5&b&3\\1-c&0&-a\end{pmatrix}$，其行列式 $|A|=-1$，又 $A$ 伴随矩阵 $A^*$ 有一个特征值 $\lambda_0$，属于 $\lambda_0$ 的一个特征向量为 $\alpha=(-1,-1,1)^T$，求 $a,b,c$ 和 $\lambda_0$ 的值.
+}
+
+\oneproblem{
+设三阶矩阵 $A$ 的特征值为 $\lambda_1=1,\lambda_2=2,\lambda_3=3$ 对应的特征值向量依次为
+$
+\xi_1=\begin{pmatrix}1\\1\\1\end{pmatrix},\xi_2=\begin{pmatrix}1\\2\\4\end{pmatrix},\xi_3=\begin{pmatrix}1\\3\\9\end{pmatrix},\ \text{又向量}\ \beta=\begin{pmatrix}1\\1\\3\end{pmatrix}.
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 将 $\beta$ 用 $\xi_1,\xi_2,\xi_3$ 线性表出;
+    \item 求 $A^n\beta$($n$ 为自然数).
+\end{enumerate}
+}
+
+\oneproblem{
+设矩阵 $A$ 与 $B$ 相似，其中
+$
+A=\begin{pmatrix}-2&0&0\\2&x&2\\3&1&1\end{pmatrix},B=\begin{pmatrix}-1&0&0\\0&2&0\\0&0&y\end{pmatrix}.
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $x$ 和 $y$ 的值;
+    \item 求可逆矩阵 $P$，使得 $P^{-1}AP=B$.
+\end{enumerate}
+}
+
+\oneproblem{
+设矩阵 $A=\begin{pmatrix}0&1&0&0\\1&0&0&0\\0&0&y&1\\0&0&1&2\end{pmatrix}$
+\begin{enumerate}[label=(\arabic*)]
+    \item 已知 $A$ 的一个特征值为 $3$，试求 $y$;
+    \item 求矩阵 $P$，使 $(AP)^T(AP)$ 为对角矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+已知矩阵 $A=\begin{pmatrix}0&-1&1\\2&-3&0\\0&0&0\end{pmatrix}$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $A^{99}$;
+    \item 设 3 阶矩阵 $B=(\alpha_1,\alpha_2,\alpha_3)$ 满足 $B^2=BA$. 记 $B^{100}=(\beta_1,\beta_2,\beta_3)$，将 $\beta_1,\beta_2,\beta_3$ 分别表示成 $\alpha_1,\alpha_2,\alpha_3$ 的线性组合.
+\end{enumerate}
+}
+
+\oneproblem{
+设矩阵 $A=\begin{pmatrix}1&2&-3\\-1&4&-3\\1&a&5\end{pmatrix}$ 的特征方程有一个二重根，求 $a$ 的值，并讨论 $A$ 是否可相似对角化.
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}3&2&2\\2&3&2\\2&2&3\end{pmatrix},\ P=\begin{pmatrix}0&1&0\\1&0&1\\0&0&1\end{pmatrix},\ B=P^{-1}A^*P$，求 $B+2E$ 的特征值与特征向量，其中 $A^*$ 为 $A$ 的伴随矩阵，$E$ 为 3 阶单位矩阵.
+}
+
+\oneproblem{
+设 3 阶实对称矩阵 $A$ 的各行元素之和均为 $3$，向量 $\alpha_1=(-1,2,-1)^T,\alpha_2=(0,-1,1)^T$ 是线性方程组 $Ax=0$ 的两个解,
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $A$ 的特征值与特征向量;
+    \item 求正交矩阵 $Q$ 和对角矩阵 $\Lambda$，使得 $Q^TAQ=\Lambda$.
+    \item 求 $A$ 及 $\left(A-\dfrac{3}{2}E\right)^6$，其中 $E$ 为三阶单位矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+设 3 阶对称矩阵 $A$ 的特征值 $\lambda_1=1,\lambda_2=-2,\lambda_3=-2$，且 $\alpha_1=(1,-1,1)^T$ 是 $A$ 的属于 $\lambda_1$ 的一个特征向量，记 $B=A^5-4A^3+E$，其中 $E$ 为 3 阶单位矩阵.
+\begin{enumerate}[label=(\arabic*)]
+    \item 验证 $\alpha_1$ 是矩阵 $B$ 的特征向量，并求 $B$ 的全部特征值与特征向量;
+    \item 求矩阵 $B$.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A$ 为 3 阶实对称矩阵，且满足条件 $A^2+2A=O$，已知 $A$ 的秩 $r(A)=2$，
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $A$ 得全部特征值;
+    \item 当 $k$ 为何值时，矩阵 $A+kE$ 为正定矩阵，其中 $E$ 为 3 阶单位矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+设方阵 $A$ 满足条件 $A^TA=E$，其中 $A^T$ 是 $A$ 的转置矩阵，$E$ 为单位阵，试证明所对应的特征值的绝对值等于 $1$.
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶矩阵，$\lambda_1$ 和 $\lambda_2$ 是 $A$ 的两个不同的特征值，$x_1,x_2$ 是分别属于 $\lambda_1$ 和 $\lambda_2$ 的特征向量. 试证明 $x_1+x_2$ 不是 $A$ 的特征向量.
+}
+
+\oneproblem{
+设 $\lambda$ 为 $n$ 阶可逆矩阵 $A$ 的一个特征值，证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item $\dfrac{1}{\lambda}$ 为 $A^{-1}$ 的特征值;
+    \item $\dfrac{|A|}{\lambda}$ 为 $A$ 的伴随矩阵 $A^*$ 的特征值.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A$ 是 $n$ 阶正定阵，$E$ 是 $n$ 阶单位阵，证明 $A+E$ 的行列式大于 $1$.
+}
+
+\oneproblem{
+设向量 $\alpha=(a_1,a_2,\cdots,a_n)^T,\beta=(b_1,b_2,\cdots,b_n)^T$ 都是非零向量，且满足条件 $\alpha^T\beta=0$. 记 $n$ 阶矩阵 $A=\alpha\beta^T$，求:
+\begin{enumerate}[label=(\arabic*)]
+    \item $A^2$;
+    \item 矩阵 $A$ 的特征值和特征向量.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $n$ 阶矩阵 $A=\begin{pmatrix}1&b&\cdots&b\\b&1&\cdots&b\\\cdots&\cdots&\cdots&\cdots\\b&b&\cdots&1\end{pmatrix}$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $A$ 的特征值和特征向量;
+    \item 求可逆矩阵 $P$，使得 $P^{-1}AP$ 为对角矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+证明 $n$ 阶矩阵 $A=\begin{pmatrix}1&1&\cdots&1\\1&1&\cdots&1\\\vdots&\vdots&&\vdots\\1&1&\cdots&1\end{pmatrix}$ 与 $B=\begin{pmatrix}0&\cdots&0&1\\0&\cdots&0&2\\\vdots&\vdots&\vdots&\vdots\\0&\cdots&0&n\end{pmatrix}$ 相似.
+}
+
+\oneproblem{
+设 $A,B$ 为同阶矩阵，
+\begin{enumerate}[label=(\arabic*)]
+    \item 如果 $A,B$ 相似，试证 $A,B$ 的特征多项式相等;
+    \item 举一个二阶方阵的例子说明(1)的逆命题不成立;
+    \item 当 $A,B$ 均为实对称矩阵时，试证(1)的逆命题成立.
+\end{enumerate}
+}
+
+\oneproblem{
+某试验性生产线每年一月份进行熟练工与非熟练工的人数统计，然后将 $\dfrac{1}{6}$ 熟练工支援其他生产部门，其缺额由招收新的非熟练工补齐. 新、老非熟练工经过培训及实践至年终考核有 $\dfrac{2}{5}$ 成为熟练工. 设第 $n$ 年一月份统计的熟练工和非熟练工所占百分比分别为 $x_n$ 和 $y_n$，记为向量 $\begin{pmatrix}x_n\\y_n\end{pmatrix}$:
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $\begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}$ 与 $\begin{pmatrix}x_n\\y_n\end{pmatrix}$ 的关系式并写成矩阵形式: $\begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}=A\begin{pmatrix}x_n\\y_n\end{pmatrix}$;
+    \item 验证 $\eta_1=\begin{pmatrix}4\\1\end{pmatrix},\eta_2=\begin{pmatrix}-1\\1\end{pmatrix}$ 是 $A$ 的两个线性无关的特征向量，并求出相应的特征值;
+    \item 当 $\begin{pmatrix}x_1\\y_1\end{pmatrix}=\begin{pmatrix}\dfrac{1}{2}\\\dfrac{1}{2}\end{pmatrix}$ 时，求 $\begin{pmatrix}x_{n+1}\\y_{n+1}\end{pmatrix}$.
+\end{enumerate}
+}
+
+% ======================================================
+% 第 99 天：二次型
+% ======================================================
+\setday{99}{二次型}
+
+\oneproblem{
+设 $A=\begin{pmatrix}1&1&1&1\\1&1&1&1\\1&1&1&1\\1&1&1&1\end{pmatrix},\ B=\begin{pmatrix}4&0&0&0\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{pmatrix}$，则 $A$ 与 $B$ ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 合同且相似
+    \item 合同但不相似.
+    \item 不合同但相似
+    \item 不合同且不相似.
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A,B$ 为同阶可逆矩阵，则( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $AB=BA$
+    \item 存在可逆矩阵 $P$，使 $P^{-1}AP=B$
+    \item 存在可逆矩阵 $C$，使 $C^TAC=B$
+    \item 存在可逆矩阵 $P$ 和 $Q$，使 $PAQ=B$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 为 $3$ 阶实对称矩阵, 如果二次曲面方程 $(x,y,z)A\begin{pmatrix}x\\y\\z\end{pmatrix}=1$ 在正交变换下的标准方程为双叶双曲面方程, 则 $A$ 的正特征值个数为 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $0$
+    \item $1$
+    \item $2$
+    \item $3$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设二次型 $f(x_1,x_2,x_3)$ 在正交变换 $x=Py$ 下的标准形为 $2y_1^2+y_2^2-y_3^2$, 其中 $P=(e_1,e_2,e_3)$, 若 $Q=(e_1,-e_3,e_2)$, 则 $f(x_1,x_2,x_3)$ 在正交变换 $x=Qy$ 下的标准形为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $2y_1^2-y_2^2+y_3^2$
+    \item $2y_1^2+y_2^2-y_3^2$
+    \item $2y_1^2-y_2^2-y_3^2$
+    \item $2y_1^2+y_2^2+y_3^2$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设二次型
+$
+f(x_1,x_2,x_3)=x_1^2+x_2^2+x_3^2+4x_1x_2+4x_1x_3+4x_2x_3,
+$
+则 $f(x_1,x_2,x_3)=2$ 在空间直角坐标系下表示的二次曲面为 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item 单叶双曲面
+    \item 双叶双曲面
+    \item 椭球面
+    \item 柱面
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+设 $A$ 是三阶实对称矩阵, $E$ 是三阶单位矩阵, 若 $A^2+A=2E$, 且 $|A|=4$, 则二次型 $x^TAx$ 的规范形为( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $y_1^2+y_2^2+y_3^2$
+    \item $y_1^2+y_2^2-y_3^2$
+    \item $y_1^2-y_2^2-y_3^2$
+    \item $-y_1^2-y_2^2-y_3^2$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+已知 $\alpha_1=\begin{pmatrix}1\\0\\1\end{pmatrix},\alpha_2=\begin{pmatrix}1\\2\\1\end{pmatrix},\alpha_3=\begin{pmatrix}3\\1\\2\end{pmatrix}$, 记
+$
+\beta_1=\alpha_1,\beta_2=\alpha_2-k\beta_1,\beta_3=\alpha_3-l_1\beta_1-l_2\beta_2,
+$
+若 $\beta_1,\beta_2,\beta_3$ 两两正交, 则 $l_1,l_2$ 依次为 ( )
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item $\dfrac{5}{2},\dfrac{1}{2}$
+    \item $-\dfrac{5}{2},\dfrac{1}{2}$
+    \item $\dfrac{5}{2},-\dfrac{1}{2}$
+    \item $-\dfrac{5}{2},-\dfrac{1}{2}$
+\end{enumerate}
+\end{multicols}
+}
+
+\oneproblem{
+若二次型 $f(x_1,x_2,x_3)=2x_1^2+x_2^2+x_3^2+2x_1x_2+tx_2x_3$ 正定, 则 $t$ 的取值范围是\underline{\qquad}.
+}
+
+\oneproblem{
+已知实二次型
+$
+f(x_1,x_2,x_3)=a(x_1^2+x_2^2+x_3^2)+4x_1x_2+4x_1x_3+4x_2x_3
+$
+经正交变换 $x=Py$ 可化成标准形 $f=6y_1^2$, 则 $a=\underline{\qquad}$.
+}
+
+\oneproblem{
+二次型 $f(x_1,x_2,x_3)=(x_1+x_2)^2+(x_2-x_3)^2+(x_3+x_1)^2$ 的秩为\underline{\qquad}.
+}
+
+\oneproblem{
+二次型
+$
+f(x_1,x_2,x_3)=x_1^2+3x_2^2+x_3^2+2x_1x_2+2x_1x_3+2x_2x_3,
+$
+则 $f$ 的正惯性指数为\underline{\qquad}.
+}
+
+\oneproblem{
+考虑二次型
+$
+f=x_1^2+4x_2^2+4x_3^2+2\lambda x_1x_2-2x_1x_3+4x_2x_3,
+$
+问 $\lambda$ 取何值时, 为正定二次型?
+}
+
+\oneproblem{
+设 $A,B$ 分别为 $m,n$ 阶正定矩阵, 试判定分块矩阵 $C=\begin{pmatrix}A&0\\0&B\end{pmatrix}$ 是否是正定矩阵.
+}
+
+\oneproblem{
+已知二次型
+$
+f(x_1,x_2,x_3)=(1-a)x_1^2+(1-a)x_2^2+2x_3^2+2(1+a)x_1x_2
+$
+的秩为 $2$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $a$ 的值;
+    \item 求正交变换 $x=Qy$, 把 $f(x_1,x_2,x_3)$ 化成标准形;
+    \item 求方程 $f(x_1,x_2,x_3)=0$ 的解.
+\end{enumerate}
+}
+
+\oneproblem{
+已知二次型
+$
+f(x_1,x_2,x_3)=5x_1^2+5x_2^2+cx_3^2-2x_1x_2+6x_1x_3-6x_2x_3
+$
+的秩为 $2$,
+\begin{enumerate}[label=(\arabic*)]
+    \item 求参数 $c$ 及此二次型对应矩阵的特征值;
+    \item 指出方程 $f(x_1,x_2,x_3)=1$ 表示何种二次曲面.
+\end{enumerate}
+}
+
+\oneproblem{
+已知二次曲面方程 $x^2+ay^2+z^2+2bxy+2xz+2yz=4$ 可以经过正交变换 $\begin{pmatrix}x\\y\\z\end{pmatrix}=P\begin{pmatrix}\xi\\\eta\\\zeta\end{pmatrix}$ 化为椭圆柱面方程 $\eta^2+4\zeta^2=4$, 求 $a,b$ 的值和正交矩阵 $P$.
+}
+
+\oneproblem{
+设矩阵 $A=\begin{pmatrix}1&0&1\\0&2&0\\1&0&1\end{pmatrix}$, 矩阵 $B=(kE+A)^2$, 其中 $k$ 为实数, $E$ 为单位阵, 求对角矩 $\Lambda$, 使 $B$ 与 $\Lambda$ 相似, 并求 $k$ 为何值时, $B$ 为正定矩阵.
+}
+
+\oneproblem{
+设 $A$ 为 $m$ 阶实对称矩阵且正定, $B$ 为 $m\times n$ 实矩阵, $B^T$ 为 $B$ 的转置矩阵, 试证: $B^TAB$ 为正定矩阵的充分必要条件是 $B$ 的秩 $r(B)=n$.
+}
+
+\oneproblem{
+设 $A$ 为 $m\times n$ 实矩阵, $E$ 为 $n$ 阶单位矩阵, 已知矩阵 $B=\lambda E+A^TA$, 试证: 当 $\lambda>0$ 时, 矩阵 $B$ 为正定矩阵.
+}
+
+\oneproblem{
+设有 $n$ 元实二次型
+$
+f(x_1,x_2,\cdots,x_n)=(x_1+a_1x_2)^2+(x_2+a_2x_3)^2+\cdots+(x_{n-1}+a_{n-1}x_n)^2+(x_n+a_nx_1)^2
+$
+其中 $a_i(i=1,2,\cdots,n)$ 为实数, 试问: 当 $a_1,a_2,\cdots,a_n$ 满足何种条件时, 二次型 $f(x_1,x_2,\cdots,x_n)$ 为正定二次型.
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶实对称矩阵, 秩 $(A)=n$, $A_{ij}$ 是 $A=(a_{ij})_{m\times n}$ 中元素 $a_{ij}$ 的代数余子式 $(i,j=1,2,\cdots,n)$, 二次型
+$
+f(x_1,x_2,\cdots,x_n)=\sum_{i=1}^n\sum_{j=1}^n\frac{A_{ij}}{|A|}x_ix_j.
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 记 $X=(x_1,x_2,\cdots,x_n)$, 把 $f(x_1,x_2,\cdots,x_n)$ 写成矩阵形式, 并证明二次型 $f(X)$ 的矩阵为 $A^{-1}$;
+    \item 二次型 $g(X)=X^TAX$ 与 $f(X)$ 的规范形是否相同? 说明理由.
+\end{enumerate}
+}
+
+\oneproblem{
+设二次型
+$
+f(x_1,x_2,x_3)=X^TAX=ax_1^2+2x_2^2-2x_3^2+2bx_1x_3\ (b>0)
+$
+其中二次型的矩阵 $A$ 的特征值之和为 $1$, 特征值之积为 $-12$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $a,b$ 的值;
+    \item 利用正交变换将二次型 $f$ 化为标准形, 并写出所用的正交变换和对应的正交矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $D=\begin{pmatrix}A&C\\C^T&B\end{pmatrix}$ 为正定矩阵, 其中 $A,B$ 分别为 $m$ 阶, $n$ 阶对称矩阵, $C$ 为 $m\times n$ 矩阵.
+\begin{enumerate}[label=(\arabic*)]
+    \item 计算 $P^TDP$, 其中 $P=\begin{pmatrix}E_m&-A^{-1}C\\O&E_n\end{pmatrix}$;
+    \item 利用 (1) 的结果判断矩阵 $B-C^TA^{-1}C$ 是否为正定矩阵, 并证明你的结论.
+\end{enumerate}
+}
+
+\oneproblem{
+设二次型 $f(x_1,x_2,x_3)=x^TAx$ 在正交变换 $x=Qy$ 下的标准形为 $y_1^2+y_2^2$, 且 $Q$ 的第三列为 $\left(\dfrac{\sqrt{2}}{2},0,\dfrac{\sqrt{2}}{2}\right)^T$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求 $A$;
+    \item 证明 $A+E$ 为正定矩阵, 其中 $E$ 为 $3$ 阶单位矩阵.
+\end{enumerate}
+}
+
+\oneproblem{
+设二次型 $f(x_1,x_2,x_3)=2(a_1x_1+a_2x_2+a_3x_3)^2+(b_1x_1+b_2x_2+b_3x_3)^2$, 记 $\alpha=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix},\ \beta=\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明二次型 $f$ 对应的矩阵为 $2\alpha\alpha^T+\beta\beta^T$;
+    \item 若 $\alpha,\beta$ 正交且均为单位向量, 证明 $f$ 在正交变换下的标准形为 $2y_1^2+y_2^2$.
+\end{enumerate}
+}
+
+\oneproblem{
+已知 $A=\begin{pmatrix}a&1&-1\\1&a&-1\\-1&-1&a\end{pmatrix}$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求正交矩阵 $P$, 使得 $P^TAP$ 为对角矩阵;
+    \item 求正定矩阵 $C$, 使得 $C^2=(a+3)E-A$.
+\end{enumerate}
+}
+
+\oneproblem{
+已知二次型 $f(x_1,x_2,x_3)=3x_1^2+4x_2^2+3x_3^2+2x_1x_3$.
+\begin{enumerate}[label=(\arabic*)]
+    \item 求正交变换 $X=QY$ 将 $f(x_1,x_2,x_3)$ 化为标准形;
+    \item 证明: $\min\limits_{x\neq 0}\dfrac{f(x)}{x^Tx}=2$.
+\end{enumerate}
+}
+
+% ======================================================
+% 第 100 天
+% ======================================================
+\setday{100}{综合题}
+\oneproblem{
+设 $A$ 为 $n$ 阶方阵, 其伴随矩阵 $A^*=\begin{pmatrix}1&&\\&16&\\&&1\end{pmatrix}$, 且 $|A|>0,\ ABA^{-1}=BA^{-1}+3I$, 其中 $I$ 为单位矩阵, 则 $B=\underline{\qquad}$.
+}
+
+\oneproblem{
+已知二次型 $f(x_1,x_2,\cdots,x_n)=\sum_{i=1}^n\left(x_i-\dfrac{x_1+x_2+\cdots+x_n}{n}\right)^2$, 则 $f$ 的规范形为\underline{\qquad}.
+}
+
+\oneproblem{
+设 $a,b,c,d$ 是互不相同的正实数, $x,y,z,w$ 是实数, 满足
+$
+a^x=bcd,\ b^y=cda,\ c^z=dab,\ d^w=abc,
+$
+则行列式 $\begin{vmatrix}-x&1&1&1\\1&-y&1&1\\1&1&-z&1\\1&1&1&-w\end{vmatrix}=\underline{\qquad}$.
+}
+
+\oneproblem{
+已知 $A$ 为 $n$ 阶可逆反对称矩阵, $b$ 为 $n$ 元列向量, 设 $B=\begin{pmatrix}A&b\\b^T&0\end{pmatrix}$, 则 $\text{rank}(B)=\underline{\qquad}$.
+}
+
+\oneproblem{
+设 $\lambda_1,\lambda_2,\cdots,\lambda_n$ 是 $n$ 阶方阵 $A$ 的特征值, $f(x)$ 为多项式, 则矩阵 $f(A)$ 的行列式的值为\underline{\qquad}.
+}
+
+\oneproblem{
+设 $A=\begin{pmatrix}\lambda&0&0\\0&\lambda&0\\-1&1&\lambda\end{pmatrix}$, 则 $A^{50}=\underline{\qquad}$.
+}
+
+\oneproblem{
+设 $A$ 是 $n$ 阶实对称矩阵, 证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item 存在实对称矩阵 $B$, 使得 $B^{2021}=A$, 且 $AB=BA$;
+    \item 存在一个多项式 $p(x)$, 使得上述矩阵 $B=p(A)$;
+    \item 上述矩阵 $B$ 是唯一的.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $B_1,B_2,\cdots,B_{2021}$ 为空间 $\mathbb{R}^3$ 中半径不为零的 $2021$ 个球, $A=(a_{ij})$ 为 $2021$ 阶方阵, 其 $(i,j)$ 元 $a_{ij}$ 为球 $B_i$ 与 $B_j$ 相交部分的体积. 证明: 行列式 $|E+A|>1$, 其中 $E$ 为单位矩阵.
+}
+
+\oneproblem{
+设 $A$ 是 $n$ 阶幂零矩阵, 即满足 $A^2=O$. 证明: 若 $A$ 的秩为 $r$, 且 $1\le r<\dfrac{n}{2}$, 则存在 $n$ 阶可逆矩阵 $P$, 使得
+$
+P^{-1}AP=\begin{pmatrix}O&I_r&O\\O&O&O\end{pmatrix},
+$
+其中 $I_r$ 为 $r$ 阶单位矩阵.
+}
+
+\oneproblem{
+设 $x=(x_1,x_2,\cdots,x_n)^T\in\mathbb{R}^n$, 定义
+$
+H(x)=\sum_{i=1}^n x_i^2-\sum_{i=1}^{n-1}x_ix_{i+1},\ n\ge 2.
+$
+\begin{enumerate}[label=(\arabic*)]
+    \item 证明: 对任一非零 $x\in\mathbb{R}^n,H(x)>0$.
+    \item 求 $H(x)$ 满足条件 $x_n=1$ 的最小值.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $n$ 阶方阵 $A,B$ 满足 $AB=A+B$, 证明: 若存在正整数 $k$, 使得 $A^k=O$ ($O$ 为零矩阵), 则行列式 $|B+2017A|=|B|$.
+}
+
+\oneproblem{
+设 $A$ 是 $m\times n$ 矩阵, $B$ 是 $n\times p$ 矩阵, $C$ 是 $p\times q$ 矩阵. 证明: $R(AB)+R(BC)-R(B)\le R(ABC)$, 其中 $R(X)$ 表示矩阵 $X$ 的秩.
+}
+
+\oneproblem{
+设 $A_1,A_2,B_1,B_2$ 均为 $n$ 阶方阵, 其中 $A_2,B_2$ 可逆. 证明: 存在可逆矩阵 $P,Q$ 使得 $PA_iQ=B_i\ (i=1,2)$ 成立的充要条件是 $A_1A_2^{-1}$ 和 $B_1B_2^{-1}$ 相似.
+}
+
+\oneproblem{
+设矩阵 $A=\begin{pmatrix}1&2&1\\3&4&a\\1&2&2\end{pmatrix}$, 其中 $a$ 为常数, 矩阵 $B$ 满足关系式 $AB=A-B+E$, 其中 $E$ 是单位矩阵且 $B\neq E$. 若秩 $\text{rank}(A+B)=3$, 求常数 $a$ 的值.
+}
+
+\oneproblem{
+设 $A,B$ 是两个 $n$ 阶正定矩阵, 求证 $AB$ 正定的充要条件是 $AB=BA$.
+}
+
+\oneproblem{
+设 $A=(a_{ij})_{n\times n}$ 为 $n$ 阶实方阵, 满足
+\begin{enumerate}
+    \item $a_{11}=a_{22}=\cdots=a_{nn}=a>0$;
+    \item 对每个 $i(i=1,2,\cdots,n)$, 有 $\sum_{j=1}^n|a_{ij}|+\sum_{j=1}^n|a_{ji}|<4a$.
+\end{enumerate}
+求 $f(x_1,\cdots,x_n)=(x_1,\cdots,x_n)A\begin{pmatrix}x_1\\\vdots\\x_n\end{pmatrix}$ 的规范形.
+}
+
+\oneproblem{
+设 $A_1,\cdots,A_{2017}$ 为 $2016$ 阶实方阵. 证明关于 $x_1,\cdots,x_{2017}$ 的方程 $\det(x_1A_1+\cdots+x_{2017}A_{2017})=0$ 至少有一组非零实数解, 其中 $\det$ 表示行列式.
+}
+
+\oneproblem{
+设 $A$ 为 $n$ 阶方阵, 其 $n$ 个特征值皆为偶数. 试证明关于 $X$ 的矩阵方程 $X+AX-XA^2=0$ 只有零解.
+}
+
+\oneproblem{
+已知实矩阵 $A=\begin{pmatrix}2&2\\2&a\end{pmatrix},B=\begin{pmatrix}4&b\\3&1\end{pmatrix}$. 证明:
+\begin{enumerate}[label=(\arabic*)]
+    \item 矩阵方程 $AX=B$ 有解但 $BY=A$ 无解的充要条件是 $a\neq 2,b=\dfrac{4}{3}$.
+    \item $A$ 相似于 $B$ 的充要条件是 $a=3,b=\dfrac{2}{3}$.
+    \item $A$ 合同于 $B$ 的充要条件是 $a<2,b=3$.
+\end{enumerate}
+}
+
+\oneproblem{
+设 $A$ 为 $n\times n$ 实矩阵 (未必对称), 对任一 $n$ 维实向量 $\alpha=(\alpha_1,\cdots,\alpha_n)$, 有 $\alpha A\alpha^T\ge 0$ (这里 $\alpha^T$ 表示 $\alpha$ 的转置), 且存在 $n$ 维实向量 $\beta$ 使得 $\beta A\beta^T=0$. 同时对任意 $n$ 维实向量 $x$ 和 $y$, 当 $xAy^T\neq 0$ 时有 $xAy^T+yAx^T\neq 0$. 证明: 对任意 $n$ 维实向量 $v$, 都有 $vA\beta^T=0$.
+}

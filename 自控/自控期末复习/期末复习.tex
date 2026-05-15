@@ -1,0 +1,2162 @@
+\documentclass[UTF8,a4paper,12pt]{ctexart}
+
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.2cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{自动控制原理期末复习}
+\fancyhead[R]{重点版}
+\fancyfoot[C]{\thepage}
+
+\setlist[itemize]{itemsep=2pt,topsep=4pt}
+\setlist[enumerate]{itemsep=2pt,topsep=4pt}
+
+\definecolor{p0}{RGB}{180,0,0}
+\definecolor{p1}{RGB}{220,110,0}
+\definecolor{p2}{RGB}{0,100,180}
+\definecolor{note}{RGB}{70,70,70}
+
+\newcommand{\Pzero}{\textcolor{p0}{\textbf{[P0 必考核心]}}}
+\newcommand{\Pone}{\textcolor{p1}{\textbf{[P1 高频重点]}}}
+\newcommand{\Ptwo}{\textcolor{p2}{\textbf{[P2 理解拓展]}}}
+\newcommand{\exam}{\textcolor{p0}{\textbf{考试重点：}}}
+\newcommand{\note}{\textcolor{note}{\textbf{注意：}}}
+
+\title{\Huge 自动控制原理期末复习资料\\[0.5em]
+\Large 基础知识、常用公式、重点优先级与解题模板}
+\author{期末复习版}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{复习优先级说明}
+
+本资料按照期末考试常见重要程度分为三个等级：
+
+\begin{longtable}{p{3cm}p{11cm}}
+\toprule
+优先级 & 含义 \\
+\midrule
+\Pzero & 必考核心内容。通常出现在大题、计算题、综合题中，必须熟练掌握。 \\
+\Pone & 高频重点内容。常见于选择、填空、简答和部分计算题。 \\
+\Ptwo & 理解拓展内容。部分学校会考，主要用于提高综合理解能力。 \\
+\bottomrule
+\end{longtable}
+
+\exam 自动控制原理期末一般最容易考以下模块：
+
+\begin{enumerate}
+    \item 传递函数与方块图化简；
+    \item 时域性能分析，尤其是一阶、二阶系统；
+    \item 稳态误差计算；
+    \item 劳斯稳定判据；
+    \item 根轨迹；
+    \item 频率特性、Bode 图、稳定裕度；
+    \item 校正装置与 PID 控制；
+    \item 状态空间基础。
+\end{enumerate}
+
+\newpage
+
+\section{自动控制系统基础概念}
+
+\subsection{自动控制系统的定义}
+
+自动控制系统是指在没有人工直接干预的情况下，使被控对象按照预定规律运行的系统。
+
+典型控制系统由以下部分组成：
+
+\begin{itemize}
+    \item 输入信号：也称给定信号、参考信号；
+    \item 比较环节：比较输入与反馈信号，得到误差信号；
+    \item 控制器：根据误差信号产生控制作用；
+    \item 执行机构：把控制信号转换为物理作用；
+    \item 被控对象：需要控制的实际系统；
+    \item 测量元件：检测输出量；
+    \item 反馈环节：将输出信号反馈到输入端。
+\end{itemize}
+
+\Pzero
+
+闭环控制系统基本结构为：
+
+\[
+R(s) \rightarrow E(s) \rightarrow G(s) \rightarrow C(s)
+\]
+
+若反馈环节为 $H(s)$，则：
+
+\[
+E(s)=R(s)-B(s)
+\]
+
+\[
+B(s)=H(s)C(s)
+\]
+
+闭环传递函数为：
+
+\[
+\Phi(s)=\frac{C(s)}{R(s)}=\frac{G(s)}{1+G(s)H(s)}
+\]
+
+其中：
+\begin{itemize}
+    \item $G(s)$：前向通道传递函数；
+    \item $H(s)$：反馈通道传递函数；
+    \item $G(s)H(s)$：开环传递函数；
+    \item $1+G(s)H(s)=0$：闭环系统特征方程。
+\end{itemize}
+
+\subsection{开环控制与闭环控制}
+
+\begin{longtable}{p{3cm}p{5.5cm}p{5.5cm}}
+\toprule
+类型 & 优点 & 缺点 \\
+\midrule
+开环控制 & 结构简单，成本低，稳定性通常较好 & 抗干扰能力差，控制精度低 \\
+闭环控制 & 精度高，抗干扰能力强，能自动修正误差 & 结构复杂，可能引起振荡甚至不稳定 \\
+\bottomrule
+\end{longtable}
+
+\Pzero
+
+开环控制没有反馈，闭环控制有反馈。
+
+例如：
+\begin{itemize}
+    \item 电饭锅普通定时加热：近似开环控制；
+    \item 空调温度控制：闭环控制；
+    \item 自动驾驶速度控制：闭环控制；
+    \item 电机转速反馈控制：闭环控制。
+\end{itemize}
+
+\subsection{反馈的作用}
+
+\Pone
+
+负反馈的主要作用：
+
+\begin{enumerate}
+    \item 提高系统控制精度；
+    \item 减小稳态误差；
+    \item 抑制外部扰动；
+    \item 降低系统对参数变化的敏感性；
+    \item 改善系统动态性能；
+    \item 可能降低系统稳定性。
+\end{enumerate}
+
+\note 反馈不是一定使系统更稳定。负反馈通常有利于控制，但若参数设计不当，闭环系统也可能振荡或不稳定。
+
+\subsection{控制系统的基本要求}
+
+\Pzero
+
+自动控制系统通常要求满足：
+
+\begin{enumerate}
+    \item 稳定性：系统受到扰动后能恢复到平衡状态；
+    \item 快速性：系统响应速度要快；
+    \item 准确性：稳态误差要小。
+\end{enumerate}
+
+这三个指标之间通常存在矛盾：
+
+\[
+\text{快速性提高} \Rightarrow \text{可能超调增大，稳定性降低}
+\]
+
+\[
+\text{稳定性提高} \Rightarrow \text{响应可能变慢}
+\]
+
+\subsection{系统分类}
+
+\Pone
+
+常见分类如下：
+
+\begin{longtable}{p{4cm}p{10cm}}
+\toprule
+分类方式 & 类型 \\
+\midrule
+按有无反馈 & 开环系统、闭环系统 \\
+按信号形式 & 连续系统、离散系统 \\
+按数学模型 & 线性系统、非线性系统 \\
+按参数是否随时间变化 & 定常系统、时变系统 \\
+按输入输出数量 & 单输入单输出系统、多输入多输出系统 \\
+按元件性质 & 机械系统、电气系统、液压系统、气动系统、机电系统 \\
+\bottomrule
+\end{longtable}
+
+\section{数学基础：拉普拉斯变换}
+
+\subsection{拉普拉斯变换定义}
+
+\Pzero
+
+函数 $f(t)$ 的拉普拉斯变换定义为：
+
+\[
+F(s)=\mathcal{L}\{f(t)\}=\int_{0}^{\infty} f(t)e^{-st}dt
+\]
+
+其中：
+
+\[
+s=\sigma+j\omega
+\]
+
+拉普拉斯变换可以把微分方程转化为代数方程，是自动控制原理中非常重要的工具。
+
+\subsection{常用拉普拉斯变换表}
+
+\Pzero
+
+\begin{longtable}{p{5cm}p{7cm}}
+\toprule
+时域函数 $f(t)$ & 拉氏变换 $F(s)$ \\
+\midrule
+$\delta(t)$ & $1$ \\
+$1(t)$ & $\dfrac{1}{s}$ \\
+$t$ & $\dfrac{1}{s^2}$ \\
+$\dfrac{t^n}{n!}$ & $\dfrac{1}{s^{n+1}}$ \\
+$e^{-at}$ & $\dfrac{1}{s+a}$ \\
+$\sin \omega t$ & $\dfrac{\omega}{s^2+\omega^2}$ \\
+$\cos \omega t$ & $\dfrac{s}{s^2+\omega^2}$ \\
+$e^{-at}\sin \omega t$ & $\dfrac{\omega}{(s+a)^2+\omega^2}$ \\
+$e^{-at}\cos \omega t$ & $\dfrac{s+a}{(s+a)^2+\omega^2}$ \\
+\bottomrule
+\end{longtable}
+
+\subsection{常用性质}
+
+\Pone
+
+\begin{longtable}{p{5cm}p{8cm}}
+\toprule
+性质 & 公式 \\
+\midrule
+线性性质 & $\mathcal{L}\{af(t)+bg(t)\}=aF(s)+bG(s)$ \\
+微分性质 & $\mathcal{L}\{f'(t)\}=sF(s)-f(0)$ \\
+积分性质 & $\mathcal{L}\left\{\int_0^t f(\tau)d\tau\right\}=\dfrac{F(s)}{s}$ \\
+终值定理 & $\displaystyle \lim_{t\to\infty}f(t)=\lim_{s\to0}sF(s)$ \\
+初值定理 & $\displaystyle \lim_{t\to0^+}f(t)=\lim_{s\to\infty}sF(s)$ \\
+延迟定理 & $\mathcal{L}\{f(t-\tau)1(t-\tau)\}=e^{-\tau s}F(s)$ \\
+\bottomrule
+\end{longtable}
+
+\note 使用终值定理前，必须保证 $sF(s)$ 的极点均在左半平面，不能有右半平面极点或虚轴上的非零极点。
+
+\section{控制系统数学模型}
+
+\subsection{微分方程模型}
+
+\Pone
+
+很多实际系统可以用微分方程描述。例如：
+
+\[
+a_n\frac{d^n c(t)}{dt^n}+a_{n-1}\frac{d^{n-1} c(t)}{dt^{n-1}}+\cdots+a_0c(t)
+=
+b_m\frac{d^m r(t)}{dt^m}+\cdots+b_0r(t)
+\]
+
+在零初始条件下进行拉普拉斯变换：
+
+\[
+(a_ns^n+a_{n-1}s^{n-1}+\cdots+a_0)C(s)
+=
+(b_ms^m+\cdots+b_0)R(s)
+\]
+
+于是得到传递函数：
+
+\[
+G(s)=\frac{C(s)}{R(s)}
+=
+\frac{b_ms^m+\cdots+b_0}{a_ns^n+\cdots+a_0}
+\]
+
+\subsection{传递函数}
+
+\Pzero
+
+传递函数定义为：在零初始条件下，线性定常系统输出量的拉氏变换与输入量的拉氏变换之比。
+
+\[
+G(s)=\frac{C(s)}{R(s)}
+\]
+
+特点：
+
+\begin{enumerate}
+    \item 只适用于线性定常系统；
+    \item 与输入信号形式无关；
+    \item 只反映系统本身的动态特性；
+    \item 默认零初始条件；
+    \item 分母等于零得到系统特征方程；
+    \item 分母根为极点，分子根为零点。
+\end{enumerate}
+
+\subsection{极点与零点}
+
+\Pzero
+
+设传递函数为：
+
+\[
+G(s)=K\frac{(s-z_1)(s-z_2)\cdots(s-z_m)}
+{(s-p_1)(s-p_2)\cdots(s-p_n)}
+\]
+
+其中：
+\begin{itemize}
+    \item $z_i$ 是零点；
+    \item $p_i$ 是极点；
+    \item $K$ 是增益。
+\end{itemize}
+
+极点决定系统响应的主要形态和稳定性。
+
+\[
+\text{极点在左半平面} \Rightarrow \text{响应衰减}
+\]
+
+\[
+\text{极点在右半平面} \Rightarrow \text{响应发散}
+\]
+
+\[
+\text{极点在虚轴上} \Rightarrow \text{临界稳定或持续振荡}
+\]
+
+\subsection{典型环节及其传递函数}
+
+\Pzero
+
+\begin{longtable}{p{4cm}p{5cm}p{5cm}}
+\toprule
+环节 & 传递函数 & 特点 \\
+\midrule
+比例环节 & $G(s)=K$ & 输出与输入成比例 \\
+积分环节 & $G(s)=\dfrac{1}{s}$ & 相位滞后 $90^\circ$，提高系统型别 \\
+微分环节 & $G(s)=s$ & 反映输入变化趋势，实际中常带滤波 \\
+惯性环节 & $G(s)=\dfrac{K}{Ts+1}$ & 一阶滞后，时间常数为 $T$ \\
+振荡环节 & $G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}$ & 二阶系统，可能超调振荡 \\
+纯滞后环节 & $G(s)=e^{-\tau s}$ & 只产生时间延迟，不改变幅值 \\
+\bottomrule
+\end{longtable}
+
+\subsection{常见物理系统建模}
+
+\subsubsection{RC 电路}
+
+\Pone
+
+一阶 RC 低通电路的传递函数：
+
+\[
+G(s)=\frac{U_o(s)}{U_i(s)}=\frac{1}{RCs+1}
+\]
+
+其中时间常数为：
+
+\[
+T=RC
+\]
+
+\subsubsection{质量-弹簧-阻尼系统}
+
+\Pone
+
+设质量为 $m$，阻尼为 $b$，弹簧刚度为 $k$，输入为外力 $F(t)$，输出为位移 $x(t)$。
+
+运动方程为：
+
+\[
+m\ddot{x}(t)+b\dot{x}(t)+kx(t)=F(t)
+\]
+
+传递函数为：
+
+\[
+G(s)=\frac{X(s)}{F(s)}=\frac{1}{ms^2+bs+k}
+\]
+
+对应标准二阶形式：
+
+\[
+s^2+2\zeta\omega_ns+\omega_n^2
+\]
+
+其中：
+
+\[
+\omega_n=\sqrt{\frac{k}{m}}
+\]
+
+\[
+\zeta=\frac{b}{2\sqrt{mk}}
+\]
+
+\subsubsection{直流电机}
+
+\Ptwo
+
+直流电机常见模型：
+
+\[
+u_a(t)=L_a\frac{di_a(t)}{dt}+R_ai_a(t)+e_b(t)
+\]
+
+\[
+e_b(t)=K_e\omega(t)
+\]
+
+\[
+J\frac{d\omega(t)}{dt}+B\omega(t)=K_ti_a(t)
+\]
+
+若忽略电枢电感 $L_a$，可以近似得到一阶电机模型。
+
+\section{方块图与信号流图}
+
+\subsection{方块图基本变换}
+
+\Pzero
+
+\subsubsection{串联}
+
+若两个环节串联：
+
+\[
+G_1(s),\quad G_2(s)
+\]
+
+等效传递函数为：
+
+\[
+G(s)=G_1(s)G_2(s)
+\]
+
+\subsubsection{并联}
+
+若两个环节并联：
+
+\[
+G(s)=G_1(s)+G_2(s)
+\]
+
+\subsubsection{负反馈}
+
+\Pzero
+
+负反馈系统：
+
+\[
+\Phi(s)=\frac{G(s)}{1+G(s)H(s)}
+\]
+
+单位负反馈时：
+
+\[
+\Phi(s)=\frac{G(s)}{1+G(s)}
+\]
+
+\subsubsection{正反馈}
+
+正反馈系统：
+
+\[
+\Phi(s)=\frac{G(s)}{1-G(s)H(s)}
+\]
+
+\exam 绝大多数自动控制题默认是负反馈。看到反馈符号一定要先判断是正反馈还是负反馈。
+
+\subsection{误差传递函数}
+
+\Pone
+
+对于负反馈系统：
+
+\[
+E(s)=R(s)-H(s)C(s)
+\]
+
+闭环输出为：
+
+\[
+C(s)=\frac{G(s)}{1+G(s)H(s)}R(s)
+\]
+
+误差传递函数为：
+
+\[
+\frac{E(s)}{R(s)}=\frac{1}{1+G(s)H(s)}
+\]
+
+单位反馈时：
+
+\[
+\frac{E(s)}{R(s)}=\frac{1}{1+G(s)}
+\]
+
+\subsection{方块图化简步骤}
+
+\Pzero
+
+\begin{enumerate}
+    \item 先合并串联环节；
+    \item 再合并并联环节；
+    \item 再化简局部反馈环节；
+    \item 移动比较点或引出点时要补偿相应传递函数；
+    \item 从内到外逐步化简；
+    \item 最后写出总传递函数。
+\end{enumerate}
+
+\subsection{信号流图与梅森公式}
+
+\Pone
+
+梅森公式：
+
+\[
+\frac{C(s)}{R(s)}=\frac{\sum_{k=1}^{n}P_k\Delta_k}{\Delta}
+\]
+
+其中：
+
+\begin{itemize}
+    \item $P_k$：第 $k$ 条前向通路增益；
+    \item $\Delta$：图特征式；
+    \item $\Delta_k$：去掉与第 $k$ 条前向通路接触的回路后得到的特征式。
+\end{itemize}
+
+特征式：
+
+\[
+\Delta=1-\sum L_i+\sum L_iL_j-\sum L_iL_jL_k+\cdots
+\]
+
+其中 $L_i$ 为单独回路增益，$L_iL_j$ 表示互不接触回路增益乘积。
+
+\exam 梅森公式常考步骤题，关键是找：
+\begin{enumerate}
+    \item 前向通路；
+    \item 单独回路；
+    \item 两两不接触回路；
+    \item $\Delta$ 和 $\Delta_k$。
+\end{enumerate}
+
+\section{时域分析}
+
+\subsection{典型输入信号}
+
+\Pzero
+
+自动控制中常用典型输入：
+
+\begin{longtable}{p{4cm}p{5cm}p{5cm}}
+\toprule
+输入类型 & 时域表达式 & 拉氏变换 \\
+\midrule
+单位脉冲 & $\delta(t)$ & $1$ \\
+单位阶跃 & $1(t)$ & $\dfrac{1}{s}$ \\
+单位斜坡 & $t$ & $\dfrac{1}{s^2}$ \\
+单位抛物线 & $\dfrac{t^2}{2}$ & $\dfrac{1}{s^3}$ \\
+\bottomrule
+\end{longtable}
+
+\subsection{时域性能指标}
+
+\Pzero
+
+单位阶跃响应常用指标：
+
+\begin{longtable}{p{4cm}p{10cm}}
+\toprule
+指标 & 含义 \\
+\midrule
+上升时间 $t_r$ & 响应从初值上升到规定范围所需时间 \\
+峰值时间 $t_p$ & 响应达到第一个峰值所需时间 \\
+最大超调量 $M_p$ & 响应最大值超过稳态值的百分比 \\
+调节时间 $t_s$ & 响应进入并保持在稳态值附近误差带内所需时间 \\
+稳态误差 $e_{ss}$ & 时间趋于无穷时误差的极限值 \\
+\bottomrule
+\end{longtable}
+
+\subsection{一阶系统分析}
+
+\Pzero
+
+标准一阶系统：
+
+\[
+G(s)=\frac{1}{Ts+1}
+\]
+
+单位阶跃输入：
+
+\[
+R(s)=\frac{1}{s}
+\]
+
+输出：
+
+\[
+C(s)=G(s)R(s)=\frac{1}{s(Ts+1)}
+\]
+
+时域响应：
+
+\[
+c(t)=1-e^{-t/T}
+\]
+
+其中 $T$ 为时间常数。
+
+重要结论：
+
+\begin{itemize}
+    \item $t=T$ 时，输出达到稳态值的 $63.2\%$；
+    \item $t=3T$ 时，约达到 $95\%$；
+    \item $t=4T$ 时，约达到 $98.2\%$；
+    \item $T$ 越小，响应越快。
+\end{itemize}
+
+一阶系统调节时间近似为：
+
+\[
+t_s \approx 3T \quad \text{误差带 }5\%
+\]
+
+\[
+t_s \approx 4T \quad \text{误差带 }2\%
+\]
+
+\subsection{标准二阶系统}
+
+\Pzero
+
+标准二阶系统闭环传递函数：
+
+\[
+\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}
+\]
+
+其中：
+
+\begin{itemize}
+    \item $\omega_n$：无阻尼自然频率；
+    \item $\zeta$：阻尼比；
+    \item $\omega_d$：阻尼振荡频率。
+\end{itemize}
+
+阻尼振荡频率：
+
+\[
+\omega_d=\omega_n\sqrt{1-\zeta^2}
+\]
+
+特征根：
+
+\[
+s_{1,2}=-\zeta\omega_n \pm j\omega_n\sqrt{1-\zeta^2}
+\]
+
+\subsection{阻尼比对系统响应的影响}
+
+\Pzero
+
+\begin{longtable}{p{4cm}p{10cm}}
+\toprule
+阻尼比范围 & 响应特点 \\
+\midrule
+$\zeta=0$ & 无阻尼，持续振荡 \\
+$0<\zeta<1$ & 欠阻尼，有振荡，有超调 \\
+$\zeta=1$ & 临界阻尼，无超调，响应较快 \\
+$\zeta>1$ & 过阻尼，无超调，响应较慢 \\
+\bottomrule
+\end{longtable}
+
+\exam 工程上常取：
+
+\[
+0.4 \leq \zeta \leq 0.8
+\]
+
+较常见的是：
+
+\[
+\zeta \approx 0.707
+\]
+
+\subsection{二阶系统性能指标公式}
+
+\Pzero
+
+对于欠阻尼二阶系统 $0<\zeta<1$：
+
+\[
+t_p=\frac{\pi}{\omega_d}
+=
+\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}
+\]
+
+最大超调量：
+
+\[
+M_p=e^{-\frac{\pi\zeta}{\sqrt{1-\zeta^2}}}\times 100\%
+\]
+
+调节时间近似：
+
+\[
+t_s \approx \frac{3}{\zeta\omega_n}
+\quad \text{误差带 }5\%
+\]
+
+\[
+t_s \approx \frac{4}{\zeta\omega_n}
+\quad \text{误差带 }2\%
+\]
+
+上升时间常用近似：
+
+\[
+t_r \approx \frac{\pi-\beta}{\omega_d}
+\]
+
+其中：
+
+\[
+\beta=\arctan\frac{\sqrt{1-\zeta^2}}{\zeta}
+\]
+
+\exam 最常考的是 $t_p$、$M_p$、$t_s$。
+
+\subsection{二阶系统计算模板}
+
+\Pzero
+
+若题目给出闭环传递函数：
+
+\[
+\Phi(s)=\frac{K}{s^2+as+b}
+\]
+
+标准二阶分母为：
+
+\[
+s^2+2\zeta\omega_ns+\omega_n^2
+\]
+
+对比系数：
+
+\[
+2\zeta\omega_n=a
+\]
+
+\[
+\omega_n^2=b
+\]
+
+于是：
+
+\[
+\omega_n=\sqrt{b}
+\]
+
+\[
+\zeta=\frac{a}{2\sqrt{b}}
+\]
+
+再代入公式求 $t_p$、$M_p$、$t_s$。
+
+\section{稳态误差}
+
+\subsection{稳态误差定义}
+
+\Pzero
+
+误差信号：
+
+\[
+e(t)=r(t)-c(t)
+\]
+
+稳态误差：
+
+\[
+e_{ss}=\lim_{t\to\infty}e(t)
+\]
+
+根据终值定理：
+
+\[
+e_{ss}=\lim_{s\to0}sE(s)
+\]
+
+单位负反馈时：
+
+\[
+E(s)=\frac{R(s)}{1+G(s)}
+\]
+
+所以：
+
+\[
+e_{ss}=\lim_{s\to0}\frac{sR(s)}{1+G(s)}
+\]
+
+\subsection{系统型别}
+
+\Pzero
+
+开环传递函数写成：
+
+\[
+G(s)H(s)=\frac{K B(s)}{s^\nu A(s)}
+\]
+
+其中 $\nu$ 为开环传递函数中积分环节的个数。
+
+\[
+\nu=0 \Rightarrow 0 \text{ 型系统}
+\]
+
+\[
+\nu=1 \Rightarrow I \text{ 型系统}
+\]
+
+\[
+\nu=2 \Rightarrow II \text{ 型系统}
+\]
+
+\exam 系统型别由开环传递函数中原点极点个数决定。
+
+\subsection{静态误差系数}
+
+\Pzero
+
+单位反馈系统中：
+
+位置误差系数：
+
+\[
+K_p=\lim_{s\to0}G(s)
+\]
+
+速度误差系数：
+
+\[
+K_v=\lim_{s\to0}sG(s)
+\]
+
+加速度误差系数：
+
+\[
+K_a=\lim_{s\to0}s^2G(s)
+\]
+
+\subsection{典型输入下稳态误差}
+
+\Pzero
+
+\begin{longtable}{p{4cm}p{4cm}p{5cm}}
+\toprule
+输入类型 & 输入拉氏变换 & 稳态误差 \\
+\midrule
+单位阶跃 & $\dfrac{1}{s}$ & $e_{ss}=\dfrac{1}{1+K_p}$ \\
+单位斜坡 & $\dfrac{1}{s^2}$ & $e_{ss}=\dfrac{1}{K_v}$ \\
+单位抛物线 & $\dfrac{1}{s^3}$ & $e_{ss}=\dfrac{1}{K_a}$ \\
+\bottomrule
+\end{longtable}
+
+\subsection{系统型别与稳态误差关系}
+
+\Pzero
+
+\begin{longtable}{p{3cm}p{4cm}p{4cm}p{4cm}}
+\toprule
+系统型别 & 阶跃输入 & 斜坡输入 & 抛物线输入 \\
+\midrule
+0 型 & 有差 & 无穷大 & 无穷大 \\
+I 型 & 0 & 有差 & 无穷大 \\
+II 型 & 0 & 0 & 有差 \\
+\bottomrule
+\end{longtable}
+
+\exam 记忆口诀：
+
+\[
+\text{0型跟踪阶跃有误差，I型跟踪阶跃无误差，II型跟踪斜坡无误差}
+\]
+
+\subsection{稳态误差解题步骤}
+
+\Pzero
+
+\begin{enumerate}
+    \item 写出开环传递函数 $G(s)H(s)$；
+    \item 判断系统型别，即原点极点个数；
+    \item 判断输入类型：阶跃、斜坡、抛物线；
+    \item 求 $K_p$、$K_v$ 或 $K_a$；
+    \item 代入对应公式；
+    \item 若闭环不稳定，则不能谈正常稳态误差。
+\end{enumerate}
+
+\section{稳定性分析}
+
+\subsection{稳定性的基本概念}
+
+\Pzero
+
+稳定性指系统受到扰动后，能否恢复到原来的平衡状态或新的平衡状态。
+
+线性定常系统稳定的充要条件：
+
+\[
+\text{闭环特征方程所有根均位于复平面左半平面}
+\]
+
+即：
+
+\[
+\operatorname{Re}(s_i)<0
+\]
+
+若有极点在右半平面，则系统不稳定。
+
+若有单个极点在虚轴上，且其他极点在左半平面，系统临界稳定。
+
+若虚轴上有重极点，系统不稳定。
+
+\subsection{特征方程}
+
+\Pzero
+
+闭环系统传递函数：
+
+\[
+\Phi(s)=\frac{G(s)}{1+G(s)H(s)}
+\]
+
+特征方程为：
+
+\[
+1+G(s)H(s)=0
+\]
+
+若特征方程写成：
+
+\[
+a_ns^n+a_{n-1}s^{n-1}+\cdots+a_1s+a_0=0
+\]
+
+稳定性取决于该方程的根。
+
+\subsection{稳定的必要条件}
+
+\Pone
+
+系统稳定的必要条件：
+
+\[
+a_n,a_{n-1},\cdots,a_0
+\]
+
+必须同号且不缺项。
+
+\note 这只是必要条件，不是充分条件。也就是说，系数全为正不一定稳定，但若系数不全为正或缺项，一定不稳定。
+
+\subsection{劳斯稳定判据}
+
+\Pzero
+
+设特征方程为：
+
+\[
+a_ns^n+a_{n-1}s^{n-1}+\cdots+a_1s+a_0=0
+\]
+
+构造劳斯表。
+
+例如四阶系统：
+
+\[
+a_4s^4+a_3s^3+a_2s^2+a_1s+a_0=0
+\]
+
+劳斯表为：
+
+\[
+\begin{array}{c|ccc}
+s^4 & a_4 & a_2 & a_0 \\
+s^3 & a_3 & a_1 & 0 \\
+s^2 & b_1 & b_2 & 0 \\
+s^1 & c_1 & 0 & 0 \\
+s^0 & a_0 & 0 & 0
+\end{array}
+\]
+
+其中：
+
+\[
+b_1=\frac{a_3a_2-a_4a_1}{a_3}
+\]
+
+\[
+b_2=\frac{a_3a_0-a_4\cdot 0}{a_3}=a_0
+\]
+
+\[
+c_1=\frac{b_1a_1-a_3b_2}{b_1}
+\]
+
+稳定条件：
+
+\[
+\text{劳斯表第一列元素全部同号}
+\]
+
+若第一列符号变化次数为 $N$，则系统有 $N$ 个右半平面根。
+
+\subsection{劳斯判据特殊情况}
+
+\Pone
+
+\subsubsection{第一列出现零}
+
+若劳斯表第一列某元素为零，但该行其他元素不全为零，可用一个很小的正数 $\varepsilon$ 替代，然后继续计算。
+
+\subsubsection{某一行全为零}
+
+若某一行全为零，说明存在关于原点对称的根。
+
+处理步骤：
+
+\begin{enumerate}
+    \item 用上一行构造辅助方程；
+    \item 对辅助方程求导；
+    \item 用求导后的系数替换全零行；
+    \item 继续构造劳斯表。
+\end{enumerate}
+
+\subsection{劳斯判据解题模板}
+
+\Pzero
+
+\begin{enumerate}
+    \item 写出闭环特征方程；
+    \item 检查系数是否同号、是否缺项；
+    \item 构造劳斯表；
+    \item 观察第一列符号；
+    \item 若第一列全部同号，则系统稳定；
+    \item 若第一列有符号变化，变化次数等于右半平面极点个数；
+    \item 若题目要求参数范围，则令第一列全部大于零，联立求解。
+\end{enumerate}
+
+\section{根轨迹法}
+
+\subsection{根轨迹的定义}
+
+\Pzero
+
+根轨迹是指当系统开环增益 $K$ 从 $0$ 变化到 $\infty$ 时，闭环特征根在 $s$ 平面上的运动轨迹。
+
+闭环特征方程：
+
+\[
+1+KG_0(s)H(s)=0
+\]
+
+根轨迹研究的是该方程根随 $K$ 的变化规律。
+
+\subsection{根轨迹基本条件}
+
+\Pzero
+
+若开环传递函数为：
+
+\[
+G(s)H(s)=K\frac{\prod_{j=1}^{m}(s-z_j)}
+{\prod_{i=1}^{n}(s-p_i)}
+\]
+
+闭环特征方程：
+
+\[
+1+G(s)H(s)=0
+\]
+
+根轨迹上的点 $s$ 必须满足：
+
+相角条件：
+
+\[
+\angle G(s)H(s)=(2k+1)180^\circ
+\]
+
+幅值条件：
+
+\[
+|G(s)H(s)|=1
+\]
+
+\exam 画根轨迹主要靠相角条件，求增益主要靠幅值条件。
+
+\subsection{根轨迹绘制规则}
+
+\Pzero
+
+\begin{enumerate}
+    \item 根轨迹起点为开环极点，终点为开环零点；
+    \item 若开环极点数为 $n$，开环零点数为 $m$，则有 $n$ 条根轨迹；
+    \item 有 $m$ 条根轨迹终止于有限零点；
+    \item 有 $n-m$ 条根轨迹趋向无穷远；
+    \item 实轴上某点右侧开环实极点、实零点个数为奇数，则该点在根轨迹上；
+    \item 渐近线条数为 $n-m$；
+    \item 渐近线夹角为：
+    \[
+    \theta_k=\frac{(2k+1)180^\circ}{n-m},\quad k=0,1,\cdots,n-m-1
+    \]
+    \item 渐近线交点为：
+    \[
+    \sigma_a=\frac{\sum p_i-\sum z_j}{n-m}
+    \]
+\end{enumerate}
+
+\subsection{分离点与会合点}
+
+\Pone
+
+特征方程可写成：
+
+\[
+1+KG_0(s)H(s)=0
+\]
+
+于是：
+
+\[
+K=-\frac{1}{G_0(s)H(s)}
+\]
+
+分离点或会合点满足：
+
+\[
+\frac{dK}{ds}=0
+\]
+
+求解得到候选点后，还要判断该点是否位于根轨迹所在区间。
+
+\subsection{与虚轴交点}
+
+\Pzero
+
+根轨迹与虚轴相交时，闭环系统处于临界稳定。
+
+求法：
+
+\begin{enumerate}
+    \item 写闭环特征方程；
+    \item 用劳斯判据；
+    \item 令劳斯表第一列某元素为零；
+    \item 求出临界增益 $K$；
+    \item 再求虚轴交点频率。
+\end{enumerate}
+
+\subsection{根轨迹与系统性能}
+
+\Pone
+
+闭环极点越靠近虚轴，系统响应越慢，稳定性越差。
+
+闭环极点越靠左，系统响应越快。
+
+闭环极点虚部越大，振荡越明显。
+
+主导极点通常是离虚轴最近的极点。
+
+\section{频域分析}
+
+\subsection{频率特性的定义}
+
+\Pzero
+
+令传递函数中的 $s=j\omega$，得到频率特性：
+
+\[
+G(j\omega)
+\]
+
+频率特性可以写成：
+
+\[
+G(j\omega)=A(\omega)e^{j\varphi(\omega)}
+\]
+
+其中：
+
+\begin{itemize}
+    \item $A(\omega)=|G(j\omega)|$：幅频特性；
+    \item $\varphi(\omega)=\angle G(j\omega)$：相频特性。
+\end{itemize}
+
+\subsection{Bode 图}
+
+\Pzero
+
+Bode 图由两部分组成：
+
+\begin{enumerate}
+    \item 对数幅频特性图；
+    \item 对数相频特性图。
+\end{enumerate}
+
+幅值通常用分贝表示：
+
+\[
+L(\omega)=20\log_{10}|G(j\omega)|
+\]
+
+横轴为 $\log \omega$。
+
+\subsection{典型环节 Bode 图}
+
+\Pzero
+
+\begin{longtable}{p{4cm}p{5cm}p{5cm}}
+\toprule
+环节 & 幅频特性斜率 & 相角 \\
+\midrule
+比例环节 $K$ & $20\log K$，水平线 & $0^\circ$ 或 $180^\circ$ \\
+积分环节 $\dfrac{1}{s}$ & $-20$ dB/dec & $-90^\circ$ \\
+微分环节 $s$ & $+20$ dB/dec & $+90^\circ$ \\
+一阶惯性 $\dfrac{1}{Ts+1}$ & 转折后 $-20$ dB/dec & 从 $0^\circ$ 到 $-90^\circ$ \\
+一阶微分 $Ts+1$ & 转折后 $+20$ dB/dec & 从 $0^\circ$ 到 $+90^\circ$ \\
+二阶振荡环节 & 转折后 $-40$ dB/dec & 从 $0^\circ$ 到 $-180^\circ$ \\
+\bottomrule
+\end{longtable}
+
+\subsection{转折频率}
+
+\Pone
+
+一阶惯性环节：
+
+\[
+G(s)=\frac{1}{Ts+1}
+\]
+
+转折频率为：
+
+\[
+\omega_c=\frac{1}{T}
+\]
+
+当 $\omega \ll \omega_c$ 时，幅值近似为 $0$ dB。
+
+当 $\omega \gg \omega_c$ 时，斜率为 $-20$ dB/dec。
+
+\subsection{稳定裕度}
+
+\Pzero
+
+\subsubsection{幅值穿越频率}
+
+幅值穿越频率 $\omega_c$ 满足：
+
+\[
+|G(j\omega_c)H(j\omega_c)|=1
+\]
+
+或：
+
+\[
+L(\omega_c)=0\text{ dB}
+\]
+
+\subsubsection{相位穿越频率}
+
+相位穿越频率 $\omega_g$ 满足：
+
+\[
+\angle G(j\omega_g)H(j\omega_g)=-180^\circ
+\]
+
+\subsubsection{相位裕度}
+
+相位裕度：
+
+\[
+\gamma=180^\circ+\angle G(j\omega_c)H(j\omega_c)
+\]
+
+\subsubsection{幅值裕度}
+
+幅值裕度：
+
+\[
+K_g=\frac{1}{|G(j\omega_g)H(j\omega_g)|}
+\]
+
+用分贝表示：
+
+\[
+20\log_{10}K_g
+\]
+
+\exam 一般要求：
+
+\[
+\gamma>0,\quad K_g>1
+\]
+
+系统才有稳定裕度。
+
+工程上常希望：
+
+\[
+30^\circ \leq \gamma \leq 60^\circ
+\]
+
+\subsection{Nyquist 稳定判据}
+
+\Pone
+
+设开环传递函数 $G(s)H(s)$ 在右半平面有 $P$ 个极点，Nyquist 曲线包围 $(-1,j0)$ 点的次数为 $N$，闭环右半平面极点个数为 $Z$。
+
+有：
+
+\[
+Z=P-N
+\]
+
+闭环稳定要求：
+
+\[
+Z=0
+\]
+
+即：
+
+\[
+N=P
+\]
+
+\note 不同教材对包围方向的正负号定义可能不同，考试时按老师课堂定义来判断。
+
+\subsection{频域性能与时域性能关系}
+
+\Pone
+
+一般规律：
+
+\begin{itemize}
+    \item 带宽越大，系统响应越快；
+    \item 相位裕度越大，系统稳定性越好，超调越小；
+    \item 截止频率越高，快速性越好；
+    \item 高频增益越大，抗噪声能力越差；
+    \item 低频增益越大，稳态误差越小。
+\end{itemize}
+
+\section{系统校正与 PID 控制}
+
+\subsection{系统校正的目的}
+
+\Pone
+
+系统校正是通过增加校正装置来改善系统性能。
+
+主要目的：
+
+\begin{enumerate}
+    \item 提高稳定性；
+    \item 改善动态性能；
+    \item 减小稳态误差；
+    \item 改善抗干扰能力；
+    \item 改善频域稳定裕度。
+\end{enumerate}
+
+\subsection{串联校正}
+
+\Pone
+
+校正装置串联在前向通道中。
+
+校正后开环传递函数为：
+
+\[
+G_c(s)G(s)H(s)
+\]
+
+其中 $G_c(s)$ 为校正装置。
+
+\subsection{超前校正}
+
+\Pone
+
+超前校正一般形式：
+
+\[
+G_c(s)=K_c\frac{Ts+1}{\alpha Ts+1}
+\]
+
+其中：
+
+\[
+0<\alpha<1
+\]
+
+特点：
+
+\begin{itemize}
+    \item 提供正相位；
+    \item 增大相位裕度；
+    \item 提高系统快速性；
+    \item 改善稳定性；
+    \item 高频增益增大，抗噪声能力可能变差。
+\end{itemize}
+
+\subsection{滞后校正}
+
+\Pone
+
+滞后校正一般形式：
+
+\[
+G_c(s)=K_c\frac{Ts+1}{\beta Ts+1}
+\]
+
+其中：
+
+\[
+\beta>1
+\]
+
+特点：
+
+\begin{itemize}
+    \item 提高低频增益；
+    \item 减小稳态误差；
+    \item 对快速性改善不明显；
+    \item 可能降低系统响应速度。
+\end{itemize}
+
+\subsection{滞后-超前校正}
+
+\Ptwo
+
+滞后-超前校正同时改善稳态性能和动态性能。
+
+\begin{itemize}
+    \item 滞后部分改善稳态误差；
+    \item 超前部分改善相位裕度和动态响应。
+\end{itemize}
+
+\subsection{PID 控制}
+
+\Pzero
+
+PID 控制器由比例、积分、微分三部分组成。
+
+时域表达式：
+
+\[
+u(t)=K_pe(t)+K_i\int_0^t e(\tau)d\tau+K_d\frac{de(t)}{dt}
+\]
+
+传递函数：
+
+\[
+G_c(s)=K_p+\frac{K_i}{s}+K_ds
+\]
+
+也可写为：
+
+\[
+G_c(s)=K_p\left(1+\frac{1}{T_is}+T_ds\right)
+\]
+
+其中：
+
+\[
+K_i=\frac{K_p}{T_i}
+\]
+
+\[
+K_d=K_pT_d
+\]
+
+\subsection{P、I、D 的作用}
+
+\Pzero
+
+\begin{longtable}{p{3cm}p{11cm}}
+\toprule
+控制作用 & 特点 \\
+\midrule
+P 比例 & 提高响应速度，减小误差，但过大可能引起超调和振荡 \\
+I 积分 & 消除稳态误差，但会降低稳定性，使响应变慢或超调增大 \\
+D 微分 & 预测误差变化趋势，改善动态性能，减小超调，但对噪声敏感 \\
+\bottomrule
+\end{longtable}
+
+\exam 常见结论：
+
+\begin{itemize}
+    \item 增大 $K_p$：响应加快，稳态误差减小，但超调可能增大；
+    \item 增加积分：可以消除稳态误差，但稳定性变差；
+    \item 增加微分：可以减小超调，改善稳定性，但放大高频噪声。
+\end{itemize}
+
+\section{状态空间分析基础}
+
+\subsection{状态空间模型}
+
+\Pone
+
+状态空间模型为：
+
+\[
+\dot{x}(t)=Ax(t)+Bu(t)
+\]
+
+\[
+y(t)=Cx(t)+Du(t)
+\]
+
+其中：
+
+\begin{itemize}
+    \item $x(t)$：状态变量；
+    \item $u(t)$：输入；
+    \item $y(t)$：输出；
+    \item $A$：系统矩阵；
+    \item $B$：输入矩阵；
+    \item $C$：输出矩阵；
+    \item $D$：直接传递矩阵。
+\end{itemize}
+
+\subsection{由状态空间求传递函数}
+
+\Pone
+
+对状态方程进行拉氏变换：
+
+\[
+sX(s)=AX(s)+BU(s)
+\]
+
+\[
+(sI-A)X(s)=BU(s)
+\]
+
+\[
+X(s)=(sI-A)^{-1}BU(s)
+\]
+
+输出为：
+
+\[
+Y(s)=CX(s)+DU(s)
+\]
+
+所以传递函数为：
+
+\[
+G(s)=\frac{Y(s)}{U(s)}=C(sI-A)^{-1}B+D
+\]
+
+\subsection{状态转移矩阵}
+
+\Ptwo
+
+状态方程：
+
+\[
+\dot{x}(t)=Ax(t)
+\]
+
+解为：
+
+\[
+x(t)=e^{At}x(0)
+\]
+
+其中：
+
+\[
+\Phi(t)=e^{At}
+\]
+
+称为状态转移矩阵。
+
+\subsection{可控性}
+
+\Pone
+
+系统：
+
+\[
+\dot{x}=Ax+Bu
+\]
+
+可控性矩阵：
+
+\[
+Q_c=[B\ AB\ A^2B\ \cdots\ A^{n-1}B]
+\]
+
+若：
+
+\[
+\operatorname{rank}(Q_c)=n
+\]
+
+则系统完全可控。
+
+\subsection{可观性}
+
+\Pone
+
+可观性矩阵：
+
+\[
+Q_o=
+\begin{bmatrix}
+C\\
+CA\\
+CA^2\\
+\vdots\\
+CA^{n-1}
+\end{bmatrix}
+\]
+
+若：
+
+\[
+\operatorname{rank}(Q_o)=n
+\]
+
+则系统完全可观。
+
+\section{离散控制系统基础}
+
+\subsection{采样系统}
+
+\Ptwo
+
+离散控制系统中信号在时间上不是连续的，而是在采样时刻取值。
+
+采样周期为：
+
+\[
+T
+\]
+
+采样角频率：
+
+\[
+\omega_s=\frac{2\pi}{T}
+\]
+
+采样频率：
+
+\[
+f_s=\frac{1}{T}
+\]
+
+\subsection{$z$ 变换}
+
+\Ptwo
+
+离散序列 $x(k)$ 的 $z$ 变换定义：
+
+\[
+X(z)=\sum_{k=0}^{\infty}x(k)z^{-k}
+\]
+
+常见对应关系：
+
+\[
+s \text{ 平面左半平面} \Longleftrightarrow z \text{ 平面单位圆内部}
+\]
+
+离散系统稳定条件：
+
+\[
+|z_i|<1
+\]
+
+即所有闭环极点必须在单位圆内。
+
+\subsection{连续系统与离散系统稳定区域}
+
+\Ptwo
+
+\begin{longtable}{p{5cm}p{7cm}}
+\toprule
+系统类型 & 稳定区域 \\
+\midrule
+连续系统 & $s$ 平面左半平面 \\
+离散系统 & $z$ 平面单位圆内部 \\
+\bottomrule
+\end{longtable}
+
+\section{非线性系统基础}
+
+\subsection{非线性系统特点}
+
+\Ptwo
+
+非线性系统不满足叠加原理。
+
+常见非线性因素：
+
+\begin{itemize}
+    \item 饱和；
+    \item 死区；
+    \item 间隙；
+    \item 摩擦；
+    \item 继电特性；
+    \item 限幅。
+\end{itemize}
+
+\subsection{线性化}
+
+\Ptwo
+
+在平衡点附近，可以使用泰勒展开进行小信号线性化。
+
+设：
+
+\[
+y=f(x)
+\]
+
+在工作点 $x_0$ 附近：
+
+\[
+y\approx f(x_0)+f'(x_0)(x-x_0)
+\]
+
+线性化本质是用切线近似曲线。
+
+\section{典型题型与解题模板}
+
+\subsection{题型一：求闭环传递函数}
+
+\Pzero
+
+解题步骤：
+
+\begin{enumerate}
+    \item 找出前向通道传递函数 $G(s)$；
+    \item 找出反馈通道传递函数 $H(s)$；
+    \item 判断正反馈还是负反馈；
+    \item 负反馈用：
+    \[
+    \Phi(s)=\frac{G(s)}{1+G(s)H(s)}
+    \]
+    \item 正反馈用：
+    \[
+    \Phi(s)=\frac{G(s)}{1-G(s)H(s)}
+    \]
+    \item 化简分子分母。
+\end{enumerate}
+
+\subsection{题型二：判断系统稳定性}
+
+\Pzero
+
+解题步骤：
+
+\begin{enumerate}
+    \item 写出闭环特征方程；
+    \item 检查系数是否全正且不缺项；
+    \item 构造劳斯表；
+    \item 看第一列符号变化；
+    \item 第一列全部同号，系统稳定；
+    \item 有符号变化，则不稳定，变化次数为右半平面极点个数。
+\end{enumerate}
+
+\subsection{题型三：求稳态误差}
+
+\Pzero
+
+解题步骤：
+
+\begin{enumerate}
+    \item 写开环传递函数 $G(s)H(s)$；
+    \item 判断系统型别；
+    \item 判断输入类型；
+    \item 求对应误差系数；
+    \item 代入稳态误差公式；
+    \item 检查闭环系统是否稳定。
+\end{enumerate}
+
+\subsection{题型四：二阶系统性能指标}
+
+\Pzero
+
+解题步骤：
+
+\begin{enumerate}
+    \item 把闭环传递函数分母化成：
+    \[
+    s^2+2\zeta\omega_ns+\omega_n^2
+    \]
+    \item 对比系数，求 $\omega_n$ 和 $\zeta$；
+    \item 判断是否欠阻尼；
+    \item 用公式求：
+    \[
+    t_p,\quad M_p,\quad t_s
+    \]
+\end{enumerate}
+
+\subsection{题型五：画根轨迹}
+
+\Pzero
+
+解题步骤：
+
+\begin{enumerate}
+    \item 标出开环极点和零点；
+    \item 根轨迹从极点出发，到零点结束；
+    \item 判断实轴上的根轨迹区间；
+    \item 求渐近线条数、角度和交点；
+    \item 求分离点；
+    \item 求与虚轴交点；
+    \item 根据对称性画出轨迹；
+    \item 判断增益变化时系统稳定范围。
+\end{enumerate}
+
+\subsection{题型六：Bode 图与稳定裕度}
+
+\Pzero
+
+解题步骤：
+
+\begin{enumerate}
+    \item 将开环传递函数标准化；
+    \item 找比例、积分、惯性、微分、二阶环节；
+    \item 找各转折频率；
+    \item 画幅频特性渐近线；
+    \item 画相频特性；
+    \item 找幅值穿越频率和相位穿越频率；
+    \item 求相位裕度和幅值裕度；
+    \item 判断系统相对稳定性。
+\end{enumerate}
+
+\section{常用公式速查}
+
+\subsection{闭环传递函数}
+
+\Pzero
+
+\[
+\Phi(s)=\frac{G(s)}{1+G(s)H(s)}
+\]
+
+单位反馈：
+
+\[
+\Phi(s)=\frac{G(s)}{1+G(s)}
+\]
+
+误差传递函数：
+
+\[
+\frac{E(s)}{R(s)}=\frac{1}{1+G(s)H(s)}
+\]
+
+\subsection{二阶系统}
+
+\Pzero
+
+标准形式：
+
+\[
+\Phi(s)=\frac{\omega_n^2}{s^2+2\zeta\omega_ns+\omega_n^2}
+\]
+
+阻尼振荡频率：
+
+\[
+\omega_d=\omega_n\sqrt{1-\zeta^2}
+\]
+
+峰值时间：
+
+\[
+t_p=\frac{\pi}{\omega_d}
+\]
+
+最大超调量：
+
+\[
+M_p=e^{-\frac{\pi\zeta}{\sqrt{1-\zeta^2}}}\times100\%
+\]
+
+调节时间：
+
+\[
+t_s\approx\frac{3}{\zeta\omega_n}\quad 5\%
+\]
+
+\[
+t_s\approx\frac{4}{\zeta\omega_n}\quad 2\%
+\]
+
+\subsection{稳态误差}
+
+\Pzero
+
+\[
+K_p=\lim_{s\to0}G(s)
+\]
+
+\[
+K_v=\lim_{s\to0}sG(s)
+\]
+
+\[
+K_a=\lim_{s\to0}s^2G(s)
+\]
+
+\[
+e_{ss}=\frac{1}{1+K_p}
+\]
+
+\[
+e_{ss}=\frac{1}{K_v}
+\]
+
+\[
+e_{ss}=\frac{1}{K_a}
+\]
+
+\subsection{劳斯判据}
+
+\Pzero
+
+系统稳定充要条件：
+
+\[
+\text{劳斯表第一列全部同号}
+\]
+
+第一列符号变化次数等于右半平面根的个数。
+
+\subsection{根轨迹}
+
+\Pzero
+
+相角条件：
+
+\[
+\angle G(s)H(s)=(2k+1)180^\circ
+\]
+
+幅值条件：
+
+\[
+|G(s)H(s)|=1
+\]
+
+渐近线角度：
+
+\[
+\theta_k=\frac{(2k+1)180^\circ}{n-m}
+\]
+
+渐近线交点：
+
+\[
+\sigma_a=\frac{\sum p_i-\sum z_j}{n-m}
+\]
+
+分离点：
+
+\[
+\frac{dK}{ds}=0
+\]
+
+\subsection{频域指标}
+
+\Pzero
+
+幅值分贝：
+
+\[
+L(\omega)=20\log_{10}|G(j\omega)|
+\]
+
+相位裕度：
+
+\[
+\gamma=180^\circ+\angle G(j\omega_c)H(j\omega_c)
+\]
+
+幅值裕度：
+
+\[
+K_g=\frac{1}{|G(j\omega_g)H(j\omega_g)|}
+\]
+
+\section{容易出错的地方}
+
+\Pzero
+
+\begin{enumerate}
+    \item 闭环特征方程是 $1+G(s)H(s)=0$，不是只看 $G(s)$ 的分母。
+    \item 稳态误差必须在闭环稳定前提下计算。
+    \item 系统型别看开环传递函数原点极点个数。
+    \item 二阶系统公式只适用于标准二阶欠阻尼系统。
+    \item $M_p$ 公式中的超调量是百分比形式时要乘 $100\%$。
+    \item 根轨迹起于开环极点，终于开环零点。
+    \item 根轨迹实轴判据是看右侧实极点和实零点个数是否为奇数。
+    \item 劳斯表第一列符号变化次数等于右半平面根个数。
+    \item Bode 图中积分环节斜率为 $-20$ dB/dec，微分环节为 $+20$ dB/dec。
+    \item 相位裕度要在幅值穿越频率处求。
+    \item 幅值裕度要在相位穿越频率处求。
+    \item PID 中积分能消除稳态误差，但会降低稳定性。
+    \item 微分作用对噪声敏感，实际系统中常用不完全微分。
+\end{enumerate}
+
+\section{期末复习建议}
+
+\subsection{第一轮：必须掌握}
+
+\Pzero
+
+优先复习：
+
+\begin{enumerate}
+    \item 传递函数；
+    \item 方块图化简；
+    \item 一阶、二阶系统响应；
+    \item 稳态误差；
+    \item 劳斯稳定判据；
+    \item 根轨迹基本规则；
+    \item Bode 图和稳定裕度；
+    \item PID 控制作用。
+\end{enumerate}
+
+\subsection{第二轮：提高分数}
+
+\Pone
+
+重点练习：
+
+\begin{enumerate}
+    \item 梅森公式；
+    \item 根轨迹分离点、虚轴交点；
+    \item 频率特性计算；
+    \item 校正设计；
+    \item 状态空间求传递函数；
+    \item 可控性、可观性判断。
+\end{enumerate}
+
+\subsection{第三轮：查漏补缺}
+
+\Ptwo
+
+可以补充：
+
+\begin{enumerate}
+    \item 离散系统基础；
+    \item 非线性系统基本概念；
+    \item 直流电机建模；
+    \item 复杂系统建模；
+    \item 采样与 $z$ 变换。
+\end{enumerate}
+
+\section{考前速记口诀}
+
+\begin{enumerate}
+    \item 闭环公式记清楚：前向除以一加环。
+    \item 系统稳定看闭环，极点全在左半边。
+    \item 劳斯判据看首列，变号几个右根几个。
+    \item 稳态误差看型别，积分越多跟踪越强。
+    \item 二阶性能看阻尼，阻尼小则超调大。
+    \item 根轨迹从极点走，最后奔向零点去。
+    \item 实轴根轨迹看右边，奇数才在轨迹上。
+    \item 频域分析看裕度，相位裕度保稳定。
+    \item 比例加快但易振，积分消差但变慢，微分超前抗超调。
+\end{enumerate}
+
+\section{一页式核心总结}
+
+\Pzero
+
+自动控制原理主线可以概括为：
+
+\[
+\text{建模}
+\Rightarrow
+\text{求传递函数}
+\Rightarrow
+\text{求闭环}
+\Rightarrow
+\text{分析稳定性}
+\Rightarrow
+\text{分析动态性能}
+\Rightarrow
+\text{分析稳态误差}
+\Rightarrow
+\text{设计校正}
+\]
+
+最核心的三个问题：
+
+\[
+\text{稳不稳？}
+\]
+
+\[
+\text{快不快？}
+\]
+
+\[
+\text{准不准？}
+\]
+
+对应方法：
+
+\begin{longtable}{p{4cm}p{10cm}}
+\toprule
+问题 & 方法 \\
+\midrule
+稳不稳 & 极点位置、劳斯判据、Nyquist 判据、稳定裕度 \\
+快不快 & 一阶时间常数、二阶 $\omega_n$、调节时间、带宽 \\
+准不准 & 稳态误差、系统型别、静态误差系数 \\
+\bottomrule
+\end{longtable}
+
+\end{document}

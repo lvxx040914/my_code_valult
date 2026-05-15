@@ -1,0 +1,1054 @@
+% ======================================================
+% 第 1 天
+% ======================================================
+\setday{1}{映射与函数}
+
+\oneproblem{
+    设 $f(x)$ 的定义域为 $[0, 1]$，试求函数 $f(x^2)$ 和 $f(\sin 2x)$ 的定义域。
+}
+
+\oneproblem{
+    设 $f(x)$ 的定义域为 $[0, 1]$，试求 $f(x+a) + f(x-a) \ (a > 0)$ 的定义域。
+}
+
+\oneproblem{
+    设 $f(x) = \begin{cases} 1, & |x| \le 1 \\ 0, & |x| > 1 \end{cases}$，试求 $f\{f[f(x)]\}$ 的表达式。
+}
+
+\oneproblem{
+    已知 $a f(x) + b f\left( \dfrac{1}{x} \right) = \dfrac{c}{x}$，$|a| \ne |b|$，试求 $f(x)$ 的函数表达式并证明其为奇函数。
+}
+
+\oneproblem{
+    函数 $f(x)$ 在 $(-\infty, +\infty)$ 内有定义，$g(x)$ 是 $f(x)$ 的反函数，求 $y = f\left( \dfrac{x}{2} \right)$ 及 $y = f(2x)$ 的反函数。
+}
+
+\oneproblem{
+    已知 $f(x+y) + f(x-y) = 2f(x)f(y)$ 对于一切实数 $x, y$ 都成立，且 $f(0) \ne 0$，求证函数 $f(x)$ 为偶函数。
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(-\infty, +\infty)$ 上是奇函数，$f(1) = a$，且对任何 $x$ 值均有 $f(x+2) - f(x) = f(2). $ 如果函数 $f(x)$ 是周期为 2 的周期函数，试求 $a$ 的值。
+}
+
+\oneproblem{
+    已知 $f(x)$ 在 $(-\infty, +\infty)$ 上有定义且 $f(x+\pi) = f(x) + \sin x$, 试证明 $f(x)$ 为周期函数且其最小正周期为 $2\pi$。
+}
+
+\oneproblem{
+    写出函数 $f(x) = \arcsin(\sin x)$ 的定义域，分析它的基本性质（奇偶性、周期性、单调性、有界性），并绘制其在区间 $[-2\pi, 2\pi]$ 的图形。
+}
+
+\oneproblem{
+    设函数 $f(x)$ 定义在区间 $I$ 上，且对于任意 $x_1, x_2 \in I$ 及 $\lambda \in (0, 1)$，恒有
+    $f[\lambda x_1 + (1-\lambda)x_2] \le \lambda f(x_1) + (1-\lambda)f(x_2),$\\
+    证明：在区间 $I$ 的任何闭子区间上 $f(x)$ 有界。
+}
+
+\oneproblem{
+    试写出如下方程的参数方程：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x^3 + y^3 - 3xy = 0$;
+        \item $x^2 + xy + y^2 = 1$;
+        \item 极坐标方程 $\rho = \rho(\theta), \alpha \le \theta \le \beta$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 2 天
+% ======================================================
+\setday{2}{数列极限基本性质、敛散性判定与算法}
+
+\oneproblem{
+    “对于任意给定的 $\varepsilon \in (0,1)$，总存在正整数 $N$，当 $n \ge N$ 时，恒有 $|x_n - a| \le 2\varepsilon$” 是数列 $\{x_n\}$ 收敛于 $a$ 的 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 充分条件但非必要条件
+        \item 必要但非充分条件
+        \item 充分必要条件
+        \item 既非充分条件又非必要条件
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\{a_n\}, \{b_n\}, \{c_n\}$ 均为非负数列，且 $\lim\limits_{n \to \infty} a_n = 0, \lim\limits_{n \to \infty} b_n = 1, \lim\limits_{n \to \infty} c_n = \infty$，则必有 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $a_n < b_n$ 对任意 $n$ 成立
+        \item $b_n < c_n$ 对任意 $n$ 成立
+        \item $\lim\limits_{n \to \infty} a_n \cdot c_n$ 的极限不存在
+        \item $\lim\limits_{n \to \infty} b_n \cdot c_n$ 的极限不存在
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\lim\limits_{n \to \infty} a_n = a$，且 $a \ne 0$，则当 $n$ 充分大时 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $|a_n| > \dfrac{|a|}{2}$
+        \item $|a_n| < \dfrac{|a|}{2}$
+        \item $a_n > a - \dfrac{1}{n}$
+        \item $a_n < a + \dfrac{1}{n}$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\{x_n\}$ 是数列，下列命题中不正确的是 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 若 $\lim\limits_{n \to \infty} x_n = a$, 则 $\lim\limits_{n \to \infty} x_{2n} = \lim\limits_{n \to \infty} x_{2n+1} = a$
+        \item 若 $\lim\limits_{n \to \infty} x_{2n} = \lim\limits_{n \to \infty} x_{2n+1} = a$, 则 $\lim\limits_{n \to \infty} x_n = a$
+        \item 若 $\lim\limits_{n \to \infty} x_n = a$, 则 $\lim\limits_{n \to \infty} x_{3n} = \lim\limits_{n \to \infty} x_{3n+1} = a$
+        \item 若 $\lim\limits_{n \to \infty} x_{3n} = \lim\limits_{n \to \infty} x_{3n+1} = a$, 则 $\lim\limits_{n \to \infty} x_n = a$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知数列 $\{x_n\}$ 满足 $-\dfrac{\pi}{2} \le x_n \le \dfrac{\pi}{2}$，则 ( \quad )
+    \begin{enumerate}[label=(\Alph*)]
+        \item 若 $\lim\limits_{n \to \infty} \cos(\sin x_n)$ 存在，则 $\lim\limits_{n \to \infty} x_n$ 存在
+        \item 若 $\lim\limits_{n \to \infty} \sin(\cos x_n)$ 存在，则 $\lim\limits_{n \to \infty} x_n$ 存在
+        \item 若 $\lim\limits_{n \to \infty} \cos(\sin x_n)$ 存在，则 $\lim\limits_{n \to \infty} \sin x_n$ 存在，但 $\lim\limits_{n \to \infty} x_n$ 不一定存在
+        \item 若 $\lim\limits_{n \to \infty} \sin(\cos x_n)$ 存在，则 $\lim\limits_{n \to \infty} \cos x_n$ 存在，但 $\lim\limits_{n \to \infty} x_n$ 不一定存在
+    \end{enumerate}
+}
+
+\oneproblem{
+    用定义证明柯西数列极限命题：如果 $\lim\limits_{n \to \infty} a_n$ 存在，则 $\lim\limits_{n \to \infty} \dfrac{a_1 + a_2 + \dots + a_n}{n}$ 也存在，不仅存在，而且 $\lim\limits_{n \to \infty} \dfrac{a_1 + a_2 + \dots + a_n}{n} = \lim\limits_{n \to \infty} a_n$. 试问该命题的逆命题是否成立？如果成立请证明，如果不成立，请举例说明。
+}
+
+\oneproblem{
+    若 $\lim\limits_{n \to \infty} \dfrac{x_n - a}{x_n + a} = 0$，证明：$\lim\limits_{n \to \infty} x_n = a$.
+}
+
+\oneproblem{
+    设 $a_n > 0, n=1,2,\dots$，且 $\lim\limits_{n \to \infty} \dfrac{a_{n+1}}{a_n} = a$ ($a$ 为有限数)，则 $\lim\limits_{n \to \infty} \sqrt[n]{a_n}$ 也存在，且 $\lim\limits_{n \to \infty} \sqrt[n]{a_n} = a$. 试问该命题的逆命题是否成立？如果成立请证明，如果不成立，请举例说明。
+}
+
+\oneproblem{
+    给定极限 $a_n = \dfrac{1 \cdot 3 \cdot 5 \cdot \dots \cdot (2n-1)}{2 \cdot 4 \cdot 6 \cdot \dots \cdot (2n)}$，求极限 $\lim\limits_{n \to \infty} \sqrt[n]{a_n}$.
+}
+
+\oneproblem{
+    已知 $a, b$ 为正整数，$\lim\limits_{n \to \infty} \dfrac{n^a}{n^b - (n-1)^b} = \dfrac{1}{2023}$，求常数 $a, b$.
+}
+
+\oneproblem{
+    求极限 $\lim\limits_{n \to \infty} \dfrac{1}{n} \cdot \left| 1 - 2 + 3 - \dots + (-1)^{n+1}n \right|$.
+}
+
+\oneproblem{
+    设 $a > 0, x_1 > 0, x_{n+1} = \dfrac{1}{4} \left( 3x_n + \dfrac{a}{x_n^3} \right) (n \in \mathbb{N}_+)$，证明数列 $\{x_n\}$ 收敛并求 $\lim\limits_{n \to \infty} x_n$.
+}
+
+\oneproblem{
+    设 $x_1 > 0, x_{n+1} = \dfrac{3(1+x_n)}{3+x_n}, n=1,2,3,\dots$，证明数列 $\{x_n\}$ 有极限，并求极限值.
+}
+
+\oneproblem{
+    设 $x_1 = 2, x_2 = 2 + \dfrac{1}{x_1}, \dots, x_{n+1} = 2 + \dfrac{1}{x_n}, \dots$，求证 $\lim\limits_{n \to \infty} x_n$ 存在，并求其值.
+}
+
+\oneproblem{
+    求正整数 $n$，使得 $n < 6(1 - 1.001^{-1000}) < n+1$.
+}
+
+\oneproblem{
+    求 $\lim\limits_{n \to \infty} \sin^2 \left( \pi \sqrt{n^2 + n} \right)$.
+}
+
+\oneproblem{
+    设 $x_1 = 2021$，$x_n^2 - 2(x_n+1)x_{n+1} + 2021 = 0 (n \ge 1)$，证明数列 $\{x_n\}$ 收敛，并求极限 $\lim\limits_{n \to \infty} x_n$.
+}
+
+\oneproblem{
+    已知数列 $\{b_n\}$ 有界，且 $a_n = \dfrac{b_1}{1 \cdot 2} + \dfrac{b_2}{2 \cdot 3} + \dots + \dfrac{b_n}{n(n+1)}$，其中 $n$ 为正整数，用柯西收敛准则证明数列 $\{a_n\}$ 收敛.
+}
+
+\oneproblem{
+    已知 $n$ 为正整数，且 $S_n = 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dots + \dfrac{1}{n}$，用柯西收敛准则证明数列 $\{S_n\}$ 发散.
+}
+
+% ======================================================
+% 第 3 天
+% ======================================================
+\setday{3}{函数的极限及基本判定与计算法}
+
+\oneproblem{
+    计算 $\lim\limits_{x \to a} \left( \dfrac{2a}{3} + \dfrac{a}{\pi} \arctan \dfrac{1}{x-a} \right)$.
+}
+
+\oneproblem{
+    已知 $\lim\limits_{x \to 0} \left[ a \arctan \dfrac{1}{x} + (1+|x|)^{\frac{1}{x}} \right]$ 存在，求 $a$ 的值.
+}
+
+\oneproblem{
+    用 “$\varepsilon - \delta$ 语言” 证明：$\lim\limits_{x \to 1} \dfrac{(x-2)(x-1)}{x-3} = 0$.
+}
+
+\oneproblem{
+    试证：设 $f(x)$ 在 $x=a$ 的一个邻域内有定义，若 $\lim\limits_{x \to a^-} f(x) < \lim\limits_{x \to a^+} f(x)$，则存在 $\delta > 0$，使得当 $0 < a-x < \delta, 0 < y-a < \delta$ 时，有 $f(x) < f(y)$.
+}
+
+\oneproblem{
+    求下列极限：
+    \begin{enumerate}[label=(\arabic*), itemsep=3cm]
+        \item $\lim\limits_{x \to \infty} \left( \dfrac{3+x}{6+x} \right)^{\frac{x-1}{2}}$.
+        \item $\lim\limits_{x \to \frac{\pi}{2}^+} (\sin x)^{\tan x}$.
+        \item $\lim\limits_{n \to \infty} n^2 (\sqrt[n]{x} - \sqrt[n+1]{x}) \ (x > 0)$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设对任意的 $x$，总有 $\varphi(x) \le f(x) \le g(x)$，且 $\lim\limits_{x \to \infty} [g(x) - \varphi(x)] = 0$，则 $\lim\limits_{x \to \infty} f(x)$ ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 存在且等于零
+        \item 存在但不一定为零
+        \item 一定不存在
+        \item 不一定存在
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知 $\lim\limits_{x \to +\infty} (\sqrt{ax^2+bx+c} - \alpha x - \beta) = 0$，其中 $a,b,c$ 为常数，$a>0$，试求参数 $\alpha, \beta$ 之值.
+}
+
+\oneproblem{
+    $\lim\limits_{x \to +\infty} \left[ (ax+b) e^{\frac{1}{x-1}} - x \right] = 2$，求 $a, b$.
+}
+
+\oneproblem{
+    设 $f(x) = a_1 \sin x + a_2 \sin 2x + \dots + a_n \sin nx$，并且 $|f(x)| \le |\sin x|$，$a_1, a_2, \dots, a_n$ 皆为常数，证明：
+    $|a_1 + 2a_2 + \dots + na_n| \le 1.$
+}
+
+\oneproblem{
+    设 $f(x), g(x)$ 在 $x=0$ 的某一邻域 $U$ 内有定义，对任意 $x \in U, f(x) \ne g(x)$，且 $\lim\limits_{x \to 0} f(x) = \lim\limits_{x \to 0} g(x) = a > 0$，试求极限 $\lim\limits_{x \to 0} \dfrac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x) - g(x)}$.
+}
+
+% ======================================================
+% 第 4 天
+% ======================================================
+\setday{4}{无穷小与无穷大、渐近线}
+
+\oneproblem{
+    当 $x \to 0$ 时，用 “$o(x)$” 表示比 $x$ 高阶的无穷小，则下列式子中错误的是 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $x \cdot o(x^2) = o(x^3)$
+        \item $o(x) \cdot o(x^2) = o(x^3)$
+        \item $o(x^2) + o(x^2) = o(x^2)$
+        \item $o(x) + o(x^2) = o(x^2)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    当 $x \to 0$ 时，$\alpha(x), \beta(x)$ 是非零无穷小量，给出以下四个命题：
+    \begin{enumerate}[label=\textcircled{\small\arabic*}]
+        \item 若 $\alpha(x) \sim \beta(x)$，则 $\alpha^2(x) \sim \beta^2(x)$
+        \item 若 $\alpha^2(x) \sim \beta^2(x)$，则 $\alpha(x) \sim \beta(x)$
+        \item 若 $\alpha(x) \sim \beta(x)$，则 $\alpha(x) - \beta(x) = o(\alpha(x))$
+        \item 若 $\alpha(x) - \beta(x) = o(\alpha(x))$，则 $\alpha(x) \sim \beta(x)$
+    \end{enumerate}
+    其中所有真命题序号是 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item \textcircled{1}\textcircled{3}
+        \item \textcircled{1}\textcircled{4}
+        \item \textcircled{1}\textcircled{3}\textcircled{4}
+        \item \textcircled{2}\textcircled{3}\textcircled{4}
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\lim\limits_{x \to 0} \dfrac{a \tan x + b(1 - \cos x)}{c \ln(1 - 2x) + d(1 - e^{-x^2})} = 2$，其中 $a^2 + c^2 \ne 0$，则必有 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $b = 4d$
+        \item $b = -4d$
+        \item $a = 4c$
+        \item $a = -4c$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    曲线 $y = e^{\frac{1}{x^2}} \arctan \dfrac{x^2 + x - 1}{(x-1)(x+2)}$ 的渐近线有 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 1 条
+        \item 2 条
+        \item 3 条
+        \item 4 条
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    函数 $\sqrt[3]{x} - \sqrt{x}$ 是 $x \to 0$ 时关于 $x$ 的几阶无穷小？
+}
+
+\oneproblem{
+    已知 $\lim\limits_{x \to 0} \left( 1 + x + \dfrac{f(x)}{x} \right)^{1/x} = e^3$，计算 $\lim\limits_{x \to 0} \left( 1 + \dfrac{f(x)}{x} \right)^{1/x}$.
+}
+
+\oneproblem{
+    求下列极限：
+    \begin{enumerate}[label=(\arabic*), itemsep=6cm]
+        \item $\lim\limits_{x \to 0^+} (\cos \sqrt{x})^{\frac{\pi}{x}}$.
+        \item $\lim\limits_{n \to \infty} \tan^n \left( \dfrac{\pi}{4} + \dfrac{2}{n} \right)$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $a > 0$，且 $\lim\limits_{x \to 0} \dfrac{x^2}{(b - \cos x)\sqrt{a+x^2}} = 1$，求常数 $a, b$.
+}
+
+\oneproblem{
+    设数列 $\{x_n\}$ 满足 $0 < x_1 < \pi, x_{n+1} = \sin x_n \ (n = 1, 2, \dots)$.
+    \begin{enumerate}[label=(\arabic*), itemsep=3cm]
+        \item 证明 $\lim\limits_{n \to \infty} x_n$ 存在，并求之.
+        \item 计算 $\lim\limits_{n \to \infty} \left( \dfrac{x_{n+1}}{x_n} \right)^{\frac{1}{x_n^2}}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    求由如下方程描述的曲线的渐近线方程，其中 $a \ne 0$：
+    \begin{enumerate}[label=(\arabic*), itemsep=3cm]
+        \item $x = \dfrac{3at}{1+t^3}, y = \dfrac{3at^2}{1+t^3}$;
+        \item $x^3 + y^3 - 3axy = 0$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 5 天
+% ======================================================
+\setday{5}{函数的连续性与间断点}
+
+\oneproblem{
+    设 $f(x)$ 和 $\varphi(x)$ 在 $(-\infty, +\infty)$ 内有定义，$f(x)$ 为连续函数，且 $f(x) \ne 0$，$\varphi(x)$ 有间断点，则 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $\varphi[f(x)]$ 必有间断点
+        \item $[\varphi(x)]^2$ 必有间断点
+        \item $f[\varphi(x)]$ 必有间断点
+        \item $\dfrac{\varphi(x)}{f(x)}$ 必有间断点
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    函数 $f(x) = \dfrac{|x|^x - 1}{x(x+1)\ln|x|}$ 的可去间断点的个数为 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 0
+        \item 1
+        \item 2
+        \item 3
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x) = \begin{cases} -1, & x < 0 \\ 1, & x \ge 0 \end{cases}$，$g(x) = \begin{cases} 2 - ax, & x \le -1 \\ x, & -1 < x < 0 \\ x - b, & x \ge 0 \end{cases}$，若 $f(x) + g(x)$ 在 $\mathbb{R}$ 上连续，则 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $a = 3, b = 1$
+        \item $a = 3, b = 2$
+        \item $a = -3, b = 1$
+        \item $a = -3, b = 2$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    函数 $f(x) = \dfrac{e^{\frac{1}{x-1}} \ln |1+x|}{(e^x - 1)(x-2)}$ 的第二类间断点的个数为 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 1
+        \item 2
+        \item 3
+        \item 4
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知 $f(x)$ 连续，且 $\lim\limits_{x \to 0} \dfrac{1 - \cos[xf(x)]}{(e^{x^2} - 1)f(x)} = 1$，则 $f(0) =$ \underline{\hspace{2cm}}.
+}
+
+\oneproblem{
+    函数 $f(x) = \dfrac{x^2 - x}{x^2 - 1} \sqrt{1 + \dfrac{1}{x^2}}$ 的无穷间断点的个数为 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 0
+        \item 1
+        \item 2
+        \item 3
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知 $f(x) = \lim\limits_{n \to \infty} \dfrac{\ln(e^n + x^n)}{n} \ (x > 0)$，求函数并讨论其连续性.
+}
+
+\oneproblem{
+    求极限 $\lim\limits_{t \to x} \left( \dfrac{\sin t}{\sin x} \right)^{\frac{x}{\sin t - \sin x}}$，记此极限为 $f(x)$，求函数 $f(x)$ 的间断点并指出其类型.
+}
+
+\oneproblem{
+    讨论函数 $f(x) = \begin{cases} |x-1|, & |x| > 1 \\ \cos \dfrac{\pi}{2}x, & |x| \le 1 \end{cases}$ 的连续性.
+}
+
+\oneproblem{
+    设点 $x_0$ 是函数 $f(x)$ 的第一类间断点，问：在下列情况下，点 $x_0$ 为 $f(x) + g(x)$ 的第几类间断点？
+    \begin{enumerate}[label=(\arabic*), itemsep=6cm]
+        \item 点 $x_0$ 是函数 $g(x)$ 的连续点；
+        \item 点 $x_0$ 是函数 $g(x)$ 的第一类间断点；
+        \item 点 $x_0$ 是函数 $g(x)$ 的第二类间断点.
+    \end{enumerate}
+}
+
+\oneproblem{
+    证明：单调有界函数的一切间断点皆为第一类间断点.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(0, 1)$ 上有定义，且函数 $e^x f(x)$ 与 $e^{-f(x)}$ 在 $(0, 1)$ 上都是单调不减的函数. 证明：$f(x)$ 在 $(0, 1)$ 上连续.
+}
+
+% ======================================================
+% 第 6 天
+% ======================================================
+\setday{6}{闭区间上连续函数的性质及应用}
+
+\oneproblem{
+    函数 $f(x) = \dfrac{|x| \sin(x-2)}{x(x-1)(x-2)^2}$ 在下列哪个区间内有界 ( \quad )
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $(-1, 0)$
+        \item $(0, 1)$
+        \item $(1, 2)$
+        \item $(2, 3)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[a, b]$ 上连续，且恒为正. 证明：对任意的 $x_1, x_2 \in (a, b), x_1 < x_2$，必存在一点 $\xi \in [x_1, x_2]$，使得
+    $f(\xi) = \sqrt{f(x_1)f(x_2)}.$
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[a, b]$ 上连续，且 $a < c < d < b$. 证明：在 $[a, b]$ 上必存在一点 $\xi$，使得
+    $m f(c) + n f(d) = (m + n) f(\xi). $
+    其中 $m, n$ 为非负常数.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[a, b]$ 上连续，$x_i \in [a, b], t_i > 0 \ (i = 1, 2, \dots, n)$，且 $\sum\limits_{i=1}^{n} t_i = 1$. 证明：至少存在一点 $\xi \in [a, b]$，使得
+    $f(\xi) = t_1 f(x_1) + t_2 f(x_2) + \dots + t_n f(x_n). $
+}
+
+\oneproblem{
+    设函数 $f(x) \in C(-\infty, +\infty)$ 且
+    $ \lim_{x \to -\infty} f(x) = A, \lim_{x \to +\infty} f(x) = B, A < B. $\\
+    证明：对 $\forall \eta \in (A, B), \exists \xi \in (-\infty, +\infty)$，使得 $f(\xi) = \eta$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在闭区间 $[0, 1]$ 上连续且 $f(0) = f(1)$. 证明：对于任意给定的整数 $n > 1$，必存在 $\xi \in [0, 1]$ 使得
+    $ f(\xi) = f\left(\xi + \dfrac{1}{n}\right).$
+}
+
+\oneproblem{
+    若 $f(x)$ 在 $(-\infty, +\infty)$ 内连续，且 $\lim\limits_{x \to \infty} f(x)$ 存在，证明 $f(x)$ 在 $(-\infty, +\infty)$ 内有界.
+}
+
+\oneproblem{
+    (1) 证明方程 $x^n + x^{n-1} + \dots + x = 1$ ($n$ 为大于 1 的整数) 在区间 $(\dfrac{1}{2}, 1)$ 内有且仅有一个实根；\\
+    (2) 记 (1) 中的实根为 $x_n$，证明 $\lim\limits_{n \to \infty} x_n$ 存在，并求此极限.
+}
+
+\oneproblem{
+    若 $f(x)$ 在 $[a, b]$ 上连续，且对于任何 $x \in [a, b]$，存在相应的 $y \in [a, b]$，使得
+    $|f(y)| \le \dfrac{1}{2} |f(x)|, $
+    证明：至少存在一点 $\xi \in [a, b]$，使得 $f(\xi) = 0$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在区间 $(0, 1)$ 内连续，且存在两两互异的点 $x_1, x_2, x_3, x_4 \in (0, 1)$，使得
+    $a = \dfrac{f(x_1) - f(x_2)}{x_1 - x_2} < \dfrac{f(x_3) - f(x_4)}{x_3 - x_4} = \beta.$\\
+    证明：对任意 $\lambda \in (\alpha, \beta)$，存在互异的点 $x_5, x_6 \in (0, 1)$，使得
+    $\lambda = \dfrac{f(x_5) - f(x_6)}{x_5 - x_6}.$
+}
+
+\oneproblem{
+    证明：(1) 开普勒方程 $x = x_0 + \varepsilon \sin x \ (0 < \varepsilon < 1)$ 有唯一实数根；\\
+    (2) 递推式 $x_n = x_0 + \varepsilon \sin x_{n-1} \ (n = 1, 2, \dots)$ 产生的点列 $\{x_n\}$ 收敛于开普勒方程的根.
+}
+
+\oneproblem{
+    设函数 $f(x), g(x)$ 在 $[a, b]$ 上连续，且存在 $x_n \in [a, b]$ 使得 $f(x_{n+1}) = g(x_n) \ (n = 1, 2, 3, \dots)$.\\
+    证明：必存在 $x_0 \in [a, b]$ 使得 $f(x_0) = g(x_0)$.
+}
+
+% ======================================================
+% 第 7 天
+% ======================================================
+\setday{7}{函数的一致连续性*}
+
+\oneproblem{
+    设函数 $f(x)$ 在有限区间 $(a,b)$ 内连续，试证：$f(x)$ 在 $(a,b)$ 内一致连续的充要条件是 $\lim\limits_{x \to a^+} f(x)$ 和 $\lim\limits_{x \to b^-} f(x)$ 存在.
+}
+
+\oneproblem{
+    证明：$f(x) = \dfrac{1}{x}$ 在 $[a, +\infty) \ (a > 0)$ 上一致连续，$g(x) = \sin \dfrac{1}{x}$ 在 $(0,1)$ 上不一致连续.
+}
+
+\oneproblem{
+    证明无界函数 $f(x) = x + \sin x$ 在 $-\infty < x < +\infty$ 上一致连续.
+}
+
+\oneproblem{
+    证明：函数 $f(x) = x^2$ 在 $(-1,1)$ 内一致连续，但在 $(-\infty, +\infty)$ 上不一致连续.
+}
+
+\oneproblem{
+    讨论 $f(x) = e^x \cdot \cos \dfrac{1}{x} \ (0 < x < 1)$ 的一致连续性.
+}
+
+\oneproblem{
+    证明 $f(x) = \dfrac{x+2}{x+1} \cdot \sin \dfrac{1}{x}$ 在 $0 < x < 1$ 内非一致连续，而在 $1 < x < 2$ 与 $2 < x < +\infty$ 内均一致连续.
+}
+
+\oneproblem{
+    证明：$f(x)$ 在区间 $I$ 上一致连续的充要条件是：对 $I$ 上任意两数列 $\{x_n\}, \{y_n\}$，只要 $x_n - y_n \to 0$，就有 $f(x_n) - f(y_n) \to 0 \ (n \to \infty)$.
+}
+
+\oneproblem{
+    设区间 $I_1$ 的右端点为 $c \in I_1$，区间 $I_2$ 的左端点也为 $c \in I_2$ ($I_1, I_2$ 可分别为有限或无限区间). 试按一致连续性的定义证明：若 $f$ 分别在 $I_1$ 和 $I_2$ 上一致连续，则 $f$ 在 $I = I_1 \cup I_2$ 上也一致连续.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[a, +\infty)$ 上连续，$\lim\limits_{x \to +\infty} f(x)$ 存在(有限). 证明：
+    \begin{enumerate}[label=(\arabic*), itemsep=6cm]
+        \item $f(x)$ 在 $[a, +\infty)$ 上一致连续；
+        \item 设 $\varphi(x)$ 在 $[a, +\infty)$ 上连续，且 $\lim\limits_{x \to +\infty} [f(x) - \varphi(x)] = 0$，证明 $\varphi(x)$ 在 $[a, +\infty)$ 上一致连续；
+        \item $f(x)$ 在 $[a, +\infty)$ 上有界，讨论 $f(x)$ 在 $[a, +\infty)$ 上的最值；
+        \item 逆命题 “$f(x)$ 在 $[a, +\infty)$ 上一致连续，$\lim\limits_{x \to +\infty} f(x)$ 存在” 是否成立？(请给出证明或反例).
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $g(x)$ 在 $[0, +\infty)$ 上一致连续，且对于任意的 $\delta \ge 0$，有 $\lim\limits_{n \to +\infty} g(n\delta) = 0$. 试证 $\lim\limits_{x \to +\infty} g(x) = 0$.
+}
+
+\oneproblem{
+    证明以下命题：
+    \begin{enumerate}[label=(\arabic*), itemsep=6.5cm]
+        \item 如果 $f(x)$ 在 $(-\infty, +\infty)$ 上一致连续，则存在正数 $a, b$，对 $\forall x \in (-\infty, +\infty)$，有 $|f(x)| \le a|x| + b$.
+        \item 如果 $f(x)$ 在 $[1, +\infty)$ 上满足利普希茨条件. 证明 $g(x) = \dfrac{f(x)}{x}$ 在 $[1, +\infty)$ 上有界，并且一致连续.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 8 天
+% ======================================================
+\setday{8}{导数的概念与性质}
+
+\oneproblem{
+    设 $F(x) = \begin{cases} \dfrac{f(x)}{x}, & x \neq 0 \\ f(0), & x = 0 \end{cases}$，其中 $f(x)$ 在 $x=0$ 处可导，$f'(0) \neq 0, f(0) = 0$，则 $x=0$ 是 $F(x)$ 的（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 连续点
+            \item 第一类间断点
+            \item 第二类间断点
+            \item 连续点或间断点不能由此确定
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知函数 $f(x) = \begin{cases} \sqrt{|x|} \sin \dfrac{1}{x^2}, & x \neq 0 \\ 0, & x = 0 \end{cases}$，则 $f(x)$ 在点 $x=0$ 处（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 极限不存在
+            \item 极限存在但不连续
+            \item 连续但不可导
+            \item 可导
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $f(x)$ 为可导函数，且满足条件 $\lim\limits_{x \to 0} \dfrac{f(1) - f(1-x)}{2x} = -1$，则曲线 $y=f(x)$ 在点 $(1, f(1))$ 处的切线斜率为（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $2$
+            \item $-1$
+            \item $\dfrac{1}{2}$
+            \item $-2$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $f(0) = 0$，则 $f(x)$ 在 $x=0$ 处可导的充要条件为（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $\lim\limits_{h \to 0} \dfrac{f(1 - \cos h)}{h^2}$ 存在
+            \item $\lim\limits_{h \to 0} \dfrac{f(1 - e^h)}{h}$ 存在
+            \item $\lim\limits_{h \to 0} \dfrac{f(h - \sin h)}{h^2}$ 存在
+            \item $\lim\limits_{h \to 0} \dfrac{f(2h) - f(h)}{h}$ 存在
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $f'(x)$ 在 $[a, b]$ 上连续，且 $f'(a) > 0, f'(b) < 0$，则下列结论错误的是（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 至少存在一点 $x_0 \in (a, b)$，使得 $f(x_0) > f(a)$
+            \item 至少存在一点 $x_0 \in (a, b)$，使得 $f(x_0) > f(b)$
+            \item 至少存在一点 $x_0 \in (a, b)$，使得 $f'(x_0) = 0$
+            \item 至少存在一点 $x_0 \in (a, b)$，使得 $f(x_0) = 0$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $x=0$ 处连续，下列命题错误的是（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 若 $\lim\limits_{x \to 0} \dfrac{f(x)}{x}$ 存在，则 $f(0) = 0$
+            \item 若 $\lim\limits_{x \to 0} \dfrac{f(x) + f(-x)}{x}$ 存在，则 $f(0) = 0$
+            \item 若 $\lim\limits_{x \to 0} \dfrac{f(x)}{x}$ 存在，则 $f'(0)$ 存在
+            \item 若 $\lim\limits_{x \to 0} \dfrac{f(x) - f(-x)}{x}$ 存在，则 $f'(0)$ 存在
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x) = (e^x - 1)(e^{2x} - 2) \cdots (e^{nx} - n)$，其中 $n$ 为正整数，则 $f'(0) = $（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $(-1)^{n-1}(n-1)!$
+            \item $(-1)^n(n-1)!$
+            \item $(-1)^{n-1}n!$
+            \item $(-1)^n n!$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\lim\limits_{x \to a} \dfrac{f(x) - a}{x - a} = b$，则 $\lim\limits_{x \to a} \dfrac{\sin f(x) - \sin a}{x - a} = $（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $b \sin a$
+            \item $b \cos a$
+            \item $b \sin f(a)$
+            \item $b \cos f(a)$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设曲线 $y = f(x)$ 和 $y = x^2 - x$ 在点 $(1, 0)$ 处有公共的切线，则 $\lim\limits_{n \to \infty} n f\left( \dfrac{n}{n+2} \right) = \underline{\hspace{2cm}}$。
+}
+
+\oneproblem{
+    设函数 $f(x) = \begin{cases} x^\alpha \cos \dfrac{1}{x^\beta}, & x > 0 \\ 0, & x \le 0 \end{cases} \ (\alpha > 0, \beta > 0)$，若 $f'(x)$ 在 $x=0$ 处连续，则（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $\alpha - \beta > 1$
+            \item $0 < \alpha - \beta \le 1$
+            \item $\alpha - \beta > 2$
+            \item $0 < \alpha - \beta \le 2$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知函数 $f(x) = \begin{cases} x, & x \le 0 \\ \dfrac{1}{n}, & \dfrac{1}{n+1} < x \le \dfrac{1}{n}, n=1,2,\cdots \end{cases}$，则（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $x=0$ 是 $f(x)$ 的第一类间断点
+            \item $x=0$ 是 $f(x)$ 的第二类间断点
+            \item $f(x)$ 在 $x=0$ 处连续但不可导
+            \item $f(x)$ 在 $x=0$ 处可导
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在区间 $(-1, 1)$ 内有定义，且 $\lim\limits_{x \to 0} f(x) = 0$，则（ \quad ）。
+        \begin{enumerate}[label=(\Alph*)]
+            \item 当 $\lim\limits_{x \to 0} \dfrac{f(x)}{\sqrt{|x|}} = 0$ 时，$f(x)$ 在 $x=0$ 处可导
+            \item 当 $\lim\limits_{x \to 0} \dfrac{f(x)}{x^2} = 0$ 时，$f(x)$ 在 $x=0$ 处可导
+            \item 当 $f(x)$ 在 $x=0$ 处可导时，$\lim\limits_{x \to 0} \dfrac{f(x)}{\sqrt{|x|}} = 0$
+            \item 当 $f(x)$ 在 $x=0$ 处可导时，$\lim\limits_{x \to 0} \dfrac{f(x)}{x^2} = 0$
+        \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 可导，$F(x) = f(x)(1 + |\sin x|)$，则 $f(0)=0$ 是 $F(x)$ 在 $x=0$ 处可导的（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 充分必要条件
+            \item 充分条件但非必要条件
+            \item 必要条件但非充分条件
+            \item 既非充分条件又非必要条件
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x) = \lim\limits_{n \to \infty} \sqrt[n]{1 + |x|^{3n}}$，则 $f(x)$ 在 $(-\infty, +\infty)$ 内（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 处处可导
+            \item 恰有一个不可导点
+            \item 恰有两个不可导点
+            \item 至少有三个不可导点
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x) = \begin{cases} 1 - 2x^2, & x < -1 \\ x^3, & -1 \le x \le 2 \\ 12x - 16, & x > 2 \end{cases}$
+    \begin{enumerate}[label=(\arabic*)]
+        \item 写出 $f(x)$ 的反函数 $g(x)$ 的表达式；
+        \item 问 $g(x)$ 是否有间断点与不可导点，若有，指出这些点。
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知 $f(x)$ 是周期为 $5$ 的连续函数，它在 $x=0$ 的某个邻域内满足关系式
+    $f(1 + \sin x) - 3f(1 - \sin x) = 8x + \alpha(x)$\\
+    其中 $\alpha(x)$ 是当 $x \to 0$ 时比 $x$ 高阶的无穷小，且 $f(x)$ 在 $x=1$ 处可导，求曲线 $y=f(x)$ 在点 $(6, f(6))$ 处的切线方程。
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(-\infty, +\infty)$ 上有定义，在区间 $[0, 2]$ 上 $f(x) = x(x^2 - 4)$。若对任意的 $x$ 都满足 $f(x) = kf(x+2)$，其中 $k$ 为常数。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 写出 $f(x)$ 在 $[-2, 0]$ 上的表达式；
+        \item 问 $k$ 为何值时，$f(x)$ 在 $x=0$ 处可导。
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知 $f(x)$ 在 $x=1$ 处可导，且 $\lim\limits_{x \to 0} \dfrac{f(e^{x^2}) - 3f(1 + \sin^2 x)}{x^2} = 2$，求 $f'(1)$。
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $x=0$ 的某邻域内具有一阶连续导数，且 $f(0) \neq 0, f'(0) \neq 0$，若 $a f(h) + b f(2h) - f(0)$ 在 $h \to 0$ 时是比 $h$ 高阶的无穷小，试确定 $a, b$ 的值。
+}
+
+\oneproblem{
+    求下列函数在指定点的导数：
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item 设 $f(x) = \arcsin(x + x^2) \cdot \sqrt{\dfrac{1 - \sin^2 x}{1 + x^3}}$，求 $f'(0)$。
+        \item 设 $f(x) = \varphi(a + bx) - \varphi(a - bx)$，其中 $\varphi(x)$ 在 $x=a$ 处的导数为 $\varphi'(a)$，求 $f'(0)$。
+        \item 设 $f(x), g(x)$ 在 $(-\infty, +\infty)$ 上有定义，且对于任意的 $x, y$ 恒有 $f(x+y) = f(x)g(y) + f(y)g(x)$，且 $f(0)=0, g(0)=1, f'(0)=1, g'(0)=0$，求 $f'(x)$。
+        \item 设 $f(x) = (x-a)^m(x-b)^n(x-c)^p$ ($m, n, p$ 是自然数)，求 $f'(a), f'(b), f'(c)$。
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[a, b]$ 上连续，且满足 $f(a) = f(b) = 0$，$f'_+(a), f'_-(b)$ 存在，$f'_+(a) \cdot f'_-(b) > 0$。证明：$f(x)$ 在 $(a, b)$ 内存在零点。
+}
+
+\oneproblem{
+    设 $f(x)$ 是定义在 $(-1, 1)$ 的实值函数，且 $f'(0)$ 存在，又 $\{a_n\}, \{b_n\}$ 是两个数列，满足 $-1 < a_n < 0 < b_n < 1, \lim\limits_{n \to \infty} a_n = 0, \lim\limits_{n \to \infty} b_n = 0$。证明：$\lim\limits_{n \to \infty} \dfrac{f(b_n) - f(a_n)}{b_n - a_n} = f'(0)$。
+}
+
+% ======================================================
+% 第 9 天
+% ======================================================
+\setday{9}{导数的基本计算方法}
+
+\oneproblem{
+    设函数 $g(x)$ 可微，$h(x) = e^{1+g(x)}, h'(1) = 1, g'(1) = 2$，则 $g(1)$ 等于（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item $\ln 3 - 1$
+            \item $-\ln 3 - 1$
+            \item $-\ln 2 - 1$
+            \item $\ln 2 - 1$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知 $y = f\left( \dfrac{3x-2}{3x+2} \right), f'(x) = \arctan x^2$，则 $\dfrac{\mathrm{d}y}{\mathrm{d}x} \bigg|_{x=0} = \underline{\hspace{2cm}}$。
+}
+
+\oneproblem{
+    设方程 $x = y^y$ 确定 $y$ 是 $x$ 的函数，则 $\dfrac{\mathrm{d}y}{\mathrm{d}x} = \underline{\hspace{2cm}}$。
+}
+
+\oneproblem{
+    设 $f(x) = \begin{cases} x^\lambda \cos \dfrac{1}{x}, & x \neq 0 \\ 0, & x = 0 \end{cases}$ 其导函数在 $x=0$ 处连续，则 $\lambda$ 的取值范围 $\underline{\hspace{2cm}}$。
+}
+
+\oneproblem{
+    设曲线 $f(x) = x^n$ 在点 $(1, 1)$ 处的切线与 $x$ 轴的交点为 $(\xi_n, 0)$，则 $\lim\limits_{n \to \infty} f(\xi_n) = \underline{\hspace{1cm}}$。
+}
+
+\oneproblem{
+    设函数 $f(x) = \begin{cases} \ln \sqrt{x}, & x \ge 1 \\ 2x - 1, & x < 1 \end{cases}$，$y = f[f(x)]$，则 $\dfrac{\mathrm{d}y}{\mathrm{d}x} \bigg|_{x=e} = \underline{\hspace{2cm}}$。
+}
+
+\oneproblem{
+    设 $f(x)$ 为可导函数，证明：若 $x=1$ 时，有 $\dfrac{\mathrm{d}}{\mathrm{d}x} f(x^2) = \dfrac{\mathrm{d}}{\mathrm{d}x} f^2(x)$，则必有 $f'(1) = 0$ 或 $f(1) = 1$。
+}
+
+\oneproblem{
+    若 $f(t) = \left( \tan \dfrac{\pi t}{4} - 1 \right) \left( \tan \dfrac{\pi t^2}{4} - 2 \right) \cdots \left( \tan \dfrac{\pi t^{100}}{4} - 100 \right)$，求 $f'(1)$。
+}
+
+\oneproblem{
+    求下列函数的导数 $y'$：
+    \begin{enumerate}[label=(\arabic*),itemsep=3cm]
+        \item $y = e^{\tan \frac{1}{x}} \cdot \sin \dfrac{1}{x}$
+        \item $y = \dfrac{\sqrt{x+2} (3-x)^4}{(x+1)^5}$
+        \item $f(x) = \begin{cases} x^2 \sin \dfrac{1}{x}, & x > 0 \\ 0, & x = 0 \\ \dfrac{1 - \cos x^2}{x}, & x < 0 \end{cases}$
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $n$ 为正整数，求极限
+    $\lim\limits_{x \to 0} \dfrac{\sqrt{1+x} \sqrt[4]{1+2x} \sqrt[6]{1+3x} \cdots \sqrt[2n]{1+nx} - 1}{3\pi \arcsin x - (x^2 + 1)\arctan^3 x}$
+}
+
+\oneproblem{
+    设 $f(x) = \lim\limits_{n \to \infty} n^2 (\sqrt[n]{x} - \sqrt[n+1]{x}), (x > 0)$，求 $f'(x)$。
+}
+
+% ======================================================
+% 第 10 天
+% ======================================================
+\setday{10}{一元函数高阶导数及其计算方法}
+
+\oneproblem{
+    已知函数 $f(x) = e^{\sin x} + e^{-\sin x}$，计算 $f'''(2\pi)$。
+}
+
+\oneproblem{
+    设 $f(x) = (x^2 + 2x - 3)^n \arctan^2 \dfrac{x}{3}$，其中 $n$ 为正整数，求 $f^{(n)}(-3)$。
+}
+
+\oneproblem{
+    设 $f(x) = 3x^3 + x^2 |x|$，试求使 $f^{(n)}(0)$ 存在的最高阶数 $n$ 的值。
+}
+
+\oneproblem{
+    已知函数 $f(x)$ 具有任意阶导数，且 $f'(x) = [f(x)]^2$，则当 $n$ 为大于 $2$ 的正整数时，求 $f(x)$ 的 $n$ 阶导数 $f^{(n)}(x)$。
+}
+
+\oneproblem{
+    已知函数 $f(x) = \begin{cases} x^4 \sin \dfrac{1}{x}, & x \neq 0 \\ 0, & x = 0 \end{cases}$，试求 $f''(0)$。
+}
+
+\oneproblem{
+    设 $y = f(x+y)$，其中 $f$ 具有二阶导数，且其一阶导数不等于 $1$，求 $\dfrac{\mathrm{d}^2 y}{\mathrm{d} x^2}$。
+}
+
+\oneproblem{
+    设 $y = \sin [f(x^2)]$，其中 $f$ 具有二阶导数，求 $\dfrac{\mathrm{d}^2 y}{\mathrm{d} x^2}$。
+}
+
+\oneproblem{
+    求 $f(x) = x^2 \ln(1+x)$ 在 $x=0$ 处的 $n$ 阶导数 $f^{(n)}(0) \ (n \ge 3)$。
+}
+
+\oneproblem{
+    计算下列函数的 $n$ 阶导数：
+    \begin{multicols}{3}
+        \begin{enumerate}[label=(\arabic*),itemsep=8cm]
+            \item $y = \dfrac{2x}{1 - x^2}$
+            \item $y = \ln(1 - x^2)$
+            \item $y = \sin^6 x + \cos^6 x$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $y = f(x) = \dfrac{1+x}{\sqrt{1-x}}$，求 $y^{(2018)}$。
+}
+
+\oneproblem{
+    试求下列函数的 $y^{(n)}(0)$：
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\arabic*)]
+            \item $y = \arctan x$
+            \item $y = (\arcsin x)^2$
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    证明：函数 $f(x) = \begin{cases} e^{-\frac{1}{x^2}}, & x \neq 0 \\ 0, & x = 0 \end{cases}$ 在 $x=0$ 处 $f^{(n)}(0) = 0, n=1, 2, 3 \cdots$。
+}
+
+\oneproblem{
+    已知 $y = f(x)$ 三次可导，且 $f'(x) \neq 0$，函数 $x = \varphi(y)$ 是它的反函数，
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$\varphi''(y) = -\dfrac{f''(x)}{[f'(x)]^3}$；
+        \item 求 $\varphi'''(y)$。
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x) = \begin{cases} e^x (\sin x + \cos x), & x \le 0 \\ ax^2 + bx + c, & x > 0 \end{cases}$ 试确定常数 $a, b, c$ 的值使得 $f''(x)$ 在 $(-\infty, +\infty)$ 内处处存在。
+}
+
+\oneproblem{
+    已知等式 $(1 - x^2) \dfrac{\mathrm{d}^2 y}{\mathrm{d} x^2} - x \dfrac{\mathrm{d} y}{\mathrm{d} x} + a^2 y = 0$，对其作变量代换 $x = \sin t$，计算所得 $y$ 关于 $t$ 的导数的等式。
+}
+
+% ======================================================
+% 第 11 天
+% ======================================================
+\setday{11}{隐函数与参数方程所确定的函数的导数}
+
+\oneproblem{
+    设 $\begin{cases} x = f(t) - \pi \\ y = f(e^{3t} - 1) \end{cases}$，其中 $f$ 可导且 $f'(0) \neq 0$，求 $\dfrac{\mathrm{d} y}{\mathrm{d} x} \bigg|_{t=0}$。
+}
+
+\oneproblem{
+    求对数螺线 $\rho = e^\theta$ 在点 $(\rho, \theta) = \left( e^{\frac{\pi}{2}}, \dfrac{\pi}{2} \right)$ 处的切线的直角坐标方程。
+}
+
+\oneproblem{
+    设 $\begin{cases} x = \sqrt{t^2 + 1} \\ y = \ln(t + \sqrt{t^2 + 1}) \end{cases}$，求 $\dfrac{\mathrm{d}^2 y}{\mathrm{d} x^2} \bigg|_{t=1}$。
+}
+
+\oneproblem{
+    设函数 $y = f(x)$ 由方程 $\cos(xy) + \ln y - x = 1$ 确定，求 $\lim\limits_{n \to \infty} n \left[ f\left( \dfrac{2}{n} \right) - 1 \right]$。
+}
+
+\oneproblem{
+    已知函数 $f(u)$ 具有二阶导数，且 $f'(0) = 1$，函数 $y = y(x)$ 由方程 $y - xe^{y-1} = 1$ 所确定，设 $z = f(\ln y - \sin x)$，求 $\dfrac{\mathrm{d} z}{\mathrm{d} x} \bigg|_{x=0}, \dfrac{\mathrm{d}^2 z}{\mathrm{d} x^2} \bigg|_{x=0}$。
+}
+
+\oneproblem{
+    试求曲线 $\begin{cases} x = t - \sin t \\ y = 1 - \cos t \end{cases}$ 在 $t = \dfrac{3\pi}{2}$ 对应点处切线在 $y$ 轴上的截距。
+}
+
+\oneproblem{
+    设 $y = y(x)$ 是由 $x = \ln t, y = \dfrac{1}{t}$ 确定的函数，试求 $\dfrac{\mathrm{d}^n y}{\mathrm{d} x^n}$。
+}
+
+\oneproblem{
+    已知 $\begin{cases} x = \ln(1 + e^{2t}) \\ y = t - \arctan e^t \end{cases}$，求 $\dfrac{\mathrm{d}^2 y}{\mathrm{d} x^2}$。
+}
+
+\oneproblem{
+    设 $y = y(x)$ 由方程 $xe^{f(y)} = e^y \ln 29$ 确定，其中 $f$ 具有二阶导数，且 $f' \neq 1$，试求 $\dfrac{\mathrm{d}^2 y}{\mathrm{d} x^2}$。
+}
+
+\oneproblem{
+    若曲线 $y = y(x)$ 由 $\begin{cases} x = t + \cos t \\ e^y + ty + \sin t = 1 \end{cases}$ 确定，试求此曲线在 $t=0$ 对应点处的切线方程。
+}
+
+\oneproblem{
+    设 $y = f(x)$ 是由方程 $\arctan \dfrac{x}{y} = \ln \sqrt{x^2 + y^2} - \dfrac{1}{2} \ln 2 + \dfrac{\pi}{4}$ 确定的隐函数，且满足 $f(1) = 1$，试求曲线 $y = f(x)$ 在点 $(1, 1)$ 处的切线方程。
+}
+
+\oneproblem{
+    设函数 $y = f(x)$ 由方程 $3x - y = 2\arctan(y - 2x)$ 所确定，试求曲线 $y = f(x)$ 在点 $P \left( 1 + \dfrac{\pi}{2}, 3 + \pi \right)$ 处的切线方程。
+}
+
+% ======================================================
+% 第 12 天
+% ======================================================
+\setday{12}{函数的微分、变化率与相关变化率}
+
+\oneproblem{
+    设 $y = \ln(1 + 3^{-x})$，求 $\mathrm{d} y$。
+}
+
+\oneproblem{
+    设 $y = f(\ln x) e^{f(x)}$，其中 $f$ 可微，求 $\mathrm{d} y$。
+}
+
+\oneproblem{
+    已知一长方形的长 $l$ 以 $2\text{cm/s}$ 的速率增加，宽 $w$ 以 $3\text{cm/s}$ 的速率增加，则当 $l=12\text{cm}, w=5\text{cm}$ 时，试求它的对角线增加的速率。
+}
+
+\oneproblem{
+    已知动点 $P$ 在曲线 $y = x^3$ 上运动，记坐标原点与点 $P$ 间的距离为 $l$。若点 $P$ 的横坐标时间的变化率为常数 $v_0$，则当点 $P$ 运动到点 $(1, 1)$ 时，求 $l$ 对时间的变化率。
+}
+
+\oneproblem{
+    若函数 $y = f(x)$ 有 $f'(x_0) = \dfrac{1}{2}$，则 $\Delta x \to 0$ 时，该函数在 $x=x_0$ 处的微分 $\mathrm{d} y$ 是（ \quad ）。
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\Alph*)]
+            \item 与 $\Delta x$ 等价的无穷小
+            \item 与 $\Delta x$ 同阶的无穷小
+            \item 比 $\Delta x$ 低阶的无穷小
+            \item 比 $\Delta x$ 高阶的无穷小
+        \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    有一圆柱体底面半径与高随时间变化的速率分别为 $2\text{cm/s}, -3\text{cm/s}$，当底面半径为 $10\text{cm}$，高为 $5\text{cm}$ 时，圆柱体的体积和表面积随时间变化的速率分别是多少呢？
+}
+
+\oneproblem{
+    设函数 $f(u)$ 可导，$y = f(x^2)$ 当自变量 $x$ 在 $x = -1$ 处取得增量 $\Delta x = -0.1$ 时，相应的函数增量 $\Delta y$ 的线性主部为 $0.1$，求 $f'(1)$。
+}
+
+\oneproblem{
+    求由方程 $2y - x = (x - y) \ln(x - y)$ 所确定的函数 $y = y(x)$ 的微分 $\mathrm{d} y$。
+}
+
+\oneproblem{
+    设有一直细杆的质量分布为均匀，若该细杆的长度为 $l \ (\text{m})$，质量为 $m \ (\text{kg})$，则该细杆的线密度（即单位长度上的质量）为 $\rho = \dfrac{m}{l} \ (\text{kg/m})$。今有一长度为 $l$、质量分布非均匀的细杆，其质量分布函数为 $f(x) = \sqrt{x} \ (\text{kg})$，求其在任意一点处的线密度。
+}
+
+\oneproblem{
+    一气球从离开观察员 $500\text{m}$ 处离地面铅直上升，其速率为 $140\text{m/min}$，当气球高度为 $500\text{m}$ 时，观察员视线的仰角增加率是多少？
+}
+
+\oneproblem{
+    有一底半径为 $R\text{cm}$，高为 $h\text{cm}$ 的圆锥容器，现以 $25\text{cm}^3/\text{s}$ 的速度自顶部向容器内注水，试求当容器内水位等于锥高的一半时水面上升的速度。
+}
+
+\oneproblem{
+    现有甲乙两条正在航行的船只，甲船向正南航行，乙船向正东直线航行。开始时甲船恰在乙船正北 $40\text{km}$ 处，后来在某一时刻测得甲船向南航行了 $20\text{km}$，此时速度为 $15\text{km/h}$；乙船向东航行了 $15\text{km}$，此时速度为 $25\text{km/h}$。问这时两船是在分离还是在接近，两者之间间隔距离变化的速度是多少？
+}
+
+\oneproblem{
+    设有一长为 $6\text{m}$ 的梯子靠在墙角，梯子底部离墙角的距离为 $5\text{m}$。在某一时刻，它的底部开始滑离，其水平速度为 $0.2\text{m/s}$。问：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 梯子顶部下滑的速度是多少？
+        \item 由梯子、墙面线、地面线所构成的三角形的面积以怎样的速度变化？
+        \item 梯子和地面的夹角 $\theta$ 以怎样的速度变化？
+    \end{enumerate}
+}
+
+\oneproblem{
+    一根振动的小提琴琴弦的振动频率为 $f = \dfrac{1}{2L} \sqrt{\dfrac{M}{\rho}}$，其中 $L$ 为琴弦的长度，$M$ 为其张力，$\rho$ 为其线密度。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 固定另外两个参数，分别求出频率相对于参数 $L, M, \rho$ 的变化率；
+        \item 旋律的音调是由频率 $f$ 来决定的（频率越高，音调就越高）。试根据 (1) 中变化率的符号来分析下述情况下，提琴的音调会怎样变化。
+        \begin{enumerate}[label=\textcircled{\small\arabic*}]
+            \item 通过指法使琴弦的振动部分（有效琴弦的长度）变短；
+            \item 通过调整琴的调音杆使琴弦的张力增加；
+            \item 通过更换琴弦使其线密度增加。
+        \end{enumerate}
+    \end{enumerate}
+}

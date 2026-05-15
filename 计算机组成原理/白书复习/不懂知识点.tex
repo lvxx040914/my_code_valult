@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\section{小数的原码、反码、补码知识点总结}
+
+\begin{enumerate}[label=\textbf{\arabic*}.]
+    \item 小数编码格式
+    \textbf{答：}
+    定点小数编码格式统一为：\textbf{符号位.数值位}。
+    \begin{itemize}
+        \item 符号位：0 表示正数，1 表示负数；
+        \item 小数点固定在符号位与数值位之间。
+    \end{itemize}
+
+    \item 正数的小数编码
+    \textbf{答：}
+    正数的原码、反码、补码 \textbf{完全相同}。
+    \[
+    [x]_{\text{原}} = [x]_{\text{反}} = [x]_{\text{补}} = 0.x_1x_2\cdots x_n
+    \]
+
+    \item 负数的小数编码
+    \textbf{答：}
+    设负数真值为 $x = -0.x_1x_2\cdots x_n$，则：
+    \begin{itemize}
+        \item 原码：符号位为 1，数值位不变
+        \[[x]_{\text{原}} = 1.x_1x_2\cdots x_n\]
+        \item 反码：符号位为 1，数值位按位取反
+        \[[x]_{\text{反}} = 1.\overline{x_1}\overline{x_2}\cdots\overline{x_n}\]
+        \item 补码：反码 $+ 0.00\cdots01$（末位加 1）
+        \[[x]_{\text{补}} = [x]_{\text{反}} + 0.00\cdots01\]
+    \end{itemize}
+
+    \item 零的小数编码
+    \textbf{答：}
+    \begin{itemize}
+        \item 原码：$[+0.0]_{\text{原}}=0.000,\ [-0.0]_{\text{原}}=1.000$（存在两种表示）
+        \item 反码：$[+0.0]_{\text{反}}=0.000,\ [-0.0]_{\text{反}}=1.111$（存在两种表示）
+        \item 补码：$[0.0]_{\text{补}}=0.000$（唯一表示）
+    \end{itemize}
+
+    \item 小数补码的重要特性
+    \textbf{答：}
+    \begin{itemize}
+        \item 补码中 $\boldsymbol{1.000\cdots0}$ 表示 $\boldsymbol{-1}$（n 位小数可表示 $-1$）；
+        \item 小数补码的表示范围：
+        \[
+        -1 \le x \le 1 - 2^{-n}
+        \]
+        \item 小数补码的符号扩展不改变真值；
+        \item 补码小数运算时，符号位与数值位一起参与运算。
+    \end{itemize}
+
+    \item 典型小数编码示例（3 位数值位）
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x = +0.625 = +0.101$
+        \\原码：0.101，反码：0.101，补码：0.101
+        \item $x = -0.625 = -0.101$
+        \\原码：1.101，反码：1.010，补码：1.011
+        \item $x = -0.125 = -0.001$
+        \\原码：1.001，反码：1.110，补码：1.111
+        \item $x = -1.0$（仅补码可表示）
+        \\补码：1.000
+    \end{enumerate}
+
+    \item 小数补码求真值
+    \textbf{答：}
+    \begin{itemize}
+        \item 符号位为 0（正数）：直接按位展开
+        \item 符号位为 1（负数）：
+        \[\text{真值} = -(\text{数值位按位取反} + 0.00\cdots01)\]
+    \end{itemize}
+
+\end{enumerate}
+
+\section{小数原码、反码、补码转换为十进制真值的方法}
+
+\begin{enumerate}[label=\arabic*.]
+\item 定点小数格式约定
+\textbf{说明：}
+定点小数格式：\textbf{符号位 . 数值位}
+\begin{itemize}
+    \item 符号位：$0$ 表示正数，$1$ 表示负数；
+    \item 小数点固定在符号位与数值位中间；
+    \item 形式：$x_s.x_1x_2\cdots x_n$。
+\end{itemize}
+
+\item 小数\textbf{原码}转十进制规则
+\textbf{规则：}
+\begin{enumerate}
+    \item 符号位为 $0$（正数）：
+    直接把小数点后二进制数值按权展开求和。
+    \[
+    x = \sum_{i=1}^n x_i 2^{-i}
+    \]
+    \item 符号位为 $1$（负数）：
+    先把数值位按权展开，再加负号。
+    \[
+    x = -\,\sum_{i=1}^n x_i 2^{-i}
+    \]
+\end{enumerate}
+
+\item 小数\textbf{反码}转十进制规则
+\textbf{规则：}
+\begin{enumerate}
+    \item 符号位为 $0$（正数）：与原码相同，直接按权展开；
+    \item 符号位为 $1$（负数）：
+    先对\textbf{数值位按位取反}，再按权展开，最后加负号。
+\end{enumerate}
+
+\item 小数\textbf{补码}转十进制规则
+\textbf{规则：}
+\begin{enumerate}
+    \item 符号位为 $0$（正数）：直接按权展开即可；
+    \item 符号位为 $1$（负数）：
+    方法一：对整个补码求补（数值位取反末位加1）得到原码，再转十进制；
+    方法二：公式法
+    \[
+    x = -1 + \sum_{i=1}^n x_i 2^{-i}
+    \]
+\end{enumerate}
+
+\item 典型例题演示
+\textbf{例1：}已知小数原码 $0.101$，求十进制。\\
+符号位为0，正数：
+\[
+0.101_2 = 1\times 2^{-1}+0\times 2^{-2}+1\times 2^{-3} = 0.625
+\]
+
+\textbf{例2：}已知小数原码 $1.101$，求十进制。\\
+符号位为1，数值位 $101$：
+\[
+x = -(1\times 2^{-1}+0\times 2^{-2}+1\times 2^{-3}) = -0.625
+\]
+
+\textbf{例3：}已知小数反码 $1.010$，求十进制。\\
+符号位1，数值位取反为 $101$：
+\[
+x = -0.101_2 = -0.625
+\]
+
+\textbf{例4：}已知小数补码 $1.011$，求十进制。\\
+用公式：$x=-1 + 0.011_2$
+\[
+x = -1 + (0\times 2^{-1}+1\times 2^{-2}+1\times 2^{-3}) = -0.625
+\]
+
+\end{enumerate}
+
+\begin{enumerate}
+    \item 32位浮点数：符号位1位，阶码8位移码，尾数23位补码，基数2。求最大数、最小数及规格化数范围。
+    
+    \textbf{答：}
+    \textbf{一、知识点回顾}
+    \begin{enumerate}[label=(\arabic*)]
+        \item \textbf{格式组成}：32位分为三部分 \\
+             符号位 $S$(1位) + 阶码 $E$(8位移码) + 尾数 $M$(23位补码)。
+        \item \textbf{真值公式}：
+             \[ V = (-1)^S \times (1.M) \times 2^{E - 127} \]
+        \item \textbf{偏移量}：8位移码偏移量为 \textbf{127}，真实指数 $e = E - 127$。
+        \item \textbf{隐含首位}：规格化数尾数前隐含整数 \textbf{1}，即尾数真值为 $1.M$。
+    \end{enumerate}
+
+    \textbf{二、具体计算}
+    \begin{enumerate}[label=(\arabic*)]
+        \item \textbf{最大数}：正数、阶码最大、尾数最大 \\
+             $S=0, E=11111111(255), M=\text{全1}$ \\
+             数值：$0 \times 2^{255-127} \times (2-2^{-23}) = \boldsymbol{2^{127}(1-2^{-23})}$ \\
+             二进制：0 11111111 11111111111111111111111
+        
+        \item \textbf{最小数}：负数、阶码最大、尾数最小 \\
+             $S=1, E=11111111(255), M=\text{全0}$ \\
+             数值：$-1 \times 2^{255-127} \times 1.0 = \boldsymbol{-2^{127}}$ \\
+             二进制：1 11111111 00000000000000000000000
+        
+        \item \textbf{规格化数范围}：
+             最小阶码 $E=00000001, e_{\text{min}}=-126$，
+             结合非规格化数（接近0），完整范围为：
+             \[ [-2^{127},\ -2^{-129}] \cup [2^{-129},\ 2^{127}(1-2^{-23})] \]
+    \end{enumerate}
+
+    \item 区分浮点数符号位与尾数隐含整数1的概念
+
+    \textbf{答：}
+        32位IEEE754浮点数格式分为：1位符号位$S$、8位阶码$E$、23位尾数$M$。
+    \begin{enumerate}[label=(\arabic*)]
+    \item 最高位符号位$S$：$S=0$ 表示正数，$S=1$ 表示负数，唯一决定数的正负。
+    \item 规格化尾数形式为 $1.M$：此处整数位$1$是二进制尾数固有的整数部分，为节省一位存储空间不实际存储，\textbf{仅表示数值大小，不是符号位，与正负无关}。
+    \end{enumerate}
+真值公式：
+\[
+V = (-1)^S \times 1.M \times 2^{E-127}
+\]
+\end{enumerate}
+
+\section{十进制小数转换为二进制知识点}
+\begin{enumerate}[label=\arabic*.]
+\item 转换方法
+\textbf{答：}
+十进制纯小数转换成二进制采用 \textbf{乘2取整法}。
+
+\item 转换规则
+\textbf{答：}
+\begin{enumerate}[label=(\arabic*)]
+    \item 将十进制小数反复乘以 2；
+    \item 每次相乘后取出 \textbf{整数部分}，作为二进制小数的一位；
+    \item 余下的小数部分继续乘2，重复上述过程；
+    \item 直到小数部分为 0 结束，或按精度要求截断；
+    \item 依次取出的整数部分 \textbf{从上到下顺序排列}，构成二进制小数。
+\end{enumerate}
+
+\item 口诀
+\textbf{答：}
+乘二取整，正序排列；整数在上，小数续算。
+
+\item 重要性质
+\textbf{答：}
+\begin{enumerate}[label=(\arabic*)]
+    \item 十进制有限小数，转换成二进制可能是无限循环小数；
+    \item 整数部分用「除2取余」，小数部分用「乘2取整」，分开转换；
+    \item 二进制小数形式为 $0.b_1b_2b_3\cdots$。
+\end{enumerate}
+
+\item 例题：将 $0.625_{10}$ 转为二进制
+\textbf{答：}
+\[
+\begin{aligned}
+0.625 \times 2 &= 1.25 \quad \text{取整：}1\\
+0.25 \times 2  &= 0.50 \quad \text{取整：}0\\
+0.50 \times 2  &= 1.00 \quad \text{取整：}1
+\end{aligned}
+\]
+小数部分为0，计算结束。
+按顺序排列得：
+\[
+0.625_{10} = 0.101_2
+\]
+\end{enumerate}
+
+\end{document}

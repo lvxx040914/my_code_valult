@@ -1,0 +1,124 @@
+\contentsline {section}{\numberline {1}Linux 基础概念}{5}{section.1}%
+\contentsline {subsection}{\numberline {1.1}什么是 Linux}{5}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Linux 的核心思想}{5}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Linux 目录结构}{6}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Linux 常用命令}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}命令基本格式}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}获取帮助}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}目录操作}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}文件操作}{8}{subsection.2.4}%
+\contentsline {section}{\numberline {3}文件查看与文本处理}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}grep 查找文本}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}find 查找文件}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}sed 文本替换}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}awk 文本处理}{10}{subsection.3.4}%
+\contentsline {section}{\numberline {4}输入输出重定向与管道}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}标准输入、输出、错误}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}重定向}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}管道}{11}{subsection.4.3}%
+\contentsline {section}{\numberline {5}用户、用户组与权限}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}用户相关命令}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}用户管理}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}文件权限}{12}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}权限考试重点}{13}{subsection.5.4}%
+\contentsline {section}{\numberline {6}进程管理}{14}{section.6}%
+\contentsline {subsection}{\numberline {6.1}查看进程}{14}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}终止进程}{14}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}前台与后台任务}{15}{subsection.6.3}%
+\contentsline {section}{\numberline {7}软件包管理}{15}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Debian/Ubuntu：apt}{15}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}RedHat/CentOS/Fedora：dnf 或 yum}{16}{subsection.7.2}%
+\contentsline {section}{\numberline {8}压缩与归档}{16}{section.8}%
+\contentsline {subsection}{\numberline {8.1}tar}{16}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}zip 和 unzip}{16}{subsection.8.2}%
+\contentsline {section}{\numberline {9}磁盘、文件系统与挂载}{17}{section.9}%
+\contentsline {subsection}{\numberline {9.1}查看磁盘信息}{17}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}挂载和卸载}{17}{subsection.9.2}%
+\contentsline {section}{\numberline {10}网络基础命令}{17}{section.10}%
+\contentsline {subsection}{\numberline {10.1}查看网络配置}{17}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}测试网络}{18}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}端口和连接}{18}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}SSH 远程登录}{18}{subsection.10.4}%
+\contentsline {section}{\numberline {11}环境变量}{18}{section.11}%
+\contentsline {subsection}{\numberline {11.1}查看环境变量}{18}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}设置环境变量}{19}{subsection.11.2}%
+\contentsline {section}{\numberline {12}Vim 基础}{19}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Vim 三种常用模式}{19}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}常用操作}{19}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Shell 脚本基础}{20}{section.13}%
+\contentsline {subsection}{\numberline {13.1}第一个 Shell 脚本}{20}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}变量}{20}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}命令替换}{21}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}位置参数}{21}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}条件判断}{21}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}case 分支}{23}{subsection.13.6}%
+\contentsline {subsection}{\numberline {13.7}for 循环}{23}{subsection.13.7}%
+\contentsline {subsection}{\numberline {13.8}while 循环}{24}{subsection.13.8}%
+\contentsline {subsection}{\numberline {13.9}函数}{24}{subsection.13.9}%
+\contentsline {subsection}{\numberline {13.10}退出状态码}{24}{subsection.13.10}%
+\contentsline {subsection}{\numberline {13.11}实用脚本示例：自动备份目录}{24}{subsection.13.11}%
+\contentsline {subsection}{\numberline {13.12}实用脚本示例：检查程序是否运行}{25}{subsection.13.12}%
+\contentsline {section}{\numberline {14}编译、Makefile 与调试}{26}{section.14}%
+\contentsline {subsection}{\numberline {14.1}gcc 编译 C 程序}{26}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Makefile 基础}{27}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}gdb 调试}{27}{subsection.14.3}%
+\contentsline {section}{\numberline {15}Linux 系统管理}{28}{section.15}%
+\contentsline {subsection}{\numberline {15.1}systemd 服务管理}{28}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}定时任务 cron}{29}{subsection.15.2}%
+\contentsline {section}{\numberline {16}嵌入式 Linux 基础}{29}{section.16}%
+\contentsline {subsection}{\numberline {16.1}嵌入式 Linux 启动流程}{29}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}U-Boot 常用命令}{30}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}内核启动参数}{30}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}设备文件}{30}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}proc 文件系统}{31}{subsection.16.5}%
+\contentsline {subsection}{\numberline {16.6}sys 文件系统}{31}{subsection.16.6}%
+\contentsline {subsection}{\numberline {16.7}设备树 Device Tree}{32}{subsection.16.7}%
+\contentsline {subsection}{\numberline {16.8}内核模块}{33}{subsection.16.8}%
+\contentsline {subsection}{\numberline {16.9}交叉编译}{33}{subsection.16.9}%
+\contentsline {subsection}{\numberline {16.10}NFS 根文件系统}{33}{subsection.16.10}%
+\contentsline {section}{\numberline {17}Linux C 编程基础}{34}{section.17}%
+\contentsline {subsection}{\numberline {17.1}文件 I/O}{34}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}进程创建 fork}{35}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}线程 pthread}{35}{subsection.17.3}%
+\contentsline {section}{\numberline {18}ROS 2 基础知识}{36}{section.18}%
+\contentsline {subsection}{\numberline {18.1}ROS 2 是什么}{36}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}ROS 2 核心概念}{37}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}ROS 2 工作空间}{37}{subsection.18.3}%
+\contentsline {subsection}{\numberline {18.4}ROS 2 常用命令}{38}{subsection.18.4}%
+\contentsline {subsubsection}{\numberline {18.4.1}查看节点}{38}{subsubsection.18.4.1}%
+\contentsline {subsubsection}{\numberline {18.4.2}查看话题}{38}{subsubsection.18.4.2}%
+\contentsline {subsubsection}{\numberline {18.4.3}查看服务}{38}{subsubsection.18.4.3}%
+\contentsline {subsubsection}{\numberline {18.4.4}查看参数}{39}{subsubsection.18.4.4}%
+\contentsline {subsubsection}{\numberline {18.4.5}查看接口类型}{39}{subsubsection.18.4.5}%
+\contentsline {subsubsection}{\numberline {18.4.6}运行节点}{39}{subsubsection.18.4.6}%
+\contentsline {subsection}{\numberline {18.5}创建 ROS 2 Python 功能包}{39}{subsection.18.5}%
+\contentsline {subsection}{\numberline {18.6}Python 发布者示例}{40}{subsection.18.6}%
+\contentsline {subsection}{\numberline {18.7}Python 订阅者示例}{41}{subsection.18.7}%
+\contentsline {subsection}{\numberline {18.8}创建 ROS 2 C++ 功能包}{42}{subsection.18.8}%
+\contentsline {subsection}{\numberline {18.9}C++ 发布者示例}{42}{subsection.18.9}%
+\contentsline {subsection}{\numberline {18.10}CMakeLists.txt 示例}{43}{subsection.18.10}%
+\contentsline {section}{\numberline {19}ROS 2 通信机制}{44}{section.19}%
+\contentsline {subsection}{\numberline {19.1}Topic：发布订阅}{44}{subsection.19.1}%
+\contentsline {subsection}{\numberline {19.2}Service：请求响应}{44}{subsection.19.2}%
+\contentsline {subsection}{\numberline {19.3}Action：长时间任务}{45}{subsection.19.3}%
+\contentsline {subsection}{\numberline {19.4}Parameter：参数}{45}{subsection.19.4}%
+\contentsline {subsection}{\numberline {19.5}QoS 服务质量}{45}{subsection.19.5}%
+\contentsline {section}{\numberline {20}ROS 2 Launch 文件}{46}{section.20}%
+\contentsline {section}{\numberline {21}ROS 2 TF2 坐标变换基础}{47}{section.21}%
+\contentsline {section}{\numberline {22}ROS 2 Bag 录包与回放}{47}{section.22}%
+\contentsline {section}{\numberline {23}ROS 2 常见排错}{48}{section.23}%
+\contentsline {subsection}{\numberline {23.1}找不到包}{48}{subsection.23.1}%
+\contentsline {subsection}{\numberline {23.2}节点运行不了}{48}{subsection.23.2}%
+\contentsline {subsection}{\numberline {23.3}话题没有数据}{48}{subsection.23.3}%
+\contentsline {subsection}{\numberline {23.4}多机通信失败}{49}{subsection.23.4}%
+\contentsline {section}{\numberline {24}Linux 与 ROS 2 期末速记}{49}{section.24}%
+\contentsline {subsection}{\numberline {24.1}Linux 命令速记}{49}{subsection.24.1}%
+\contentsline {subsection}{\numberline {24.2}ROS 2 命令速记}{50}{subsection.24.2}%
+\contentsline {section}{\numberline {25}考试常考问答}{51}{section.25}%
+\contentsline {subsection}{\numberline {25.1}Linux 为什么说一切皆文件？}{51}{subsection.25.1}%
+\contentsline {subsection}{\numberline {25.2}绝对路径和相对路径区别是什么？}{51}{subsection.25.2}%
+\contentsline {subsection}{\numberline {25.3}硬链接和软链接区别是什么？}{51}{subsection.25.3}%
+\contentsline {subsection}{\numberline {25.4}进程和线程区别是什么？}{51}{subsection.25.4}%
+\contentsline {subsection}{\numberline {25.5}ROS 2 Topic、Service、Action 区别是什么？}{52}{subsection.25.5}%
+\contentsline {subsection}{\numberline {25.6}ROS 2 为什么不需要 ROS Master？}{52}{subsection.25.6}%
+\contentsline {section}{\numberline {26}最后复习建议}{52}{section.26}%

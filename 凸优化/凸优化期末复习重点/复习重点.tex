@@ -1,0 +1,2237 @@
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage{geometry}
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.4cm}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.35em}
+
+% ---------- 常用命令 ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Ssym}{\mathbb{S}}
+\newcommand{\Snplus}{\mathbb{S}_+^n}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\epi}{\operatorname{epi}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\aff}{\operatorname{aff}}
+\newcommand{\cone}{\operatorname{cone}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\relint}{\operatorname{relint}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\proj}{\operatorname{proj}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\st}{\text{s.t.}}
+\newcommand{\inner}[2]{\left\langle #1,#2 \right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\Pzero}{\textcolor{red}{\textbf{P0 必考}}}
+\newcommand{\Pone}{\textcolor{orange}{\textbf{P1 高频}}}
+\newcommand{\Ptwo}{\textcolor{blue}{\textbf{P2 了解}}}
+\newcommand{\key}{\textcolor{red}{\textbf{重点}}}
+\newcommand{\warn}{\textcolor{purple}{\textbf{易错}}}
+
+% ---------- 定理环境 ----------
+\theoremstyle{definition}
+\newtheorem{definition}{定义}[section]
+\newtheorem{example}{例题}[section]
+\newtheorem{exercise}{练习题}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}{命题}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{备注}[section]
+
+\title{\textbf{凸优化期末复习资料：基础知识与重点题型}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{复习优先级与考试导向}
+
+\subsection*{优先级说明}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+标记 & 含义 & 复习要求 \\
+\midrule
+\Pzero & 必考核心 & 必须会定义、判断、证明、计算、综合应用 \\
+\Pone & 高频重点 & 大概率考察，至少要会套用定理和写规范过程 \\
+\Ptwo & 扩展了解 & 难题、附加题或概念题可能出现 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{本资料重点}
+
+本资料重点覆盖以下五个部分：
+
+\begin{enumerate}[label=\arabic*.]
+    \item 凸集：定义、常见凸集、保凸运算、证明技巧。 \Pzero
+    \item 凸函数：定义、一阶二阶判别、保凸规则、常见函数。 \Pzero
+    \item 凸优化问题标准形式：目标、约束、可行集、最优性。 \Pzero
+    \item 典型凸优化模型：LP、QP、QCQP、SOCP、SDP、最小二乘、正则化模型。 \Pone
+    \item 无约束凸优化：最优性条件、梯度下降、强凸、光滑性、牛顿法。 \Pzero
+\end{enumerate}
+
+\subsection*{期末常见题型}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 判断集合是否凸，并给出证明。 \Pzero
+    \item 判断函数是否凸，并说明依据。 \Pzero
+    \item 将一个优化问题化为凸优化标准形式。 \Pzero
+    \item 判断一个问题是否是 LP、QP、SOCP、SDP 或一般凸优化。 \Pone
+    \item 证明局部最优即全局最优。 \Pzero
+    \item 写出无约束凸优化的一阶最优性条件。 \Pzero
+    \item 分析梯度下降的迭代公式、步长和收敛性质。 \Pone
+    \item 综合题：凸集 + 凸函数 + 标准形式 + 算法判断。 \Pzero
+\end{enumerate}
+
+\newpage
+
+\section{数学预备知识}
+
+\subsection{向量与矩阵基础 \Pzero}
+
+\subsubsection*{内积与范数}
+
+向量 $x,y\in\R^n$ 的标准内积为
+\[
+    \inner{x}{y}=x^Ty.
+\]
+
+常见范数：
+
+\[
+    \norm{x}_2=\sqrt{x^Tx},
+\]
+\[
+    \norm{x}_1=\sum_{i=1}^n |x_i|,
+\]
+\[
+    \norm{x}_\infty=\max_i |x_i|.
+\]
+
+一般 $p$ 范数：
+\[
+    \norm{x}_p
+    =
+    \left(\sum_{i=1}^n |x_i|^p\right)^{1/p},
+    \quad p\ge 1.
+\]
+
+\subsubsection*{半正定矩阵}
+
+对称矩阵 $A\in \Ssym^n$ 称为半正定，记作
+\[
+    A\succeq 0,
+\]
+如果
+\[
+    x^TAx\ge 0,\quad \forall x\in\R^n.
+\]
+
+称 $A$ 为正定，记作
+\[
+    A\succ 0,
+\]
+如果
+\[
+    x^TAx>0,\quad \forall x\neq 0.
+\]
+
+\key{半正定矩阵是凸优化中判断二次函数凸性的核心工具。}
+
+\subsection{常用不等式 \Pone}
+
+\subsubsection*{Cauchy--Schwarz 不等式}
+
+\[
+    |\inner{x}{y}|
+    \le
+    \norm{x}_2\norm{y}_2.
+\]
+
+\subsubsection*{三角不等式}
+
+对任意范数，
+\[
+    \norm{x+y}\le \norm{x}+\norm{y}.
+\]
+
+\subsubsection*{Jensen 不等式}
+
+若 $f$ 是凸函数，$\theta_i\ge0$，$\sum_{i=1}^m\theta_i=1$，则
+\[
+    f\left(\sum_{i=1}^m \theta_i x_i\right)
+    \le
+    \sum_{i=1}^m \theta_i f(x_i).
+\]
+
+Jensen 不等式是凸函数定义的推广形式，常用于证明题。
+
+\newpage
+
+\section{凸集}
+
+\subsection{凸集的定义 \Pzero}
+
+\begin{definition}[凸集]
+集合 $C\subseteq \R^n$ 称为凸集，如果对任意 $x,y\in C$ 和任意 $\theta\in[0,1]$，都有
+\[
+    \theta x+(1-\theta)y\in C.
+\]
+\end{definition}
+
+几何意义：集合中任意两点之间的整条线段都在集合内部。
+
+\subsection{凸组合与凸包 \Pzero}
+
+\begin{definition}[凸组合]
+若 $x_1,\dots,x_m\in\R^n$，$\theta_i\ge0$ 且
+\[
+    \sum_{i=1}^m \theta_i=1,
+\]
+则
+\[
+    \sum_{i=1}^m \theta_i x_i
+\]
+称为 $x_1,\dots,x_m$ 的凸组合。
+\end{definition}
+
+\begin{definition}[凸包]
+集合 $S$ 的凸包定义为
+\[
+    \conv(S)
+    =
+    \left\{
+    \sum_{i=1}^m \theta_i x_i
+    \ \middle|\
+    x_i\in S,\ \theta_i\ge0,\ \sum_{i=1}^m\theta_i=1
+    \right\}.
+\]
+\end{definition}
+
+\key{凸包是包含 $S$ 的最小凸集。}
+
+\subsection{仿射集、锥与凸锥 \Pone}
+
+\subsubsection*{仿射集}
+
+集合 $C$ 称为仿射集，如果对任意 $x,y\in C$ 和任意 $\theta\in\R$，都有
+\[
+    \theta x+(1-\theta)y\in C.
+\]
+
+典型仿射集：
+\[
+    \{x\mid Ax=b\}.
+\]
+
+所有仿射集都是凸集，但凸集不一定是仿射集。
+
+\subsubsection*{锥}
+
+集合 $K$ 称为锥，如果对任意 $x\in K$ 和任意 $\alpha\ge0$，都有
+\[
+    \alpha x\in K.
+\]
+
+\subsubsection*{凸锥}
+
+集合 $K$ 称为凸锥，如果它既是凸集又是锥。
+
+等价地，对任意 $x,y\in K$ 和任意 $\alpha,\beta\ge0$，
+\[
+    \alpha x+\beta y\in K.
+\]
+
+\subsection{常见凸集 \Pzero}
+
+\subsubsection*{1. 空集、单点集、整个空间}
+
+\[
+    \varnothing,\quad \{x_0\},\quad \R^n
+\]
+都是凸集。
+
+\subsubsection*{2. 直线与线段}
+
+直线：
+\[
+    \{x_0+tv\mid t\in\R\}.
+\]
+
+线段：
+\[
+    \{\theta x+(1-\theta)y\mid \theta\in[0,1]\}.
+\]
+
+二者都是凸集。
+
+\subsubsection*{3. 超平面}
+
+\[
+    H=\{x\mid a^Tx=b\}.
+\]
+
+超平面是仿射集，因此是凸集。
+
+\subsubsection*{4. 半空间}
+
+\[
+    H_-=\{x\mid a^Tx\le b\}.
+\]
+
+半空间是凸集。
+
+\subsubsection*{5. 多面体}
+
+\[
+    P=\{x\mid Ax\le b,\ Cx=d\}.
+\]
+
+多面体是有限个半空间和超平面的交集，因此是凸集。
+
+\subsubsection*{6. 范数球}
+
+\[
+    B=\{x\mid \norm{x}\le r\}.
+\]
+
+任意范数球都是凸集。
+
+\subsubsection*{7. 椭球}
+
+\[
+    E=\{x\mid (x-x_c)^TP^{-1}(x-x_c)\le1,\ P\succ0\}.
+\]
+
+椭球是凸集。
+
+\subsubsection*{8. 单纯形}
+
+标准单纯形：
+\[
+    \Delta_n=
+    \left\{
+    x\in\R^n
+    \mid
+    x_i\ge0,\ \sum_{i=1}^n x_i=1
+    \right\}.
+\]
+
+它是半空间和超平面的交集，所以是凸集。
+
+\subsubsection*{9. 半正定锥}
+
+\[
+    \Snplus
+    =
+    \{X\in\Ssym^n\mid X\succeq0\}.
+\]
+
+半正定锥是凸集，也是凸锥。
+
+\subsection{凸集的保凸运算 \Pzero}
+
+以下结论非常常考。
+
+\subsubsection*{1. 交集保持凸性}
+
+若 $\{C_i\}_{i\in I}$ 是一族凸集，则
+\[
+    \bigcap_{i\in I} C_i
+\]
+仍然是凸集。
+
+\warn{并集一般不保持凸性。}
+
+\subsubsection*{2. 仿射映射下的像保持凸性}
+
+若 $C$ 是凸集，$f(x)=Ax+b$，则
+\[
+    f(C)=\{Ax+b\mid x\in C\}
+\]
+是凸集。
+
+\subsubsection*{3. 仿射映射下的原像保持凸性}
+
+若 $C$ 是凸集，$f(x)=Ax+b$，则
+\[
+    f^{-1}(C)=\{x\mid Ax+b\in C\}
+\]
+是凸集。
+
+\subsubsection*{4. 笛卡尔积保持凸性}
+
+若 $C_1\subseteq\R^n$ 和 $C_2\subseteq\R^m$ 是凸集，则
+\[
+    C_1\times C_2
+    =
+    \{(x,y)\mid x\in C_1,\ y\in C_2\}
+\]
+是凸集。
+
+\subsubsection*{5. Minkowski 和保持凸性}
+
+若 $C_1,C_2$ 是凸集，则
+\[
+    C_1+C_2
+    =
+    \{x+y\mid x\in C_1,\ y\in C_2\}
+\]
+是凸集。
+
+\subsubsection*{6. 投影保持凸性}
+
+若 $C\subseteq\R^{n+m}$ 是凸集，则
+\[
+    \proj_x(C)=\{x\mid \exists y,\ (x,y)\in C\}
+\]
+是凸集。
+
+\subsection{证明集合凸性的常用方法 \Pzero}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 直接使用定义：任取 $x,y\in C$，证明 $\theta x+(1-\theta)y\in C$。
+    \item 将集合表示为凸集的交集。
+    \item 将集合表示为凸集在仿射映射下的像或原像。
+    \item 将集合表示为某个凸函数的下水平集：
+    \[
+        C=\{x\mid f(x)\le \alpha\}.
+    \]
+    \item 对矩阵集合，常用二次型证明半正定：
+    \[
+        z^T X z\ge0,\quad \forall z.
+    \]
+\end{enumerate}
+
+\subsection{例题：证明半空间是凸集 \Pzero}
+
+\begin{example}
+证明
+\[
+    C=\{x\in\R^n\mid a^Tx\le b\}
+\]
+是凸集。
+
+\textbf{证明：}
+任取 $x,y\in C$，则
+\[
+    a^Tx\le b,\quad a^Ty\le b.
+\]
+任取 $\theta\in[0,1]$，有
+\[
+    a^T(\theta x+(1-\theta)y)
+    =
+    \theta a^Tx+(1-\theta)a^Ty
+    \le
+    \theta b+(1-\theta)b=b.
+\]
+所以
+\[
+    \theta x+(1-\theta)y\in C.
+\]
+因此 $C$ 是凸集。
+\end{example}
+
+\subsection{例题：证明范数球是凸集 \Pzero}
+
+\begin{example}
+证明
+\[
+    B=\{x\in\R^n\mid \norm{x}\le r\}
+\]
+是凸集。
+
+\textbf{证明：}
+任取 $x,y\in B$，则
+\[
+    \norm{x}\le r,\quad \norm{y}\le r.
+\]
+任取 $\theta\in[0,1]$，由范数的三角不等式和齐次性，
+\[
+\begin{aligned}
+    \norm{\theta x+(1-\theta)y}
+    &\le
+    \theta\norm{x}+(1-\theta)\norm{y}\\
+    &\le
+    \theta r+(1-\theta)r\\
+    &=r.
+\end{aligned}
+\]
+所以 $\theta x+(1-\theta)y\in B$，故 $B$ 是凸集。
+\end{example}
+
+\subsection{例题：证明半正定锥是凸集 \Pzero}
+
+\begin{example}
+证明
+\[
+    \Snplus=\{X\in\Ssym^n\mid X\succeq0\}
+\]
+是凸集。
+
+\textbf{证明：}
+任取 $X,Y\in\Snplus$，则
+\[
+    z^TXz\ge0,\quad z^TYz\ge0,\quad \forall z\in\R^n.
+\]
+任取 $\theta\in[0,1]$，有
+\[
+\begin{aligned}
+    z^T\left(\theta X+(1-\theta)Y\right)z
+    &=
+    \theta z^TXz+(1-\theta)z^TYz\\
+    &\ge0.
+\end{aligned}
+\]
+所以
+\[
+    \theta X+(1-\theta)Y\succeq0.
+\]
+因此 $\Snplus$ 是凸集。
+\end{example}
+
+\subsection{凸集练习题}
+
+\begin{exercise}[基础证明题 \Pzero]
+判断并证明以下集合是否为凸集：
+\[
+    C_1=\{x\in\R^n\mid \norm{x}_2\le1,\ a^Tx=b\}.
+\]
+\end{exercise}
+
+\begin{exercise}[综合证明题 \Pzero]
+证明单纯形
+\[
+    \Delta_n=\left\{x\in\R^n\mid x_i\ge0,\ \sum_{i=1}^n x_i=1\right\}
+\]
+是凸集。
+\end{exercise}
+
+\begin{exercise}[矩阵集合 \Pone]
+判断集合
+\[
+    C=\{X\in\Ssym^n\mid X\succeq0,\ \tr(X)=1\}
+\]
+是否为凸集，并证明。
+\end{exercise}
+
+\begin{exercise}[反例题 \Pzero]
+举例说明两个凸集的并集不一定是凸集。
+\end{exercise}
+
+\newpage
+
+\section{凸函数}
+
+\subsection{凸函数定义 \Pzero}
+
+\begin{definition}[凸函数]
+函数 $f:\R^n\to\R$ 称为凸函数，如果 $\dom f$ 是凸集，并且对任意 $x,y\in\dom f$ 和任意 $\theta\in[0,1]$，有
+\[
+    f(\theta x+(1-\theta)y)
+    \le
+    \theta f(x)+(1-\theta)f(y).
+\]
+\end{definition}
+
+几何意义：函数图像在任意两点连线的下方。
+
+\subsection{严格凸与强凸 \Pzero}
+
+\subsubsection*{严格凸}
+
+如果对任意 $x\neq y$ 和任意 $\theta\in(0,1)$，
+\[
+    f(\theta x+(1-\theta)y)
+    <
+    \theta f(x)+(1-\theta)f(y),
+\]
+则称 $f$ 严格凸。
+
+\key{严格凸函数在凸可行集上的最优解若存在，则唯一。}
+
+\subsubsection*{强凸}
+
+若存在 $m>0$，使得
+\[
+    f(y)
+    \ge
+    f(x)+\nabla f(x)^T(y-x)+\frac{m}{2}\norm{y-x}_2^2,
+    \quad \forall x,y,
+\]
+则称 $f$ 为 $m$-强凸函数。
+
+若 $f$ 二阶可微，则
+\[
+    f \text{ 是 } m\text{-强凸}
+    \Longleftrightarrow
+    \nabla^2 f(x)\succeq mI.
+\]
+
+强凸函数一定严格凸，但严格凸函数不一定强凸。
+
+\subsection{凹函数 \Pzero}
+
+函数 $f$ 是凹函数，当且仅当 $-f$ 是凸函数。
+
+即：
+\[
+    f(\theta x+(1-\theta)y)
+    \ge
+    \theta f(x)+(1-\theta)f(y).
+\]
+
+常见凹函数：
+\[
+    \log x,\quad \sqrt{x},\quad \sum_i \log x_i.
+\]
+
+\subsection{凸函数的一阶判别条件 \Pzero}
+
+\begin{theorem}[一阶条件]
+若 $f$ 可微，则 $f$ 是凸函数，当且仅当
+\[
+    f(y)\ge f(x)+\nabla f(x)^T(y-x),
+    \quad \forall x,y\in\dom f.
+\]
+\end{theorem}
+
+几何意义：凸函数的图像位于任意切平面上方。
+
+\key{这是证明凸函数和推导最优性条件的核心公式。}
+
+\subsection{凸函数的二阶判别条件 \Pzero}
+
+\begin{theorem}[二阶条件]
+若 $f$ 二阶可微，则 $f$ 是凸函数，当且仅当
+\[
+    \nabla^2 f(x)\succeq0,\quad \forall x\in\dom f.
+\]
+\end{theorem}
+
+若
+\[
+    \nabla^2 f(x)\succ0,\quad \forall x,
+\]
+则 $f$ 严格凸。
+
+\warn{严格凸不一定要求 Hessian 处处正定。例如 $f(x)=x^4$ 是严格凸函数，但 $f''(0)=0$。}
+
+\subsection{上图与凸函数 \Pone}
+
+\begin{definition}[上图]
+函数 $f$ 的上图定义为
+\[
+    \epi f
+    =
+    \{(x,t)\mid x\in\dom f,\ f(x)\le t\}.
+\]
+\end{definition}
+
+\begin{theorem}
+函数 $f$ 是凸函数，当且仅当 $\epi f$ 是凸集。
+\end{theorem}
+
+这个结论常用于把函数凸性转化为集合凸性。
+
+\subsection{下水平集 \Pone}
+
+函数 $f$ 的 $\alpha$ 下水平集定义为
+\[
+    S_\alpha=\{x\mid f(x)\le\alpha\}.
+\]
+
+若 $f$ 是凸函数，则 $S_\alpha$ 是凸集。
+
+\warn{下水平集凸并不一定说明函数凸。下水平集凸对应的是拟凸函数。}
+
+\subsection{常见凸函数表 \Pzero}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+函数 & 定义域 & 凸性 \\
+\midrule
+$a^Tx+b$ & $\R^n$ & 既凸又凹 \\
+$\norm{x}$ & $\R^n$ & 凸 \\
+$x^TPx$ & $\R^n,\ P\succeq0$ & 凸 \\
+$e^{a^Tx+b}$ & $\R^n$ & 凸 \\
+$-\log x$ & $x>0$ & 凸 \\
+$\log x$ & $x>0$ & 凹 \\
+$\max_i x_i$ & $\R^n$ & 凸 \\
+$\log\sum_i e^{x_i}$ & $\R^n$ & 凸 \\
+$x\log x$ & $x>0$ & 凸 \\
+$1/x$ & $x>0$ & 凸 \\
+$\norm{Ax-b}_2^2$ & $\R^n$ & 凸 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{凸函数的保凸运算 \Pzero}
+
+\subsubsection*{1. 非负加权和}
+
+若 $f_i$ 是凸函数，$\alpha_i\ge0$，则
+\[
+    f(x)=\sum_{i=1}^m \alpha_i f_i(x)
+\]
+是凸函数。
+
+\warn{系数必须非负。负系数可能破坏凸性。}
+
+\subsubsection*{2. 仿射复合}
+
+若 $f$ 是凸函数，则
+\[
+    g(x)=f(Ax+b)
+\]
+是凸函数。
+
+\subsubsection*{3. 逐点最大值}
+
+若 $f_i$ 是凸函数，则
+\[
+    f(x)=\max_i f_i(x)
+\]
+是凸函数。
+
+更一般地，
+\[
+    f(x)=\sup_{\alpha\in A} f_\alpha(x)
+\]
+是凸函数。
+
+\warn{逐点最小值一般不保持凸性。}
+
+\subsubsection*{4. 复合规则}
+
+若 $h$ 是凸函数且单调不减，$g$ 是凸函数，则
+\[
+    f(x)=h(g(x))
+\]
+是凸函数。
+
+若 $h$ 是凸函数且单调不增，$g$ 是凹函数，则
+\[
+    f(x)=h(g(x))
+\]
+是凸函数。
+
+多变量版本：若 $h(z_1,\dots,z_k)$ 对每个变量都是非减的凸函数，且 $g_i(x)$ 都是凸函数，则
+\[
+    h(g_1(x),\dots,g_k(x))
+\]
+是凸函数。
+
+\subsubsection*{5. 部分最小化}
+
+若 $f(x,y)$ 关于 $(x,y)$ 联合凸，则
+\[
+    g(x)=\inf_y f(x,y)
+\]
+在适当条件下是凸函数。
+
+\subsubsection*{6. 透视函数}
+
+若 $f$ 是凸函数，则其透视函数
+\[
+    g(x,t)=t f(x/t),\quad t>0
+\]
+是凸函数。
+
+\subsection{证明函数凸性的常用方法 \Pzero}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 直接使用定义。
+    \item 使用一阶条件：
+    \[
+        f(y)\ge f(x)+\nabla f(x)^T(y-x).
+    \]
+    \item 使用二阶条件：
+    \[
+        \nabla^2 f(x)\succeq0.
+    \]
+    \item 使用保凸规则。
+    \item 证明上图 $\epi f$ 是凸集。
+    \item 对范数类函数，使用三角不等式和齐次性。
+\end{enumerate}
+
+\subsection{例题：证明范数是凸函数 \Pzero}
+
+\begin{example}
+证明任意范数 $\norm{x}$ 都是凸函数。
+
+\textbf{证明：}
+任取 $x,y\in\R^n$ 和 $\theta\in[0,1]$，由三角不等式与齐次性，
+\[
+\begin{aligned}
+    \norm{\theta x+(1-\theta)y}
+    &\le
+    \norm{\theta x}+\norm{(1-\theta)y}\\
+    &=
+    \theta\norm{x}+(1-\theta)\norm{y}.
+\end{aligned}
+\]
+因此 $\norm{x}$ 是凸函数。
+\end{example}
+
+\subsection{例题：判断二次函数凸性 \Pzero}
+
+\begin{example}
+判断
+\[
+    f(x)=\frac12 x^TPx+q^Tx+r
+\]
+何时为凸函数。
+
+\textbf{解：}
+梯度为
+\[
+    \nabla f(x)=Px+q
+\]
+其中假设 $P=P^T$。
+
+Hessian 为
+\[
+    \nabla^2 f(x)=P.
+\]
+
+因此
+\[
+    f \text{ 凸}
+    \Longleftrightarrow
+    P\succeq0.
+\]
+
+若 $P\succ0$，则 $f$ 严格凸，并且有唯一无约束最优解。
+\end{example}
+
+\subsection{例题：证明 log-sum-exp 函数凸 \Pone}
+
+\begin{example}
+证明
+\[
+    f(x)=\log\left(\sum_{i=1}^n e^{x_i}\right)
+\]
+是凸函数。
+
+\textbf{证明思路：}
+计算梯度和 Hessian。
+
+令
+\[
+    p_i=\frac{e^{x_i}}{\sum_{j=1}^n e^{x_j}},
+\]
+则
+\[
+    \nabla f(x)=p.
+\]
+
+Hessian 为
+\[
+    \nabla^2 f(x)
+    =
+    \diag(p)-pp^T.
+\]
+
+对任意 $z\in\R^n$，
+\[
+\begin{aligned}
+    z^T\nabla^2 f(x)z
+    &=
+    \sum_{i=1}^n p_i z_i^2
+    -
+    \left(\sum_{i=1}^n p_i z_i\right)^2.
+\end{aligned}
+\]
+
+这正是随机变量 $z_i$ 在概率 $p_i$ 下的方差，因此非负。
+
+所以
+\[
+    \nabla^2 f(x)\succeq0.
+\]
+因此 $f$ 是凸函数。
+\end{example}
+
+\subsection{凸函数练习题}
+
+\begin{exercise}[二阶判别 \Pzero]
+判断函数
+\[
+    f(x_1,x_2)=x_1^2+2x_2^2+2x_1x_2
+\]
+是否凸。
+\end{exercise}
+
+\begin{exercise}[保凸规则 \Pzero]
+证明
+\[
+    f(x)=\max\{a_1^Tx+b_1,\dots,a_m^Tx+b_m\}
+\]
+是凸函数。
+\end{exercise}
+
+\begin{exercise}[综合证明 \Pzero]
+证明函数
+\[
+    f(x)=\norm{Ax-b}_2
+\]
+是凸函数。
+\end{exercise}
+
+\begin{exercise}[反例题 \Pone]
+举例说明两个凸函数的逐点最小值不一定是凸函数。
+\end{exercise}
+
+\newpage
+
+\section{凸优化问题的标准形式}
+
+\subsection{标准形式 \Pzero}
+
+凸优化问题的标准形式为
+\[
+\begin{aligned}
+    \min_{x\in\R^n}\quad & f_0(x)\\
+    \st\quad & f_i(x)\le0,\quad i=1,\dots,m,\\
+    & h_j(x)=0,\quad j=1,\dots,p.
+\end{aligned}
+\]
+
+其中：
+
+\begin{enumerate}[label=\arabic*.]
+    \item 目标函数 $f_0$ 是凸函数；
+    \item 不等式约束函数 $f_i$ 是凸函数；
+    \item 等式约束函数 $h_j$ 必须是仿射函数：
+    \[
+        h_j(x)=a_j^Tx-b_j.
+    \]
+\end{enumerate}
+
+\warn{凸优化中，等式约束必须是仿射的。非线性等式通常会导致非凸。}
+
+\subsection{可行集 \Pzero}
+
+可行集定义为
+\[
+    \mathcal{D}
+    =
+    \{x\mid f_i(x)\le0,\ i=1,\dots,m,\ h_j(x)=0,\ j=1,\dots,p\}.
+\]
+
+因为凸函数的下水平集是凸集，仿射等式集合是凸集，所以凸优化问题的可行集是凸集。
+
+\subsection{最优值与最优解 \Pzero}
+
+最优值：
+\[
+    p^\star=\inf_{x\in\mathcal{D}} f_0(x).
+\]
+
+最优解集合：
+\[
+    X^\star=\{x\in\mathcal{D}\mid f_0(x)=p^\star\}.
+\]
+
+若 $X^\star$ 非空，则称最优解存在。
+
+\subsection{局部最优与全局最优 \Pzero}
+
+\begin{theorem}
+对于凸优化问题，任意局部最优解都是全局最优解。
+\end{theorem}
+
+\textbf{证明：}
+设 $x^\star$ 是局部最优解。反设存在可行点 $y$，使得
+\[
+    f_0(y)<f_0(x^\star).
+\]
+由于可行集是凸集，对任意 $\theta\in[0,1]$，
+\[
+    x_\theta=\theta y+(1-\theta)x^\star
+\]
+也是可行点。
+
+由凸性，
+\[
+\begin{aligned}
+    f_0(x_\theta)
+    &\le
+    \theta f_0(y)+(1-\theta)f_0(x^\star)\\
+    &<
+    \theta f_0(x^\star)+(1-\theta)f_0(x^\star)\\
+    &=
+    f_0(x^\star).
+\end{aligned}
+\]
+当 $\theta$ 足够小时，$x_\theta$ 任意接近 $x^\star$，这与 $x^\star$ 是局部最优矛盾。
+
+所以局部最优必为全局最优。
+\qed
+
+\subsection{严格凸目标下的唯一性 \Pzero}
+
+若 $f_0$ 严格凸，且可行集 $\mathcal{D}$ 是凸集，则最优解若存在，必唯一。
+
+\textbf{证明：}
+若存在两个不同最优解 $x_1,x_2$，则
+\[
+    f_0(x_1)=f_0(x_2)=p^\star.
+\]
+取
+\[
+    z=\frac{x_1+x_2}{2}.
+\]
+由于可行集凸，$z$ 可行。
+
+由严格凸性，
+\[
+    f_0(z)
+    <
+    \frac12 f_0(x_1)+\frac12 f_0(x_2)
+    =
+    p^\star.
+\]
+这与 $p^\star$ 是最优值矛盾，因此最优解唯一。
+
+\subsection{判断一个问题是否为凸优化 \Pzero}
+
+判断步骤：
+
+\begin{enumerate}[label=\arabic*.]
+    \item 确认变量是什么。
+    \item 检查目标函数是否凸。
+    \item 将所有不等式写成
+    \[
+        f_i(x)\le0.
+    \]
+    检查每个 $f_i$ 是否凸。
+    \item 检查等式约束是否仿射。
+    \item 检查定义域是否凸。
+\end{enumerate}
+
+\subsection{例题：判断是否为凸优化问题 \Pzero}
+
+\begin{example}
+判断问题
+\[
+\begin{aligned}
+    \min_x\quad & \norm{Ax-b}_2^2+\lambda\norm{x}_1\\
+    \st\quad & Cx=d
+\end{aligned}
+\]
+是否为凸优化问题，其中 $\lambda\ge0$。
+
+\textbf{解：}
+第一项 $\norm{Ax-b}_2^2$ 是凸函数，因为它是凸二次函数。
+
+第二项 $\norm{x}_1$ 是凸函数，且 $\lambda\ge0$，所以 $\lambda\norm{x}_1$ 凸。
+
+因此目标函数是凸函数。
+
+约束 $Cx=d$ 是仿射等式约束。
+
+所以该问题是凸优化问题。
+\end{example}
+
+\subsection{例题：非凸问题识别 \Pzero}
+
+\begin{example}
+判断问题
+\[
+\begin{aligned}
+    \min_x\quad & x^2\\
+    \st\quad & x^2=1
+\end{aligned}
+\]
+是否为凸优化问题。
+
+\textbf{解：}
+目标函数 $x^2$ 是凸函数。
+
+但是等式约束
+\[
+    x^2=1
+\]
+不是仿射约束。
+
+其可行集为
+\[
+    \{-1,1\},
+\]
+不是凸集。
+
+因此该问题不是凸优化问题。
+\end{example}
+
+\subsection{标准形式练习题}
+
+\begin{exercise}[标准形式判断 \Pzero]
+判断以下问题是否为凸优化问题：
+\[
+\begin{aligned}
+    \min_x\quad & e^{a^Tx}+ \norm{x}_2\\
+    \st\quad & Bx\le c.
+\end{aligned}
+\]
+\end{exercise}
+
+\begin{exercise}[改写标准形式 \Pzero]
+将问题
+\[
+    \min_x \max_{i=1,\dots,m}(a_i^Tx+b_i)
+\]
+改写为带辅助变量的凸优化标准形式。
+\end{exercise}
+
+\begin{exercise}[综合判断 \Pzero]
+判断问题
+\[
+\begin{aligned}
+    \min_x\quad & -\sum_{i=1}^n \log x_i\\
+    \st\quad & Ax=b,\\
+    & x_i>0
+\end{aligned}
+\]
+是否为凸优化问题。
+\end{exercise}
+
+\newpage
+
+\section{典型凸优化模型}
+
+\subsection{线性规划 LP \Pzero}
+
+线性规划形式：
+\[
+\begin{aligned}
+    \min_x\quad & c^Tx\\
+    \st\quad & Ax\le b,\\
+    & Fx=g.
+\end{aligned}
+\]
+
+特点：
+
+\begin{enumerate}[label=\arabic*.]
+    \item 目标函数线性；
+    \item 约束函数线性或仿射；
+    \item 可行集是多面体；
+    \item 是最基础的凸优化模型。
+\end{enumerate}
+
+\subsection{二次规划 QP \Pzero}
+
+二次规划形式：
+\[
+\begin{aligned}
+    \min_x\quad &
+    \frac12 x^TPx+q^Tx+r\\
+    \st\quad & Ax\le b,\\
+    & Fx=g,
+\end{aligned}
+\]
+其中
+\[
+    P\succeq0.
+\]
+
+若 $P\succ0$，目标函数严格凸。
+
+\subsection{凸二次约束二次规划 QCQP \Pone}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad &
+    \frac12 x^TP_0x+q_0^Tx+r_0\\
+    \st\quad &
+    \frac12 x^TP_ix+q_i^Tx+r_i\le0,\quad i=1,\dots,m,\\
+    & Fx=g,
+\end{aligned}
+\]
+其中
+\[
+    P_i\succeq0,\quad i=0,1,\dots,m.
+\]
+
+若某个约束中的 $P_i$ 不是半正定，则该约束函数可能非凸，问题不一定是凸优化。
+
+\subsection{二阶锥规划 SOCP \Pone}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad & f^Tx\\
+    \st\quad &
+    \norm{A_i x+b_i}_2
+    \le
+    c_i^Tx+d_i,
+    \quad i=1,\dots,m,\\
+    & Fx=g.
+\end{aligned}
+\]
+
+二阶锥约束的标准形式：
+\[
+    \norm{u}_2\le t.
+\]
+
+SOCP 可以表示很多鲁棒优化、范数约束、最小最大问题。
+
+\subsection{半定规划 SDP \Pone}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad & c^Tx\\
+    \st\quad &
+    F_0+\sum_{i=1}^n x_iF_i\succeq0,
+\end{aligned}
+\]
+其中 $F_i\in\Ssym^m$。
+
+SDP 的约束是线性矩阵不等式。
+
+\subsection{最小二乘问题 \Pzero}
+
+普通最小二乘：
+\[
+    \min_x \frac12\norm{Ax-b}_2^2.
+\]
+
+这是无约束凸二次优化问题。
+
+若 $A^TA$ 可逆，则最优解为
+\[
+    x^\star=(A^TA)^{-1}A^Tb.
+\]
+
+\subsection{岭回归 Ridge Regression \Pone}
+
+\[
+    \min_x
+    \frac12\norm{Ax-b}_2^2
+    +
+    \frac{\lambda}{2}\norm{x}_2^2,
+    \quad \lambda>0.
+\]
+
+目标函数强凸，最优解唯一：
+\[
+    x^\star=(A^TA+\lambda I)^{-1}A^Tb.
+\]
+
+\subsection{LASSO \Pone}
+
+\[
+    \min_x
+    \frac12\norm{Ax-b}_2^2+\lambda\norm{x}_1,
+    \quad \lambda>0.
+\]
+
+该问题是凸优化问题，但由于 $\norm{x}_1$ 不可微，通常不能简单用 $\nabla f=0$ 求解。
+
+\subsection{逻辑回归 \Pone}
+
+二分类逻辑回归常见形式：
+\[
+    \min_w
+    \sum_{i=1}^m
+    \log\left(1+\exp(-y_iw^Tx_i)\right)
+    +
+    \frac{\lambda}{2}\norm{w}_2^2.
+\]
+
+其中 $y_i\in\{-1,1\}$。
+
+该目标函数是凸函数；若 $\lambda>0$，则通常为强凸。
+
+\subsection{熵最大化 \Pone}
+
+\[
+\begin{aligned}
+    \max_x\quad & -\sum_{i=1}^n x_i\log x_i\\
+    \st\quad & Ax=b,\\
+    & \mathbf{1}^Tx=1,\\
+    & x_i\ge0.
+\end{aligned}
+\]
+
+因为熵函数是凹函数，所以最大化凹函数等价于凸优化。
+
+也可以写成最小化负熵：
+\[
+    \min_x \sum_{i=1}^n x_i\log x_i.
+\]
+
+\subsection{模型识别总结}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+模型 & 典型特征 & 优先级 \\
+\midrule
+LP & 线性目标 + 线性约束 & \Pzero \\
+QP & 凸二次目标 + 线性约束 & \Pzero \\
+QCQP & 凸二次目标 + 凸二次不等式约束 & \Pone \\
+SOCP & 含 $\norm{Ax+b}_2\le c^Tx+d$ & \Pone \\
+SDP & 含矩阵半正定约束 & \Pone \\
+最小二乘 & $\norm{Ax-b}_2^2$ & \Pzero \\
+LASSO & 最小二乘 + $\ell_1$ 正则 & \Pone \\
+逻辑回归 & log-sum-exp 型损失 & \Pone \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{模型例题：最大值转标准形式 \Pzero}
+
+\begin{example}
+将
+\[
+    \min_x \max_{i=1,\dots,m}(a_i^Tx+b_i)
+\]
+改写为凸优化标准形式。
+
+\textbf{解：}
+引入辅助变量 $t$，令
+\[
+    a_i^Tx+b_i\le t,\quad i=1,\dots,m.
+\]
+则问题等价于
+\[
+\begin{aligned}
+    \min_{x,t}\quad & t\\
+    \st\quad &
+    a_i^Tx+b_i-t\le0,\quad i=1,\dots,m.
+\end{aligned}
+\]
+该问题是线性规划，因此是凸优化问题。
+\end{example}
+
+\subsection{模型例题：绝对值目标转 LP \Pzero}
+
+\begin{example}
+将
+\[
+    \min_x \norm{Ax-b}_1
+\]
+改写为线性规划。
+
+\textbf{解：}
+令 $r=Ax-b$，并引入变量 $t_i\ge0$，使得
+\[
+    -t_i\le r_i\le t_i.
+\]
+于是问题等价于
+\[
+\begin{aligned}
+    \min_{x,t}\quad & \sum_i t_i\\
+    \st\quad &
+    Ax-b\le t,\\
+    & -(Ax-b)\le t,\\
+    & t\ge0.
+\end{aligned}
+\]
+这是线性规划。
+\end{example}
+
+\subsection{典型模型练习题}
+
+\begin{exercise}[模型识别 \Pzero]
+判断下列问题分别属于 LP、QP、SOCP、SDP 还是一般凸优化：
+\[
+\begin{aligned}
+    \min_x\quad & \norm{Ax-b}_2\\
+    \st\quad & Cx=d.
+\end{aligned}
+\]
+\end{exercise}
+
+\begin{exercise}[综合建模 \Pzero]
+将问题
+\[
+    \min_x \max_{i=1,\dots,m}|a_i^Tx-b_i|
+\]
+改写为线性规划。
+\end{exercise}
+
+\begin{exercise}[二次模型判断 \Pone]
+判断
+\[
+\begin{aligned}
+    \min_x\quad & x^TPx+q^Tx\\
+    \st\quad & x^TQx\le1
+\end{aligned}
+\]
+在什么条件下是凸优化问题。
+\end{exercise}
+
+\newpage
+
+\section{无约束凸优化}
+
+\subsection{问题形式 \Pzero}
+
+无约束优化问题：
+\[
+    \min_{x\in\R^n} f(x).
+\]
+
+若 $f$ 是凸函数，则称为无约束凸优化问题。
+
+\subsection{可微情况下的一阶最优性条件 \Pzero}
+
+\begin{theorem}
+若 $f$ 可微且凸，则 $x^\star$ 是全局最优解，当且仅当
+\[
+    \nabla f(x^\star)=0.
+\]
+\end{theorem}
+
+\textbf{证明：}
+
+若 $\nabla f(x^\star)=0$，由凸函数一阶条件，
+\[
+    f(y)\ge f(x^\star)+\nabla f(x^\star)^T(y-x^\star)
+    =
+    f(x^\star),
+\]
+所以 $x^\star$ 是全局最优解。
+
+反过来，若 $x^\star$ 是无约束可微问题的最优点，则沿任意方向 $d$，函数
+\[
+    \phi(t)=f(x^\star+td)
+\]
+在 $t=0$ 处取得最小值，因此
+\[
+    \phi'(0)=\nabla f(x^\star)^Td=0.
+\]
+由于 $d$ 任意，所以
+\[
+    \nabla f(x^\star)=0.
+\]
+
+\subsection{不可微情况下的最优性条件 \Pone}
+
+若 $f$ 凸但不可微，则使用次梯度。
+
+向量 $g$ 是 $f$ 在 $x$ 处的次梯度，如果
+\[
+    f(y)\ge f(x)+g^T(y-x),\quad \forall y.
+\]
+
+所有次梯度组成集合 $\partial f(x)$。
+
+最优性条件：
+\[
+    x^\star\text{ 最优}
+    \Longleftrightarrow
+    0\in\partial f(x^\star).
+\]
+
+\subsection{二次函数的无约束最小化 \Pzero}
+
+考虑
+\[
+    f(x)=\frac12x^TPx+q^Tx+r,
+\]
+其中 $P\succeq0$。
+
+梯度：
+\[
+    \nabla f(x)=Px+q.
+\]
+
+最优性条件：
+\[
+    Px^\star+q=0.
+\]
+
+若 $P\succ0$，则
+\[
+    x^\star=-P^{-1}q.
+\]
+
+若 $P\succeq0$ 但不可逆，则最优解存在需要
+\[
+    q\in \operatorname{Range}(P).
+\]
+
+\subsection{光滑性 \Pone}
+
+函数 $f$ 称为 $L$-smooth，如果其梯度满足 Lipschitz 连续：
+\[
+    \norm{\nabla f(x)-\nabla f(y)}_2
+    \le
+    L\norm{x-y}_2.
+\]
+
+若 $f$ 二阶可微，则
+\[
+    \nabla^2 f(x)\preceq LI.
+\]
+
+光滑凸函数满足下降引理：
+\[
+    f(y)
+    \le
+    f(x)+\nabla f(x)^T(y-x)
+    +
+    \frac{L}{2}\norm{y-x}_2^2.
+\]
+
+\subsection{强凸性 \Pzero}
+
+函数 $f$ 是 $m$-强凸，如果
+\[
+    f(y)
+    \ge
+    f(x)+\nabla f(x)^T(y-x)
+    +
+    \frac{m}{2}\norm{y-x}_2^2.
+\]
+
+若 $f$ 二阶可微：
+\[
+    \nabla^2 f(x)\succeq mI.
+\]
+
+强凸函数最优解唯一。
+
+\subsection{梯度下降法 \Pzero}
+
+梯度下降迭代：
+\[
+    x^{k+1}=x^k-\alpha_k\nabla f(x^k).
+\]
+
+其中 $\alpha_k>0$ 为步长。
+
+\subsubsection*{常见步长}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 固定步长：
+    \[
+        \alpha_k=\alpha.
+    \]
+    \item 对 $L$-smooth 函数，常用：
+    \[
+        \alpha=\frac1L.
+    \]
+    \item 精确线搜索：
+    \[
+        \alpha_k=\argmin_{\alpha>0} f(x^k-\alpha\nabla f(x^k)).
+    \]
+    \item 回溯线搜索：选取满足充分下降条件的步长。
+\end{enumerate}
+
+\subsubsection*{收敛速度}
+
+若 $f$ 凸且 $L$-smooth，梯度下降通常满足
+\[
+    f(x^k)-f^\star=O\left(\frac1k\right).
+\]
+
+若 $f$ 是 $m$-强凸且 $L$-smooth，则线性收敛：
+\[
+    f(x^k)-f^\star
+    \le
+    \left(1-\frac{m}{L}\right)^k
+    \bigl(f(x^0)-f^\star\bigr).
+\]
+
+条件数：
+\[
+    \kappa=\frac{L}{m}.
+\]
+
+条件数越大，问题越病态，梯度下降越慢。
+
+\subsection{牛顿法 \Pone}
+
+牛顿方向：
+\[
+    \Delta x_{\mathrm{nt}}
+    =
+    -\left(\nabla^2 f(x)\right)^{-1}\nabla f(x).
+\]
+
+迭代：
+\[
+    x^{k+1}=x^k+t_k\Delta x_{\mathrm{nt}}.
+\]
+
+若 $t_k=1$，称为纯牛顿法；若通过线搜索选取 $t_k$，称为阻尼牛顿法。
+
+牛顿法特点：
+
+\begin{enumerate}[label=\arabic*.]
+    \item 利用二阶信息；
+    \item 接近最优点时收敛很快，常具有二次收敛；
+    \item 每步需要求解线性方程，计算成本较高；
+    \item 适合中小规模高精度问题。
+\end{enumerate}
+
+\subsection{最速下降方向 \Pone}
+
+在欧氏范数下，负梯度方向
+\[
+    -\nabla f(x)
+\]
+是函数下降最快的局部方向。
+
+因为一阶近似为
+\[
+    f(x+d)\approx f(x)+\nabla f(x)^Td.
+\]
+
+在约束 $\norm{d}_2\le1$ 下，最小化 $\nabla f(x)^Td$ 得到
+\[
+    d=-\frac{\nabla f(x)}{\norm{\nabla f(x)}_2}.
+\]
+
+\subsection{例题：最小二乘的最优解 \Pzero}
+
+\begin{example}
+求解
+\[
+    \min_x \frac12\norm{Ax-b}_2^2.
+\]
+
+\textbf{解：}
+令
+\[
+    f(x)=\frac12(Ax-b)^T(Ax-b).
+\]
+
+梯度为
+\[
+    \nabla f(x)=A^T(Ax-b).
+\]
+
+一阶最优性条件：
+\[
+    A^T(Ax^\star-b)=0.
+\]
+
+即
+\[
+    A^TAx^\star=A^Tb.
+\]
+
+若 $A^TA$ 可逆，则
+\[
+    x^\star=(A^TA)^{-1}A^Tb.
+\]
+\end{example}
+
+\subsection{例题：梯度下降一步迭代 \Pzero}
+
+\begin{example}
+对函数
+\[
+    f(x)=\frac12x^TPx+q^Tx
+\]
+写出梯度下降迭代公式。
+
+\textbf{解：}
+梯度为
+\[
+    \nabla f(x)=Px+q.
+\]
+
+所以梯度下降迭代为
+\[
+    x^{k+1}
+    =
+    x^k-\alpha_k(Px^k+q).
+\]
+\end{example}
+
+\subsection{例题：强凸性与唯一解 \Pzero}
+
+\begin{example}
+证明若 $f$ 是强凸函数，则其最优解至多一个。
+
+\textbf{证明：}
+强凸函数一定严格凸。
+
+假设存在两个不同最优解 $x_1\neq x_2$，且
+\[
+    f(x_1)=f(x_2)=p^\star.
+\]
+
+令
+\[
+    z=\frac{x_1+x_2}{2}.
+\]
+
+由严格凸性，
+\[
+    f(z)
+    <
+    \frac12f(x_1)+\frac12f(x_2)
+    =
+    p^\star,
+\]
+这与 $p^\star$ 是最优值矛盾。
+
+因此强凸函数的最优解唯一。
+\end{example}
+
+\subsection{无约束优化练习题}
+
+\begin{exercise}[一阶最优性 \Pzero]
+求解
+\[
+    \min_x
+    \frac12x^TPx+q^Tx+r,
+\]
+其中 $P\succ0$。
+\end{exercise}
+
+\begin{exercise}[证明题 \Pzero]
+证明：若 $f$ 是可微凸函数，且存在 $x^\star$ 满足 $\nabla f(x^\star)=0$，则 $x^\star$ 是全局最优解。
+\end{exercise}
+
+\begin{exercise}[梯度下降 \Pone]
+对
+\[
+    f(x)=\frac12\norm{Ax-b}_2^2
+\]
+写出梯度下降迭代公式，并说明当 $A^TA$ 的最大特征值为 $L$ 时，可取什么固定步长。
+\end{exercise}
+
+\begin{exercise}[综合题 \Pzero]
+设
+\[
+    f(x)=\log\left(\sum_{i=1}^m e^{a_i^Tx+b_i}\right).
+\]
+证明 $f$ 是凸函数，并写出无约束最小化该函数时的一阶最优性条件。
+\end{exercise}
+
+\newpage
+
+\section{重点综合例题}
+
+\begin{example}[凸集 + 凸函数 + 标准形式综合 \Pzero]
+考虑问题
+\[
+\begin{aligned}
+    \min_x\quad &
+    \max_{i=1,\dots,m}(a_i^Tx+b_i)
+    +
+    \lambda\norm{x}_2^2\\
+    \st\quad &
+    Cx=d.
+\end{aligned}
+\]
+其中 $\lambda>0$。判断该问题是否为凸优化问题，并说明最优解是否唯一。
+
+\textbf{解：}
+
+第一项
+\[
+    \max_i(a_i^Tx+b_i)
+\]
+是仿射函数族的逐点最大值，因此是凸函数。
+
+第二项
+\[
+    \lambda\norm{x}_2^2
+\]
+是强凸函数，因为 $\lambda>0$。
+
+目标函数是凸函数与强凸函数之和，因此是强凸函数。
+
+约束
+\[
+    Cx=d
+\]
+是仿射等式约束，因此可行集是凸集。
+
+所以该问题是凸优化问题。
+
+若可行集非空且最优解存在，由于目标函数强凸，最优解唯一。
+\end{example}
+
+\begin{example}[证明局部最优为全局最优 \Pzero]
+设 $f$ 是凸函数，$C$ 是凸集。证明问题
+\[
+    \min_{x\in C} f(x)
+\]
+的任意局部最优解都是全局最优解。
+
+\textbf{证明：}
+设 $x^\star$ 是局部最优解。若它不是全局最优，则存在 $y\in C$，使得
+\[
+    f(y)<f(x^\star).
+\]
+由于 $C$ 是凸集，
+\[
+    x_\theta=(1-\theta)x^\star+\theta y\in C,
+    \quad \theta\in[0,1].
+\]
+由 $f$ 的凸性，
+\[
+\begin{aligned}
+    f(x_\theta)
+    &\le
+    (1-\theta)f(x^\star)+\theta f(y)\\
+    &<
+    (1-\theta)f(x^\star)+\theta f(x^\star)\\
+    &=
+    f(x^\star).
+\end{aligned}
+\]
+当 $\theta$ 足够小时，$x_\theta$ 位于 $x^\star$ 的任意小邻域内，这与 $x^\star$ 是局部最优矛盾。
+
+所以 $x^\star$ 是全局最优解。
+\end{example}
+
+\begin{example}[从非标准形式到标准形式 \Pzero]
+将
+\[
+    \min_x \norm{Ax-b}_\infty+\lambda\norm{x}_1
+\]
+改写为线性规划。
+
+\textbf{解：}
+引入变量 $t$ 表示 $\norm{Ax-b}_\infty$，引入 $u_i$ 表示 $|x_i|$。
+
+约束
+\[
+    \norm{Ax-b}_\infty\le t
+\]
+等价于
+\[
+    Ax-b\le t\mathbf{1},
+    \quad
+    -(Ax-b)\le t\mathbf{1}.
+\]
+
+约束
+\[
+    |x_i|\le u_i
+\]
+等价于
+\[
+    x_i\le u_i,\quad -x_i\le u_i.
+\]
+
+所以原问题等价于
+\[
+\begin{aligned}
+    \min_{x,t,u}\quad &
+    t+\lambda\sum_{i=1}^n u_i\\
+    \st\quad &
+    Ax-b\le t\mathbf{1},\\
+    & -(Ax-b)\le t\mathbf{1},\\
+    & x\le u,\\
+    & -x\le u,\\
+    & u\ge0.
+\end{aligned}
+\]
+
+这是线性规划。
+\end{example}
+
+\newpage
+
+\section{综合练习题}
+
+\begin{exercise}[综合题 1：凸集证明 \Pzero]
+证明集合
+\[
+    C=\{x\in\R^n\mid \norm{Ax+b}_2\le c^Tx+d\}
+\]
+是凸集。
+\end{exercise}
+
+\begin{exercise}[综合题 2：函数凸性证明 \Pzero]
+证明
+\[
+    f(x)=\max_{i=1,\dots,m}\norm{A_ix+b_i}_2
+\]
+是凸函数。
+\end{exercise}
+
+\begin{exercise}[综合题 3：标准形式改写 \Pzero]
+将问题
+\[
+    \min_x \sum_{i=1}^m |a_i^Tx-b_i|
+\]
+改写为线性规划。
+\end{exercise}
+
+\begin{exercise}[综合题 4：模型判断 \Pzero]
+判断下面问题是否为凸优化问题：
+\[
+\begin{aligned}
+    \min_x\quad &
+    \log\left(\sum_{i=1}^m e^{a_i^Tx+b_i}\right)
+    +
+    \lambda\norm{x}_2^2\\
+    \st\quad &
+    \norm{Cx-d}_2\le r.
+\end{aligned}
+\]
+其中 $\lambda\ge0$，$r\ge0$。
+\end{exercise}
+
+\begin{exercise}[综合题 5：无约束优化 \Pzero]
+设
+\[
+    f(x)=\frac12\norm{Ax-b}_2^2+\frac{\lambda}{2}\norm{x}_2^2,
+    \quad \lambda>0.
+\]
+证明 $f$ 是强凸函数，并求其唯一最优解。
+\end{exercise}
+
+\begin{exercise}[综合题 6：局部最优与全局最优 \Pzero]
+设 $f$ 是凸函数，$C$ 是凸集。若 $x^\star\in C$ 是严格局部最优解，是否一定是严格全局最优解？请证明或给反例。
+\end{exercise}
+
+\newpage
+
+\section{综合练习题参考答案}
+
+\subsection*{综合题 1}
+
+集合
+\[
+    C=\{x\mid \norm{Ax+b}_2\le c^Tx+d\}
+\]
+可以写成
+\[
+    C=\{x\mid \norm{Ax+b}_2-c^Tx-d\le0\}.
+\]
+
+函数
+\[
+    f(x)=\norm{Ax+b}_2-c^Tx-d
+\]
+是凸函数，因为 $\norm{Ax+b}_2$ 是凸函数，而 $-c^Tx-d$ 是仿射函数。
+
+因此 $C$ 是凸函数的下水平集，所以是凸集。
+
+\subsection*{综合题 2}
+
+对每个 $i$，
+\[
+    f_i(x)=\norm{A_ix+b_i}_2
+\]
+是凸函数，因为范数是凸函数，仿射复合保持凸性。
+
+又因为逐点最大值保持凸性，所以
+\[
+    f(x)=\max_i f_i(x)
+\]
+是凸函数。
+
+\subsection*{综合题 3}
+
+原问题：
+\[
+    \min_x \sum_{i=1}^m |a_i^Tx-b_i|.
+\]
+
+引入变量 $t_i\ge0$，使得
+\[
+    |a_i^Tx-b_i|\le t_i.
+\]
+
+等价于
+\[
+    a_i^Tx-b_i\le t_i,
+\]
+\[
+    -(a_i^Tx-b_i)\le t_i.
+\]
+
+因此线性规划形式为
+\[
+\begin{aligned}
+    \min_{x,t}\quad &
+    \sum_{i=1}^m t_i\\
+    \st\quad &
+    a_i^Tx-b_i\le t_i,\quad i=1,\dots,m,\\
+    & -a_i^Tx+b_i\le t_i,\quad i=1,\dots,m,\\
+    & t_i\ge0,\quad i=1,\dots,m.
+\end{aligned}
+\]
+
+\subsection*{综合题 4}
+
+目标函数第一项
+\[
+    \log\left(\sum_{i=1}^m e^{a_i^Tx+b_i}\right)
+\]
+是 log-sum-exp 函数与仿射函数的复合，因此凸。
+
+第二项
+\[
+    \lambda\norm{x}_2^2
+\]
+当 $\lambda\ge0$ 时凸。
+
+因此目标函数凸。
+
+约束
+\[
+    \norm{Cx-d}_2\le r
+\]
+等价于
+\[
+    \norm{Cx-d}_2-r\le0.
+\]
+左边是凸函数，所以是不等式凸约束。
+
+因此该问题是凸优化问题。
+
+\subsection*{综合题 5}
+
+函数
+\[
+    f(x)=\frac12\norm{Ax-b}_2^2+\frac{\lambda}{2}\norm{x}_2^2
+\]
+的 Hessian 为
+\[
+    \nabla^2 f(x)=A^TA+\lambda I.
+\]
+
+由于
+\[
+    A^TA\succeq0,\quad \lambda I\succ0,
+\]
+所以
+\[
+    A^TA+\lambda I\succeq \lambda I.
+\]
+
+因此 $f$ 是 $\lambda$-强凸函数，最优解唯一。
+
+梯度为
+\[
+    \nabla f(x)=A^T(Ax-b)+\lambda x.
+\]
+
+令梯度为零：
+\[
+    A^TAx-A^Tb+\lambda x=0.
+\]
+
+所以
+\[
+    (A^TA+\lambda I)x=A^Tb.
+\]
+
+唯一最优解为
+\[
+    x^\star=(A^TA+\lambda I)^{-1}A^Tb.
+\]
+
+\subsection*{综合题 6}
+
+不一定。
+
+反例：
+\[
+    f(x)=x^2,\quad C=\R.
+\]
+点 $x^\star=0$ 是严格局部最优解，也是严格全局最优解，这不是反例。
+
+需要找严格局部但非严格全局的情况。考虑凸函数
+\[
+    f(x)=0,\quad C=\R.
+\]
+任意点都是全局最优，但没有严格局部最优。
+
+事实上，对凸优化问题，若存在严格局部最优解，则它一定是全局最优解，并且在很多常见情形下也是唯一全局最优解。证明如下：
+
+若 $x^\star$ 是严格局部最优，但不是唯一全局最优，则存在 $y\neq x^\star$，使得
+\[
+    f(y)=f(x^\star).
+\]
+由凸性，
+\[
+    f((1-\theta)x^\star+\theta y)
+    \le
+    (1-\theta)f(x^\star)+\theta f(y)
+    =
+    f(x^\star).
+\]
+由于 $x^\star$ 是全局最优，又有
+\[
+    f((1-\theta)x^\star+\theta y)\ge f(x^\star).
+\]
+因此
+\[
+    f((1-\theta)x^\star+\theta y)=f(x^\star).
+\]
+当 $\theta$ 足够小时，该点在 $x^\star$ 的任意邻域内，且不同于 $x^\star$，这与严格局部最优矛盾。
+
+所以凸优化中严格局部最优解必为唯一全局最优解。
+
+\newpage
+
+\section{考前速记清单}
+
+\subsection*{凸集必背}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 凸集定义：
+    \[
+        x,y\in C,\ \theta\in[0,1]
+        \Rightarrow
+        \theta x+(1-\theta)y\in C.
+    \]
+    \item 常见凸集：超平面、半空间、多面体、范数球、椭球、单纯形、半正定锥。
+    \item 任意交集保持凸性，并集一般不保持凸性。
+    \item 仿射映射的像和原像保持凸性。
+    \item 投影保持凸性。
+\end{enumerate}
+
+\subsection*{凸函数必背}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 凸函数定义：
+    \[
+        f(\theta x+(1-\theta)y)
+        \le
+        \theta f(x)+(1-\theta)f(y).
+    \]
+    \item 一阶条件：
+    \[
+        f(y)\ge f(x)+\nabla f(x)^T(y-x).
+    \]
+    \item 二阶条件：
+    \[
+        \nabla^2 f(x)\succeq0.
+    \]
+    \item 上图判别：
+    \[
+        f\text{ 凸}
+        \Longleftrightarrow
+        \epi f\text{ 凸}.
+    \]
+    \item 保凸规则：非负加权和、仿射复合、逐点最大值、合适的复合规则。
+\end{enumerate}
+
+\subsection*{标准形式必背}
+
+凸优化标准形式：
+\[
+\begin{aligned}
+    \min_x\quad & f_0(x)\\
+    \st\quad & f_i(x)\le0,\quad i=1,\dots,m,\\
+    & Ax=b.
+\end{aligned}
+\]
+
+要求：
+
+\begin{enumerate}[label=\arabic*.]
+    \item $f_0$ 凸；
+    \item $f_i$ 凸；
+    \item 等式约束必须仿射；
+    \item 可行集必须凸；
+    \item 局部最优就是全局最优。
+\end{enumerate}
+
+\subsection*{典型模型必背}
+
+\begin{enumerate}[label=\arabic*.]
+    \item LP：
+    \[
+        \min c^Tx,\quad Ax\le b,\ Fx=g.
+    \]
+    \item QP：
+    \[
+        \min \frac12x^TPx+q^Tx,\quad P\succeq0.
+    \]
+    \item SOCP：
+    \[
+        \norm{Ax+b}_2\le c^Tx+d.
+    \]
+    \item SDP：
+    \[
+        F_0+\sum_i x_iF_i\succeq0.
+    \]
+    \item 最小二乘：
+    \[
+        \min \frac12\norm{Ax-b}_2^2.
+    \]
+    \item LASSO：
+    \[
+        \min \frac12\norm{Ax-b}_2^2+\lambda\norm{x}_1.
+    \]
+\end{enumerate}
+
+\subsection*{无约束凸优化必背}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 可微凸函数最优性条件：
+    \[
+        \nabla f(x^\star)=0.
+    \]
+    \item 不可微凸函数最优性条件：
+    \[
+        0\in\partial f(x^\star).
+    \]
+    \item 梯度下降：
+    \[
+        x^{k+1}=x^k-\alpha_k\nabla f(x^k).
+    \]
+    \item $L$-smooth 常用步长：
+    \[
+        \alpha=\frac1L.
+    \]
+    \item 强凸函数有唯一最优解。
+    \item 牛顿方向：
+    \[
+        \Delta x_{\mathrm{nt}}
+        =
+        -(\nabla^2 f(x))^{-1}\nabla f(x).
+    \]
+\end{enumerate}
+
+\section{最后复习建议}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 先背定义：凸集、凸函数、标准凸优化形式。
+    \item 再练证明：凸集证明、凸函数证明、局部最优即全局最优。
+    \item 然后练模型识别：LP、QP、SOCP、SDP。
+    \item 最后练综合题：把非标准形式转成标准形式。
+    \item 考前重点复习易错点：等式必须仿射、负权重不保凸、并集不保凸、最小值不保凸。
+\end{enumerate}
+
+\end{document}

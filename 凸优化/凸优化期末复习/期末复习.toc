@@ -1,0 +1,81 @@
+\contentsline {section}{\numberline {1}复习优先级总览}{5}{section.1}%
+\contentsline {section}{\numberline {2}数学基础}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}向量、矩阵与范数}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}常用不等式 \textcolor {orange}{\textbf {P1 高频}}}{6}{subsection.2.2}%
+\contentsline {section}{\numberline {3}凸集}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}凸集定义 \textcolor {red}{\textbf {P0 必考}}}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}常见凸集 \textcolor {red}{\textbf {P0 必考}}}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}凸集的保凸运算 \textcolor {red}{\textbf {P0 必考}}}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}凸包 \textcolor {orange}{\textbf {P1 高频}}}{8}{subsection.3.4}%
+\contentsline {section}{\numberline {4}凸函数}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}凸函数定义 \textcolor {red}{\textbf {P0 必考}}}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}凹函数}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}一阶判别条件 \textcolor {red}{\textbf {P0 必考}}}{8}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}二阶判别条件 \textcolor {red}{\textbf {P0 必考}}}{9}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}常见凸函数 \textcolor {red}{\textbf {P0 必考}}}{9}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}保凸运算 \textcolor {red}{\textbf {P0 必考}}}{9}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}上图与凸性 \textcolor {orange}{\textbf {P1 高频}}}{10}{subsection.4.7}%
+\contentsline {section}{\numberline {5}拟凸函数}{10}{section.5}%
+\contentsline {subsection}{\numberline {5.1}定义 \textcolor {orange}{\textbf {P1 高频}}}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}凸函数与拟凸函数的关系}{10}{subsection.5.2}%
+\contentsline {section}{\numberline {6}凸优化问题标准形式}{11}{section.6}%
+\contentsline {subsection}{\numberline {6.1}一般形式 \textcolor {red}{\textbf {P0 必考}}}{11}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}可行集}{11}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}全局最优性 \textcolor {red}{\textbf {P0 必考}}}{11}{subsection.6.3}%
+\contentsline {section}{\numberline {7}典型凸优化模型}{11}{section.7}%
+\contentsline {subsection}{\numberline {7.1}线性规划 LP \textcolor {red}{\textbf {P0 必考}}}{11}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}二次规划 QP \textcolor {red}{\textbf {P0 必考}}}{12}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}二阶锥规划 SOCP \textcolor {orange}{\textbf {P1 高频}}}{12}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}半定规划 SDP \textcolor {orange}{\textbf {P1 高频}}}{12}{subsection.7.4}%
+\contentsline {section}{\numberline {8}无约束凸优化}{12}{section.8}%
+\contentsline {subsection}{\numberline {8.1}最优性条件 \textcolor {red}{\textbf {P0 必考}}}{12}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}强凸函数 \textcolor {red}{\textbf {P0 必考}}}{13}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Lipschitz 梯度 \textcolor {orange}{\textbf {P1 高频}}}{13}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}梯度下降法 \textcolor {red}{\textbf {P0 必考}}}{13}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}牛顿法 \textcolor {orange}{\textbf {P1 高频}}}{13}{subsection.8.5}%
+\contentsline {section}{\numberline {9}次梯度与不可微优化}{14}{section.9}%
+\contentsline {subsection}{\numberline {9.1}次梯度定义 \textcolor {red}{\textbf {P0 必考}}}{14}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}常见次梯度 \textcolor {red}{\textbf {P0 必考}}}{14}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}次梯度最优性条件 \textcolor {red}{\textbf {P0 必考}}}{15}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}次梯度法 \textcolor {orange}{\textbf {P1 高频}}}{15}{subsection.9.4}%
+\contentsline {section}{\numberline {10}投影与投影梯度法}{15}{section.10}%
+\contentsline {subsection}{\numberline {10.1}欧氏投影 \textcolor {red}{\textbf {P0 必考}}}{15}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}投影最优性条件 \textcolor {red}{\textbf {P0 必考}}}{15}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}投影梯度法 \textcolor {orange}{\textbf {P1 高频}}}{16}{subsection.10.3}%
+\contentsline {section}{\numberline {11}近端算子与近端梯度法}{16}{section.11}%
+\contentsline {subsection}{\numberline {11.1}近端算子 \textcolor {orange}{\textbf {P1 高频}}}{16}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}常见近端算子}{16}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}近端梯度法 \textcolor {orange}{\textbf {P1 高频}}}{16}{subsection.11.3}%
+\contentsline {section}{\numberline {12}拉格朗日对偶}{17}{section.12}%
+\contentsline {subsection}{\numberline {12.1}原问题 \textcolor {red}{\textbf {P0 必考}}}{17}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}拉格朗日函数 \textcolor {red}{\textbf {P0 必考}}}{17}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}对偶函数 \textcolor {red}{\textbf {P0 必考}}}{17}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}对偶问题 \textcolor {red}{\textbf {P0 必考}}}{17}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}弱对偶 \textcolor {red}{\textbf {P0 必考}}}{18}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}强对偶 \textcolor {red}{\textbf {P0 必考}}}{18}{subsection.12.6}%
+\contentsline {subsection}{\numberline {12.7}Slater 条件 \textcolor {red}{\textbf {P0 必考}}}{18}{subsection.12.7}%
+\contentsline {section}{\numberline {13}KKT 条件}{18}{section.13}%
+\contentsline {subsection}{\numberline {13.1}KKT 条件 \textcolor {red}{\textbf {P0 必考}}}{18}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}KKT 的重要性}{19}{subsection.13.2}%
+\contentsline {section}{\numberline {14}Fenchel 共轭}{19}{section.14}%
+\contentsline {subsection}{\numberline {14.1}定义 \textcolor {orange}{\textbf {P1 高频}}}{19}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}常见共轭函数}{20}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Fenchel--Young 不等式 \textcolor {orange}{\textbf {P1 高频}}}{20}{subsection.14.3}%
+\contentsline {section}{\numberline {15}对偶范数}{20}{section.15}%
+\contentsline {subsection}{\numberline {15.1}定义 \textcolor {orange}{\textbf {P1 高频}}}{20}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}常见对偶范数}{20}{subsection.15.2}%
+\contentsline {section}{\numberline {16}屏障法与内点法}{20}{section.16}%
+\contentsline {subsection}{\numberline {16.1}对数屏障函数 \textcolor {blue}{\textbf {P2 了解}}}{20}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}中心路径 \textcolor {blue}{\textbf {P2 了解}}}{21}{subsection.16.2}%
+\contentsline {section}{\numberline {17}ADMM 简介}{21}{section.17}%
+\contentsline {subsection}{\numberline {17.1}问题形式 \textcolor {blue}{\textbf {P2 了解}}}{21}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}ADMM 迭代}{21}{subsection.17.2}%
+\contentsline {section}{\numberline {18}常见证明套路}{22}{section.18}%
+\contentsline {subsection}{\numberline {18.1}证明集合凸 \textcolor {red}{\textbf {P0 必考}}}{22}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}证明函数凸 \textcolor {red}{\textbf {P0 必考}}}{22}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}写 KKT 条件套路 \textcolor {red}{\textbf {P0 必考}}}{22}{subsection.18.3}%
+\contentsline {section}{\numberline {19}典型例题}{23}{section.19}%
+\contentsline {section}{\numberline {20}综合练习题}{26}{section.20}%
+\contentsline {section}{\numberline {21}练习题参考答案}{27}{section.21}%
+\contentsline {section}{\numberline {22}考前速记清单}{29}{section.22}%
+\contentsline {section}{\numberline {23}建议复习顺序}{30}{section.23}%

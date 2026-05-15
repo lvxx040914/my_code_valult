@@ -1,0 +1,109 @@
+\documentclass[12pt, UTF8, oneside]{extarticle}
+\usepackage{multicol}
+\usepackage{pifont}
+\usepackage{xeCJK}
+\usepackage{physics}
+\usepackage[UTF8]{ctex}
+\usepackage[most]{tcolorbox}
+\linespread{1.3}
+% \usepackage{esint}
+% 2. 引入书签宏包（实现侧边栏跳转的关键）
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    pdfstartview=FitH,
+    bookmarksnumbered=true,
+    bookmarksopen=true
+]{hyperref}
+% 3. 页面设置（调大了上边距，让导航栏和题目更疏朗）
+\usepackage[
+    a4paper, 
+    landscape, 
+    tmargin=4.5cm, 
+    bmargin=2cm, 
+    lmargin=2.5cm, 
+    rmargin=2.5cm, 
+    headheight=2.5cm, 
+    headsep=1.2cm
+]{geometry}
+
+\usepackage{amsmath, amssymb, xcolor, enumitem, fancyhdr, tikz}
+% \DeclareMathOperator{\arccot}{arccot}
+% --- 颜色与样式 ---
+\definecolor{MainBlue}{RGB}{100, 149, 237} % 浅蓝色
+\everymath{\displaystyle}
+
+% --- 变量初始化 ---
+\newcommand{\currentday}{目录}
+\newcommand{\currenttopic}{目录}
+\newcommand{\oiint}{\mathop{{\bigcirc}\mkern-21mu\iint}}
+% --- 核心：自动生成 PDF 书签的命令 ---
+\newcommand{\setday}[2]{
+    \newpage 
+    \renewcommand{\currentday}{第 #1 天}
+    \renewcommand{\currenttopic}{#2}
+    % 下面这行命令会将“第 X 天”加入到 PDF 的侧边栏目录中
+    \phantomsection
+    \addcontentsline{toc}{section}{第 #1 天：#2}
+    \restartlist{worklist} 
+}
+\sloppy
+% --- 顶栏美化 (带渐变、装饰线，并包含 Page 字样) ---
+\pagestyle{fancy}
+\fancyhf{} 
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{
+    \begin{tikzpicture}[remember picture, overlay]
+        % 使用渐变色背景
+        \fill[left color=MainBlue, right color=MainBlue!60] 
+            ([yshift=-2.2cm]current page.north west) rectangle (current page.north east);
+        
+        % 底部白色装饰线条
+        \draw[white, line width=1pt] ([yshift=-2.2cm]current page.north west) -- ([yshift=-2.2cm]current page.north east);
+        
+        % 左侧文字
+        \node[anchor=west, white, font=\Large\bfseries] at ([xshift=1.5cm, yshift=-1.1cm]current page.north west) {
+            \currentday \ \scalebox{0.8}{|} \ \currenttopic
+        };
+        
+        % 右侧文字：包含 Page 字样
+        \node[anchor=east, white!90, font=\small\itshape] at ([xshift=-1.5cm, yshift=-1.1cm]current page.north east) {
+            100 Days Challenge \quad Page \thepage
+        };
+    \end{tikzpicture}
+}
+
+\newlist{worklist}{enumerate}{1}
+\setlist[worklist]{label=\textbf{\arabic*.}, leftmargin=2em}
+
+\newcommand{\oneproblem}[1]{
+    \newpage 
+    \begin{worklist}[resume]
+        \item {\large #1} % 题目文字再大一级
+        \vfill 
+    \end{worklist}
+}
+
+\begin{document}
+    % 如果你想在 PDF 第一页加个总目录，可以取消下面这行的注释
+    \tableofcontents 
+    \input{0.tex}
+
+    \input{1.tex}
+
+    \input{2.tex}
+
+    \input{3.tex}
+
+    \input{4.tex}
+
+    \input{5.tex}
+
+    \input{6.tex}
+
+    \input{7.tex}
+
+    \input{8.tex}
+
+    \input{9.tex}
+\end{document}

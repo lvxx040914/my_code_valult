@@ -1,0 +1,958 @@
+% ======================================================
+% 第 81 天
+% ======================================================
+\setday{81}{斯托克斯公式、旋度与场论初步}
+
+\oneproblem{
+    设 $\vec{F}(x,y,z)=xy\vec{i}-yz\vec{j}+xz\vec{k}$，计算 $\text{rot}\vec{F}(1,1,0)$.
+}
+
+\oneproblem{
+    设 $L$ 是柱面方程 $x^2+y^2=1$ 与平面 $z=x+y$ 的交线，从 $z$ 轴正向往 $z$ 轴负向看去为逆时针方向，则曲线积分
+    $
+    \oint_L xz dx + x dy + \frac{y^2}{2} dz.
+    $
+}
+
+\oneproblem{
+    设曲线 $L$ 是空间区域 $0\le x\le1,0\le y\le1,0\le z\le1$ 的表面与平面 $x+y+z=\frac{3}{2}$ 的交线，计算曲线积分
+    $
+    I=\oint_L (z^2-y^2)dx+(x^2-z^2)dy+(y^2-x^2)dz.
+    $
+}
+
+\oneproblem{
+    计算 $I=\oint_L (y^2-z^2)dx+(2z^2-x^2)dy+(3x^2-y^2)dz$，其中 $L$ 是平面 $x+y+z=2$ 与柱面 $|x|+|y|=1$ 的交线，从 $Z$ 轴正向看去，$L$ 为逆时针方向.
+}
+
+\oneproblem{
+    设 $L$ 是曲面 $\Sigma:4x^2+y^2+z^2=1,x\ge0,y\ge0,z\ge0$ 的边界，曲面方向朝上，已知曲线 $L$ 的方向和曲面的正法向量满足右手法则，计算曲线积分
+    $
+    I=\oint_L (yz^2-\cos z)dx+2xz^2 dy+(2xyz+x\sin z)dz.
+    $
+}
+
+\oneproblem{
+    设曲线 $\Gamma$ 为曲线 $x^2+y^2+z^2=1,x+z=1,x\ge0,y\ge0,z\ge0$ 上从点 $A(1,0,0)$ 到点 $B(0,0,1)$ 的一段。求曲线积分
+    $
+    I=\int_\Gamma y dx + z dy + x dz.
+    $
+}
+
+\oneproblem{
+    设 $\Gamma$ 为空间分段光滑的闭曲线，$f(x),g(x),h(x)$ 连续，证明：
+    $
+    \oint_\Gamma (f(x)-yz)dx+(g(y)-xz)dy+(h(z)-xy)dz=0.
+    $
+}
+
+\oneproblem{
+    已知 $\vec{a},\vec{b}$ 为常向量，$\vec{a}\times\vec{b}=(1,1,1),\vec{r}=(x,y,z)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$\text{rot}(\vec{a}\cdot\vec{r})\vec{b}=\vec{a}\times\vec{b}$；
+        \item 求向量场 $\vec{A}=(\vec{a}\cdot\vec{r})\vec{b}$ 沿闭曲线 $\Gamma:\begin{cases}x^2+y^2+z^2=1\\x+y+z=0\end{cases}$（从 $z$ 轴正向看依逆时针方向）的环流量.
+    \end{enumerate}
+}
+
+\oneproblem{
+    判定空间曲线积分 $I=\int_{(A)}^{(B)}\frac{x dx + y dy + z dz}{\sqrt{x^2+y^2+z^2}}$ 是否与路线无关，并求其值。其中 $A$ 与 $B$ 的坐标分别为 $(a_1,a_2,a_3),(b_1,b_2,b_3)$，它们均不在坐标原点，连接 $A,B$ 的任意路线也不过原点.
+}
+
+\oneproblem{
+    作数量场 $u=\sqrt{x^2+y^2+(z+8)^2}+\sqrt{x^2+y^2+(z-8)^2}$ 的等值面，求过点 $M(9,12,28)$ 的等值面在域 $x^2+y^2+z^2\le36$ 内 $\max u$ 的值.
+}
+
+\oneproblem{
+    设有向量场 $\vec{A}=(1+x^2)\varphi(x)\vec{i}+2xy\varphi(x)\vec{j}-3z\vec{k}$，其中 $\varphi(x)$ 是可微函数，且 $\varphi(0)=0$，试求函数 $\varphi(x)$，使通量 $\Phi=\iint_\Sigma \vec{A}\cdot d\vec{S}$ 只依赖于闭曲线 $\Gamma$，其中 $\Sigma$ 是张在空间闭曲线 $\Gamma$ 上的光滑曲面.
+}
+
+\oneproblem{
+    证明：向量场 $\vec{A}=(2x+y)\vec{i}+(4y+x+2z)\vec{j}+(2y-z)\vec{k}$ 是有势场，而 $\vec{B}=(xy+y^2)\vec{i}+x^2y\vec{j}+\vec{k}$ 不是有势场，并求一数量函数 $u(x,y,z)$，使 $\vec{A}=\text{grad }u(x,y,z)$.
+}
+
+\oneproblem{
+    设向量场 $\vec{F}=(x^3+3y^2z)\vec{i}+6xyz\vec{j}+f(x,y,z)\vec{k}$ 为有势场，$f(x,y,z)$ 满足 $\frac{\partial f}{\partial z}=0,f(0,0)=0$，求函数 $f(x,y,z)$ 和场 $\vec{F}$ 的势函数，并证明对于这样的函数 $f(x,y,z)$，$\vec{F}$ 不是管量场.
+}
+
+% ======================================================
+% 第 82 天
+% ======================================================
+\setday{82}{常数项级数的概念与性质}
+
+\oneproblem{
+    设有下列命题：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若 $\sum_{n=1}^\infty (u_{2n-1}+u_{2n})$ 收敛，则 $\sum_{n=1}^\infty u_n$ 收敛
+        \item 若 $\sum_{n=1}^\infty u_n$ 收敛，则 $\sum_{n=1}^\infty u_{n+1000}$ 收敛
+        \item 若 $\lim_{n\to\infty}\frac{u_{n+1}}{u_n}>1$，则 $\sum_{n=1}^\infty u_n$ 发散
+        \item 若 $\sum_{n=1}^\infty (u_n+v_n)$ 收敛，则 $\sum_{n=1}^\infty u_n$，$\sum_{n=1}^\infty v_n$ 都收敛
+    \end{enumerate}
+    则以上命题中正确的是（\quad）
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item (1)(2)
+        \item (2)(3)
+        \item (3)(4)
+        \item (1)(4)
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\{u_n\}$ 是数列，则下列命题正确的是（\quad）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 若 $\sum_{n=1}^\infty u_n$ 收敛，则 $\sum_{n=1}^\infty (u_{2n-1}+u_{2n})$ 收敛
+        \item 若 $\sum_{n=1}^\infty (u_{2n-1}+u_{2n})$ 收敛，则 $\sum_{n=1}^\infty u_n$ 收敛
+        \item 若 $\sum_{n=1}^\infty u_n$ 收敛，则 $\sum_{n=1}^\infty (u_{2n-1}-u_{2n})$ 收敛
+        \item 若 $\sum_{n=1}^\infty (u_{2n-1}-u_{2n})$ 收敛，则 $\sum_{n=1}^\infty u_n$ 收敛
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $\{u_n\}$ 是单调增加的有界数列，则下列级数中收敛的是（\quad）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $\sum_{n=1}^\infty \frac{u_n}{n}$
+        \item $\sum_{n=1}^\infty (-1)^n\frac{1}{u_n}$
+        \item $\sum_{n=1}^\infty \left(1-\frac{u_n}{u_{n+1}}\right)$
+        \item $\sum_{n=1}^\infty (u_{n+1}^2-u_n^2)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知级数 $\sum_{n=1}^\infty (-1)^{n-1}a_n=2$，$\sum_{n=1}^\infty a_{2n-1}=5$，求级数 $\sum_{n=1}^\infty a_n$ 的和.
+}
+
+\oneproblem{
+    求下列级数的和：
+    \begin{enumerate}[label=(\arabic*),itemsep = 4cm]
+        \item $\sum_{n=1}^{+\infty} \arctan\frac{2}{4n^2+4n+1}$
+        \item $\sum_{k=1}^\infty \frac{k+2}{k!+(k+1)!+(k+2)!}$
+        \item $\sum_{n=0}^\infty \frac{x^{2n}}{x^{2n+1}-1}\ (|x|<1)$
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $a_1=2,a_{n+1}=\frac{1}{2}\left(a_n+\frac{1}{a_n}\right),(n=1,2,\cdots)$，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\lim_{n\to\infty}a_n$ 存在；
+        \item 级数 $\sum_{n=1}^\infty \left(\frac{a_n}{a_{n+1}}-1\right)$ 收敛.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设有两条抛物线 $y=nx^2+\frac{1}{n}$ 和 $y=(n+1)x^2+\frac{1}{n+1}$，记它们交点的横坐标的绝对值为 $a_n$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求这两条抛物线所围成的平面图形的面积 $S_n$；
+        \item 求级数 $\sum_{n=1}^\infty \frac{S_n}{a_n}$ 的和.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $\sum_{n=1}^\infty a_n$ 收敛，试证：$\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n ka_k=0$.
+}
+
+\oneproblem{
+    设数列 $\{u_n\},\{v_n\}$ 满足 $v_1=1,2v_{n+1}=v_n+\sqrt{v_n^2+u_n}\ (n=1,2,\cdots)$，其中 $u_n>0$ 是级数 $\sum_{n=1}^\infty u_n$ 的通项。证明：级数 $\sum_{n=1}^\infty u_n$ 收敛的充分必要条件是数列 $\{v_n\}$ 收敛.
+}
+
+% ======================================================
+% 第 83 天
+% ======================================================
+\setday{83}{正项级数及其审敛法}
+
+\oneproblem{
+    设 $\sum_{n=1}^\infty a_n$ 为正项级数，下列结论中正确的是（\quad）
+    \begin{enumerate}[label=(\Alph*)]
+        \item 若 $\lim_{n\to\infty} na_n=0$，则级数 $\sum_{n=1}^\infty a_n$ 收敛
+        \item 若存在非零常数 $\lambda$，使得 $\lim_{n\to\infty} na_n=\lambda$，则级数 $\sum_{n=1}^\infty a_n$ 发散
+        \item 若级数 $\sum_{n=1}^\infty a_n$ 收敛，则 $\lim_{n\to\infty}n^2a_n=0$
+        \item 若级数 $\sum_{n=1}^\infty a_n$ 发散，则存在非零常数 $\lambda$，使得 $\lim_{n\to\infty} na_n=\lambda$
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $a_n=\int_0^{\frac{\pi}{4}}\tan^n x dx$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $\sum_{n=1}^\infty \frac{1}{n}(a_n+a_{n+2})$ 的值；
+        \item 试证：对任意的常数 $\lambda>0$，级数 $\sum_{n=1}^\infty \frac{a_n}{n^\lambda}$ 收敛.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设数列 $\{a_n\},\{b_n\}$ 满足 $0<a_n<\frac{\pi}{2},0<b_n<\frac{\pi}{2}$，$\cos a_n-a_n=\cos b_n$，且级数 $\sum_{n=1}^\infty b_n$ 收敛.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 $\lim_{n\to\infty}a_n=0$；
+        \item 证明级数 $\sum_{n=1}^\infty \frac{a_n}{b_n}$ 收敛.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设数列 $\{a_n\}$ 满足：$a_1=1,a_{n+1}=\frac{a_n}{(n+1)(a_n+1)},n\ge1$。求极限 $\lim_{n\to\infty}n!a_n$.
+}
+
+\oneproblem{
+    设 $x_n$ 是方程 $x=\tan x$ 的正根（按递增顺序排列）。证明级数 $\sum_{n=1}^\infty \frac{1}{x_n^2}$ 收敛.
+}
+
+\oneproblem{
+    设 $a_1=3,a_{n+1}=\frac{1}{2}a_n+\frac{1}{a_n},n=1,2,\cdots$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 $\lim_{n\to\infty}a_n$ 存在，并求极限值；
+        \item 证明：对于任意实数 $p$，级数 $\sum_{n=1}^\infty n^p\left(\frac{a_n}{a_{n+1}}-1\right)$ 收敛.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $\sum_{n=1}^\infty a_n$ 和 $\sum_{n=1}^\infty b_n$ 为正项级数，
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若 $\lim_{n\to\infty}\left(\frac{a_n}{a_{n+1}b_n}-\frac{1}{b_{n+1}}\right)>0$，则 $\sum_{n=1}^\infty a_n$ 收敛；
+        \item 若 $\lim_{n\to\infty}\left(\frac{a_n}{a_{n+1}b_n}-\frac{1}{b_{n+1}}\right)<0$ 且 $\sum_{n=1}^\infty b_n$ 发散，则 $\sum_{n=1}^\infty a_n$ 发散.
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知 $\{a_k\},\{b_k\}$ 是正数数列，且 $b_{k+1}-b_k\ge\delta>0,k=1,2,\cdots$，$\delta$ 为一常数。证明：若级数 $\sum_{k=1}^{+\infty}a_k$ 收敛，则级数 $\sum_{k=1}^{+\infty}\frac{k\sqrt[k]{(a_1a_2\cdots a_k)(b_1b_2\cdots b_k)}}{b_{k+1}b_k}$ 收敛.
+}
+
+\oneproblem{
+    判断级数 $\sum_{n=1}^\infty \frac{1+\frac{1}{2}+\cdots+\frac{1}{n}}{(n+1)(n+2)}$ 的敛散性，若收敛，求其和.
+}
+
+\oneproblem{
+    设 $\{a_n\}$ 是递增数列，$a_1>1$。求证：级数 $\sum_{n=1}^\infty \frac{a_{n+1}-a_n}{a_n\ln a_{n+1}}$ 收敛的充分必要条件是 $\{a_n\}$ 有界。又问级数通项分母中的 $a_n$ 是否可以换成 $a_{n+1}$？
+}
+
+\oneproblem{
+    设 $0<a_n<1,n=1,2,\cdots$ 且 $\lim_{n\to\infty}\frac{\ln\frac{1}{a_n}}{\ln n}=q$（有限或 $+\infty$）.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：当 $q>1$ 时，级数 $\sum_{n=1}^\infty a_n$ 收敛；当 $q<1$ 时，级数 $\sum_{n=1}^\infty a_n$ 发散；
+        \item 讨论 $q=1$ 时级数 $\sum_{n=1}^\infty a_n$ 的敛散性并阐明理由.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $\{u_n\}$ 是正数列，满足 $\frac{u_{n+1}}{u_n}=1-\frac{\alpha}{n}+O\left(\frac{1}{n^\beta}\right)$，其中常数 $\alpha>0,\beta>1$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 对于 $v_n=n^\alpha u_n$，判断级数 $\sum_{n=1}^\infty \ln\frac{v_{n+1}}{v_n}$ 的敛散性；
+        \item 讨论级数 $\sum_{n=1}^\infty u_n$ 的敛散性.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $a_n>0$，$S_n=\sum_{k=1}^n a_k$，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 当 $\alpha>1$ 时，级数 $\sum_{n=1}^{+\infty}\frac{a_n}{S_n^\alpha}$ 收敛；
+        \item 当 $\alpha\le1$，且 $S_n\to\infty(n\to\infty)$ 时，$\sum_{n=1}^{+\infty}\frac{a_n}{S_n^\alpha}$ 发散.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设正项级数 $\sum_{n=1}^\infty \frac{1}{a_n}$ 收敛。证明级数 $\sum_{n=1}^\infty \frac{n^2a_n}{S_n^2}$ 收敛，其中 $S_n=\sum_{k=1}^n a_k$.
+}
+
+\oneproblem{
+    设 $a_n>0\ (n=1,2,\cdots)$ 且级数 $\sum_{n=1}^\infty a_n$ 发散，证明：$\sum_{n=1}^\infty \frac{a_n}{(a_1+1)(a_2+1)\cdots(a_n+1)}=1$.
+}
+
+\oneproblem{
+    设 $a_n>0,S_n=a_1+a_2+\cdots+a_n$，级数 $\sum_{n=1}^\infty a_n=\infty$。试证 $\sum_{n=1}^\infty \frac{a_n}{S_n}$ 发散.
+}
+
+\oneproblem{
+    设 $\{a_n\}$ 与 $\{b_n\}$ 均为正实数列，满足：$a_1=b_1=1$ 且 $b_n=a_nb_{n-1}-2,n=2,3,\cdots$。又设 $\{b_n\}$ 为有界数列，证明级数 $\sum_{n=1}^\infty \frac{1}{a_1a_2\cdots a_n}$ 收敛，并求该级数的和.
+}
+
+\oneproblem{
+    设 $p>0,x_1=\frac{1}{4},x_{n+1}=x_n^p+x_n^{2p}\ (n=1,2,\cdots)$。证明：$\sum_{n=1}^\infty \frac{1}{1+x_n^p}$ 收敛并求其和.
+}
+
+\oneproblem{
+    设 $n>1$ 为正整数，令 $S_n=\left(\frac{1}{n}\right)^n+\left(\frac{2}{n}\right)^n+\cdots+\left(\frac{n-1}{n}\right)^n$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：数列 $S_n$ 单调增加且有界，从而极限 $\lim_{n\to\infty}S_n$ 存在；
+        \item 求极限 $\lim_{n\to\infty}S_n$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    利用柯西审敛原理判定下列级数的收敛性：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\sum_{n=1}^\infty \frac{1}{n^2}$
+        \item $\sum_{n=1}^\infty \frac{\sin nx}{2^n}$
+        \item $\sum_{n=0}^\infty \left(\frac{1}{3n+1}+\frac{1}{3n+2}-\frac{1}{3n+3}\right)$
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 84 天
+% ======================================================
+\setday{84}{一般项数值级数的敛散性判别方法}
+
+\oneproblem{
+    判定通项如下的级数 $\sum_{n=1}^\infty u_n$ 的敛散性.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $u_n=\sin\left(\sqrt{n^2+a^2}\pi\right)(a>0)$;
+        \item $u_n=\frac{\pi}{2}-\arcsin\frac{n}{n+1}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    判定下列级数的敛散性，如果收敛，指出是绝对收敛还是条件收敛？
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\sum_{n=2}^\infty \frac{(-1)^n}{\sqrt{n}+(-1)^n}$.
+        \item $\sum_{n=1}^\infty (-1)^{n+1}\left(\frac{1}{u_n}+\frac{1}{u_{n+1}}\right)$，其中 $u_n\neq0,n=1,2,\cdots$ 且 $\lim_{n\to\infty}\frac{n}{u_n}=1$.
+        \item $\sum_{n=1}^\infty (-1)^n\frac{1}{2^n}\left(1+\frac{1}{n}\right)^{n^2}$.
+        \item $\sum_{n=1}^\infty \left[\frac{1}{2n-1}-\frac{1}{(2n)^\alpha}\right]$，其中 $\alpha>0$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $\varepsilon\in(0,1),x_0=a,x_{n+1}=a+\varepsilon\sin x_n\ (n=0,1,2\cdots)$。证明 $\xi=\lim_{n\to\infty}x_n$ 存在，且 $\xi$ 为方程 $x-\varepsilon\sin x=a$ 的唯一根.
+}
+
+\oneproblem{
+    设正项数列 $\{a_n\}$ 单调减少，且级数 $\sum_{n=1}^\infty (-1)^na_n$ 发散，试问级数 $\sum_{n=1}^\infty \left(\frac{1}{a_n+1}\right)^n$ 是否收敛？并说明理由.
+}
+
+\oneproblem{
+    设 $a,b>0,x_1>0,x_2=a+\frac{b}{x_1},\cdots,x_n=a+\frac{b}{x_{n-1}},n=2,3,\cdots$，用级数法证明 $\{x_n\}$ 极限存在，并求极限.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $x=0$ 处存在二阶导数 $f''(0)$，且 $\lim_{x\to0}\frac{f(x)}{x}=0$。证明：级数 $\sum_{n=1}^\infty \left|f\left(\frac{1}{n}\right)\right|$ 收敛.
+}
+
+\oneproblem{
+    设函数 $f$ 在 $[-1,1]$ 内有定义，在 $x=0$ 的某邻域内连续可导，且 $\lim_{x\to0}\frac{f(x)}{x}=a>0$。证明：级数 $\sum_{n=1}^\infty (-1)^nf\left(\frac{1}{n}\right)$ 收敛，$\sum_{n=1}^\infty f\left(\frac{1}{n}\right)$ 发散.
+}
+
+\oneproblem{
+    设有交错级数 $\sum_{n=1}^\infty (-1)^nu_n\ (u_n>0,n=1,2,\cdots)$，如果存在常数 $\mu,\lambda>0,0<p<1$ 且 $\lim_{n\to+\infty}n^p\left(\frac{u_n}{u_{n+1}}-\lambda\right)=\mu$，证明：当 $\lambda>1$ 时，级数收敛；当 $\lambda<1$ 时，级数发散.
+}
+
+\oneproblem{
+    设 $I_n=\int_0^{\frac{\pi}{4}}\tan^n x dx$，其中 $n$ 为正整数.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若 $n\ge2$，计算 $I_n+I_{n-2}$；
+        \item 设 $p$ 为实数，讨论级数 $\sum_{n=1}^\infty (-1)^nI_n^p$ 的绝对收敛性和条件收敛性.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 是在 $(-\infty,+\infty)$ 内的可微函数，且满足(1)$f(x)>0$；(2)$|f'(x)|\le mf(x)$，其中 $0<m<1$。任取 $a_0$，定义 $a_n=\ln f(a_{n-1}),n=1,2,\cdots$。证明：级数 $\sum_{n=1}^\infty (a_n-a_{n-1})$ 绝对收敛.
+}
+
+\oneproblem{
+    设 $u_n=\int_0^1\frac{dt}{(1+t^4)^n}\ (n\ge1)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明数列 $\{u_n\}$ 收敛，并求极限 $\lim_{n\to\infty}u_n$；
+        \item 证明级数 $\sum_{n=1}^\infty (-1)^nu_n$ 条件收敛；
+        \item 证明当 $p\ge1$ 时级数 $\sum_{n=1}^\infty \frac{u_n}{n^p}$ 收敛，并求级数 $\sum_{n=1}^\infty \frac{u_n}{n}$ 的和.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $\{a_n\},\{b_n\}$ 是两个数列，$a_n>0\ (n\ge0)$，$\sum_{n=1}^\infty b_n$ 绝对收敛，且 $\frac{a_n}{a_{n+1}}\le1+\frac{1}{n}+\frac{1}{n\ln n}+b_n,n\ge2$。求证：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\frac{a_n}{a_{n+1}}<\frac{n+1}{n}\cdot\frac{\ln(n+1)}{\ln n}+b_n\ (n\ge2)$；
+        \item $\sum_{n=1}^\infty a_n$ 发散.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f(x)$，满足条件：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $-\infty<a\le f(x)\le b<\infty,a\le x\le b$；
+        \item 对于任意不同的 $x,y\in[a,b]$，有 $|f(x)-f(y)|<L|x-y|$，其中 $L$ 是大于 $0$ 小于 $1$ 的常数.
+    \end{enumerate}
+    设 $x_1\in[a,b]$，令 $x_{n+1}=\frac{1}{2}(x_n+f(x_n)),n=1,2,\cdots$，证明 $\lim_{n\to\infty}x_n=x$ 存在，且 $f(x)=x$.
+}
+
+\oneproblem{
+    讨论级数 $1-\frac{1}{2^x}+\frac{1}{3}-\frac{1}{4^x}+\cdots+\frac{1}{2n-1}-\frac{1}{(2n)^x}+\cdots$ 在哪些 $x$ 处收敛？在哪些 $x$ 处发散？
+}
+
+\oneproblem{
+    设 $\alpha\in(0,1),\{a_n\}$ 是正数列且满足 $\liminf_{n\to\infty}n^\alpha\left(\frac{a_n}{a_{n+1}}-1\right)=\lambda\in(0,+\infty)$。求证：$\lim_{n\to\infty}n^ka_n=0$，其中 $k>0$.
+}
+
+% ======================================================
+% 第 85 天
+% ======================================================
+\setday{85}{函数项级数的概念及其（一致）收敛性*}
+
+\oneproblem{
+    求下列函数项级数的收敛域.
+    \begin{enumerate}[label=(\arabic*),itemsep = 4cm]
+        \item $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}x^{3n}$.
+        \item $\sum_{n=1}^\infty \frac{1\cdot3\cdots(2n-1)}{2\cdot4\cdots(2n)}\left(\frac{2x}{1+x^2}\right)^n$.
+        \item $\sum_{n=1}^\infty \frac{(-1)^n}{n}\left(\frac{1}{1+x}\right)^n$.
+        \item $\sum_{n=1}^\infty (\ln x)^n$.
+        \item $\sum_{n=1}^\infty \left[1-n\ln\left(1+\frac{1}{n}\right)\right]x^n$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $0<x_1<\pi,x_n=\sin x_{n-1}\ (n=1,2,3\cdots)$，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\lim_{n\to\infty}x_n=0$；
+        \item 级数 $\sum_{n=0}^\infty x_n^p$ 当 $p>2$ 时收敛，当 $p\le2$ 时发散.
+    \end{enumerate}
+}
+
+\oneproblem{
+    试证：无穷级数 $\sum_{n=0}^\infty \frac{n}{1+n^3x}$ 在 $0<x<1$ 时收敛，但不一致收敛.
+}
+
+\oneproblem{
+    求极限 $\lim_{x\to0^+}\sum_{n=1}^\infty \frac{1}{2^n\cdot n^x}$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,1]$ 上连续，$f_1(x)=f(x),f_{n+1}(x)=\int_x^1f_n(t)dt,\forall x\in[0,1],n=1,2,3\cdots$，证明：$\sum_{n=1}^\infty f_n(x)$ 在 $[0,1]$ 上一致收敛.
+}
+
+\oneproblem{
+    已知 $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}=\ln2$，证明如下极限式成立：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\lim_{x\to1^-}\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}\cdot\frac{x^n}{1+x^n}=\frac{1}{2}\ln2$.
+        \item $\lim_{x\to0^+}\sum_{n=3}^\infty \frac{(-1)^{n+1}\sin\frac{1}{n}}{(\ln n)^x}=\sum_{n=3}^\infty (-1)^{n+1}\sin\frac{1}{n}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)=\sum_{n=1}^\infty \frac{e^{-nx}}{1+n^2}$。求证：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $f(x)$ 在 $[0,+\infty)$ 连续；
+        \item $f(x)$ 在 $(0,+\infty)$ 可导、可逐项求导，且 $f'(x)$ 连续.
+    \end{enumerate}
+}
+
+\oneproblem{
+    证明：级数 $\sum_{n=1}^\infty (-1)^n\frac{e^{x^2}+\sqrt{n}}{n^{3/2}}$ 在任何有界区间 $[a,b]$ 上一致收敛，但在任何一点 $x_0$ 处不绝对收敛.
+}
+
+\oneproblem{
+    设 $\{f_n(x)\}$ 是定义在 $[a,b]$ 上的无穷次可微的函数序列且逐点收敛，并在 $[a,b]$ 上满足 $|f_n'(x)|\le M$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 $\{f_n(x)\}$ 在 $[a,b]$ 上一致收敛；
+        \item 设 $f(x)=\lim_{n\to\infty}f_n(x)$，问 $f(x)$ 是否一定在 $[a,b]$ 上处处可导，为什么？
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,\infty)$ 上一致连续，且对于固定 $x\in[0,\infty)$，当自然数 $n\to\infty$ 时 $f(x+n)\to0$。证明函数序列 $\{f(x+n):n=1,2,\cdots\}$ 在 $[0,1]$ 上一致收敛于 $0$.
+}
+
+\oneproblem{
+    设连续函数 $f:\mathbb{R}\to\mathbb{R}$ 满足 $\sup_{x,y\in\mathbb{R}}|f(x+y)-f(x)-f(y)|<+\infty$。证明：存在实常数 $a$ 满足 $\sup_{x\in\mathbb{R}}|f(x)-ax|<+\infty$.
+}
+
+\oneproblem{
+    设 $\sum_{n=1}^{+\infty}na_n$ 收敛，$t_n=a_{n+1}+2a_{n+2}+\cdots+ka_{n+k}+\cdots$，证明：$\lim_{n\to+\infty}t_n=0$.
+}
+
+\oneproblem{
+    分别设 $R=\{(x,y):0\le x\le1;0\le y\le1\}$，$R_\varepsilon=\{(x,y):0\le x\le1-\varepsilon;0\le y\le1-\varepsilon\}$。考虑 $I=\iint_R\frac{\dd x \dd y}{1-xy}$ 与 $I_\varepsilon=\iint_{R_\varepsilon}\frac{\dd x \dd y}{1-xy}$，定义 $I=\lim_{\varepsilon\to0^+}I_\varepsilon$：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 $I=\sum_{n=1}^\infty \frac{1}{n^2}$；
+        \item 利用变量替换：$\begin{cases}u=\frac{1}{2}(x+y)\\v=\frac{1}{2}(y-x)\end{cases}$ 计算积分 $I$ 的值，并由此推出 $\frac{\pi^2}{6}=\sum_{n=1}^\infty \frac{1}{n^2}$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 86 天
+% ======================================================
+\setday{86}{幂级数的收敛域与和函数}
+
+\oneproblem{
+    若 $\sum_{n=1}^\infty a_n(x-1)^n$ 在 $x=-1$ 处收敛，则此级数在 $x=2$ 处（\quad）
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 条件收敛
+        \item 绝对收敛
+        \item 发散
+        \item 收敛性不能确定
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设数列 $\{a_n\}$ 单调减少，$\lim_{n\to\infty}a_n=0$，$S_n=\sum_{k=1}^n a_k\ (n=1,2,\cdots)$ 无界，则幂级数 $\sum_{n=1}^\infty a_n(x-1)^n$ 的收敛域为（\quad）
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $(-1,1]$
+        \item $[-1,1)$
+        \item $[0,2)$
+        \item $(0,2]$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设幂级数 $\sum_{n=0}^\infty a_nx^n$ 的收敛半径为 $3$，求级数 $\sum_{n=1}^\infty na_n(x-1)^{n+1}$ 的收敛区间.
+}
+
+\oneproblem{
+    求级数 $\sum_{n=1}^\infty \frac{n}{3^n}$ 的和.
+}
+
+\oneproblem{
+    求幂级数 $\sum_{n=1}^\infty \frac{1}{3^n+(-2)^n}\frac{x^n}{n}$ 的收敛区间，并讨论该区间端点处的收敛性.
+}
+
+\oneproblem{
+    求幂级数 $\sum_{n=1}^\infty \frac{1}{n2^n}x^{n+1}$ 的收敛域，并求其和函数.
+}
+
+\oneproblem{
+    求幂级数 $\sum_{n=0}^\infty (n+1)(n+3)x^n$ 的收敛域及和函数.
+}
+
+\oneproblem{
+    设级数 $\frac{x^4}{2\cdot4}+\frac{x^6}{2\cdot4\cdot6}+\frac{x^8}{2\cdot4\cdot6\cdot8}+\cdots(-\infty<x<+\infty)$ 的和函数为 $S(x)$。求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $S(x)$ 所满足的一阶微分方程；
+        \item $S(x)$ 的表达式.
+    \end{enumerate}
+}
+
+\oneproblem{
+    求幂级数 $\sum_{n=1}^\infty (-1)^{n-1}\left[1+\frac{1}{n(2n-1)}\right]x^{2n}$ 的收敛区间与和函数 $f(x)$.
+}
+
+\oneproblem{
+    设幂级数 $\sum_{n=0}^\infty a_nx^n$ 在 $(-\infty,+\infty)$ 内收敛，其和函数 $y(x)$ 满足 $y''-2xy'-4y=0,y(0)=0,y'(0)=1$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$a_{n+2}=\frac{2}{n+1}a_n,n=1,2,\cdots$；
+        \item 求 $y(x)$ 的表达式.
+    \end{enumerate}
+}
+
+\oneproblem{
+    求幂级数 $\sum_{n=0}^\infty \frac{(-4)^n+1}{4^n(2n+1)}x^{2n}$ 的收敛域及和函数 $S(x)$.
+}
+
+\oneproblem{
+    已知 $f_n(x)$ 满足 $f_n'(x)=f_n(x)+x^{n-1}e^x$（$n$ 为正整数）且 $f_n(1)=\frac{e}{n}$，求函数项级数 $\sum_{n=1}^\infty f_n(x)$ 之和.
+}
+
+\oneproblem{
+    \begin{enumerate}[label=(\arabic*)]
+        \item 验证函数 $y(x)=1+\frac{x^3}{3!}+\frac{x^6}{6!}+\frac{x^9}{9!}+\cdots+\frac{x^{3n}}{(3n)!}+\cdots(-\infty<x<+\infty)$ 满足微分方程 $y''+y'+y=e^x$；
+        \item 利用(1)的结果求幂级数 $\sum_{n=0}^\infty \frac{x^{3n}}{(3n)!}$ 的和函数.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设数列 $\{a_n\}$ 满足条件：$a_0=3,a_1=1,a_{n-2}-n(n-1)a_n=0\ (n\ge2)$，$S(x)$ 是幂级数 $\sum_{n=0}^\infty a_nx^n$ 的和函数.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$S''(x)-S(x)=0$；
+        \item 求 $S(x)$ 的表达式.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $u_n(x)=e^{-nx}+\frac{1}{n(n+1)}x^{n+1}\ (n=1,2,\cdots)$，求级数 $\sum_{n=1}^\infty u_n(x)$ 的收敛域与和函数.
+}
+
+\oneproblem{
+    求级数 $\sum_{n=0}^\infty \frac{n^3+2}{(n+1)!}(x-1)^n$ 的收敛域与和函数.
+}
+
+\oneproblem{
+    求级数 $\sum_{n=1}^\infty \frac{2n-1}{2^n}x^{2n-2}$ 的和函数，并求级数 $\sum_{n=1}^\infty \frac{2n-1}{2^{2n-1}}$ 的和.
+}
+
+\oneproblem{
+    求级数 $\sum_{n=1}^\infty \frac{1}{3}\cdot\frac{2}{5}\cdot\frac{3}{7}\cdots\frac{n}{2n+1}\cdot\frac{1}{n+1}$ 之和.
+}
+
+\oneproblem{
+    假设 $\sum_{n=0}^\infty a_nx^n$ 的收敛半径为 $1$，$\lim_{n\to\infty}na_n=0$，且 $\lim_{x\to1^-}\sum_{n=0}^\infty a_nx^n=A$。证明 $\sum_{n=0}^\infty a_n$ 收敛且 $\sum_{n=0}^\infty a_n=A$.
+}
+
+% ======================================================
+% 第 87 天
+% ======================================================
+\setday{87}{函数的幂级数展开式及其应用}
+
+\oneproblem{
+    求级数 $\sum_{n=0}^\infty (-1)^n\frac{2n+3}{(2n+1)!}$ 的和.
+}
+
+\oneproblem{
+    若 $a_0=1,a_1=0,a_{n+1}=\frac{1}{n+1}(na_n+a_{n-1})\ (n=1,2,3,\cdots)$，$S(x)$ 为幂级数 $\sum_{n=0}^\infty a_nx^n$ 的和函数.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明 $\sum_{n=0}^\infty a_nx^n$ 的收敛半径不小于 $1$；
+        \item 证明 $(1-x)S'(x)-xS(x)=0\ (x\in(-1,1))$，并求 $S(x)$ 的表达式.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设数列 $\{a_n\}$ 满足 $a_1=1,(n+1)a_{n+1}=\left(n+\frac{1}{2}\right)a_n$。证明：当 $|x|<1$ 时，幂级数 $\sum_{n=1}^\infty a_nx^n$ 收敛，并求其和函数.
+}
+
+\oneproblem{
+    求幂级数 $\sum_{n=0}^\infty \frac{(-4)^n+1}{4^n(2n+1)}x^{2n}$ 的收敛域及和函数 $S(x)$.
+}
+
+\oneproblem{
+    已知 $\cos2x-\frac{1}{(1+x)^2}=\sum_{n=0}^\infty a_nx^n\ (-1<x<1)$，求 $a_n$.
+}
+
+\oneproblem{
+    将幂级数 $\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!\cdot2^{2n}}x^{2n+1}$ 的和函数展开成 $x-1$ 的幂级数.
+}
+
+\oneproblem{
+    设 $f(x)=\begin{cases}\frac{1+x^2}{x}\arctan x, & x\neq0\\1, & x=0\end{cases}$，将 $f(x)$ 展开成 $x$ 的幂级数，并求级数 $\sum_{n=1}^\infty \frac{(-1)^n}{1-4n^2}$ 的和.
+}
+
+\oneproblem{
+    设 $f(x)=\frac{1}{1-x-x^2},a_n=\frac{1}{n!}f^{(n)}(0)$。证明：$\sum_{n=0}^\infty \frac{a_{n+1}}{a_n\cdot a_{n+2}}$ 收敛，并求其和.
+}
+
+\oneproblem{
+    设 $f(x)=\sum_{n=1}^\infty \frac{x^n}{n^2},0<x<1$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$f(x)+f(1-x)+\ln x\ln(1-x)=\frac{\pi^2}{6}$；
+        \item 计算：$I=\int_0^1 \frac{1}{2-x}\ln\left(\frac{1}{x}\right)dx$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 是仅有正实根的多项式函数，满足 $\frac{f'(x)}{f(x)}=-\sum_{n=0}^{+\infty}c_nx^n$，证明：$c_n>0\ (n\ge0)$，极限 $\lim_{n\to+\infty}\frac{1}{\sqrt[n]{c_n}}$ 存在，且等于 $f(x)$ 的最小根.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(-\infty,+\infty)$ 上无穷次可微，并且满足：存在 $M>0$，使得 $|f^{(k)}(x)|\le M,\forall x\in(-\infty,+\infty)(k=1,2,\cdots)$ 且 $f\left(\frac{1}{2^n}\right)=0,(n=1,2,\cdots)$。求证：在 $(-\infty,+\infty)$ 上 $f(x)\equiv0$.
+}
+
+\oneproblem{
+    已知 $\frac{(1+x)^n}{(1-x)^3}=\sum_{i=0}^\infty a_ix^i,|x|<1,n$ 为正整数，求 $\sum_{i=0}^{n-1}a_i$.
+}
+
+% ======================================================
+% 第 88 天
+% ======================================================
+\setday{88}{函数的幂级数展开式及其应用（二）}
+
+\oneproblem{
+    求级数 $\sum_{n=0}^\infty \frac{(-1)^n\left(n^2-n+1\right)}{2^n}$ 的和.
+}
+
+\oneproblem{
+    设 $I_n=\int_0^{\frac{\pi}{4}}\sin^n x\cos x dx,n=0,1,2,\cdots$，求 $\sum_{n=0}^\infty I_n$.
+}
+
+\oneproblem{
+    设 $a_n>0,\sum_{n=0}^\infty a_n=1$，定义函数 $f(x)=\sum_{n=0}^\infty a_nx^n-x$，证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $f(x)$ 是 $[0,1]$ 内的下凸函数；
+        \item $f(x)$ 在 $[0,1]$ 内有根的充要条件是 $f'(1)>0$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在闭区间 $[0,2]$ 上连续且恒正，$a_n=\int_0^2 x^nf(x)dx$，求函数项级数 $\sum_{n=0}^\infty \frac{x^n}{a_n}$ 的收敛域.
+}
+
+\oneproblem{
+    设银行存款的年利率为 $r=0.05$，并依年复利计算，某基金会希望通过存款 $A$ 万元，实现第一年提取 $19$ 万元，第二年提取 $28$ 万元，…，第 $n$ 年提取 $(10+9n)$ 万元，并能按此规律一直提取下去，问 $A$ 至少应为多少万元？
+}
+
+\oneproblem{
+    设 $a_n$ 为曲线 $y=x^n$ 与 $y=x^{n+1}(n=1,2,\cdots)$ 所围成区域的面积，记 $S_1=\sum_{n=1}^\infty a_n$，$S_2=\sum_{n=1}^\infty a_{2n-1}$，求 $S_1$ 与 $S_2$ 的值.
+}
+
+\oneproblem{
+    设函数 $z(k)=\sum_{n=0}^\infty \frac{n^k}{n!}e^{-1}$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $z(0),z(1)$ 和 $z(2)$ 的值；
+        \item 试证当 $k$ 取正整数时，$z(k)$ 亦为正整数.
+    \end{enumerate}
+}
+
+\oneproblem{
+    用级数法求解下列微分方程.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\frac{dy}{dx}=-y-x,\left.y\right|_{x=0}=2$.
+        \item $xy''+y'+xy=0,\left.y\right|_{x=0}=1$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)=\ln\sum_{n=1}^\infty \frac{e^{nx}}{n^2}$。证明函数 $f$ 在 $(-\infty,0)$ 内为严格凸的，并且对任意 $\xi\in(-\infty,0)$，存在 $x_1,x_2\in(-\infty,0)$ 使得 $f'(\xi)=\frac{f(x_2)-f(x_1)}{x_2-x_1}$.
+}
+
+\oneproblem{
+    设正数列 $\{a_n\}$ 单调减少且趋于零，$f(x)=\sum_{n=1}^\infty a_n^nx^n$，证明：若级数 $\sum_{n=1}^\infty a_n$ 发散，则积分 $\int_1^{+\infty}\frac{\ln f(x)}{x^2}dx$ 也发散.
+}
+
+\oneproblem{
+    设 $A_n(x,y)=\sum_{k=0}^n x^{n-k}y^k$，其中 $0<x,y<1$，证明：$\frac{2}{2-x-y}\le\sum_{n=0}^\infty \frac{A_n(x,y)}{n+1}\le\frac{1}{2}\left(\frac{1}{1-x}+\frac{1}{1-y}\right)$.
+}
+
+% ======================================================
+% 第 89 天
+% ======================================================
+\setday{89}{傅里叶级数展开及敛散性的判定}
+
+\oneproblem{
+    设函数 $f(x)=\pi x+x^2(-\pi<x<\pi)$ 的傅里叶级数展开式为 $\frac{a_0}{2}+\sum_{n=1}^\infty (a_n\cos nx+b_n\sin nx)$，计算系数 $b_3$ 的值.
+}
+
+\oneproblem{
+    将函数 $f(x)=1-x^2(0\le x\le\pi)$ 展开成余弦级数，并求级数 $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^2}$ 的和.
+}
+
+\oneproblem{
+    设周期为 $2\pi$ 的函数在一个周期内的表达式为 $f(x)=\begin{cases}-1, & -\pi<x\le0\\1+x^2, & 0<x\le\pi\end{cases}$。试写出该函数的傅里叶级数的和函数 $S(x)$ 在 $[-\pi,\pi]$ 上的表达式，并求 $S(4\pi)$，$S\left(\frac{7}{2}\pi\right)$ 和和函数 $S(x)$ 在 $[2\pi,3\pi]$ 上的表达式.
+}
+
+\oneproblem{
+    设 $f(x)$ 是以 $2\pi$ 为周期的函数，其傅里叶系数为 $a_n,b_n$，试计算 $f(x+h)$（$h$ 为常数）的傅里叶系数 $A_n,B_n$.
+}
+
+\oneproblem{
+    将周期为 $2\pi$ 的函数 $f(x)=\frac{1}{4}x(2\pi-x),x\in[0,2\pi]$ 展开为傅里叶级数，并由此求出 $\sum_{n=1}^\infty \frac{1}{n^2}$；然后通过傅里叶级数的逐项积分（即对傅里叶级数两端求积分，级数的积分符号与求和符号可以交换次序）求出 $\sum_{n=1}^\infty \frac{1}{n^4}$.
+}
+
+\oneproblem{
+    已知周期为 $2\pi$ 的连续函数 $f(x)$ 的傅里叶系数为 $a_0,a_n,b_n(n=1,2,\cdots\cdots)$，试计算磨光函数 $f_h(x)=\frac{1}{2h}\int_{x-h}^{x+h}f(\xi)d\xi$ 的傅里叶系数 $A_0,A_n,B_n(n=1,2,\cdots\cdots)$，其中 $h$ 为给定的正常数.
+}
+
+\oneproblem{
+    \begin{enumerate}[label=(\arabic*)]
+        \item 展 $[-\pi,\pi)$ 上的函数 $f(x)=|x|$ 成傅里叶级数，并证明 $\sum_{k=1}^\infty \frac{1}{k^2}=\frac{\pi^2}{6}$.
+        \item 求积分 $I=\int_0^{+\infty}\frac{u}{1+e^u}du$ 的值.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)=\begin{cases}x, & 0\le x\le\frac{1}{2}\\2-2x, & \frac{1}{2}<x<1\end{cases}$，$S(x)=\frac{a_0}{2}+\sum_{n=1}^\infty a_n\cos n\pi x,-\infty<x<+\infty$，\\其中 $a_n=2\int_0^1 f(x)\cos n\pi xdx(n=0,1,2,\cdots)$，则 $S\left(-\frac{5}{2}\right)$ 等于多少？
+}
+
+\oneproblem{
+    将函数 $f(x)=2+|x|\ (-1\le x\le1)$ 展开成以 $2$ 为周期的傅里叶级数，并由此求级数 $\sum_{n=1}^\infty \frac{1}{n^2}$ 的和.
+}
+
+\oneproblem{
+    试将 $f(x)=x-[x]$ 展开为周期 $T=1$ 傅里叶级数，这里 $[x]$ 表示不超过 $x$ 的最大整数.
+}
+
+\oneproblem{
+    将函数 $f(x)=|x|+\sin^2\pi x$ 在 $[-1,1]$ 上展开成周期为 $2$ 的傅里叶级数.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(-\infty,+\infty)$ 上可导，且 $f(x)=f(x+2)=f(x+\sqrt{3})$，用傅里叶(Fourier)级数理论证明 $f(x)$ 为常数.
+}
+
+\oneproblem{
+    设 $f(x)$ 是以 $2L$ 为周期的连续函数，且其傅里叶系数为 $a_n,b_n\ (n=0,1,2,\cdots)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $f(x+h)$ 的傅里叶系数（$h$ 为常数）；
+        \item 求 $F(x)=\frac{1}{L}\int_{-L}^L f(t)f(x+t)dt$ 的傅里叶系数，且以此推证 $\frac{1}{L}\int_{-L}^L f^2(x)dx=\frac{a_0^2}{2}+\sum_{n=1}^\infty (a_n^2+b_n^2)$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 90 天
+% ======================================================
+\setday{90}{考研数学中的经济数学问题}
+
+\oneproblem{
+    设某产品的成本函数 $C(Q)$ 可导，其中 $Q$ 为产量，若产量为 $Q_0$ 时平均成本最小，则（\quad）.
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $C'(Q_0)=0$
+        \item $C'(Q_0)=C(Q_0)$
+        \item $C'(Q_0)=Q_0C(Q_0)$
+        \item $Q_0C'(Q_0)=C(Q_0)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $A,B$ 两商品的价格分别为 $P_A,P_B$，需求函数为 $Q_A=500-P_A^2-P_AP_B+2P_B^2$，$P_A=10,P_B=20$，则 $A$ 商品对自身价格的需求弹性 $\eta_{AA}=$ \underline{\qquad}（$\eta_{AA}>0$）.
+}
+
+\oneproblem{
+    \begin{enumerate}[label=(\arabic*)]
+        \item 已知某商品的需求量 $x$ 对价格 $p$ 的弹性为 $\eta=-3p^3$，而市场对商品的最大需求量为 $1$（万件），求需求函数.
+        \item 设某产品的总成本函数为 $C(x)=400+3x+\frac{1}{2}x^2$，而需求函数为 $p=\frac{100}{\sqrt{x}}$，其中 $x$ 为产量（假定等于需求量），$p$ 为价格. 试求：
+        \begin{enumerate}[label=(\alph*)]
+            \item 边际成本；
+            \item 边际收益；
+            \item 边际利润；
+            \item 收益的价格弹性.
+        \end{enumerate}
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知某商品的需求量 $D$ 和供给量 $S$ 都是价格 $p$ 的函数：$D=D(p)=\frac{a}{p^2},S=S(p)=bp$，其中 $a>0$ 和 $b>0$ 是常数. 价格 $p$ 是时间 $t$ 的函数，且满足方程 $\frac{dp}{dt}=k[D(p)-S(p)]$，（$k$ 是常数），假设当 $t=0$ 时价格为 $1$. 试求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 需求量等于供给量时的均衡价格 $P_e$；
+        \item 价格函数 $p(t)$；
+        \item 极限 $\lim_{t\to\infty}p(t)$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知某企业的总收入函数为 $R=26x-2x^2-4x^3$，总成本函数为 $C=8x+x^2$，其中 $x$ 表示产品的产量，求利润函数，边际收入函数，以及企业获得最大利润时的产量和最大利润.
+}
+
+\oneproblem{
+    某公司可通过电台和报纸两种方式做销售某种商品广告，根据统计资料，销售收入 $R$（万元）与电台广告费用 $x_1$（万元）及报纸广告费用 $x_2$（万元）之间的关系有如下经验公式：$R=15+14x_1+32x_2-8x_1x_2-2x_1^2-10x_2^2$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 在广告费用不限的情况下，求最优广告策略；
+        \item 若提供的广告费用为 $1.5$ 万元，求相应的最优广告策略.
+    \end{enumerate}
+}
+
+\oneproblem{
+    某厂家生产的一种产品同时在两个市场销售，售价分别为 $p_1$ 和 $p_2$，销量分别为 $q_1$ 和 $q_2$，需求函数分别为 $q_1=24-0.2p_1$ 和 $q_2=10-0.05p_2$，总成本函数 $C=35+40(q_1+q_2)$. 试问：厂家如何确定两个市场的售价，能使其获得的总利润最大？最大总利润为多少？
+}
+
+\oneproblem{
+    设生产某产品的固定成本为 $10$，而当产量为 $x$ 时的边际成本函数为 $MC=-40-20x+3x^2$，边际收入函数为 $MR=32+10x$，试求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 总利润函数；
+        \item 使总利润最大的产量.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设商品的需求函数为 $Q=100-5P$，其中 $Q,P$ 分别表示需求量和价格，如果商品需求弹性的绝对值大于 $1$，求该商品价格的取值范围.
+}
+
+\oneproblem{
+    已知某厂生产 $x$ 件产品的成本为 $C=25000+200x+\frac{1}{40}x^2$（元）. 问：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 要使平均成本最小，应生产多少件产品？
+        \item 若产品以每件 $500$ 元售出，要使利润最大，应生产多少件产品？
+    \end{enumerate}
+}
+
+\oneproblem{
+    设某产品的成本函数为 $C=aq^2+bq+c$，需求函数为 $q=\frac{1}{e}(d-p)$，其中 $C$ 为成本，$q$ 为需求量（即产量），$p$ 为单价，$a,b,c,d,e$ 都是正的常数，且 $d>b$，求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 利润最大时的产量及最大利润；
+        \item 需求对价格的弹性；
+        \item 需求对价格弹性的绝对值为 $1$ 时的产量.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设某产品的需求函数为 $Q=Q(P)$，收益函数为 $R=PQ$，其中 $P$ 为产品价格，$Q$ 为需求量（产品的产量），$Q(P)$ 是单调减函数. 如果当价格为 $P_0$，对应产量为 $Q_0$ 时，边际收益 $\left.\frac{dR}{dQ}\right|_{Q=Q_0}=a>0$，收益对价格的边际效应 $\left.\frac{dR}{dP}\right|_{P=P_0}=c<0$，需求对价格的弹性为 $E_P=b>1$，求 $P_0$ 和 $Q_0$.
+}
+
+\oneproblem{
+    设某种商品的单价为 $p$ 时，售出的商品数量 $Q$ 可以表示成 $Q=\frac{a}{p+b}-c$，其中 $a,b,c$ 均为正数，且 $a>bc$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $p$ 在何范围变化时，使相应销售额增加或减少；
+        \item 要使销售额最大，商品单价 $p$ 应取何值？最大销售额是多少？
+    \end{enumerate}
+}
+
+\oneproblem{
+    一商家销售某种商品的价格满足关系 $p=7-0.2x$（万元/吨），$x$ 为销售量（单位：吨），商品的成本函数是 $C=3x+1$（万元）.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若销售一吨商品，政府要征税 $t$（万元），求该商家获最大利润时的销售量；
+        \item $t$ 为何值时，政府税收总额最大？
+    \end{enumerate}
+}
+
+\oneproblem{
+    在经济学中，称函数 $Q(x)=A\left[\delta K^{-x}+(1-\delta)L^{-x}\right]^{-\frac{1}{x}}$ 为固定替代弹性生产函数，而称函数 $\bar{Q}=AK^\delta L^{1-\delta}$ 为 Cobb-Douglas 生产函数（简称 $C-D$ 生产函数），试证明：当 $x\to0$ 时，固定替代弹性生产函数变为 $C-D$ 生产函数，即有 $\lim_{x\to0}Q(x)=\bar{Q}$.
+}
+
+\oneproblem{
+    设某酒厂有一批新酿的好酒，如果现在（假定 $t=0$）就售出，总收入为 $R_0$（元），如果窖藏起来待来日按陈酒价格出售，$t$ 年末总收入为 $R=R_0e^{\frac{2}{5}\sqrt{t}}$. 假定银行的年利率为 $r$，并以连续复利计息，试求窖藏多少年售出可使总收入的现值最大，并求 $r=0.06$ 时的 $t$ 值.
+}
+
+\oneproblem{
+    设生产某种产品必须投入两种要素，$x_1$ 和 $x_2$ 分别为两要素的投入量，$Q$ 为产出量；若生产函数为 $Q=2x_1^\alpha x_2^\beta$，其中 $\alpha,\beta$ 为正常数，且 $\alpha+\beta=1$. 假设两种要素的价格分别为 $p_1$ 和 $p_2$，试问：当产出量为 $12$ 时，两要素各投入多少可以使得投入总费用最少？
+}
+
+\oneproblem{
+    假设某企业在两个相互分割的市场上出售同一种产品，两个市场的需求函数分别是 $p_1=18-2Q_1,p_2=12-Q_2$，其中 $p_1,p_2$ 分别表示该产品在两个市场的价格（单位：万元/吨），$Q_1$ 和 $Q_2$ 分别表示该产品在两个市场的销售量（即需求量，单位：吨），并且该企业生产这种产品的总成本函数是 $C=2Q+5$，其中 $Q$ 表示该产品在两个市场的销售总量，即 $Q=Q_1+Q_2$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 如果该企业实行价格差别策略，试确定两个市场上该产品的销售量和价格，使该企业获得最大利润；
+        \item 如果该企业实行价格无差别策略，试确定两个市场上该产品的销售量及其统一的价格，使该企业的总利润最大化；并比较两种价格策略下的总利润大小.
+    \end{enumerate}
+}
+
+\oneproblem{
+    某商品进价为 $a$（元/件），根据以往经验，当销售价为 $b$（元/件）时，销售量为 $c$ 件（$a,b,c$ 均为正常数，且 $b\ge\frac{4}{3}a$）. 市场调查表明，销售价每下降 $10\%$，销售量可增加 $40\%$，现决定一次性降价，试问，当销售价定为多少时，可获得最大利润？并求出最大利润.
+}
+
+\oneproblem{
+    设某商品需求量 $Q$ 是价格 $p$ 的单调减少函数：$Q=Q(p)$，其需求弹性为 $\eta=\frac{2p^2}{192-p^2}>0$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 设 $R$ 为总收益函数，证明：$\frac{dR}{dp}=Q(1-\eta)$.
+        \item 求 $p=6$ 时，总收益对价格的弹性，并说明其经济意义.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设某商品从时刻 $0$ 到时刻 $t$ 的销售量为 $x(t)=kt,t\in[0,T],(k>0)$. 欲在 $T$ 时将数量为 $A$ 的该商品销售完，试求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $t$ 时的商品剩余量，并确定 $k$ 的值；
+        \item 在时间段 $[0,T]$ 上的平均剩余量.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设某商品的需求函数为 $Q=100-5P$，其中价格 $P\in(0,20)$，$Q$ 为需求量.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求需求量对价格的弹性 $E_d\ (E_d>0)$；
+        \item 推导 $\frac{dR}{dP}=Q(1-E_d)$（其中 $R$ 为收益），并用弹性 $E_d$ 说明价格在何范围内变化时，降低价格反而使收益增加.
+    \end{enumerate}
+}
+
+\oneproblem{
+    某企业为生产甲、乙两种型号的产品投入的固定成本为 $10000$（万元）. 设该企业生产甲、乙两种产品的产量分别为 $x$（件）和 $y$（件），且这两种产品的边际成本分别为 $20+\frac{x}{2}$（万元/件）与 $6+y$（万元/件）.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求生产甲、乙两种产品的总成本函数 $C(x,y)$（万元）；
+        \item 当总产量为 $50$ 件时，甲、乙两种产品的产量各为多少时可使总成本最小？求最小成本；
+        \item 求总产量为 $50$ 件且总成本最小时甲产品的边际成本，并解释其经济意义.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设生产某产品的固定成本为 $60000$ 元，可变成本为 $20$ 元/件，价格函数为 $P=60-\frac{Q}{1000}$（$P$ 是单价，单位：元，$Q$ 是销量，单位：件），已知产销平衡，求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 该商品的边际利润；
+        \item 当 $P=50$ 时的边际利润，并解释其经济意义；
+        \item 使得利润最大的定价 $P$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    为了实现利润的最大化，厂商需要对某商品确定其定价模型，设 $Q$ 为该商品的需求量，$P$ 为价格，$MC$ 为边际成本，$\eta$ 为需求弹性（$\eta>0$）.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明定价模型为 $P=\frac{MC}{1-\frac{1}{\eta}}$；
+        \item 若该商品的成本函数为 $C(Q)=1600+Q^2$，需求函数为 $Q=40-P$，试由(I)中的定价模型确定此商品的价格.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设某商品的最大需求量为 $1200$ 件，该商品的需求函数 $Q=Q(p)$，需求弹性 $\eta=\frac{p}{120-p}\ (\eta>0)$，$p$ 为单价（万元）.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求需求函数的表达式；
+        \item 求 $p=100$ 万元时的边际收益，并说明其经济意义.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设某产品的产量 $Q$ 由资本投入量 $x$ 和劳动投入量 $y$ 决定，生产函数为 $Q=12x^{\frac{1}{2}}y^{\frac{1}{6}}$. 该产品的销售单价 $P$ 与 $Q$ 的关系为 $P=1160-1.5Q$，若单位资本投入和单位劳动投入的价格分别为 $6$ 和 $8$，求利润最大时的产量.
+}
+

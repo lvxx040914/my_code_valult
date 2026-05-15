@@ -1,0 +1,131 @@
+\documentclass[12pt, UTF8, oneside]{extarticle}
+
+% --- 核心宏包 ---
+\usepackage[UTF8, scheme=plain]{ctex} % 统一处理中文，scheme=plain 避免干扰标准命令
+\usepackage{amsmath, amssymb, xcolor, enumitem, fancyhdr, tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{pifont}
+\usepackage{esint} % 提供 \oiint, \varoiint 等符号
+\usetikzlibrary{shadings} % 开启渐变色支持
+
+% --- 字体设置 (解决 Heiti TC 兼容性警告) ---
+\setCJKmainfont[Script={Default}]{Heiti TC} 
+\linespread{1.3} % 舒适的行间距
+
+% --- 微分符号美化 ---
+% 强制使用正体 d，符合竞赛和考研规范
+\let\olddd\dd
+\renewcommand{\dd}{\mathrm{d}}
+
+% --- 页面设置 (Landscape 横向) ---
+\usepackage[
+    a4paper, 
+    landscape, 
+    tmargin=4.5cm, 
+    bmargin=2cm, 
+    lmargin=2.5cm, 
+    rmargin=2.5cm, 
+    headheight=2.5cm, 
+    headsep=1.2cm
+]{geometry}
+
+% --- 交互与书签 ---
+\usepackage[
+    colorlinks=true,
+    linkcolor=black,
+    pdfstartview=FitH,
+    bookmarksnumbered=true,
+    bookmarksopen=true
+]{hyperref}
+
+% --- 颜色与样式 ---
+\definecolor{MainBlue}{RGB}{41, 128, 185} % 使用稍深的蓝色，更具专业感
+\everymath{\displaystyle}
+
+% --- 变量初始化与计数器 ---
+\newcommand{\currentday}{目录}
+\newcommand{\currenttopic}{目录}
+\newcounter{probcount} % 自定义题号计数器
+
+% --- 核心：自动生成 PDF 书签与重置题号 ---
+\newcommand{\setday}[2]{
+    \newpage 
+    \renewcommand{\currentday}{第 #1 天}
+    \renewcommand{\currenttopic}{#2}
+    \setcounter{probcount}{0} % 每天重置题号
+    \phantomsection
+    \addcontentsline{toc}{section}{第 #1 天：#2}
+}
+
+% --- 顶栏美化 (使用渐变色) ---
+\pagestyle{fancy}
+\fancyhf{} 
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{
+    \begin{tikzpicture}[remember picture, overlay]
+        % 渐变色背景顶栏
+        \fill[left color=MainBlue, right color=MainBlue!60] 
+            ([yshift=-2.2cm]current page.north west) rectangle (current page.north east);
+        % 底部装饰线条
+        \draw[white, line width=1pt] ([yshift=-2.2cm]current page.north west) -- ([yshift=-2.2cm]current page.north east);
+        
+        \node[anchor=west, white, font=\Large\bfseries] at ([xshift=1.5cm, yshift=-1.1cm]current page.north west) {
+            \currentday \ \scalebox{0.8}{|} \ \currenttopic
+        };
+        \node[anchor=east, white!90, font=\small\itshape] at ([xshift=-1.5cm, yshift=-1.1cm]current page.north east) {
+            100 Days Challenge \quad Page \thepage
+        };
+    \end{tikzpicture}
+}
+
+% --- 题目框样式定义 ---
+\newtcolorbox{problembox}[1]{
+    colback=white,
+    colframe=MainBlue,
+    fonttitle=\bfseries\large,
+    title=题目 #1,
+    enhanced,
+    attach boxed title to top left={yshift=-2mm, xshift=5mm},
+    boxed title style={colback=MainBlue, sharp corners, boxrule=0pt},
+    sharp corners,
+    boxrule=0.8pt,
+    top=12pt,
+    bottom=10pt,
+    left=10pt,
+    right=10pt,
+    before skip=20pt, % 题目之间的间距
+    after skip=10pt,
+    breakable,        % 【关键】允许题目框自动跨页断开
+}
+
+% --- 核心：一键出题命令 ---
+\newcommand{\oneproblem}[1]{
+    \newpage 
+    \stepcounter{probcount} % 题号自增
+    \begin{problembox}{\arabic{probcount}}
+        {\large #1}
+    \end{problembox}
+    \vfill % 撑开页面，留出解题空间
+}
+
+\sloppy
+
+% --- 文档开始 ---
+\begin{document}
+    \tableofcontents 
+    \clearpage
+
+    % --- 自动按顺序引入 0-9.tex ---
+    \input{0.tex}
+    \input{1.tex}
+    \input{2.tex}
+    \input{3.tex}
+    \input{4.tex}
+    \input{5.tex}
+    \input{6.tex}
+    \input{7.tex}
+    \input{8.tex}
+    \input{9.tex}
+\end{document}

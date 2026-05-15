@@ -1,0 +1,981 @@
+% ======================================================
+% 第 21 天
+% ======================================================
+\setday{21}{分析作图法与曲率}
+
+\oneproblem{
+    求曲线 $y = x^2 + x\ (x < 0)$ 上曲率为 $\dfrac{\sqrt{2}}{2}$ 的点的坐标.
+}
+
+\oneproblem{
+    求曲线
+    $
+    \begin{cases}
+    x = t^2 + 7 \\
+    y = t^2 + 4t + 1
+    \end{cases}
+    $
+    上对应于 $t = 1$ 的点处的曲率半径.
+}
+
+\oneproblem{
+    设 $f_i(x)\ (i=1,2)$ 具有二阶连续导数，且 $f_i''(x_0) < 0\ (i=1,2)$，若两曲线 $y = f_i(x)\ (i=1,2)$ 在点 $(x_0, y_0)$ 处具有公切线 $y = g(x)$，且在该点处曲线 $y = f_1(x)$ 的曲率大于曲率 $y = f_2(x)$ 的曲率，则在 $x_0$ 的某个邻域内，有（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $f_1(x) \le f_2(x) \le g(x)$
+        \item $f_2(x) \le f_1(x) \le g(x)$
+        \item $f_1(x) \le g(x) \le f_2(x)$
+        \item $f_2(x) \le g(x) \le f_1(x)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知 $f(x), g(x)$ 二阶可导且在 $x = a$ 处连续，则
+    $
+    \lim_{x \to a} \dfrac{f(x) - g(x)}{(x - a)^2} = 0
+    $
+    是两条曲线 $y = f(x), y = g(x)$ 在 $x = a$ 对应的点相切且曲率相等的（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 充分非必要条件
+        \item 充分必要条件
+        \item 必要非充分条件
+        \item 既非充分也非必要条件
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    若 $f''(x)$ 不变号，且曲线 $y = f(x)$ 在点 $(1,1)$ 处的曲率圆为 $x^2 + y^2 = 2$，则函数 $f(x)$ 在区间 $(1,2)$ 内（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 有极值点，无零点
+        \item 无极值点，有零点
+        \item 有极值点，有零点
+        \item 无极值点，无零点
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知函数 $y = \dfrac{2x^2}{(1 - x)^2}$，试求其单调区间，极值点，图形的凹凸性，拐点和渐近线，并画出函数图形.
+}
+
+\oneproblem{
+    用分析作图法作函数 $y = (x + 6)e^{\frac{1}{x}}$ 的图形.
+}
+
+\oneproblem{
+    已知 $f(x) = \dfrac{x|x|}{1 + x}$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 判定 $f(x)$ 描述的曲线的凹凸性；
+        \item 求它描述曲线的渐近线；
+        \item 绘制其图形.
+    \end{enumerate}
+}
+
+\oneproblem{
+    用分析作图法描绘曲线 $y = \dfrac{\cos x}{\cos 2x}$ 的图形.
+}
+
+\oneproblem{
+    如下图 1，设曲线 $L$ 的方程为 $y = f(x)$，且 $f''(x) > 0$，又 $MT,MP$ 分别为该曲线在点 $M(x_0, y_0)$ 处的切线和法线，已知线段 $MP$ 的长度为 $\dfrac{\left[1 + (y_0')^2\right]^{\frac{3}{2}}}{y_0''}$（其中，$y_0' = y'(x_0), y_0'' = y''(x_0)$），试推导出点 $P(\xi, \eta)$ 的坐标表达式.
+}
+
+\oneproblem{
+    曲线的对称点问题. 如下图 2，设平面曲线 $L$ 上一点 $M$ 处的曲率半径为 $\rho$，曲率中心为 $A$. $AN$ 是 $L$ 在点 $M$ 处的法线，法线上的两点 $P$ 与 $P^*$ 分居于 $L$ 的两侧，即 $P$ 位于 $AM$ 上，$P^*$ 位于 $MN$ 上，如果 $P$ 与 $P^*$ 满足 $|AP||AP^*| = \rho^2$，称点 $P$ 与 $P^*$ 关于曲线 $L$ 是对称的. 现设 $L$ 的方程为 $y = \dfrac{x^2}{2}$，点 $P\left(\dfrac{1}{2}, 1\right)$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求点 $M$，使得 $L$ 在 $M$ 处的法线经过点 $P$，并写出法线的参数方程；
+        \item 求点 $P$ 关于曲线 $L$ 的对称点 $P^*$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    用分析作图法绘制由参数方程 $x = \dfrac{t^2}{t - 1}, y = \dfrac{t}{t^2 - 1}$ 所确定的曲线图形.
+}
+
+% ======================================================
+% 第 22 天
+% ======================================================
+\setday{22}{方程的根与函数的零点}
+
+\oneproblem{
+    若 $3a^2 - 5b < 0$，则方程 $x^5 + 2ax^3 + 3bx + 4c = 0$（ \quad ）.
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 无实根
+        \item 有唯一实根
+        \item 有三个不同实根
+        \item 有五个不同实根
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $a$ 为实数，关于 $x$ 的方程 $3x^4 - 8x^3 - 30x^2 + 72x + a = 0$ 有虚根的充分必要条件是 $a$ 满足\underline{\hspace{4cm}}.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(-\infty, +\infty)$ 内连续，且 $f[f(x)] = x$，证明在 $(-\infty, +\infty)$ 内至少有一个 $x_0$ 满足 $f(x_0) = x_0$.
+}
+
+\oneproblem{
+    设实数 $a_0, a_1, a_2, \dots, a_n$ 满足
+    $
+    a_0 + \dfrac{a_1}{2} + \dfrac{a_2}{3} + \dots + \dfrac{a_n}{n + 1} = 0.
+    $
+    证明多项式 $f(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n$ 在 $(0,1)$ 内至少有一个零点.
+}
+
+\oneproblem{
+    设 $f(x), g(x)$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可导且对 $(a,b)$ 内一切 $x$ 均有 $f'(x)g(x) - f(x)g'(x) \ne 0$，证明：若 $f(x)$ 在 $(a,b)$ 内有两个零点，则 $g(x)$ 至少存在一个介于这两个零点之间的零点.
+}
+
+\oneproblem{
+    证明方程 $2^x = x^2 + 1$ 有且仅有三个根.
+}
+
+\oneproblem{
+    设 $f(x) = kx + \sin x$,
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若 $k \ge 1$，求证 $f(x)$ 在 $(-\infty,+\infty)$ 上恰有一个零点；
+        \item 若 $k > 0$，且 $f(x)$ 在 $(-\infty,+\infty)$ 上恰有一个零点，求常数 $k$ 的取值范围.
+    \end{enumerate}
+}
+
+\oneproblem{
+    证明方程 $\dfrac{1}{(1 + x)^n} - 1 + nx - \dfrac{n(n + 1)}{2}x^2 = 0$ 无正根.
+}
+
+\oneproblem{
+    讨论曲线 $y = 4\ln x + k$ 与 $y = 4x + \ln^4 x$ 的交点个数.
+}
+
+\oneproblem{
+    已知方程 $\log_a x = x^b$ 存在实根，常数 $a > 1, b > 0$，求 $a,b$ 应满足的条件.
+}
+
+\oneproblem{
+    在什么条件下方程 $x^3 + px + q = 0$ 有: (1)一个实根; (2) 三个实根.
+}
+
+\oneproblem{
+    设 $n$ 为大于 1 的奇数，求证: $n$ 次实系数多项式最少有一个拐点.
+}
+
+\oneproblem{
+    设 $f(x) = a_nx^n + \dots + a_1x + a_0\ (n \ge 2)$ 是实系数多项式，且某个 $a_k = 0(1 \le k \le n-1)$ 及当 $i \ne k$ 时， $a_i \ne 0$，证明：若 $f(x) = 0$ 有 $n$ 个相异的实根，则 $a_{k-1}a_{k+1} < 0$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[a,+\infty)$ 上二阶可导，且 $f(a) > 0, f'(a) < 0$，而当 $x > a$ 时, $f''(x) \le 0$，证明在 $(a,+\infty)$ 内，方程 $f(x) = 0$ 有且仅有一个实根.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(-\infty,+\infty)$ 上具有二阶导数，并且
+    $
+    f''(x) > 0,\ \lim_{x \to +\infty} f'(x) = \alpha > 0,\ \lim_{x \to -\infty} f'(x) = \beta < 0,
+    $
+    且存在一点 $x_0$，使得 $f(x_0) < 0$ . 证明：方程 $f(x) = 0$ 在 $(-\infty,+\infty)$ 恰有两个实根.
+}
+
+\oneproblem{
+    设在 $f(x)$ 在 $(0,1)$ 内可导且有界，$\lim\limits_{x \to 0^+} f(x)$ 不存在. 求证存在数列 $\{x_n\} \subset (0,1),\ \lim\limits_{n \to \infty} x_n = 0$ 使得 $f'(x_n) = 0$.
+}
+
+% ======================================================
+% 第 23 天
+% ======================================================
+\setday{23}{不定积分的概念与性质}
+
+\oneproblem{
+    在下列等式中，正确的结果是（ \quad ）
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $\int f'(x)\mathrm{d}x = f(x)$
+        \item $\int \mathrm{d}f(x) = f(x)$
+        \item $\dfrac{\mathrm{d}}{\mathrm{d}x}\int f(x)\mathrm{d}x = f(x)$
+        \item $\mathrm{d}\int f(x)\mathrm{d}x = f(x)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    若 $f(x)$ 的导数是 $\sin x$，则 $f(x)$ 有一个原函数为（ \quad ）
+    \begin{multicols}{4}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $1 + \sin x$
+        \item $1 - \sin x$
+        \item $1 + \cos x$
+        \item $1 - \cos x$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $F(x)$ 是函数 $\dfrac{e^x}{x}$ 的一个原函数，则 $\mathrm{d}F(x^2) =$ \underline{\hspace{4cm}}.
+}
+
+\oneproblem{
+    设 $f'(\ln x) = 1 + x$，则 $f(x) =$ \underline{\hspace{4cm}}.
+}
+
+\oneproblem{
+    设 $f(x)$ 是周期为 4 的可导奇函数，且 $f'(x) = 2(x - 1),\ x \in [0,2]$，则 $f(7) =$ \underline{\hspace{4cm}}.
+}
+
+\oneproblem{
+    已知 $\int \dfrac{x^2}{\sqrt{1 - x^2}}\mathrm{d}x = A x\sqrt{1 - x^2} + B\int \dfrac{\mathrm{d}x}{\sqrt{1 - x^2}}$，求常数 $A, B$.
+}
+
+\oneproblem{
+    设 $f(x^2 - 1) = \ln\dfrac{x^2}{x^2 - 2}$，且 $f[\varphi(x)] = \ln x$，求 $\int \varphi(x)\mathrm{d}x$.
+}
+
+\oneproblem{
+    若 $f(x)$ 是 $e^{-x}$ 的原函数，计算 $\int \dfrac{f(\ln x)}{x}\mathrm{d}x$.
+}
+
+\oneproblem{
+    求 $f(x) = e^{|x|}$ 的不定积分.
+}
+
+\oneproblem{
+    设 $f(x)$ 的导数存在且连续，求
+    $
+    \int \lim_{h \to 0} \dfrac{f(x + h) - f(x - h)}{h}\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    已知函数 $f(x)$ 在 $(0,+\infty)$ 内可导，$f(x) > 0,\ \lim\limits_{x \to +\infty} f(x) = 1$，且满足 $\lim\limits_{h \to 0}\left[\dfrac{f(x + hx)}{f(x)}\right]^{\frac{1}{h}} = e^{\frac{1}{x}}$，求 $f(x)$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(-\infty,+\infty)$ 上有二阶导数且不恒为零，满足
+    $
+    f(x)f(y) = f\left(\sqrt{x^2 + y^2}\right),\ \forall x,y \in (-\infty,+\infty).
+    $
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：$f(0) = 1, f(x)$ 是偶函数；
+        \item 当 $f''(0) = 1$ 时，求 $f(x)$ 的表达式.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(-\infty,+\infty)$ 上的可微函数，且满足
+    $
+    f(x + y) = f(x) + f(y) + 2xy,\ x,y \in (-\infty,+\infty),
+    $
+    则 $f(x) = x^2 + f'(0)x$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 可导，且对任意的 $x,y(x \ne y)$，有
+    $
+    \dfrac{f(y) - f(x)}{y - x} = f'(\alpha x + \beta y).
+    $
+    其中 $\alpha \ge 0, \beta \ge 0$ 且 $\alpha + \beta = 1$. 求 $f(x)$ 的表达式.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可微, 且 $f(a) = f(b) = 0$，则对在 $[a,b]$ 上任一连续函数 $\varphi(x)$，有 $\xi \in (a,b)$，使得
+    $
+    f'(\xi) + \varphi(\xi)f(\xi) = 0.
+    $
+}
+
+\oneproblem{
+    已知
+    $
+    \left( \int \mathrm{d}x + \int y\mathrm{d}x + \int y^2\mathrm{d}x + \int y^3\mathrm{d}x \right) \int \dfrac{1 - y}{1 - y^4}\mathrm{d}x = -1,
+    $
+    求由该等式确定的函数 $x = \varphi(y)$ 的关系式.
+}
+
+% ======================================================
+% 第 24 天
+% ======================================================
+\setday{24}{不定积分的换元法}
+
+\oneproblem{
+    设 $\int f(x)\,\mathrm{d}x = x^2 + C$，求 $\int xf(1 - x^2)\,\mathrm{d}x$.
+}
+
+\oneproblem{
+    已知 $f'(e^x) = xe^{-x}$，且 $f(1) = 0$，求 $f(x)$ 的表达式.
+}
+
+\oneproblem{
+    设 $\int xf(x)\,\mathrm{d}x = \arcsin x + C$，求 $\int \dfrac{\mathrm{d}x}{f(x)}$.
+}
+
+\oneproblem{
+    计算下列不定积分.
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $\displaystyle \int \dfrac{1}{\sqrt{(x - a)(b - x)}}\,\mathrm{d}x\ (a < x < b)$.
+        \item $\displaystyle \int \dfrac{\mathrm{d}x}{1 + \sin x}$.
+        \item $\displaystyle \int \dfrac{1 + \sin x}{1 + \cos x}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{x\,\mathrm{d}x}{x^4 + 2x^2 + 5}$.
+        \item $\displaystyle \int \dfrac{\mathrm{d}x}{a^2\sin^2 x + b^2\cos^2 x}$(其中 $a,b$ 为不全为零的非负数).
+        \item $\displaystyle \int \dfrac{x + 5}{x^2 - 6x + 13}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\mathrm{d}x}{(2x^2 + 1)\sqrt{x^2 + 1}}$.
+        \item $\displaystyle \int \dfrac{3x + 6}{(x - 1)^2(x^2 + x + 1)}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{1 + x\cos x}{x\left(1 + xe^{\sin x}\right)}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{2\sin x\cos x\sqrt{1 + \sin^2 x}}{2 + \sin^2 x}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{x^2 + 1}{x^4 + 1}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\mathrm{d}x}{\sin(2x) + 2\sin x}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $F(x)$ 是 $f(x)$ 在 $(0,+\infty)$ 上的一个原函数，$F(1) = \dfrac{\sqrt{2}}{4}\pi$. 若 $f(x)\cdot F(x) = \dfrac{\arctan\sqrt{x}}{\sqrt{x}(1 + x)}(x\in I)$，求 $f(x)$ 的表达式.
+}
+
+\oneproblem{
+    已知 $f''(x)$ 连续，$f'(x)\neq 0$，求
+    $
+    \int\left[\dfrac{f(x)}{f'(x)} - \dfrac{f^2(x)f''(x)}{\left(f'(x)\right)^3}\right]\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    已知 $f(x)$ 在 $\left(\dfrac{1}{4},\dfrac{1}{2}\right)$ 内满足 $f'(x) = \dfrac{1}{\sin^3 x + \cos^3 x}$，求 $f(x)$.
+}
+
+% ======================================================
+% 第 25 天
+% ======================================================
+\setday{25}{不定积分的分部积分法}
+
+\oneproblem{
+    已知函数 $f(x) = \begin{cases} 2(x - 1), & x < 1, \\ \ln x, & x \ge 1, \end{cases}$ 则 $f(x)$ 的一个原函数为（ \quad ）
+    \begin{enumerate}[label=(\Alph*)]
+        \item $F(x) = \begin{cases} (x - 1)^2, & x < 1, \\ x(\ln x - 1), & x \ge 1 \end{cases}$
+        \item $F(x) = \begin{cases} (x - 1)^2, & x < 1, \\ x(\ln x + 1) - 1, & x \ge 1 \end{cases}$
+        \item $F(x) = \begin{cases} (x - 1)^2, & x < 1, \\ x(\ln x + 1) + 1, & x \ge 1 \end{cases}$
+        \item $F(x) = \begin{cases} (x - 1)^2, & x < 1, \\ x(\ln x - 1) + 1, & x \ge 1 \end{cases}$
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知曲线 $y = f(x)$ 过点 $\left(0,-\dfrac{1}{2}\right)$，且其上任一点 $(x,y)$ 处的切线斜率为 $x\ln\left(1 + x^2\right)$，求 $f(x)$.
+}
+
+\oneproblem{
+    计算下列不定积分.
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $\displaystyle \int \dfrac{\arcsin\sqrt{x}}{\sqrt{x}}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{x + \ln(1 - x)}{x^2}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{x\cos^4\dfrac{x}{2}}{\sin^3 x}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\ln x}{(1 - x)^2}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{x^2}{1 + x^2}\arctan x\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{xe^x}{\sqrt{e^x - 1}}\,\mathrm{d}x$.
+        \item $\displaystyle \int (\arcsin x)^2\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\ln x - 1}{x^2}\,\mathrm{d}x$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $F(x)$ 为 $f(x)$ 的原函数，且当 $x \ge 0$ 时，
+    $
+    f(x)F(x) = \dfrac{xe^x}{2(1 + x)^2},
+    $
+    已知 $F(0) = 1$，$F(x) > 0$，试求 $f(x)$.
+}
+
+\oneproblem{
+    设 $f(\ln x) = \dfrac{\ln(1 + x)}{x}$，计算 $\int f(x)\,\mathrm{d}x$.
+}
+
+\oneproblem{
+    设 $f(\sin^2 x) = \dfrac{x}{\sin x}$，求 $\int \dfrac{\sqrt{x}}{\sqrt{1 - x}}f(x)\,\mathrm{d}x$.
+}
+
+\oneproblem{
+    计算下列不定积分.
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $\displaystyle \int \dfrac{\ln\sin x}{\sin^2 x}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\arctan x}{x^2(1 + x^2)}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\arcsin e^x}{e^x}\,\mathrm{d}x$.
+        \item $\displaystyle \int \ln\left(1 + \sqrt{\dfrac{1 + x}{x}}\right)\mathrm{d}x\ (x>0)$.
+        \item $\displaystyle \int \dfrac{\arcsin\sqrt{x} + \ln x}{\sqrt{x}}\,\mathrm{d}x$.
+        \item $\displaystyle \int e^x\arcsin\sqrt{1 - e^{2x}}\,\mathrm{d}x$.
+        \item $\displaystyle \int e^{2x}\arctan\sqrt{e^x - 1}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\ln\left(x + \sqrt{1 + x^2}\right)}{(1 + x^2)^{3/2}}\,\mathrm{d}x$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知 $f(2) = \dfrac{1}{2}, f'(2) = 0$ 及 $\int_0^2 f(x)\,\mathrm{d}x = 1$，求
+    $
+    \int_0^1 x^2 f''(2x)\,\mathrm{d}x.
+    $
+}
+
+% ======================================================
+% 第 26 天
+% ======================================================
+\setday{26}{具有特定结构的函数的不定积分的计算}
+
+\oneproblem{
+    计算如下不定积分:
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $\displaystyle \int |1 - |x||\,\mathrm{d}x$.
+        \item $\displaystyle \int \max\{x^2, x^3, 1\}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{e^{\arctan x}}{(1 + x^2)^{3/2}}\,\mathrm{d}x$.
+        \item $\displaystyle \int e^{2x}(\tan x + 1)^2\,\mathrm{d}x$.
+        \item $\displaystyle \int e^x\left(\dfrac{1 - x}{1 + x^2}\right)^2\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{1 + \sin x}{1 + \cos x}e^x\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\mathrm{d}x}{\sin(2x) + 2\sin x}$.
+        \item $\displaystyle \int \dfrac{1 - \ln x}{(x - \ln x)^2}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{\sin x}{\sqrt{2 + \sin 2x}}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{e^{-\sin x}\sin 2x}{(1 - \sin x)^2}\,\mathrm{d}x$.
+        \item $\displaystyle \int \left(1 + x - \dfrac{1}{x}\right)e^{x + \frac{1}{x}}\,\mathrm{d}x$.
+        \item $\displaystyle \int x\arctan x\ln(1 + x^2)\,\mathrm{d}x$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    试求由下列积分确定的递推式，并计算各积分指定 $n$ 的积分值.
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $I_n = \int \dfrac{\sin nx}{\sin x}\,\mathrm{d}x\ (n\ge2)$，并求 $I_4$.
+        \item $I_{n,k} = \int x^n e^{kx}\,\mathrm{d}x\ (n\ge0,k\ne0)$，并求 $I_{3,2}$.
+        \item $I_n = \int \dfrac{x^n}{\sqrt{1 + x^2}}\,\mathrm{d}x\ (n\ge1)$，并求 $I_3$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 的反函数为 $f^{-1}(x)$，记 $F(t) = \int f(t)\,\mathrm{d}t$.
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item 证明: $\displaystyle \int f^{-1}(x)\,\mathrm{d}x = xf^{-1}(x) - F\left(f^{-1}(x)\right)$.
+        \item 计算积分 $\displaystyle \int \dfrac{1}{(1 + x^2)^2}\,\mathrm{d}x$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $F(x)$ 是 $f(x)$ 的原函数，当 $x \ge 0$ 时，
+    $
+    f(x)F(x) = \dfrac{xe^x}{2(1 + x)^2},
+    $
+    已知 $F(0) = 1$，求 $f(x)$ 的表达式.
+}
+
+\oneproblem{
+    设求由下列方程确定的隐函数的不定积分:
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $y^3(x + y) = x^3$，求 $\displaystyle \int \dfrac{1}{y^3}\,\mathrm{d}x$.
+        \item $y^2(x - y) = x^2$，求 $\displaystyle \int \dfrac{\mathrm{d}x}{y^2}$.
+        \item $(x^2 + y^2)^2 = 2xy$，求 $\displaystyle \int \dfrac{1}{\sqrt{x^2 + y^2}}\,\mathrm{d}x$.
+        \item $y(x - y)^2 = x$，求 $\displaystyle \int \dfrac{\mathrm{d}x}{x - 3y}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    计算如下不定积分.
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $\displaystyle \int \dfrac{1 - \ln x}{(x - \ln x)^2}\,\mathrm{d}x$.
+        \item $\displaystyle \int \left[\ln(\ln x) + \dfrac{1}{\ln x}\right]\mathrm{d}x$.
+        \item $\displaystyle \int \sin(\ln x)\,\mathrm{d}x$.
+        \item $\displaystyle \int \ln\left(1 + \sqrt{\dfrac{1 + x}{x}}\right)\mathrm{d}x, x>0$.
+        \item $\displaystyle \int \dfrac{\cos^2 x}{\sin x + \sqrt{3}\cos x}\,\mathrm{d}x$.
+        \item $\displaystyle \int \dfrac{1}{(1 + x)\sqrt{2 + x - x^2}}\,\mathrm{d}x$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 27 天
+% ======================================================
+\setday{27}{定积分的概念与性质}
+
+\oneproblem{
+    设函数 $f(x)$ 在区间 $[0,1]$ 上连续，则 $\int_0^1 f(x)\,\mathrm{d}x =$（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $\displaystyle \lim_{n\to\infty}\sum_{k=1}^n f\left(\dfrac{2k-1}{2n}\right)\dfrac{1}{2n}$
+        \item $\displaystyle \lim_{n\to\infty}\sum_{k=1}^n f\left(\dfrac{2k-1}{2n}\right)\dfrac{1}{n}$
+        \item $\displaystyle \lim_{n\to\infty}\sum_{k=1}^{2n} f\left(\dfrac{k-1}{2n}\right)\dfrac{1}{n}$
+        \item $\displaystyle \lim_{n\to\infty}\sum_{k=1}^{2n} f\left(\dfrac{k}{2n}\right)\dfrac{2}{n}$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    $\displaystyle \lim_{n\to\infty}\ln\sqrt[n]{\left(1+\dfrac{1}{n}\right)^2\left(1+\dfrac{2}{n}\right)^2\cdots\left(1+\dfrac{n}{n}\right)^2}$ 等于（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $\displaystyle \int_1^2 \ln^2 x\,\mathrm{d}x$
+        \item $\displaystyle 2\int_1^2 \ln x\,\mathrm{d}x$
+        \item $\displaystyle 2\int_1^2 \ln(1+x)\,\mathrm{d}x$
+        \item $\displaystyle \int_1^2 \ln^2(1+x)\,\mathrm{d}x$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设在区间 $[a,b]$ 上 $f(x)>0,\ f'(x)<0,\ f''(x)>0$，令
+    $
+    S_1 = \int_a^b f(x)\,\mathrm{d}x,\quad S_2 = f(b)(b-a),\quad S_3 = \dfrac{1}{2}[f(a)+f(b)](b-a)
+    $
+    则（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $S_1 < S_2 < S_3$
+        \item $S_2 < S_1 < S_3$
+        \item $S_3 < S_1 < S_2$
+        \item $S_2 < S_3 < S_1$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    已知
+    $
+    I_1 = \int_0^1 \dfrac{x}{2(1+\cos x)}\,\mathrm{d}x,\quad I_2 = \int_0^1 \dfrac{\ln(1+x)}{1+\cos x}\,\mathrm{d}x,\quad I_3 = \int_0^1 \dfrac{2x}{1+\sin x}\,\mathrm{d}x,
+    $
+    则（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $I_1 < I_2 < I_3$
+        \item $I_2 < I_1 < I_3$
+        \item $I_1 < I_3 < I_2$
+        \item $I_3 < I_2 < I_1$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    证明：$\displaystyle 2 \le \int_{-1}^1 \sqrt{1+x^4}\,\mathrm{d}x \le \dfrac{8}{3}$.
+}
+
+\oneproblem{
+    设 $f(x)$ 在区间 $[0,1]$ 上可微，且满足条件 $f(1) = 2\int_0^{\frac{1}{2}} xf(x)\,\mathrm{d}x$，求证：存在 $\xi\in(0,1)$ 使得 $f(\xi) + \xi f'(\xi) = 0$.
+}
+
+\oneproblem{
+    (1) 证明积分中值定理：若函数 $f(x)$ 在闭区间 $[a,b]$ 上连续，则至少存在一点 $\eta\in[a,b]$，使得
+    $
+    \int_a^b f(x)\,\mathrm{d}x = f(\eta)(b-a).
+    $\\
+    (2) 若函数 $\varphi(x)$ 具有二阶导数，且满足
+    $
+    \varphi(2) > \varphi(1),\quad \varphi(2) > \int_2^3 \varphi(x)\,\mathrm{d}x,
+    $
+    则至少存在一点 $\xi\in(1,3)$，使得 $\varphi''(\xi) < 0$.
+}
+
+\oneproblem{
+    设函数 $f(x),g(x)$ 在 $[a,b]$ 上连续且 $g(x) > 0$，利用闭区间上连续函数的性质，证明存在一点 $\xi\in[a,b]$，使
+    $
+    \int_a^b f(x)g(x)\,\mathrm{d}x = f(\xi)\int_a^b g(x)\,\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    设 $f(x)$ 是连续函数，且 $f(x) = x + 2\int_0^1 f(t)\,\mathrm{d}t - \int_2^4 f(t)\,\mathrm{d}t$，求 $f(x)$ 的函数表达式.
+}
+
+\oneproblem{
+    设 $f(x),g(x)$ 在 $[a,b]$ 上连续，且 $f(x) > 0,\ g(x)$ 非负，求
+    $
+    \lim_{n\to\infty} \int_a^b g(x)\sqrt[n]{f(x)}\,\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,1]$ 上连续且递减，证明：当 $0 < \lambda < 1$ 时，
+    $
+    \int_0^\lambda f(x)\,\mathrm{d}x \ge \lambda \int_0^1 f(x)\,\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $(-\infty,\infty)$ 上有连续导数，且 $m \le f(x) \le M$.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 求 $\displaystyle A = \lim_{a\to+0} \dfrac{1}{4a^2}\int_{-a}^a [f(t+a)-f(t-a)]\,\mathrm{d}t$；
+        \item 证明：$\displaystyle \left|\dfrac{1}{2a}\int_{-a}^a f(t)\,\mathrm{d}t - f(x)\right| \le M - m\ (a>0)$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在区间 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且满足
+    $
+    f(1) = k\int_0^{\frac{1}{k}} xe^{1-x}f(x)\,\mathrm{d}x,\ (k>1)
+    $
+    证明至少存在一点 $\xi\in(0,1)$，使得 $f'(\xi) = (1-\xi^{-1})f(\xi)$.
+}
+
+\oneproblem{
+    已知函数 $f(x)$ 在 $[0,1]$ 上具有二阶导数，且
+    $
+    f(0)=0,\ f(1)=1,\ \int_0^1 f(x)\,\mathrm{d}x = 1.
+    $
+    证明：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 存在 $\xi\in(0,1)$，使得 $f'(\xi) = 0$；
+        \item 存在 $\eta\in(0,1)$，使得 $f''(\eta) < -2$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f_0(x),f_1(x)$ 是 $[0,1]$ 上正连续函数，满足
+    $
+    \int_0^1 f_0(x)\,\mathrm{d}x \le \int_0^1 f_1(x)\,\mathrm{d}x.
+    $
+    设
+    $
+    f_{n+1}(x) = \dfrac{2f_n^2(x)}{f_n(x)+f_{n-1}(x)},\ n=1,2,\cdots
+    $\\
+    求证：数列 $\displaystyle a_n = \int_0^1 f_n(x)\,\mathrm{d}x,\ n=1,2,\cdots$ 单调递增且收敛.
+}
+
+\oneproblem{
+    设 $f\in C[0,1]$ 是非负的严格单调增函数.
+    \begin{enumerate}[label=(\arabic*)]
+        \item 证明：对任意 $n\in\mathbb{N}$，存在唯一的 $x_n\in[0,1]$，使得
+        $
+        (f(x_n))^n = \int_0^1 (f(x))^n\,\mathrm{d}x.
+        $
+        \item 证明：$\displaystyle \lim_{n\to\infty} x_n = 1$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,1]$ 上有二阶连续导函数，且 $f(0)f(1)\ge 0$，证明：
+    $
+    \int_0^1 |f'(x)|\,\mathrm{d}x \le 2\int_0^1 |f(x)|\,\mathrm{d}x + \int_0^1 |f''(x)|\,\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    设 $f(x),g(x)$ 是 $[0,1]\to[0,1]$ 的连续函数，且 $f(x)$ 单调增加，证明：
+    $
+    \int_0^1 f(g(x))\,\mathrm{d}x \le \int_0^1 f(x)\,\mathrm{d}x + \int_0^1 g(x)\,\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    设 $f(x)$ 是 $[0,1]$ 上的连续函数，且满足 $\int_0^1 f(x)\,\mathrm{d}x = 1$，求一个这样的函数 $f(x)$，使得积分
+    $
+    I = \int_0^1 (1+x^2)f^2(x)\,\mathrm{d}x
+    $
+    取到最小值.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[1,+\infty)$ 连续可导，
+    $
+    f'(x) = \dfrac{1}{1+f^2(x)}\left[\sqrt{\dfrac{1}{x}} - \sqrt{\ln\left(1+\dfrac{1}{x}\right)}\right],
+    $
+    证明：$\displaystyle \lim_{x\to+\infty} f(x)$ 存在.
+}
+
+\oneproblem{
+    问：在区间 $[0,2]$ 上是否存在连续可微的函数 $f(x)$，满足
+    $
+    f(0)=f(2)=1,\ |f'(x)|\le 1,\ \left|\int_0^2 f(x)\,\mathrm{d}x\right|\le 1?
+    $
+    请说明理由.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[0,1]$ 上二阶可导，且 $f''(x)<0$，证明：
+    $
+    \int_0^1 f(x^n)\,\mathrm{d}x \le f\left(\dfrac{1}{n+1}\right).
+    $
+}
+
+\oneproblem{
+    求最小实数 $C$，使得满足 $\int_0^1 |f(x)|\,\mathrm{d}x=1$ 的连续的函数 $f(x)$ 都有
+    $
+    \int_0^1 f(\sqrt{x})\,\mathrm{d}x \le C.
+    $
+}
+
+\oneproblem{
+    设 $\displaystyle I(f) = \int_0^\pi (\sin x - f(x))f(x)\,\mathrm{d}x$，求当遍历 $[0,\pi]$ 上所有连续函数 $f$ 时 $I(f)$ 的最大值.
+}
+
+% ======================================================
+% 第 28 天
+% ======================================================
+\setday{28}{微积分基本公式与定积分基本计算法}
+
+\oneproblem{
+    设二阶可导函数 $f(x)$ 满足 $f(1)=f(-1)=1,\ f(0)=-1$ 且 $f''(x)>0$，则（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $\displaystyle \int_{-1}^1 f(x)\,\mathrm{d}x > 0$
+        \item $\displaystyle \int_{-1}^1 f(x)\,\mathrm{d}x < 0$
+        \item $\displaystyle \int_{-1}^0 f(x)\,\mathrm{d}x > \int_0^1 f(x)\,\mathrm{d}x$
+        \item $\displaystyle \int_{-1}^0 f(x)\,\mathrm{d}x < \int_0^1 f(x)\,\mathrm{d}x$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    若 $\displaystyle f(x) = \dfrac{1}{1+x^2} + \sqrt{1-x^2}\int_0^1 f(x)\,\mathrm{d}x$，求 $\displaystyle \int_0^1 f(x)\,\mathrm{d}x$.
+}
+
+\oneproblem{
+    设 $f'(x)$ 在 $[0,a]$ 上连续，且 $f(0)=0$，证明：
+    $
+    \left|\int_0^a f(x)\,\mathrm{d}x\right| \le \dfrac{Ma^2}{2},
+    $
+    其中 $\displaystyle M = \max_{0\le x\le a}|f'(x)|$.
+}
+
+\oneproblem{
+    计算：$\displaystyle \lim_{n\to\infty} \int_0^1 \dfrac{x^n e^x}{1+e^x}\,\mathrm{d}x$.
+}
+
+\oneproblem{
+    设 $a>0$，$f'(x)$ 在 $[0,a]$ 上连续，证明：
+    $
+    f(0) \le \dfrac{1}{a}\int_0^a |f(x)|\,\mathrm{d}x + \int_0^a |f'(x)|\,\mathrm{d}x.
+    $
+}
+
+\oneproblem{
+    试求 $\displaystyle \sum_{n=1}^{100} n^{-\frac{1}{2}}$ 的整数部分的值.
+}
+
+\oneproblem{
+    求极限：$\displaystyle \lim_{n\to+\infty} \left( \prod_{k=n}^{3n-1} k \right)^{\frac{1}{2n}} \sin\dfrac{1}{n}$.
+}
+
+% ======================================================
+% 第 29 天
+% ======================================================
+\setday{29}{变限积分函数及其应用}
+
+\oneproblem{
+    连续函数 $y=f(x)$ 在区间 $[-3,-2], [2,3]$ 上的图形分别是直径为1的上,下半圆周，在区间 $[-2,0], [0,2]$ 的图形分别是直径为2的下,上半圆周，设 $F(x)=\int_0^x f(t)\,\mathrm{d}t$，则下列结论正确的是（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item $F(3)=-\dfrac{3}{4}F(-2)$
+        \item $F(3)=\dfrac{5}{4}F(2)$
+        \item $F(-3)=\dfrac{3}{4}F(2)$
+        \item $F(-3)=-\dfrac{5}{4}F(-2)$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x)=\begin{cases}x^2, & 0\le x\le 1 \\ 2-x, & 1<x\le 2\end{cases}$，记 $F(x)=\int_0^x f(t)\,\mathrm{d}t,\ 0\le x\le 2$，则（ \quad ）
+    \begin{enumerate}[label=(\Alph*)]
+        \item $F(x)=\begin{cases}\dfrac{x^3}{3}, & 0\le x\le 1 \\ \dfrac{1}{3}+2x-\dfrac{x^2}{2}, & 1<x\le 2\end{cases}$
+        \item $F(x)=\begin{cases}\dfrac{x^3}{3}, & 0\le x\le 1 \\ -\dfrac{7}{6}+2x-\dfrac{x^2}{2}, & 1<x\le 2\end{cases}$
+        \item $F(x)=\begin{cases}\dfrac{x^3}{3}, & 0\le x\le 1 \\ \dfrac{x^3}{3}+2x-\dfrac{x^2}{2}, & 1<x\le 2\end{cases}$
+        \item $F(x)=\begin{cases}\dfrac{x^3}{3}, & 0\le x\le 1 \\ 2x-\dfrac{x^2}{2}, & 1<x\le 2\end{cases}$
+    \end{enumerate}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[0,1]$ 上二阶可导，且 $\int_0^1 f(x)\,\mathrm{d}x=0$，则（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 当 $f'(x)<0$ 时，$f\left(\dfrac{1}{2}\right)<0$
+        \item 当 $f''(x)<0$ 时，$f\left(\dfrac{1}{2}\right)<0$
+        \item 当 $f'(x)>0$ 时，$f\left(\dfrac{1}{2}\right)<0$
+        \item 当 $f''(x)>0$ 时，$f\left(\dfrac{1}{2}\right)<0$
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $f(x)$ 有连续的导数，$f(0)=0,\ f'(0)\ne 0,\ F(x)=\int_0^x (x^2-t^2)f(t)\,\mathrm{d}t$，且当 $x\to 0$ 时，$F'(x)$ 与 $x^k$ 是同阶无穷小，则 $k$ 等于（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 1
+        \item 2
+        \item 3
+        \item 4
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设函数 $f(x)$ 连续，$\varphi(x)=\int_0^{x^2} xf(t)\,\mathrm{d}t$。若 $\varphi(1)=1,\ \varphi'(1)=5$，则 $f(1)=$\underline{\hspace{4cm}}.
+}
+
+\oneproblem{
+    设函数 $f(x)=\int_0^1 |t(t-x)|\,\mathrm{d}t\ (0<x<1)$，求 $f(x)$ 的极值,单调区间以及曲线 $y=f(x)$ 的凹凸区间.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在闭区间 $[a,b]$ 上连续，且 $f(x)>0$，则方程
+    $
+    \int_a^x f(t)\,\mathrm{d}t + \int_b^x \dfrac{1}{f(t)}\,\mathrm{d}t = 0
+    $
+    在开区间 $(a,b)$ 内的根有（ \quad ）
+    \begin{multicols}{2}
+    \begin{enumerate}[label=(\Alph*)]
+        \item 0个
+        \item 1个
+        \item 2个
+        \item 无穷多个
+    \end{enumerate}
+    \end{multicols}
+}
+
+\oneproblem{
+    设 $y=y(x)$ 由 $x=\int_1^{y-x} \sin^2\left(\dfrac{\pi t}{4}\right)\mathrm{d}t$ 所确定，求 $\left.\dfrac{\mathrm{d}y}{\mathrm{d}x}\right|_{x=0}$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $[0,+\infty)$ 上连续,单调不减且 $f(0)\ge 0$，试证函数
+    $
+    F(x)=\begin{cases}
+    \dfrac{1}{x}\int_0^x t^n f(t)\,\mathrm{d}t, & x>0 \\
+    0, & x=0
+    \end{cases}
+    $
+    在 $[0,+\infty)$ 上连续且单调不减（其中 $n>0$）.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在 $(0,+\infty)$ 内连续，$f(1)=\dfrac{5}{2}$，且对所有 $x,t\in(0,+\infty)$，满足条件
+    $
+    \int_1^{xt} f(u)\,\mathrm{d}u = t\int_1^x f(u)\,\mathrm{d}u + x\int_1^t f(u)\,\mathrm{d}u.
+    $
+    求 $f(x)$ 的表达式.
+}
+
+\oneproblem{
+    求下列极限：
+    \begin{enumerate}[label=(\arabic*),itemsep=3cm]
+        \item $\displaystyle I=\lim_{x\to\infty} \dfrac{1}{x}\int_0^x (1+t^2)e^{t^2-x^2}\,\mathrm{d}t$.
+        \item $\displaystyle \lim_{x\to\infty} \dfrac{\left(\int_0^x e^{u^2}\,\mathrm{d}u\right)^2}{\int_0^x e^{2u^2}\,\mathrm{d}u}$.
+        \item $\displaystyle \lim_{x\to 0} \dfrac{\int_0^x \left[\int_0^{u^2} \arctan(1+t)\,\mathrm{d}t\right]\mathrm{d}u}{x(1-\cos x)}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知函数 $F(x)=\dfrac{\int_0^x \ln(1+t^2)\,\mathrm{d}t}{x^a}$，设 $\displaystyle \lim_{x\to+\infty} F(x)=\lim_{x\to 0^+} F(x)=0$，试求 $a$ 的取值范围.
+}
+
+\oneproblem{
+    已知两曲线 $y=f(x)$ 与 $y=\int_0^{\arctan x} e^{-t^2}\,\mathrm{d}t$ 在点 $(0,0)$ 处的切线相同，写出此切线方程，并求极限 $\displaystyle \lim_{n\to\infty} nf\left(\dfrac{2}{n}\right)$.
+}
+
+\oneproblem{
+    假设函数 $f(x)$ 在 $[a,b]$ 上连续，在 $(a,b)$ 内可导，且 $f'(x)\le 0$，记 $\displaystyle F(x)=\dfrac{1}{x-a}\int_a^x f(t)\,\mathrm{d}t$。证明：在 $(a,b)$ 内 $F'(x)\le 0$.
+}
+
+\oneproblem{
+    证明方程 $\displaystyle \ln x = \dfrac{x}{e} - \int_0^\pi \sqrt{1-\cos 2x}\,\mathrm{d}x$ 在区间 $(0,+\infty)$ 内有且仅有两个不同实根.
+}
+
+\oneproblem{
+    设 $f(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 内可微，且 $f'(x)>0,\ f(0)=0$。证明：存在 $\lambda,\mu\in(0,1)$，使 $\lambda+\mu=1,\ \dfrac{f'(\lambda)}{\lambda}=\dfrac{f'(\mu)}{\mu}$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 和 $g(x)$ 在区间 $[a,b]$ 上连续，且 $f(x)$ 单调增加，$0\le g(x)\le 1$，证明：
+    \begin{enumerate}[label=(\arabic*),itemsep=5cm]
+        \item $\displaystyle 0\le \int_a^x g(t)\,\mathrm{d}t \le x-a,\ x\in[a,b]$；
+        \item $\displaystyle \int_a^{a+\int_a^b g(t)\,\mathrm{d}t} f(x)\,\mathrm{d}x \le \int_a^b f(x)g(x)\,\mathrm{d}x$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    已知 $f(x)=\int_1^x e^{t^2}\,\mathrm{d}t$.
+    \begin{enumerate}[label=(\arabic*),itemsep=5cm]
+        \item 证明：$\exists \xi\in(1,2)$，使得 $f(\xi)=(2-\xi)e^{\xi^2}$；
+        \item 证明：$\exists \eta\in(1,2)$，使得 $f(2)=\ln2\cdot\eta\cdot e^{\eta^2}$.
+    \end{enumerate}
+}
+
+% ======================================================
+% 第 30 天
+% ======================================================
+\setday{30}{和式结构的数列极限计算与验证方法}
+
+\oneproblem{
+    求下列极限：
+    \begin{enumerate}[label=(\arabic*),itemsep=6cm]
+        \item $\displaystyle \lim_{n\to\infty} \dfrac{1}{n}\left(\sqrt{1+\cos\dfrac{\pi}{n}}+\sqrt{1+\cos\dfrac{2\pi}{n}}+\cdots+\sqrt{1+\cos\dfrac{n\pi}{n}}\right)$.
+        \item $\displaystyle \lim_{n\to\infty} n\left(\dfrac{\sin\dfrac{\pi}{n}}{n^2+1}+\dfrac{\sin\dfrac{2\pi}{n}}{n^2+2}+\cdots+\dfrac{\sin\pi}{n^2+n}\right)$.
+        \item $\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \dfrac{k}{n^2+n+1}\ln\left(1+\dfrac{k}{n}\right)$.
+        \item $\displaystyle \lim_{n\to\infty} \sum_{i=1}^n 2^{\frac{i}{n}}\dfrac{1}{n+\dfrac{1}{i}}$.
+        \item $\displaystyle \lim_{n\to\infty} \dfrac{1^k+3^k+\cdots+(2n-1)^k}{n^{k+1}}\ (k\ge 0)$.
+        \item $\displaystyle \lim_{n\to\infty} \left[\sqrt[n+1]{(n+1)!}-\sqrt[n]{n!}\right]$.
+        \item $\displaystyle \lim_{n\to\infty} \sqrt{n}\left(1-\sum_{k=1}^n \dfrac{1}{n+\sqrt{k}}\right)$.
+        \item $\displaystyle \lim_{n\to\infty} \dfrac{\ln n}{\ln\left(1^{2020}+2^{2020}+\cdots+n^{2020}\right)}$.
+        \item $\displaystyle \lim_{n\to\infty} \sum_{k=1}^n \dfrac{1}{n+k^\alpha}\ (\alpha>0)$.
+        \item $\displaystyle \lim_{n\to\infty} \left(\sum_{k=1}^n \dfrac{1}{(C_n^k)^p}\right)^{n^p}\ \left(p>\dfrac{1}{2}\right)$.
+        \item $\displaystyle \lim_{n\to\infty} (\sqrt[n]{b}-1)\sum_{i=0}^{n-1} b^{\frac{i}{n}}\sin b^{\frac{2i+1}{2n}},\ b>1$.
+        \item $\displaystyle \lim_{\substack{m\to+\infty \\ n\to+\infty}} \sum_{i=1}^m\sum_{j=1}^n \dfrac{(-1)^{i+j}}{i+j}$.
+    \end{enumerate}
+}
+
+\oneproblem{
+    (1) 设 $f(x)$ 在 $(0,+\infty)$ 上连续且单调递减，证明：
+    $
+    \int_1^{n+1} f(x)\,\mathrm{d}x \le \sum_{k=1}^n f(k) \le f(1)+\int_1^n f(x)\,\mathrm{d}x.
+    $
+    (2) 求极限 $\displaystyle \lim_{n\to\infty} \dfrac{1+\dfrac{1}{2}+\cdots+\dfrac{1}{n}}{\ln n}$.
+    (3) 求极限 $\displaystyle \lim_{n\to\infty} \left(\dfrac{1}{\sqrt{n^2+1}}+\dfrac{1}{\sqrt{n^2+2}}+\cdots+\dfrac{1}{\sqrt{n^2+n}}\right)^n$.
+}
+
+\oneproblem{
+    设 $f(x)$ 是区间 $[0,+\infty)$ 上单调减少且非负的连续函数，
+    $
+    a_n=\sum_{k=1}^n f(k)-\int_1^n f(x)\,\mathrm{d}x\ (n=1,2,\cdots).
+    $
+    证明：数列 $\{a_n\}$ 的极限存在.
+}
+
+\oneproblem{
+    设 $\displaystyle A_n=\dfrac{n}{n^2+1}+\dfrac{n}{n^2+2^2}+\cdots+\dfrac{n}{n^2+n^2}$，求
+    $
+    \lim_{n\to\infty} n\left(\dfrac{\pi}{4}-A_n\right).
+    $
+}
+
+\oneproblem{
+    计算 $\displaystyle I=\lim_{n\to\infty} n^2\left(1-\dfrac{\pi}{2n}\sum_{k=1}^n \sin\dfrac{(2k-1)\pi}{4n}\right)$.
+}
+
+\oneproblem{
+    设 $f(x)=\arctan x,\ A$ 为常数。若
+    $
+    B=\lim_{n\to\infty} \left(\sum_{k=1}^n f\left(\dfrac{k}{n}\right)-An\right)
+    $
+    存在，求 $A,B$.
+}
+
+\oneproblem{
+    设函数 $f(x)$ 在闭区间 $[a,b]$ 上有连续的二阶导数，
+    \\证明：
+    $
+    \lim_{n\to\infty} n^2\left[\int_a^b f(x)\,\mathrm{d}x-\dfrac{b-a}{n}\sum_{k=1}^n f\left(a+\dfrac{2k-1}{2n}(b-a)\right)\right]=\dfrac{(b-a)^2}{24}\left[f'(b)-f'(a)\right].
+    $
+}
+
+\oneproblem{
+    设 $f(x)$ 在闭区间 $[0,1]$ 上有连续导数，$f(0)=0,\ f(1)=1$。证明：
+    $
+    \lim_{n\to\infty} n\left(\int_0^1 f(x)\,\mathrm{d}x-\dfrac{1}{n}\sum_{k=1}^n f\left(\dfrac{k}{n}\right)\right)=-\dfrac{1}{2}.
+    $
+}
+
+\oneproblem{
+    设 $f(0)=0,\ f'(0)$ 存在，求
+    $
+    \lim_{n\to\infty} \left[f\left(\dfrac{1}{n^2}\right)+f\left(\dfrac{2}{n^2}\right)+\cdots+f\left(\dfrac{n}{n^2}\right)\right].
+    $
+}
+
+\oneproblem{
+    设 $f:[0,1]\to\mathbb{R}$ 可微，$f(0)=f(1),\ \int_0^1 f(x)\,\mathrm{d}x=0$ 且 $f'(x)\ne 1,\ \forall x\in[0,1]$。求证：对于任意正整数 $n$，有 $\left|\sum_{k=0}^{n-1} f\left(\dfrac{k}{n}\right)\right|<\dfrac{1}{2}$.
+}
+
+\oneproblem{
+    设 $f_1,f_2,\cdots,f_n$ 为 $[0,1]$ 上的非负连续函数，求证：存在 $\xi\in[0,1]$，使得
+    $
+    \prod_{k=1}^n f_k(\xi)\le \prod_{k=1}^n \int_0^1 f_k(x)\,\mathrm{d}x.
+    $
+}

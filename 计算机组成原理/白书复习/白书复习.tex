@@ -1,0 +1,637 @@
+\documentclass{article}
+\usepackage{ctex}    % 支持中文
+\usepackage{enumitem}% 定制列表环境
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{multirow}
+
+% 代码/二进制格式设置
+\lstset{
+    basicstyle=\ttfamily\small,
+    columns=fixed,
+    frame=none,
+    backgroundcolor=\color{white},
+}
+
+\title{计算机组成原理 第一章习题解答}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label=\arabic*.]
+    % 题目4
+    \item 冯·诺依曼型计算机的主要设计思想是什么？它包括哪些主要组成部分？
+    
+    \textbf{答：}
+    冯·诺依曼型计算机的核心设计思想与组成如下：
+    \begin{itemize}
+        \item \textbf{主要设计思想：}
+        \begin{enumerate}
+            \item 采用\textbf{存储程序}原理：将程序和数据统一存放在存储器中，计算机自动按地址顺序执行指令；
+            \item 数据和指令均采用\textbf{二进制}表示；
+            \item 计算机硬件由五大功能部件组成，以运算器为中心（早期架构）。
+        \end{enumerate}
+        \item \textbf{主要组成部分：}
+        \begin{enumerate}
+            \item 运算器：负责算术运算与逻辑运算；
+            \item 控制器：控制各部件协调工作，生成指令执行时序；
+            \item 存储器：存储程序和数据，按地址访问；
+            \item 输入设备：向计算机输入程序与数据；
+            \item 输出设备：将处理结果输出给用户。
+        \end{enumerate}
+    \end{itemize}
+
+    % 题目5
+    \item 什么是存储容量？什么是单元地址？什么是数据字？什么是指令字？
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item \textbf{存储容量：}存储器中可存储的二进制信息总量，通常以字节（B）、KB、MB、GB等为单位，反映存储器的存储能力。
+        \item \textbf{单元地址：}存储器中每个存储单元的唯一编号，用于按地址访问存储单元，实现数据的读写操作。
+        \item \textbf{数据字：}计算机中表示数据的二进制字，用于存储运算对象、运算结果等数据信息，字长由计算机硬件决定。
+        \item \textbf{指令字：}表示指令的二进制字，包含操作码和地址码两部分，操作码指明指令功能，地址码指明操作数的位置。
+    \end{itemize}
+
+    % 题目6
+    \item 什么是指令？什么是程序？
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item \textbf{指令：}控制计算机执行特定操作的命令，是计算机硬件能直接识别和执行的最小功能单位，由操作码和地址码组成。
+        \item \textbf{程序：}为解决某一特定问题，按一定顺序排列的指令集合，计算机执行程序即可完成指定的任务。
+    \end{itemize}
+
+    % 题目7
+    \item 指令和数据均存放在内存中，计算机如何区分它们是指令还是数据？
+    
+    \textbf{答：}
+    计算机通过\textbf{指令执行的时序和控制流}区分指令和数据：
+    \begin{enumerate}
+        \item \textbf{取指阶段：}控制器通过程序计数器（PC）获取指令地址，从内存中读取的内容被视为指令，送入指令寄存器（IR）译码执行；
+        \item \textbf{执行阶段：}指令译码后生成操作数地址，从内存中读取的内容被视为数据，送入运算器参与运算。
+    \end{enumerate}
+    本质上，指令和数据在内存中无形式上的区别，区分的关键是读取时的控制信号和所处的执行阶段。
+
+    % 题目8
+    \item 什么是内存？什么是外存？什么是CPU？什么是适配器？简述其功能。
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item \textbf{内存（主存储器）：}计算机主机内的高速存储器，用于存储当前运行的程序和数据；功能是直接与CPU交换信息，速度快、容量相对较小，断电后数据易失。
+        \item \textbf{外存（辅助存储器）：}计算机外部的大容量存储器（如硬盘、U盘）；功能是长期存储数据和程序，容量大、速度较慢，断电后数据不丢失，需通过内存与CPU间接交换信息。
+        \item \textbf{CPU（中央处理器）：}计算机的核心部件，由运算器和控制器组成（现代CPU还集成了Cache）；功能是执行指令、完成运算、控制计算机各部件协调工作，是计算机的“大脑”。
+        \item \textbf{适配器（I/O接口）：}主机与外设之间的连接部件（如显卡、网卡）；功能是实现主机与外设之间的信号转换、数据缓冲、速度匹配和控制协调，解决主机与外设的电气特性、速度差异问题。
+    \end{itemize}
+
+    % 题目12
+    \item 为什么软件能够转化为硬件，硬件能够转化为软件？实现这种转化的媒介是什么？
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item \textbf{转化的原因：}软件和硬件在\textbf{逻辑功能上是等效的}。软件实现的功能，可通过硬件电路直接实现（如用专用硬件实现算法，提升速度）；硬件实现的功能，也可通过软件模拟实现（如用软件模拟硬件指令，降低成本）。这种等效性使得软硬件功能可以相互转化，核心目标是平衡系统的性能、成本和灵活性。
+        \item \textbf{转化的媒介：}\textbf{固件（Firmware）}是实现软硬件转化的核心媒介，它将软件程序固化在只读存储器（ROM）中，兼具硬件的高速性和软件的可编程性，如BIOS、嵌入式系统的固件。
+    \end{itemize}
+
+    % 题目13
+    \item CPU的性能指标有哪些？其概念是什么？
+    
+    \textbf{答：}
+    CPU的核心性能指标及概念如下：
+    \begin{itemize}
+        \item \textbf{主频：}CPU的时钟频率，单位为GHz，反映CPU每秒执行指令的次数，主频越高，运算速度越快。
+        \item \textbf{字长：}CPU一次能处理的二进制数据位数（如32位、64位），字长越长，数据处理精度和效率越高。
+        \item \textbf{指令系统：}CPU支持的指令集合，指令的丰富性和执行效率影响编程效率和系统性能。
+        \item \textbf{Cache容量：}CPU内置的高速缓存，容量越大，CPU与内存的数据交换效率越高，可减少内存访问延迟。
+        \item \textbf{多核/线程数：}CPU包含的核心数量和支持的线程数，多核可并行处理多个任务，提升多线程性能。
+        \item \textbf{运算速度：}通常用MIPS（百万条指令/秒）、FLOPS（浮点运算次数/秒）衡量，反映CPU的整体运算能力。
+    \end{itemize}
+
+    % 原码反码补码
+    \item 求 $-35, 128, -127, -1$ 的8位二进制原码、反码、补码（最高位为符号位）。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $-35$：\\
+        $35_{10}=00100011_2$，原码：10100011，反码：11011100，补码：11011101
+        \item $128$：\\
+        8位有符号数范围 $[-128,127]$，128超出表示范围，无法表示。
+        \item $-127$：原码：11111111，反码：10000000，补码：10000001
+        \item $-1$：原码：10000001，反码：11111110，补码：11111111
+    \end{enumerate}
+
+    % 补码小数
+    \item 设 $[x]_{\text{补}} = a_7.a_6a_5\cdots a_0$，且 $x > -0.5$，求 $a_0\sim a_6$ 取值。
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 若 $a_7=0$（正数/0）：$a_6\sim a_0$ 可取0或1（任意值）。
+        \item 若 $a_7=1$（负数）：必须满足 $a_6=1$，且 $a_5\sim a_0$ 不全为0。
+    \end{itemize}
+
+    % 32位浮点数
+    \item 32位浮点数：符号位1位，阶码8位移码，尾数23位补码，基数2。求最大数、最小数及规格化数范围。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 最大数：0 11111111 11111111111111111111111
+        \item 最小数：1 11111111 00000000000000000000000
+        \item 规格化数范围：$[-2^{127}, -2^{-129}] \cup [2^{-129},\ 2^{127}(1-2^{-23})]$
+    \end{enumerate}
+
+    % IEEE754
+    \item 将 $27/64$ 和 $-27/64$ 表示为 IEEE754 32位浮点规格化数。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $27/64 = 1.1011\times 2^{-2}$：0 01111101 10110000000000000000000
+        \item $-27/64$：1 01111101 10110000000000000000000
+    \end{enumerate}
+
+    % 变形补码 x+y
+    \item 用变形补码计算 $x+y$ 并判断溢出。
+    
+    \textbf{答：}
+    变形补码采用双符号位：00 为正，11 为负；结果符号位为 01 正溢出，10 负溢出。
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x=11011,\ y=00011$：$[x]_{\text{变补}}=111011,\ [y]_{\text{变补}}=000011$，和：111110，无溢出，结果 $-2$。
+        \item $x=11011,\ y=-10101$：相加后符号位为 10，负溢出。
+        \item $x=-10110,\ y=-00001$：和：1101001，无溢出，结果 $-11$。
+    \end{enumerate}
+
+    % 变形补码 x-y
+    \item 用变形补码计算 $x-y$ 并判断溢出。
+    
+    \textbf{答：}
+    利用 $x-y=x+(-y)$ 计算：
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x=11011,\ y=-11111$：和为 111100，无溢出，结果 $-4$
+        \item $x=10111,\ y=11011$：和为 1101110，无溢出，结果 $-4$
+        \item $x=11011,\ y=-10011$：和为 1111110，无溢出，结果 $-2$
+    \end{enumerate}
+
+    % 阵列乘法器
+    \item 用原码阵列乘法器、补码阵列乘法器计算 $x \times y$。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x=11011,\ y=-11111$：原码/补码结果均为 $-85$
+        \item $x=-11111,\ y=-11011$：原码/补码结果均为 $+85$
+    \end{enumerate}
+
+    % 阵列除法器
+    \item 用原码阵列除法器计算 $x \div y$。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x=11000,\ y=-11111$：结果 $-24/31$
+        \item $x=-01011,\ y=11001$：结果 $-11/25$
+    \end{enumerate}
+
+    % 浮点运算 x+y x-y
+    \item 阶码 3 位，尾数 6 位，完成浮点运算 $[x+y]$、$[x-y]$。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x=2^{-011}\times0.100101,\ y=2^{-010}\times(-0.011110)$ \\
+        $x+y=2^{-100}\times1.01010,\quad x-y=2^{-010}\times0.110001$
+        \item $x=2^{-101}\times(-0.010110),\ y=2^{-100}\times0.010110$ \\
+        $x+y=2^{-110}\times0.101100,\quad x-y=2^{-101}\times1.000110$
+    \end{enumerate}
+
+    % 浮点乘除
+    \item 完成下列浮点运算。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $\left(2^3\times \dfrac{13}{16}\right) \times \left(2^4\times -\dfrac{9}{16}\right) = -29.25$
+        \item $\left(2^{-2}\times \dfrac{13}{32}\right) \div \left(2^3\times \dfrac{15}{16}\right) = \dfrac{13}{480}$
+    \end{enumerate}
+
+    % 进位链
+    \item 写出串行进位和并行进位的进位链小组信号 $C_4C_3C_2C_1$ 逻辑表达式。
+    
+    \textbf{答：}
+    设 $G_i=A_iB_i,\ P_i=A_i\oplus B_i$：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 串行进位：
+        \[
+        \begin{aligned}
+        C_1&=G_1+P_1C_0 \\
+        C_2&=G_2+P_2G_1+P_2P_1C_0 \\
+        C_3&=G_3+P_3G_2+P_3P_2G_1+P_3P_2P_1C_0 \\
+        C_4&=G_4+P_4G_3+P_4P_3G_2+P_4P_3P_2G_1+P_4P_3P_2P_1C_0
+        \end{aligned}
+        \]
+        \item 并行进位：逻辑表达式与串行进位相同，可并行生成所有进位信号。
+    \end{enumerate}
+
+    % IEEE 32位
+    \item 将下列数表示为 IEEE 32 位浮点数格式。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item $-5$：1 10000001 01000000000000000000000
+        \item $-1.5$：1 01111111 10000000000000000000000
+        \item $384$：0 10000111 10000000000000000000000
+        \item $1/16$：0 01111011 00000000000000000000000
+        \item $-1/32$：1 01111010 00000000000000000000000
+    \end{enumerate}
+
+    % IEEE 转十进制
+    \item 将下列 IEEE 32 位浮点格式转换为十进制数。
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 1 10000011 01000000000000000000000 $\implies -20$
+        \item 0 01111110 10000000000000000000000 $\implies 0.75$
+    \end{enumerate}
+
+    % IEEE 数量
+    \item IEEE 32 位浮点数可表示多少个不同的数？与定点数相比如何？
+    
+    \textbf{答：}
+    IEEE 32 位浮点数可表示数量为：$2^{32}-2^{24}+2$，小于 32 位定点数可表示的 $2^{32}$ 个。
+
+    % 定点运算器
+    \item 简述带原码阵列乘法器、原码阵列除法器的定点运算器结构设计。
+    
+    \textbf{答：}
+    主要结构组成：寄存器组、原码阵列乘法器、原码阵列除法器、ALU、控制逻辑、数据通路总线。
+
+    % ALU 设计
+    \item 设计一个 4 位 ALU，要求完成 8 种运算功能。
+    
+    \textbf{答：}
+    使用 3 位操作控制信号，实现 8 种运算：$A+B,\ A-B,\ \overline{A},\ \overline{A}+1,\ A\land B,\ A\lor B,\ A\oplus B,\ A+1$。
+
+    % 74181 改进
+    \item 简述改进 74181 ALU 芯片设计，使其操作控制信号只有 8 种。
+    
+    \textbf{答：}
+    将 4 位控制信号压缩为 3 位，保留 8 种核心运算，简化内部多路选择器与译码控制逻辑。
+
+    % 余3码加法器
+    \item 简述余 3 码编码的十进制加法器单元电路工作原理。
+    
+    \textbf{答：}
+    加法规则：两个余 3 码相加，若无进位则和减 3（加 1101）；若有进位则和加 3（加 0011），由 4 位加法器+修正电路实现。
+
+\end{enumerate}
+
+
+\begin{enumerate}[label=\arabic*.]
+    % 题目1
+    \item 设有一个具有 20 位地址和 32 位字长的存储器，问：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 该存储器能存储多少个字节的信息？
+        \item 如果存储器由 $512\text{K}\times8$ 位 SRAM 芯片组成，需要多少片？
+        \item 需要多少位地址作芯片选择？
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 存储容量为 $2^{20} \times 32\text{bit} = 2^{20} \times 4\text{B} = 4\text{MB}$，故能存储 $4\times1024\times1024=4194304$ 字节信息。
+        \item 芯片容量为 $512\text{K}\times8\text{bit}=512\text{KB}$，总容量 $4\text{MB}=4096\text{KB}$，故需要芯片数：
+        \[
+        \frac{4096\text{KB}}{512\text{KB}} \times \frac{32}{8} = 8 \times 4 = 32 \text{片}
+        \]
+        \item 地址线共20位，片内地址线为 $512\text{K}=2^{19}$，即19位，故芯片选择需要 $20-19=1$ 位地址。
+    \end{enumerate}
+
+    % 题目2
+    \item 已知某 64 位机主存采用半导体存储器，其地址码为 26 位，若使用 $4\text{M}\times8$ 位的 DRAM 芯片组成该机所允许的最大主存空间，并选用内存条结构形式，问：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 若每个内存条为 $16\text{M}\times64$ 位，共需几个内存条？
+        \item 每个内存条内共有多少 DRAM 芯片？
+        \item 主存共需多少 DRAM 芯片？CPU 如何选择各内存条？
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 主存最大容量：$2^{26}\times64\text{bit}=2^{26}\times8\text{B}=64\text{MB}\times8=512\text{MB}$；
+        每个内存条容量：$16\text{M}\times64\text{bit}=16\text{M}\times8\text{B}=128\text{MB}$；
+        故内存条数：$512\text{MB}/128\text{MB}=4$ 条。
+        \item 每个内存条容量 $16\text{M}\times64\text{bit}$，芯片容量 $4\text{M}\times8\text{bit}$，故每个内存条芯片数：
+        \[
+        \frac{16\text{M}}{4\text{M}} \times \frac{64}{8} = 4 \times 8 = 32 \text{片}
+        \]
+        \item 主存共需芯片：$4$ 条内存条 $\times 32$ 片/条 $=128$ 片；CPU 用高2位地址线（$26-24=2$）译码选择4个内存条。
+    \end{enumerate}
+
+    % 题目3
+    \item 用 $16\text{K}\times8$ 位的 DRAM 芯片构成 $64\text{K}\times32$ 位存储器，要求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 画出该存储器的组成逻辑框图。
+        \item 设存储器读/写周期为 $0.5\mu\text{s}$，CPU 在 $1\mu\text{s}$ 内至少要访问一次。试问采用哪种刷新方式比较合理？两次刷新的最大时间间隔是多少？对全部存储单元刷新一遍所需的实际刷新时间是多少？
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item （略，逻辑框图：4组芯片（每组4片位扩展），共 $4\times4=16$ 片；地址线16位，片内14位，片选2位；数据线32位，每片提供8位）
+        \item 应采用 \textbf{异步刷新} 方式。DRAM 通常2ms内刷新一遍，芯片 $16\text{K}=16384=128\times128$，即128行。
+        两次刷新最大间隔：$2\text{ms}/128=15.625\mu\text{s}$；
+        刷新一遍时间：$128\times0.5\mu\text{s}=64\mu\text{s}$。
+    \end{enumerate}
+
+    % 题目4
+    \item 有一个 $1024\text{K}\times32$ 位的存储器，由 $128\text{K}\times8$ 位的 DRAM 芯片构成。问：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 总共需要多少 DRAM 芯片？
+        \item 设计此存储体组成框图。
+        \item 采用异步刷新方式，如单元刷新间隔不超过 8ms，则刷新信号周期是多少？
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 芯片数：
+        \[
+        \frac{1024\text{K}}{128\text{K}} \times \frac{32}{8} = 8 \times 4 = 32 \text{片}
+        \]
+        \item （略，逻辑框图：8组芯片（每组4片位扩展），共32片；地址线20位，片内17位，片选3位；数据线32位）
+        \item 芯片 $128\text{K}=131072=256\times512$，共256行。
+        刷新信号周期：$8\text{ms}/256=31.25\mu\text{s}$。
+    \end{enumerate}
+
+    % 题目5
+    \item 要求用 $256\text{K}\times16$ 位 SRAM 芯片设计 $1024\text{K}\times32$ 位的存储器。SRAM 芯片有两个控制端：当$\overline{\text{CS}}$有效时，该片选中。当 $\overline{\text{W}}/\text{R}=1$ 时执行读操作，当 $\overline{\text{W}}/\text{R}=0$ 时执行写操作。
+    
+    \textbf{答：}
+    芯片数：
+    \[
+    \frac{1024\text{K}}{256\text{K}} \times \frac{32}{16} = 4 \times 2 = 8 \text{片}
+    \]
+    地址线：总地址线20位，片内地址线18位，片选2位译码选择4组芯片，每组2片位扩展组成32位数据宽度。
+
+    % 题目6
+    \item 用 $32\text{K}\times8$ 位的 E$^2$PROM 芯片组成 $128\text{K}\times16$ 位的只读存储器，试问：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 数据寄存器多少位？
+        \item 地址寄存器多少位？
+        \item 共需多少个 E$^2$PROM 芯片？
+        \item 画出此存储器组成框图。
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 数据寄存器：16位。
+        \item 地址寄存器：$128\text{K}=2^{17}$，故17位。
+        \item 芯片数：
+        \[
+        \frac{128\text{K}}{32\text{K}} \times \frac{16}{8} = 4 \times 2 = 8 \text{片}
+        \]
+        \item （略，逻辑框图：4组芯片（每组2片位扩展），共8片；地址线17位，片内15位，片选2位；数据线16位）
+    \end{enumerate}
+
+    % 题目7
+    \item 某机器中，已知配有一个地址空间为 $0000\text{H}\sim3\text{FFFH}$ 的 ROM 区域。现在再用一个 RAM 芯片（$8\text{K}\times8$）形成 $40\text{K}\times16$ 位的 RAM 区域，起始地为 $6000\text{H}$。假设 RAM 芯片有$\overline{\text{CS}}$和$\overline{\text{WE}}$信号控制端。CPU 的地址总线为 $\text{A}_{15}\sim\text{A}_0$，数据总线为 $\text{D}_{15}\sim\text{D}_0$，控制信号为 $\text{R}/\overline{\text{W}}$（读/写），$\overline{\text{MREQ}}$（访存），要求：
+    \begin{enumerate}[label=(\arabic*)]
+        \item 画出地址译码方案。
+        \item 将 ROM 与 RAM 同 CPU 连接。
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item ROM 区域：$0000\text{H}\sim3\text{FFFH}$，大小16K，地址范围对应 $\text{A}_{15}\text{A}_{14}\text{A}_{13}\text{A}_{12}=0000\sim0011$，译码产生 ROM 片选。
+        RAM 区域：$6000\text{H}\sim13\text{FFFH}$（40K×16位，需5片$8\text{K}\times16$位，由$8\text{K}\times8$位位扩展得到），地址线 $\text{A}_{15}\text{A}_{14}\text{A}_{13}\text{A}_{12}\text{A}_{11}$ 译码产生各 RAM 片选信号。
+        \item （略，连接图：ROM 接数据总线低8位，RAM 由两片$8\text{K}\times8$位组成16位数据，地址线、控制线与 CPU 对应连接）
+    \end{enumerate}
+
+    % 题目8
+    \item 设存储器容量为 $64\text{M}$，字长为 64 位，模块数 $m=8$，分别用顺序和交叉方式进行组织。存储周期 $T=100\text{ns}$，数据总线宽度为 64 位，总线传送周期 $\tau=50\text{ns}$。求：顺序存储器和交叉存储器的带宽各是多少？
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 顺序存储器带宽：连续读8个字，总时间 $8\times T=800\text{ns}$，总数据 $8\times64\text{bit}=512\text{bit}$，带宽：
+        \[
+        W_1 = \frac{512\text{bit}}{800\text{ns}} = 0.64 \text{GB/s}
+        \]
+        \item 交叉存储器带宽：流水线方式，总时间 $T+(m-1)\tau=100+7\times50=450\text{ns}$，带宽：
+        \[
+        W_2 = \frac{512\text{bit}}{450\text{ns}} \approx 1.14 \text{GB/s}
+        \]
+    \end{itemize}
+
+    % 题目9
+    \item CPU 执行一段程序时，cache 完成存取的次数为 2420 次，主存完成存取的次数为 80 次，已知 cache 存储周期为 40ns，主存存储周期为 240ns，求 cache/主存系统的效率和平均访问时间。
+    
+    \textbf{答：}
+    命中率 $H=\frac{2420}{2420+80}=0.968$。
+    平均访问时间：
+    \[
+    T_a = H\times T_c + (1-H)\times T_m = 0.968\times40 + 0.032\times240 = 46.4\text{ns}
+    \]
+    效率：
+    \[
+    e = \frac{T_c}{T_a} = \frac{40}{46.4} \approx 86.21\%
+    \]
+
+    % 题目10
+    \item 已知 cache 存储周期 40ns，主存存储周期 200ns，cache/主存系统平均访问时间为 50ns，求 cache 的命中率是多少？
+    
+    \textbf{答：}
+    设命中率为 $H$，则：
+    \[
+    50 = H\times40 + (1-H)\times200 \implies H = \frac{200-50}{200-40} = 0.9375
+    \]
+    命中率为 $93.75\%$。
+
+    % 题目11
+    \item 某机器采用四体交叉存储器，今执行一段小循环程序，此程序放在存储器的连续地址单元中。假设每条指令的执行时间相等，而且不需要到存储器存取数据，请问在下面两种情况中（执行的指令数相等），程序运行的时间是否相等？
+    \begin{enumerate}[label=(\arabic*)]
+        \item 循环程序由 6 条指令组成，重复执行 80 次。
+        \item 循环程序由 8 条指令组成，重复执行 60 次。
+    \end{enumerate}
+    
+    \textbf{答：}
+    不相等。四体交叉存储器流水线启动开销为4个存储周期，之后每个周期可完成一条指令读取。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 6条指令，80次循环：总指令数 $6\times80=480$，流水线时间 $4T + (480-4)T = 480T$。
+        \item 8条指令，60次循环：总指令数 $8\times60=480$，但单次循环跨4体边界，流水线启动次数更多，实际时间 $>480T$。
+    \end{enumerate}
+    故（1）的运行时间短于（2）。
+
+    % 题目12
+    \item 一个有主存和 cache 组成的二级存储系统，参数定义如下：$T_a$ 为系统平均存取时间，$T_1$ 为 cache 的存取时间，$T_2$ 为主存的存取时间，$H$ 为 cache 命中率，请写出 $T_a$ 与 $T_1$、$T_2$、$H$ 参数之间的函数关系式。
+    
+    \textbf{答：}
+    \[
+    T_a = H \times T_1 + (1-H) \times T_2
+    \]
+
+    % 题目13
+    \item 一个组相联 cache 由 64 个行组成，每组 4 行。主存储器包含 4K 个块，每块 128 字。请表示内存地址的格式。
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 每组4行，共64行，故组数 $64/4=16=2^4$，组号4位。
+        \item 每块128字，故块内地址 $128=2^7$，7位。
+        \item 主存 $4\text{K}$ 块，共 $4096=2^{12}$ 块，故块号12位。
+        \item 标记位 = 块号 - 组号 = $12-4=8$ 位。
+    \end{itemize}
+    地址格式（从高位到低位）：标记（8位）+ 组号（4位）+ 块内地址（7位），共19位。
+
+    % 题目14
+    \item 有一个处理机，主存容量 1MB，字长 1B，块大小 16B，cache 容量 64KB，若 cache 采用直接映射式，请给出 2 个不同标记的内存地址，它们映射到同一个 cache 行。
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 主存地址：$1\text{MB}=2^{20}$，共20位。
+        \item 块大小 $16\text{B}=2^4$，块内地址4位。
+        \item cache 容量 $64\text{KB}$，块数 $64\text{KB}/16\text{B}=4096=2^{12}$，行号12位。
+        \item 标记位 $20-12-4=4$ 位。
+    \end{itemize}
+    同一行的地址，行号和块内地址相同，标记不同。例如：
+    \begin{itemize}
+        \item 地址1：标记 $0000$，行号 $000000000000$，块内 $0000$ → 0000 000000000000 0000
+        \item 地址2：标记 $0001$，行号 $000000000000$，块内 $0000$ → 0001 000000000000 0000
+    \end{itemize}
+
+    % 题目15
+    \item 假设主存容量 $16\text{M}\times32$ 位，cache 容量 $64\text{K}\times32$ 位，主存与 cache 之间以每块 $4\times32$ 位大小传送数据，请确定直接映射方式的有关参数，并画出主存地址格式。
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 主存地址：$16\text{M}=2^{24}$，共24位。
+        \item 块大小 $4\times32\text{bit}=16\text{B}=2^4$，块内地址4位。
+        \item cache 容量 $64\text{K}\times32\text{bit}=256\text{KB}$，块数 $256\text{KB}/16\text{B}=16384=2^{14}$，行号14位。
+        \item 标记位 $24-14-4=6$ 位。
+    \end{itemize}
+    地址格式（从高位到低位）：标记（6位）+ 行号（14位）+ 块内地址（4位）。
+
+    % 题目16
+    \item 下述有关存储器的描述中，正确的是（）。
+    A. 多级存储体系由 cache、主存和虚拟存储器构成。
+    B. 存储保护的目的是：在多用户环境中，既要防止一个用户程序出错而破坏系统软件或其它用户程序，又要防止一个用户访问不是分配给他的主存区，以达到数据安全与保密的要求。
+    C. 在虚拟存储器中，外存和主存以相同的方式工作，因此允许程序员用比主存空间大得多的外存空间编程。
+    D. cache 和虚拟存储器这两种存储器管理策略都利用了程序的局部性原理。
+    
+    \textbf{答：}
+    正确选项：\textbf{B、D}。
+    （A 错误，多级存储体系由 cache、主存、外存构成；C 错误，虚拟存储器中程序员使用逻辑地址，外存与主存工作方式不同）
+
+    % 题目17
+    \item 引入多道程序的目的在于（）。
+    A. 充分利用 CPU，减少 CPU 等待时间
+    B. 提高实时响应速度
+    C. 有利于代码共享，减少主辅存信息交换量
+    D. 充分利用存储器
+    
+    \textbf{答：}
+    正确选项：\textbf{A、D}。
+
+    % 题目18
+    \item 虚拟段页式存储管理方案的特性为（）。
+    A. 空间浪费大、存储共享不易、存储保护容易、不能动态连接
+    B. 空间浪费小、存储共享容易、存储保护不易、不能动态连接
+    C. 空间浪费大、存储共享不易、存储保护容易、能动态连接
+    D. 空间浪费小、存储共享容易、存储保护容易、能动态连接
+    
+    \textbf{答：}
+    正确选项：\textbf{D}。
+
+    % 题目19
+    \item 某虚拟存储器采用页式存储管理，使用 LRU 页面替换算法。若每次访问在一个时间单位内完成，页面访问的序列如下：1，8，1，7，8，2，7，2，1，8，3，8，2，1，3，1，7，1，3，7。已知主存只允许存放 4 个页面，初始状态时 4 个页面是空的，则页面失效次数是\_\_\_\_\_。
+    
+    \textbf{答：}
+    按 LRU 算法模拟，页面失效次数为 \textbf{6 次}。
+
+    % 题目20
+    \item 主存容量为 4MB，虚存容量为 1GB，则虚拟地址和物理地址各为多少位？如页面大小为 4KB，则页表长度是多少？
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 虚拟地址：$1\text{GB}=2^{30}$，30位。
+        \item 物理地址：$4\text{MB}=2^{22}$，22位。
+        \item 页面数：$1\text{GB}/4\text{KB}=2^{30}/2^{12}=2^{18}$，故页表长度为 $2^{18}$ 项。
+    \end{itemize}
+
+    % 题目21
+    \item 设某系统采用页式虚拟存储管理，页表存放在主存中。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 如果一次内存访问使用 50ns，访问一次主存需用多少时间？
+        \item 如果增加 TLB，忽略查找 TLB 表项占用的时间，并且 75\% 的页表访问命中 TLB，内存的有效访问时间是多少？
+    \end{enumerate}
+    
+    \textbf{答：}
+    \begin{enumerate}[label=(\arabic*)]
+        \item 访问主存需两次内存访问（先访页表，再访数据），故时间 $=2\times50=100\text{ns}$。
+        \item 有效访问时间：
+        \[
+        T_a = 0.75\times50 + 0.25\times100 = 62.5\text{ns}
+        \]
+    \end{enumerate}
+
+    % 题目22
+    \item 某计算机的存储系统由 cache、主存和磁盘构成。cache 的访问时间为 15ns；如果被访问的单元在主存中但不在 cache 中，需要用 60ns 的时间将其装入 cache，然后再进行访问；如果被访问的单元不在主存中，则需要 10ms 的时间将其从磁盘中读入主存，然后再装入 cache 中并开始访问。若 cache 的命中率为 90\%，主存的命中率为 60\%，求该系统中访问一个字的平均时间。
+    
+    \textbf{答：}
+    设 $H_c=0.9$（cache 命中），$H_m=0.6$（主存命中），则：
+    \[
+    \begin{aligned}
+    T_a &= H_c\times15 + (1-H_c)\left[ H_m\times(15+60) + (1-H_m)\times(10\times10^6+60+15) \right] \\
+    &= 0.9\times15 + 0.1\times\left[ 0.6\times75 + 0.4\times10000075 \right] \\
+    &\approx 4000040.25\text{ns} = 4.00004025\text{ms}
+    \end{aligned}
+    \]
+
+    % 题目23
+    \item 某页式存储管理，页大小为 2KB，逻辑地址空间包含 16 页，物理地址空间共有 8 页。逻辑地址应有多少位？主存物理空间有多大？
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 逻辑地址：$16$ 页，页号4位；页大小 $2\text{KB}=2^{11}$，页内地址11位；共 $4+11=15$ 位。
+        \item 物理空间：$8$ 页，每页 $2\text{KB}$，总容量 $8\times2\text{KB}=16\text{KB}$。
+    \end{itemize}
+
+    % 题目24
+    \item 在一个分页虚存系统中，用户虚地址空间为 32 页，页长 1KB，主存物理空间为 16KB。已知用户程序有 10 页长，若虚页 0、1、2、3 已经被分别调入到主存 8、7、4、10 页中，请问虚地址 0AC5 和 1AC5（十六进制）对应的物理地址是多少？
+    
+    \textbf{答：}
+    页长 $1\text{KB}=1024=0400\text{H}$，页号为地址高5位，页内地址为低10位。
+    \begin{enumerate}[label=(\arabic*)]
+        \item $0\text{AC5H}=0000\ 1010\ 1100\ 0101\text{B}$，页号 $00010\text{B}=2$，页内地址 $01011000101\text{B}=2\text{C5H}$。
+        虚页2对应主存页4，物理地址：$4\times1024+02\text{C5H}=1000\text{H}+02\text{C5H}=12\text{C5H}$。
+        \item $1\text{AC5H}=0001\ 1010\ 1100\ 0101\text{B}$，页号 $00110\text{B}=6$，该虚页未调入主存，无物理地址（缺页）。
+    \end{enumerate}
+
+    % 题目25
+    \item 段式虚拟存储器对程序员是否透明？请说明原因。
+    
+    \textbf{答：}
+    不透明。段式存储中，程序员需要按逻辑段（代码段、数据段等）组织程序，段的划分、段号对程序员可见，因此段式管理对程序员不透明。
+
+    % 题目26
+    \item 在一个进程的执行过程中，是否其所有页面都必须处在主存中？
+    
+    \textbf{答：}
+    不是。页式虚拟存储管理中，进程的部分页面可存放在外存，只有当前运行需要的页面调入主存，其余页面在外存等待，缺页时再调入。
+
+    % 题目27
+    \item 为什么在页式虚拟存储器地址变换时可以用物理页号与页内偏移量直接拼接成物理地址，而在段式虚拟存储器地址变换时必须用段起址与段内偏移量相加才能得到物理地址？
+    
+    \textbf{答：}
+    页式中页面大小固定，物理页号和页内偏移量的位数固定，拼接即可得到物理地址；段式中段的大小不固定，段的物理起始地址不是按固定倍数对齐，因此需要段基址与段内偏移量相加才能得到物理地址。
+
+    % 题目28
+    \item 在虚存实现过程中，有些页面会在内存与外存之间被频繁地换入和换出，使系统效率急剧下降。这种现象称为颠簸。请解释产生颠簸的原因，并说明防止颠簸的办法。
+    
+    \textbf{答：}
+    \begin{itemize}
+        \item 原因：系统分配给进程的物理页面数过少，进程的工作集大于主存可用页面数，导致频繁缺页，页面反复换入换出。
+        \item 防止办法：
+        \begin{enumerate}
+            \item 增加主存容量，分配足够的物理页面给进程；
+            \item 采用工作集模型，当进程工作集大于可用页面数时，挂起部分进程；
+            \item 优化页面替换算法，减少不必要的页面淘汰；
+            \item 调整页面大小，减少页面碎片和换入换出次数。
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+\end{document}

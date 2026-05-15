@@ -1,0 +1,407 @@
+\documentclass[12pt, oneside]{extarticle}
+
+% ===================== 基础宏包 =====================
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{physics}
+\usepackage{multicol}
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{titletoc}
+\usepackage{needspace}
+\usepackage[
+    a4paper,
+    landscape,
+    tmargin=4.4cm,
+    bmargin=2.2cm,
+    lmargin=2.4cm,
+    rmargin=2.4cm,
+    headheight=2.6cm,
+    headsep=1.0cm,
+    footskip=1.0cm
+]{geometry}
+
+\usepackage[
+    colorlinks=true,
+    linkcolor=MainBlue,
+    urlcolor=MainBlue,
+    pdfstartview=FitH,
+    bookmarksnumbered=true,
+    bookmarksopen=true
+]{hyperref}
+\usepackage{bookmark}
+
+% ===================== 颜色系统 =====================
+\definecolor{MainBlue}{RGB}{73, 121, 214}
+\definecolor{DeepBlue}{RGB}{32, 60, 128}
+\definecolor{SoftBlue}{RGB}{232, 240, 255}
+\definecolor{SkyBlue}{RGB}{190, 215, 255}
+\definecolor{AccentPurple}{RGB}{136, 112, 220}
+\definecolor{Ink}{RGB}{35, 42, 55}
+\definecolor{TextGray}{RGB}{92, 101, 117}
+\definecolor{LineGray}{RGB}{215, 222, 235}
+\definecolor{PaperBG}{RGB}{248, 250, 255}
+
+\pagecolor{PaperBG}
+\color{Ink}
+
+% ===================== 数学与排版 =====================
+\linespread{1.25}
+\everymath{\displaystyle}
+\sloppy
+
+\newcommand{\oiint}{\mathop{{\bigcirc}\mkern-21mu\iint}}
+
+% ===================== 当前页信息 =====================
+\newcommand{\currentday}{目录}
+\newcommand{\currenttopic}{100 Days Challenge}
+
+% ===================== 目录美化 =====================
+\renewcommand{\contentsname}{\centering 目录}
+
+\titlecontents{section}
+    [0em]
+    {\vspace{0.45em}\large\bfseries}
+    {\contentslabel{3.2em}}
+    {}
+    {\titlerule*[0.6em]{.}\contentspage}
+
+% ===================== 顶栏 =====================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyhead[C]{
+    \begin{tikzpicture}[remember picture, overlay]
+        % 顶部渐变背景
+        \fill[left color=DeepBlue, right color=MainBlue!70!AccentPurple]
+            ([yshift=-2.45cm]current page.north west)
+            rectangle
+            (current page.north east);
+
+        % 装饰圆形
+        \fill[white, opacity=0.08]
+            ([xshift=2.5cm, yshift=-0.8cm]current page.north west)
+            circle (1.4cm);
+        \fill[white, opacity=0.06]
+            ([xshift=-4.5cm, yshift=-1.3cm]current page.north east)
+            circle (2.0cm);
+
+        % 底部高光线
+        \draw[white, line width=1pt, opacity=0.75]
+            ([yshift=-2.45cm]current page.north west)
+            --
+            ([yshift=-2.45cm]current page.north east);
+
+        % 左侧标题
+        \node[anchor=west, white, font=\Large\bfseries]
+            at ([xshift=1.55cm, yshift=-1.18cm]current page.north west)
+            {\currentday \quad {\large |} \quad \currenttopic};
+
+        % 右侧页码
+        \node[anchor=east, white!92, font=\small\itshape]
+            at ([xshift=-1.55cm, yshift=-1.18cm]current page.north east)
+            {100 Days Challenge \quad Page \thepage};
+    \end{tikzpicture}
+}
+
+\fancyfoot[C]{
+    \small\color{TextGray}
+    \ding{117}\quad Keep going. Small steps, every day.
+}
+
+% ===================== 列表 =====================
+% \newlist{worklist}{enumerate}{1}
+% \setlist[worklist]{
+%     label=\textbf{\color{MainBlue}\arabic*.},
+%     leftmargin=2.2em,
+%     itemsep=0.6em
+% }
+
+% ===================== 通用卡片样式 =====================
+\tcbset{
+    challengebox/.style={
+        enhanced,
+        colback=white,
+        colframe=MainBlue!35,
+        boxrule=0.8pt,
+        arc=4mm,
+        outer arc=4mm,
+        left=4mm,
+        right=4mm,
+        top=3mm,
+        bottom=3mm,
+        drop fuzzy shadow=black!10,
+        borderline west={3pt}{0pt}{MainBlue}
+    },
+    softbox/.style={
+        enhanced,
+        colback=white,
+        colframe=LineGray,
+        boxrule=0.6pt,
+        arc=4mm,
+        outer arc=4mm,
+        left=5mm,
+        right=5mm,
+        top=4mm,
+        bottom=4mm,
+        drop fuzzy shadow=black!8
+    }
+}
+
+% ===================== 封面 =====================
+\newcommand{\ChallengeCover}{
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[left color=DeepBlue, right color=MainBlue!70!AccentPurple]
+            (current page.south west) rectangle (current page.north east);
+
+        \fill[white, opacity=0.06]
+            ([xshift=4cm, yshift=-2cm]current page.north west) circle (3.5cm);
+        \fill[white, opacity=0.05]
+            ([xshift=-5cm, yshift=2cm]current page.south east) circle (5cm);
+
+        \draw[white, opacity=0.25, line width=1.5pt]
+            ([xshift=2cm, yshift=-2cm]current page.north west)
+            --
+            ([xshift=-2cm, yshift=2cm]current page.south east);
+    \end{tikzpicture}
+
+    \vspace*{0.22\textheight}
+    \begin{center}
+        {\color{white}\fontsize{44}{52}\selectfont\bfseries 100 Days Challenge}
+
+        \vspace{1.2em}
+
+        {\color{white!85}\Large 数学刷题 / 思维训练 / 每日精进}
+
+        \vspace{3em}
+
+        \begin{tcolorbox}[
+            enhanced,
+            width=0.52\textwidth,
+            colback=white!12,
+            colframe=white!35,
+            boxrule=0.8pt,
+            arc=5mm,
+            left=8mm,
+            right=8mm,
+            top=5mm,
+            bottom=5mm
+        ]
+            \centering
+            {\color{white}\large
+            “把复杂问题拆成每天可以完成的一页。”}
+        \end{tcolorbox}
+
+        \vfill
+
+        {\color{white!75}\large \today}
+    \end{center}
+
+    \newpage
+}
+
+% ===================== 每日分隔页 =====================
+\newcommand{\DayCover}[2]{
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[PaperBG] (current page.south west) rectangle (current page.north east);
+
+        \fill[left color=MainBlue!92, right color=AccentPurple!75]
+            ([yshift=-3cm]current page.north west)
+            rectangle
+            (current page.north east);
+
+        \fill[MainBlue!8]
+            ([xshift=2cm, yshift=1.2cm]current page.south west)
+            circle (3.4cm);
+
+        \fill[AccentPurple!8]
+            ([xshift=-2cm, yshift=-1.2cm]current page.north east)
+            circle (4cm);
+    \end{tikzpicture}
+
+    \vspace*{0.18\textheight}
+
+    \begin{center}
+        \begin{tcolorbox}[
+            enhanced,
+            width=0.62\textwidth,
+            colback=white,
+            colframe=MainBlue!30,
+            boxrule=0.9pt,
+            arc=6mm,
+            left=10mm,
+            right=10mm,
+            top=8mm,
+            bottom=8mm,
+            drop fuzzy shadow=black!12
+        ]
+            \centering
+            {\color{MainBlue}\fontsize{42}{48}\selectfont\bfseries 第 #1 天}
+
+            \vspace{0.8em}
+
+            {\color{Ink}\fontsize{24}{30}\selectfont\bfseries #2}
+
+            \vspace{1.2em}
+
+            {\color{TextGray}\large 目标：专注完成今天的训练}
+        \end{tcolorbox}
+    \end{center}
+}
+
+% ===================== 题号计数器 =====================
+\newcounter{problem}
+
+% ===================== 核心命令：设置天数 =====================
+\newcommand{\setday}[2]{
+    \clearpage
+    \renewcommand{\currentday}{第 #1 天}
+    \renewcommand{\currenttopic}{#2}
+
+    \phantomsection
+    \addcontentsline{toc}{section}{第 #1 天：#2}
+
+    \setcounter{problem}{0}
+
+    \DayCover{#1}{#2}
+}
+
+% ===================== 题目卡片样式 =====================
+\tcbset{
+    problemcard/.style={
+        enhanced jigsaw,
+        breakable,
+        colback=white,
+        colframe=MainBlue!35,
+        boxrule=0.8pt,
+        arc=4mm,
+        outer arc=4mm,
+        left=9mm,
+        right=5mm,
+        top=4mm,
+        bottom=4mm,
+        drop fuzzy shadow=black!10,
+        borderline west={3pt}{0pt}{MainBlue},
+        before skip=0pt,
+        after skip=0pt,
+        pad at break*=2mm
+    },
+    solutioncard/.style={
+        enhanced,
+        colback=white,
+        colframe=LineGray,
+        boxrule=0.6pt,
+        arc=4mm,
+        outer arc=4mm,
+        left=5mm,
+        right=5mm,
+        top=5mm,
+        bottom=5mm,
+        drop fuzzy shadow=black!8,
+        title={\color{MainBlue}\bfseries 思路与演算},
+        fonttitle=\large,
+        attach boxed title to top left={xshift=4mm, yshift=-2mm},
+        boxed title style={
+            colback=SoftBlue,
+            colframe=MainBlue!25,
+            arc=3mm,
+            boxrule=0.5pt
+        }
+    }
+}
+
+% ===================== 核心命令：单题一页，可自动跨页 =====================
+\newcommand{\oneproblem}[2][0.42\textheight]{
+    \clearpage
+    \thispagestyle{fancy}
+    \refstepcounter{problem}
+
+    % ---------- 题目 ----------
+    \begin{tcolorbox}[
+        problemcard,
+        overlay unbroken={
+            \node[
+                circle,
+                fill=MainBlue,
+                text=white,
+                font=\bfseries,
+                inner sep=1.5pt,
+                minimum size=7mm
+            ]
+            at ([xshift=-1.5mm,yshift=-8mm]frame.north west) {\theproblem};
+        },
+        overlay first={
+            \node[
+                circle,
+                fill=MainBlue,
+                text=white,
+                font=\bfseries,
+                inner sep=1.5pt,
+                minimum size=7mm
+            ]
+            at ([xshift=-1.5mm,yshift=-8mm]frame.north west) {\theproblem};
+        }
+    ]
+        {\large #2}
+    \end{tcolorbox}
+
+    \vspace{0.65em}
+
+    % 如果剩余空间太少，就把思路框放到下一页，避免只露一个标题
+    \Needspace{0.18\textheight}
+
+    % ---------- 思路与演算 ----------
+    \begin{tcolorbox}[
+        solutioncard,
+        height=#1
+    ]
+        \vfill
+    \end{tcolorbox}
+}
+
+
+% ===================== 正文 =====================
+\begin{document}
+
+    \ChallengeCover
+
+    \renewcommand{\currentday}{目录}
+    \renewcommand{\currenttopic}{总览}
+
+    \begin{tcolorbox}[
+        enhanced,
+        colback=white,
+        colframe=MainBlue!30,
+        boxrule=0.8pt,
+        arc=5mm,
+        left=8mm,
+        right=8mm,
+        top=6mm,
+        bottom=6mm,
+        drop fuzzy shadow=black!10,
+        title={\color{MainBlue}\Large\bfseries 目录},
+        fonttitle=\Large\bfseries
+    ]
+        \tableofcontents
+    \end{tcolorbox}
+
+    \input{0.tex}
+    \input{1.tex}
+    \input{2.tex}
+    \input{3.tex}
+    \input{4.tex}
+    \input{5.tex}
+    \input{6.tex}
+    \input{7.tex}
+    \input{8.tex}
+    \input{9.tex}
+
+\end{document}

@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0}
+}
+\geometry{a4paper, margin=0.5in}
+
+\begin{document}
+
+\begin{center}
+    \huge \textbf{基于项目的学习：小车倒立摆控制器设计报告}
+\end{center}
+
+\section{引言}
+倒立摆系统是一个典型的多变量、非线性、强耦合及不稳定的系统，是验证各种控制算法的理想平台。本项目旨在通过状态空间模型，利用线性二次调节器（LQR）及 MATLAB 现代调参工具 \texttt{systune} 实现对小车倒立摆的稳定控制。
+
+\section{受控对象建模与状态反馈}
+
+\subsection{状态空间模型}
+小车倒立摆系统的线性化状态空间模型通常表示为：
+\begin{equation}
+    \begin{cases}
+        \bm{\dot{x}} = \bm{A}\bm{x} + \bm{B}\bm{u}, \\
+        \bm{y} = \bm{C}\bm{x} + \bm{D}\bm{u}.
+    \end{cases}
+\end{equation}
+其中，状态向量 $\bm{x} = [x, \dot{x}, \theta, \dot{\theta}]^T$ 分别代表小车位移、速度、摆杆角度及角速度。通过 MATLAB 的 \texttt{Simscape} 工具，可以直接从物理结构建立非线性模型，并进一步进行线性化处理。
+
+本报告采用的线性化模型为
+\begin{equation}
+\dot{X}=AX+Bu,
+\end{equation}
+其中
+\begin{equation}
+X=
+\begin{bmatrix}
+ x & \dot{x} & \theta & \dot{\theta}
+\end{bmatrix}^T.
+\end{equation}
+
+在仿真中，系统参数取
+\begin{equation}
+M=0.5,\quad m=0.2,\quad b=0.1,\quad l=0.3,\quad g=9.81.
+\end{equation}
+对应的系统矩阵为
+\begin{equation}
+A=
+\begin{bmatrix}
+0 & 1 & 0 & 0\\
+0 & -b/M & -mg/M & 0\\
+0 & 0 & 0 & 1\\
+0 & -b/(Ml) & (M+m)g/(Ml) & 0
+\end{bmatrix},
+\quad
+B=
+\begin{bmatrix}
+0\\
+1/M\\
+0\\
+-1/(Ml)
+\end{bmatrix}.
+\end{equation}
+
+\subsection{状态反馈控制}
+状态反馈控制律定义为
+\begin{equation}
+\bm{u} = -\bm{K}\bm{x}.
+\end{equation}
+设计的核心任务是确定增益矩阵 $\bm{K}$，使得闭环系统矩阵 $A-BK$ 的极点位于左半复平面，从而保证系统稳定。
+
+\section{LQR 调节器设计}
+线性二次调节器（Linear Quadratic Regulator, LQR）通过最小化代价函数来平衡控制精度与控制能量：
+\begin{equation}
+    J = \int_{0}^{\infty} (\bm{x}^T\bm{Q}\bm{x} + \bm{u}^T\bm{R}\bm{u})\, dt.
+\end{equation}
+\begin{itemize}
+    \item \textbf{$\bm{Q}$ 矩阵}：状态加权矩阵，增加其值意味着对偏差的容忍度更低，响应更快。
+    \item \textbf{$\bm{R}$ 矩阵}：控制加权矩阵，增加其值意味着限制控制电压或推力，保护执行器。
+\end{itemize}
+在 MATLAB 中，通过 \texttt{K = lqr(A, B, Q, R)} 即可计算出最优增益。
+
+本实验中取
+\begin{equation}
+Q=\mathrm{diag}(10,1,100,1),\quad R=0.01.
+\end{equation}
+计算得到的 LQR 状态反馈增益为：
+\begin{verbatim}
+K_lqr = [[ -31.6228  -26.7753 -144.2426  -20.3260 ]]
+\end{verbatim}
+LQR 闭环极点为：
+\begin{verbatim}
+[-69.5513+0.j     -9.8558+0.j     -1.3745+1.062j  -1.3745-1.062j]
+\end{verbatim}
+由此可以看出，闭环极点均位于左半复平面，因此系统在 LQR 状态反馈作用下渐近稳定。
+
+\section{基于 \texttt{systune} 的控制器调参}
+对于复杂的控制结构（如 PID 与状态反馈混合），手动调参十分困难。MATLAB 的 \texttt{systune} 提供了一种自动化的频域调参方法：
+\begin{enumerate}
+    \item \textbf{建立闭环模型}：使用 \texttt{slTuner} 接口连接 Simulink 模型，或者使用广义状态空间模型描述含可调模块的闭环系统。
+    \item \textbf{定义设计要求}：利用 \texttt{TuningGoal} 类定义具体指标，例如阶跃跟踪、极点约束、干扰抑制、增益裕度和相位裕度等。
+    \item \textbf{执行调参}：系统自动优化控制器参数，使闭环系统尽可能满足给定性能约束。
+\end{enumerate}
+
+在 Python 环境中没有与 MATLAB \texttt{systune} 完全相同的函数，因此本文采用 \texttt{scipy.optimize} 构造类似调参过程。调参变量仍然为状态反馈矩阵 $K$，控制律仍为
+\begin{equation}
+ u=-KX.
+\end{equation}
+
+类 \texttt{systune} 调参目标包括：
+\begin{itemize}
+    \item 闭环极点实部小于 $-1$，保证系统具有足够衰减速度；
+    \item 闭环极点阻尼比不小于 $0.6$，减少振荡；
+    \item 闭环极点自然频率不超过 $30\,\mathrm{rad/s}$，避免控制输入过于激烈；
+    \item 对过大的反馈增益加入惩罚项，防止控制器参数过大。
+\end{itemize}
+
+优化后得到的状态反馈增益为：
+\begin{verbatim}
+K_tuned = [[ -1.9635  -3.1061 -29.6516  -3.2398]]
+\end{verbatim}
+类 \texttt{systune} 调参后的闭环极点为：
+\begin{verbatim}
+[-6.7935+9.0712j -6.7935-9.0712j -0.9999+0.j     -0.9999-0.j]
+\end{verbatim}
+优化目标函数值为：
+\begin{verbatim}
+0.0903869
+\end{verbatim}
+
+\section{仿真实现与结果讨论}
+
+\subsection{仿真条件}
+为验证控制器的稳定效果，设置系统初始状态为
+\begin{equation}
+X(0)=
+\begin{bmatrix}
+0.1 & 0 & 0.1 & 0
+\end{bmatrix}^T.
+\end{equation}
+其中，小车初始位移为 $0.1\,\mathrm{m}$，摆杆初始角度偏差为 $0.1\,\mathrm{rad}$。仿真目标是观察小车位移和摆杆角度能否在控制器作用下逐渐收敛到平衡位置。
+
+\subsection{LQR 控制仿真结果}
+图 \ref{fig:lqr_response} 给出了 LQR 控制下的小车位移和摆杆角度响应。可以看到，小车位移和摆杆角度均逐渐收敛，说明 LQR 状态反馈控制器能够有效稳定倒立摆系统。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{pendulum_lqr_response.png}
+\caption{LQR 控制下的小车位移和摆杆角度响应}
+\label{fig:lqr_response}
+\end{figure}
+
+\subsection{类 \texttt{systune} 状态反馈仿真结果}
+图 \ref{fig:systune_like_response} 给出了类 \texttt{systune} 状态反馈控制下的小车位移和摆杆角度响应。该方法通过闭环极点约束自动调整反馈矩阵，使系统满足给定稳定性和阻尼要求。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{pendulum_systune_like_response.png}
+\caption{类 \texttt{systune} 状态反馈控制下的小车位移和摆杆角度响应}
+\label{fig:systune_like_response}
+\end{figure}
+
+\subsection{LQR 与类 \texttt{systune} 控制效果对比}
+图 \ref{fig:lqr_systune_compare} 对比了 LQR 和类 \texttt{systune} 状态反馈控制效果。从图中可以看出，两种方法均可使系统状态收敛到平衡位置，但二者的动态过程不同。LQR 方法基于二次型性能指标得到反馈增益，具有明确的最优控制理论基础；类 \texttt{systune} 方法则更接近工程调参思路，通过设定闭环极点、阻尼比和频率范围来寻找满足性能要求的控制器参数。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{pendulum_lqr_vs_systune_like.png}
+\caption{LQR 与类 \texttt{systune} 状态反馈控制效果对比}
+\label{fig:lqr_systune_compare}
+\end{figure}
+
+\subsection{结果分析}
+从仿真结果可以看出，LQR 控制器能够使小车倒立摆系统从初始偏差状态逐渐回到平衡位置。摆杆角度 $\theta$ 逐渐收敛到零，说明倒立摆被稳定在竖直平衡位置附近。
+
+类 \texttt{systune} 方法则通过极点约束自动调整反馈矩阵。与 LQR 方法相比，该方法不直接最小化二次型代价函数，而是先给出期望的闭环稳定性、阻尼比和频率范围，再由优化算法寻找满足要求的反馈增益。
+
+需要注意的是，本文的 Python 实现并不是 MATLAB \texttt{systune} 的完全替代，而是根据相同思想实现的状态反馈自动调参方法。它能够帮助理解 \texttt{systune} 的核心思想，即通过定义控制目标并自动搜索控制器参数来获得期望的闭环性能。
+
+\section{总结}
+本次作业完成了小车倒立摆系统的状态空间建模、LQR 状态反馈控制器设计、类 \texttt{systune} 状态反馈自动调参以及仿真绘图。通过本实验可以看出，对于小车倒立摆这类开环不稳定系统，状态反馈控制能够有效利用系统全部状态信息，实现闭环稳定控制。LQR 方法具有明确的最优控制理论基础，而类 \texttt{systune} 方法则体现了基于工程指标的自动调参思想，为后续进一步研究数字控制、神经网络控制和模糊控制等方法奠定了基础。
+
+\end{document}

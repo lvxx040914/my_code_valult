@@ -1,0 +1,1756 @@
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage{geometry}
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.4cm}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.4em}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\epi}{\operatorname{epi}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\prox}{\operatorname{prox}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\st}{\text{s.t.}}
+\newcommand{\inner}[2]{\left\langle #1,#2 \right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\Pzero}{\textcolor{red}{\textbf{P0 必考}}}
+\newcommand{\Pone}{\textcolor{orange}{\textbf{P1 高频}}}
+\newcommand{\Ptwo}{\textcolor{blue}{\textbf{P2 了解}}}
+\newcommand{\key}{\textcolor{red}{\textbf{重点}}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{定义}[section]
+\newtheorem{example}{例题}[section]
+\newtheorem{exercise}{练习题}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}{命题}[section]
+
+\theoremstyle{remark}
+\newtheorem{remark}{备注}[section]
+
+\title{\textbf{凸优化期末复习资料}}
+\author{适用于凸优化基础课程}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+\section{复习优先级总览}
+
+\subsection*{优先级说明}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+标记 & 含义 & 复习策略 \\
+\midrule
+\Pzero & 必考核心内容 & 必须会定义、判断、推导、做题 \\
+\Pone & 高频重要内容 & 大概率出现，至少会套公式和解释 \\
+\Ptwo & 扩展或了解内容 & 理解思想，难题或附加题可能出现 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{考试最常见题型}
+
+\begin{enumerate}[label=\arabic*.]
+    \item 判断集合是否凸、函数是否凸。 \Pzero
+    \item 把实际问题写成标准凸优化形式。 \Pzero
+    \item 写出拉格朗日函数、对偶函数、对偶问题。 \Pzero
+    \item 判断强对偶是否成立，使用 Slater 条件。 \Pzero
+    \item 写 KKT 条件并求解最优解。 \Pzero
+    \item 计算共轭函数、次梯度、近端算子。 \Pone
+    \item 分析梯度下降、牛顿法、投影梯度法等算法。 \Pone
+    \item 识别 LP、QP、SOCP、SDP 等典型问题。 \Pone
+\end{enumerate}
+
+\section{数学基础}
+
+\subsection{向量、矩阵与范数}
+
+\subsubsection*{常用记号}
+
+\begin{itemize}
+    \item 向量：$x \in \R^n$。
+    \item 矩阵：$A \in \R^{m \times n}$。
+    \item 内积：$\inner{x}{y} = x^T y$。
+    \item 欧氏范数：$\norm{x}_2 = \sqrt{x^T x}$。
+    \item $p$ 范数：
+    \[
+        \norm{x}_p = \left(\sum_{i=1}^n |x_i|^p\right)^{1/p}.
+    \]
+    \item 无穷范数：
+    \[
+        \norm{x}_\infty = \max_i |x_i|.
+    \]
+\end{itemize}
+
+\subsubsection*{常用矩阵概念}
+
+\begin{itemize}
+    \item 对称矩阵：$A=A^T$。
+    \item 半正定矩阵：
+    \[
+        A \succeq 0 \Longleftrightarrow x^T A x \ge 0,\quad \forall x.
+    \]
+    \item 正定矩阵：
+    \[
+        A \succ 0 \Longleftrightarrow x^T A x > 0,\quad \forall x\neq 0.
+    \]
+    \item 若 $A \succeq 0$，则所有特征值非负。
+    \item 若 $A \succ 0$，则所有特征值严格为正。
+\end{itemize}
+
+\subsection{常用不等式 \Pone}
+
+\subsubsection*{Cauchy--Schwarz 不等式}
+
+\[
+    |\inner{x}{y}| \le \norm{x}_2 \norm{y}_2.
+\]
+
+\subsubsection*{三角不等式}
+
+\[
+    \norm{x+y} \le \norm{x}+\norm{y}.
+\]
+
+\subsubsection*{Jensen 不等式}
+
+若 $f$ 是凸函数，$\theta_i \ge 0$ 且 $\sum_i \theta_i = 1$，则
+\[
+    f\left(\sum_i \theta_i x_i\right)
+    \le
+    \sum_i \theta_i f(x_i).
+\]
+
+这是凸函数最核心的不等式之一。考试中经常用于证明函数凸性。
+
+\section{凸集}
+
+\subsection{凸集定义 \Pzero}
+
+\begin{definition}[凸集]
+集合 $C \subseteq \R^n$ 称为凸集，如果对任意 $x,y \in C$ 和任意 $\theta \in [0,1]$，都有
+\[
+    \theta x + (1-\theta)y \in C.
+\]
+\end{definition}
+
+直观理解：集合中任意两点之间的线段完全包含在集合内。
+
+\subsection{常见凸集 \Pzero}
+
+\begin{enumerate}
+    \item 空间 $\R^n$。
+    \item 空集 $\varnothing$。
+    \item 单点集 $\{x_0\}$。
+    \item 直线：
+    \[
+        \{x \mid x = x_0 + tv,\ t \in \R\}.
+    \]
+    \item 仿射集：
+    \[
+        \{x \mid Ax=b\}.
+    \]
+    \item 半空间：
+    \[
+        \{x \mid a^T x \le b\}.
+    \]
+    \item 多面体：
+    \[
+        \{x \mid Ax \le b,\ Cx=d\}.
+    \]
+    \item Euclidean 球：
+    \[
+        \{x \mid \norm{x-x_c}_2 \le r\}.
+    \]
+    \item 椭球：
+    \[
+        \{x \mid (x-x_c)^T P^{-1}(x-x_c) \le 1,\ P \succ 0\}.
+    \]
+    \item 半正定锥：
+    \[
+        S_+^n = \{X \in S^n \mid X \succeq 0\}.
+    \]
+\end{enumerate}
+
+\subsection{凸集的保凸运算 \Pzero}
+
+若 $C,C_1,C_2$ 为凸集，则：
+
+\begin{enumerate}
+    \item 交集保持凸性：
+    \[
+        C_1 \cap C_2 \text{ 是凸集}.
+    \]
+    更一般地，任意多个凸集的交集仍然是凸集。
+
+    \item 仿射映射下的像保持凸性：
+    \[
+        f(x)=Ax+b,\quad f(C)=\{Ax+b \mid x\in C\}.
+    \]
+
+    \item 仿射映射下的原像保持凸性：
+    \[
+        f^{-1}(C)=\{x \mid Ax+b \in C\}.
+    \]
+
+    \item Minkowski 和保持凸性：
+    \[
+        C_1+C_2=\{x+y\mid x\in C_1,\ y\in C_2\}.
+    \]
+
+    \item 透视变换保持凸性：
+    \[
+        P(C)=\{x/t \mid (x,t)\in C,\ t>0\}.
+    \]
+\end{enumerate}
+
+\subsection{凸包 \Pone}
+
+\begin{definition}[凸组合]
+若 $\theta_i\ge 0$，$\sum_{i=1}^k \theta_i=1$，则
+\[
+    \sum_{i=1}^k \theta_i x_i
+\]
+称为点 $x_1,\dots,x_k$ 的凸组合。
+\end{definition}
+
+\begin{definition}[凸包]
+集合 $S$ 的凸包定义为所有凸组合构成的集合：
+\[
+    \operatorname{conv}(S)
+    =
+    \left\{
+    \sum_{i=1}^k \theta_i x_i
+    \ \middle|\
+    x_i\in S,\ \theta_i\ge 0,\ \sum_i \theta_i=1
+    \right\}.
+\]
+\end{definition}
+
+凸包是包含 $S$ 的最小凸集。
+
+\section{凸函数}
+
+\subsection{凸函数定义 \Pzero}
+
+\begin{definition}[凸函数]
+函数 $f:\R^n\to\R$ 称为凸函数，如果其定义域 $\dom f$ 是凸集，并且对任意 $x,y\in\dom f$，任意 $\theta\in[0,1]$，有
+\[
+    f(\theta x+(1-\theta)y)
+    \le
+    \theta f(x)+(1-\theta)f(y).
+\]
+\end{definition}
+
+若不等式严格成立，即当 $x\neq y$ 且 $\theta\in(0,1)$ 时，
+\[
+    f(\theta x+(1-\theta)y)
+    <
+    \theta f(x)+(1-\theta)f(y),
+\]
+则称 $f$ 为严格凸函数。
+
+\subsection{凹函数}
+
+函数 $f$ 是凹函数，当且仅当 $-f$ 是凸函数。
+
+即：
+\[
+    f(\theta x+(1-\theta)y)
+    \ge
+    \theta f(x)+(1-\theta)f(y).
+\]
+
+\subsection{一阶判别条件 \Pzero}
+
+若 $f$ 可微，则 $f$ 凸当且仅当：
+\[
+    f(y) \ge f(x)+\nabla f(x)^T(y-x),
+    \quad \forall x,y\in\dom f.
+\]
+
+几何意义：凸函数的图像总是在任意切平面的上方。
+
+\subsection{二阶判别条件 \Pzero}
+
+若 $f$ 二阶可微，则 $f$ 凸当且仅当：
+\[
+    \nabla^2 f(x) \succeq 0,\quad \forall x\in\dom f.
+\]
+
+若
+\[
+    \nabla^2 f(x) \succ 0,\quad \forall x,
+\]
+则 $f$ 严格凸。
+
+注意：严格凸不一定要求 Hessian 处处正定。例如 $f(x)=x^4$ 严格凸，但在 $x=0$ 处二阶导数为 $0$。
+
+\subsection{常见凸函数 \Pzero}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+函数 & 定义域 & 凸性 \\
+\midrule
+$ax+b$ & $\R$ & 既凸又凹 \\
+$e^x$ & $\R$ & 凸 \\
+$-\log x$ & $x>0$ & 凸 \\
+$x^2$ & $\R$ & 凸 \\
+$|x|$ & $\R$ & 凸 \\
+$\norm{x}$ & $\R^n$ & 凸 \\
+$\max_i x_i$ & $\R^n$ & 凸 \\
+$\log\sum_i e^{x_i}$ & $\R^n$ & 凸 \\
+$x^T P x$ & $\R^n,\ P\succeq0$ & 凸 \\
+$1/x$ & $x>0$ & 凸 \\
+$x\log x$ & $x>0$ & 凸 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{保凸运算 \Pzero}
+
+\subsubsection*{非负加权和}
+
+若 $f_i$ 凸，$\alpha_i\ge 0$，则
+\[
+    f(x)=\sum_i \alpha_i f_i(x)
+\]
+凸。
+
+\subsubsection*{仿射复合}
+
+若 $f$ 凸，则
+\[
+    g(x)=f(Ax+b)
+\]
+凸。
+
+\subsubsection*{逐点最大值}
+
+若 $f_i$ 凸，则
+\[
+    f(x)=\max_i f_i(x)
+\]
+凸。
+
+更一般地，
+\[
+    f(x)=\sup_{\alpha\in A} f_\alpha(x)
+\]
+凸。
+
+\subsubsection*{复合规则}
+
+若 $h$ 凸，$g$ 凸，且 $h$ 单调不减，则
+\[
+    f(x)=h(g(x))
+\]
+凸。
+
+若 $h$ 凸且单调不增，$g$ 凹，则 $h(g(x))$ 凸。
+
+\subsection{上图与凸性 \Pone}
+
+\begin{definition}[上图]
+函数 $f$ 的上图定义为
+\[
+    \epi f = \{(x,t)\mid x\in\dom f,\ f(x)\le t\}.
+\]
+\end{definition}
+
+\begin{theorem}
+函数 $f$ 是凸函数，当且仅当 $\epi f$ 是凸集。
+\end{theorem}
+
+\section{拟凸函数}
+
+\subsection{定义 \Pone}
+
+函数 $f$ 称为拟凸函数，如果其所有下水平集都是凸集：
+\[
+    S_\alpha = \{x\mid f(x)\le \alpha\}
+\]
+对任意 $\alpha$ 都是凸集。
+
+\subsection{凸函数与拟凸函数的关系}
+
+\[
+    \text{凸函数} \Longrightarrow \text{拟凸函数}.
+\]
+
+但反过来不一定成立。
+
+\section{凸优化问题标准形式}
+
+\subsection{一般形式 \Pzero}
+
+凸优化问题标准形式为：
+\[
+\begin{aligned}
+    \min_{x\in\R^n}\quad & f_0(x) \\
+    \st\quad & f_i(x)\le 0,\quad i=1,\dots,m,\\
+    & h_j(x)=0,\quad j=1,\dots,p.
+\end{aligned}
+\]
+
+其中：
+\begin{itemize}
+    \item $f_0,f_1,\dots,f_m$ 是凸函数；
+    \item $h_j(x)=a_j^T x-b_j$ 是仿射函数。
+\end{itemize}
+
+注意：凸优化中的等式约束必须是仿射的。一般非线性等式约束通常会破坏凸性。
+
+\subsection{可行集}
+
+可行集为
+\[
+    \mathcal{D} =
+    \{x\mid f_i(x)\le0,\ i=1,\dots,m,\ h_j(x)=0,\ j=1,\dots,p\}.
+\]
+
+因为凸函数下水平集是凸集，仿射等式集是凸集，所以凸优化问题的可行集是凸集。
+
+\subsection{全局最优性 \Pzero}
+
+凸优化的最大优势：
+
+\[
+    \text{局部最优解} = \text{全局最优解}.
+\]
+
+若 $f_0$ 严格凸，且可行集凸，则最优解若存在则唯一。
+
+\section{典型凸优化模型}
+
+\subsection{线性规划 LP \Pzero}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad & c^T x\\
+    \st\quad & Ax\le b,\\
+    & Fx=g.
+\end{aligned}
+\]
+
+目标函数线性，约束线性。
+
+\subsection{二次规划 QP \Pzero}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad & \frac12 x^T P x + q^T x + r\\
+    \st\quad & Ax\le b,\\
+    & Fx=g,
+\end{aligned}
+\]
+其中 $P\succeq0$。
+
+若 $P\succ0$，目标函数严格凸。
+
+\subsection{二阶锥规划 SOCP \Pone}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad & f^T x\\
+    \st\quad & \norm{A_i x+b_i}_2 \le c_i^T x+d_i,\quad i=1,\dots,m,\\
+    & Fx=g.
+\end{aligned}
+\]
+
+二阶锥约束：
+\[
+    \norm{u}_2 \le t.
+\]
+
+\subsection{半定规划 SDP \Pone}
+
+形式：
+\[
+\begin{aligned}
+    \min_x\quad & c^T x\\
+    \st\quad & F_0+\sum_{i=1}^n x_i F_i \succeq 0.
+\end{aligned}
+\]
+
+其中 $F_i$ 是对称矩阵。
+
+\section{无约束凸优化}
+
+\subsection{最优性条件 \Pzero}
+
+对于无约束问题
+\[
+    \min_x f(x),
+\]
+若 $f$ 可微且凸，则 $x^\star$ 是全局最优解当且仅当
+\[
+    \nabla f(x^\star)=0.
+\]
+
+若 $f$ 不可微，则条件为
+\[
+    0\in \partial f(x^\star),
+\]
+其中 $\partial f(x)$ 是次梯度集合。
+
+\subsection{强凸函数 \Pzero}
+
+\begin{definition}[强凸]
+函数 $f$ 称为 $m$-强凸函数，如果存在 $m>0$，使得
+\[
+    f(y)\ge f(x)+\nabla f(x)^T(y-x)+\frac{m}{2}\norm{y-x}_2^2.
+\]
+\end{definition}
+
+若 $f$ 二阶可微，则 $f$ 是 $m$-强凸，当且仅当
+\[
+    \nabla^2 f(x)\succeq mI.
+\]
+
+强凸函数有唯一最优解。
+
+\subsection{Lipschitz 梯度 \Pone}
+
+若存在 $L>0$，使得
+\[
+    \norm{\nabla f(x)-\nabla f(y)}_2 \le L\norm{x-y}_2,
+\]
+则称 $f$ 的梯度是 $L$-Lipschitz 连续的。
+
+若 $f$ 二阶可微，则等价于
+\[
+    \nabla^2 f(x)\preceq LI.
+\]
+
+\subsection{梯度下降法 \Pzero}
+
+迭代格式：
+\[
+    x^{k+1}=x^k-\alpha_k \nabla f(x^k).
+\]
+
+若 $\nabla f$ 是 $L$-Lipschitz，常用步长：
+\[
+    \alpha = \frac{1}{L}.
+\]
+
+若 $f$ 是凸且 $L$-smooth，则梯度下降收敛速度：
+\[
+    f(x^k)-f^\star = O\left(\frac{1}{k}\right).
+\]
+
+若 $f$ 是 $m$-强凸且 $L$-smooth，则线性收敛：
+\[
+    f(x^k)-f^\star \le
+    \left(1-\frac{m}{L}\right)^k
+    \left(f(x^0)-f^\star\right).
+\]
+
+\subsection{牛顿法 \Pone}
+
+牛顿方向：
+\[
+    \Delta x_{\mathrm{nt}}
+    =
+    -\left(\nabla^2 f(x)\right)^{-1}\nabla f(x).
+\]
+
+迭代：
+\[
+    x^{k+1}=x^k+t_k\Delta x_{\mathrm{nt}}.
+\]
+
+Newton decrement：
+\[
+    \lambda(x)^2
+    =
+    \nabla f(x)^T
+    \left(\nabla^2 f(x)\right)^{-1}
+    \nabla f(x).
+\]
+
+牛顿法在接近最优点时通常具有二次收敛速度。
+
+\section{次梯度与不可微优化}
+
+\subsection{次梯度定义 \Pzero}
+
+\begin{definition}[次梯度]
+若 $f$ 是凸函数，向量 $g$ 称为 $f$ 在 $x$ 处的次梯度，如果对所有 $y$，
+\[
+    f(y)\ge f(x)+g^T(y-x).
+\]
+所有次梯度构成的集合称为次微分，记为
+\[
+    \partial f(x).
+\]
+\end{definition}
+
+若 $f$ 可微，则
+\[
+    \partial f(x)=\{\nabla f(x)\}.
+\]
+
+\subsection{常见次梯度 \Pzero}
+
+\subsubsection*{绝对值函数}
+
+\[
+    f(x)=|x|.
+\]
+
+则
+\[
+\partial f(x)=
+\begin{cases}
+    \{1\}, & x>0,\\
+    [-1,1], & x=0,\\
+    \{-1\}, & x<0.
+\end{cases}
+\]
+
+\subsubsection*{$\ell_1$ 范数}
+
+\[
+    f(x)=\norm{x}_1=\sum_i |x_i|.
+\]
+
+则
+\[
+    g_i \in \partial |x_i|.
+\]
+
+即：
+\[
+g_i =
+\begin{cases}
+    1, & x_i>0,\\
+    [-1,1], & x_i=0,\\
+    -1, & x_i<0.
+\end{cases}
+\]
+
+\subsubsection*{最大值函数}
+
+\[
+    f(x)=\max_i f_i(x),
+\]
+若 $f_i$ 可微，则
+\[
+    \partial f(x)=
+    \operatorname{conv}
+    \{\nabla f_i(x)\mid i\in I(x)\},
+\]
+其中
+\[
+    I(x)=\{i\mid f_i(x)=f(x)\}.
+\]
+
+\subsection{次梯度最优性条件 \Pzero}
+
+对于无约束凸优化问题
+\[
+    \min_x f(x),
+\]
+$x^\star$ 最优当且仅当
+\[
+    0\in\partial f(x^\star).
+\]
+
+\subsection{次梯度法 \Pone}
+
+迭代：
+\[
+    x^{k+1}=x^k-\alpha_k g^k,
+    \quad g^k\in\partial f(x^k).
+\]
+
+常用步长：
+\[
+    \alpha_k = \frac{a}{\sqrt{k}},
+\]
+或满足
+\[
+    \sum_{k=1}^{\infty}\alpha_k=\infty,
+    \quad
+    \sum_{k=1}^{\infty}\alpha_k^2<\infty.
+\]
+
+\section{投影与投影梯度法}
+
+\subsection{欧氏投影 \Pzero}
+
+给定闭凸集 $C$，点 $x$ 到 $C$ 的投影定义为：
+\[
+    \Pi_C(x)=\argmin_{y\in C}\frac12\norm{y-x}_2^2.
+\]
+
+\subsection{投影最优性条件 \Pzero}
+
+若 $z=\Pi_C(x)$，则
+\[
+    (x-z)^T(y-z)\le 0,\quad \forall y\in C.
+\]
+
+等价于：
+\[
+    x-z \in N_C(z),
+\]
+其中 $N_C(z)$ 是 $C$ 在 $z$ 处的法锥。
+
+\subsection{投影梯度法 \Pone}
+
+对于约束问题
+\[
+    \min_{x\in C} f(x),
+\]
+迭代为
+\[
+    x^{k+1}
+    =
+    \Pi_C\left(x^k-\alpha_k\nabla f(x^k)\right).
+\]
+
+\section{近端算子与近端梯度法}
+
+\subsection{近端算子 \Pone}
+
+函数 $f$ 的近端算子定义为：
+\[
+    \prox_{\lambda f}(v)
+    =
+    \argmin_x
+    \left\{
+    f(x)+\frac{1}{2\lambda}\norm{x-v}_2^2
+    \right\}.
+\]
+
+\subsection{常见近端算子}
+
+\subsubsection*{$\ell_1$ 范数的近端算子}
+
+若 $f(x)=\norm{x}_1$，则
+\[
+    \prox_{\lambda \norm{\cdot}_1}(v)
+    =
+    S_\lambda(v),
+\]
+其中 $S_\lambda$ 是 soft-thresholding 算子：
+\[
+    [S_\lambda(v)]_i
+    =
+    \operatorname{sign}(v_i)\max\{|v_i|-\lambda,0\}.
+\]
+
+\subsubsection*{指标函数的近端算子}
+
+令
+\[
+    I_C(x)=
+    \begin{cases}
+    0, & x\in C,\\
+    +\infty, & x\notin C.
+    \end{cases}
+\]
+
+则
+\[
+    \prox_{I_C}(v)=\Pi_C(v).
+\]
+
+\subsection{近端梯度法 \Pone}
+
+考虑复合优化：
+\[
+    \min_x f(x)+g(x),
+\]
+其中 $f$ 可微凸，$g$ 凸但可能不可微。
+
+迭代：
+\[
+    x^{k+1}
+    =
+    \prox_{\alpha g}
+    \left(x^k-\alpha\nabla f(x^k)\right).
+\]
+
+典型应用：LASSO
+\[
+    \min_x \frac12\norm{Ax-b}_2^2+\lambda\norm{x}_1.
+\]
+
+\section{拉格朗日对偶}
+
+\subsection{原问题 \Pzero}
+
+考虑问题：
+\[
+\begin{aligned}
+    \min_x\quad & f_0(x)\\
+    \st\quad & f_i(x)\le0,\quad i=1,\dots,m,\\
+    & h_j(x)=0,\quad j=1,\dots,p.
+\end{aligned}
+\]
+
+\subsection{拉格朗日函数 \Pzero}
+
+定义拉格朗日函数：
+\[
+    L(x,\lambda,\nu)
+    =
+    f_0(x)
+    +
+    \sum_{i=1}^m \lambda_i f_i(x)
+    +
+    \sum_{j=1}^p \nu_j h_j(x).
+\]
+
+其中：
+\[
+    \lambda_i\ge0,
+    \quad
+    \nu_j\in\R.
+\]
+
+$\lambda_i$ 是不等式约束乘子，$\nu_j$ 是等式约束乘子。
+
+\subsection{对偶函数 \Pzero}
+
+对偶函数定义为：
+\[
+    g(\lambda,\nu)
+    =
+    \inf_x L(x,\lambda,\nu).
+\]
+
+重要性质：
+\[
+    g(\lambda,\nu)\le p^\star
+\]
+对任意 $\lambda\ge0$ 成立。
+
+也就是说，对偶函数永远给出原问题最优值的下界。
+
+\subsection{对偶问题 \Pzero}
+
+对偶问题为：
+\[
+\begin{aligned}
+    \max_{\lambda,\nu}\quad & g(\lambda,\nu)\\
+    \st\quad & \lambda\ge0.
+\end{aligned}
+\]
+
+原问题是最小化，对偶问题是最大化。
+
+\subsection{弱对偶 \Pzero}
+
+弱对偶总是成立：
+\[
+    d^\star \le p^\star.
+\]
+
+其中 $p^\star$ 是原问题最优值，$d^\star$ 是对偶问题最优值。
+
+\subsection{强对偶 \Pzero}
+
+若
+\[
+    d^\star = p^\star,
+\]
+称强对偶成立。
+
+凸优化中强对偶通常在 Slater 条件下成立。
+
+\subsection{Slater 条件 \Pzero}
+
+对于凸优化问题，若存在严格可行点 $\tilde{x}$，使得
+\[
+    f_i(\tilde{x})<0,\quad i=1,\dots,m,
+\]
+并且
+\[
+    h_j(\tilde{x})=0,\quad j=1,\dots,p,
+\]
+则强对偶成立。
+
+对于仿射不等式约束，严格可行性可以适当放宽。
+
+\section{KKT 条件}
+
+\subsection{KKT 条件 \Pzero}
+
+考虑凸优化问题：
+\[
+\begin{aligned}
+    \min_x\quad & f_0(x)\\
+    \st\quad & f_i(x)\le0,\quad i=1,\dots,m,\\
+    & h_j(x)=0,\quad j=1,\dots,p.
+\end{aligned}
+\]
+
+KKT 条件包括：
+
+\subsubsection*{1. 原始可行性}
+
+\[
+    f_i(x^\star)\le0,\quad i=1,\dots,m,
+\]
+\[
+    h_j(x^\star)=0,\quad j=1,\dots,p.
+\]
+
+\subsubsection*{2. 对偶可行性}
+
+\[
+    \lambda_i^\star\ge0,\quad i=1,\dots,m.
+\]
+
+\subsubsection*{3. 互补松弛性}
+
+\[
+    \lambda_i^\star f_i(x^\star)=0,
+    \quad i=1,\dots,m.
+\]
+
+含义：
+\[
+    \lambda_i^\star>0 \Rightarrow f_i(x^\star)=0.
+\]
+
+约束不紧，则对应乘子为零。
+
+\subsubsection*{4. 驻点条件}
+
+\[
+    \nabla_x L(x^\star,\lambda^\star,\nu^\star)=0.
+\]
+
+即：
+\[
+    \nabla f_0(x^\star)
+    +
+    \sum_{i=1}^m \lambda_i^\star \nabla f_i(x^\star)
+    +
+    \sum_{j=1}^p \nu_j^\star \nabla h_j(x^\star)
+    =
+    0.
+\]
+
+\subsection{KKT 的重要性}
+
+在满足凸性和强对偶的情况下，KKT 条件是最优性的充要条件。
+
+也就是说：
+\[
+    x^\star \text{ 最优}
+    \Longleftrightarrow
+    \exists \lambda^\star,\nu^\star
+    \text{ 满足 KKT 条件}.
+\]
+
+\section{Fenchel 共轭}
+
+\subsection{定义 \Pone}
+
+函数 $f$ 的 Fenchel 共轭定义为：
+\[
+    f^\ast(y)
+    =
+    \sup_x \left\{y^T x - f(x)\right\}.
+\]
+
+\subsection{常见共轭函数}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+$f(x)$ & 条件 & $f^\ast(y)$ \\
+\midrule
+$\frac12\norm{x}_2^2$ & $x\in\R^n$ & $\frac12\norm{y}_2^2$ \\
+$a^T x+b$ & $x\in\R^n$ & $-b$ 若 $y=a$，否则 $+\infty$ \\
+$I_C(x)$ & $x\in C$ & $\sigma_C(y)=\sup_{x\in C}y^Tx$ \\
+$\norm{x}$ & 任意范数 & $I_{\{y:\norm{y}_\ast\le1\}}(y)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+其中 $\norm{\cdot}_\ast$ 是对偶范数。
+
+\subsection{Fenchel--Young 不等式 \Pone}
+
+\[
+    f(x)+f^\ast(y)\ge y^T x.
+\]
+
+等号成立当且仅当
+\[
+    y\in\partial f(x).
+\]
+
+\section{对偶范数}
+
+\subsection{定义 \Pone}
+
+范数 $\norm{\cdot}$ 的对偶范数定义为：
+\[
+    \norm{y}_\ast
+    =
+    \sup_{\norm{x}\le1} y^T x.
+\]
+
+\subsection{常见对偶范数}
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+原范数 & 对偶范数 \\
+\midrule
+$\ell_1$ & $\ell_\infty$ \\
+$\ell_\infty$ & $\ell_1$ \\
+$\ell_2$ & $\ell_2$ \\
+核范数 $\norm{X}_\ast$ & 谱范数 $\norm{X}_2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{屏障法与内点法}
+
+\subsection{对数屏障函数 \Ptwo}
+
+对于约束
+\[
+    f_i(x)\le0,
+\]
+定义对数屏障：
+\[
+    \phi(x)
+    =
+    -\sum_{i=1}^m \log(-f_i(x)).
+\]
+
+屏障问题：
+\[
+    \min_x
+    \quad
+    t f_0(x)+\phi(x).
+\]
+
+当 $t\to\infty$ 时，屏障问题解趋近原问题解。
+
+\subsection{中心路径 \Ptwo}
+
+中心路径定义为：
+\[
+    x^\star(t)=
+    \argmin_x
+    \left\{
+    t f_0(x)
+    -
+    \sum_{i=1}^m \log(-f_i(x))
+    \right\}.
+\]
+
+对偶间隙近似为：
+\[
+    \frac{m}{t}.
+\]
+
+\section{ADMM 简介}
+
+\subsection{问题形式 \Ptwo}
+
+ADMM 常用于问题：
+\[
+\begin{aligned}
+    \min_{x,z}\quad & f(x)+g(z)\\
+    \st\quad & Ax+Bz=c.
+\end{aligned}
+\]
+
+增广拉格朗日函数：
+\[
+    L_\rho(x,z,y)
+    =
+    f(x)+g(z)
+    +
+    y^T(Ax+Bz-c)
+    +
+    \frac{\rho}{2}\norm{Ax+Bz-c}_2^2.
+\]
+
+\subsection{ADMM 迭代}
+
+\[
+    x^{k+1}
+    =
+    \argmin_x
+    L_\rho(x,z^k,y^k),
+\]
+
+\[
+    z^{k+1}
+    =
+    \argmin_z
+    L_\rho(x^{k+1},z,y^k),
+\]
+
+\[
+    y^{k+1}
+    =
+    y^k+\rho(Ax^{k+1}+Bz^{k+1}-c).
+\]
+
+\section{常见证明套路}
+
+\subsection{证明集合凸 \Pzero}
+
+步骤：
+
+\begin{enumerate}
+    \item 任取 $x,y\in C$。
+    \item 任取 $\theta\in[0,1]$。
+    \item 证明 $\theta x+(1-\theta)y\in C$。
+\end{enumerate}
+
+\subsection{证明函数凸 \Pzero}
+
+常用方法：
+
+\begin{enumerate}
+    \item 直接用定义。
+    \item 一阶条件：
+    \[
+        f(y)\ge f(x)+\nabla f(x)^T(y-x).
+    \]
+    \item 二阶条件：
+    \[
+        \nabla^2 f(x)\succeq0.
+    \]
+    \item 使用保凸规则。
+    \item 证明上图是凸集。
+\end{enumerate}
+
+\subsection{写 KKT 条件套路 \Pzero}
+
+\begin{enumerate}
+    \item 写原问题。
+    \item 写拉格朗日函数 $L(x,\lambda,\nu)$。
+    \item 写原始可行性。
+    \item 写对偶可行性。
+    \item 写互补松弛。
+    \item 写驻点条件。
+    \item 联立求解。
+\end{enumerate}
+
+\section{典型例题}
+
+\begin{example}[判断集合是否凸]
+判断集合
+\[
+    C=\{x\in\R^n\mid a^T x\le b\}
+\]
+是否凸。
+
+\textbf{解：}
+
+任取 $x,y\in C$，则
+\[
+    a^T x\le b,\quad a^T y\le b.
+\]
+对任意 $\theta\in[0,1]$，
+\[
+    a^T(\theta x+(1-\theta)y)
+    =
+    \theta a^Tx+(1-\theta)a^Ty
+    \le
+    \theta b+(1-\theta)b=b.
+\]
+因此
+\[
+    \theta x+(1-\theta)y\in C.
+\]
+所以 $C$ 是凸集。
+\end{example}
+
+\begin{example}[判断函数凸性]
+判断
+\[
+    f(x)=x^T P x+q^T x+r
+\]
+是否为凸函数。
+
+\textbf{解：}
+
+计算 Hessian：
+\[
+    \nabla^2 f(x)=2P.
+\]
+
+因此：
+\[
+    f \text{ 凸}
+    \Longleftrightarrow
+    P\succeq0.
+\]
+\end{example}
+
+\begin{example}[无约束凸优化]
+求解
+\[
+    \min_x \frac12\norm{Ax-b}_2^2.
+\]
+
+\textbf{解：}
+
+目标函数：
+\[
+    f(x)=\frac12(Ax-b)^T(Ax-b).
+\]
+
+梯度：
+\[
+    \nabla f(x)=A^T(Ax-b).
+\]
+
+最优性条件：
+\[
+    A^T(Ax^\star-b)=0.
+\]
+
+即正规方程：
+\[
+    A^T A x^\star=A^T b.
+\]
+
+若 $A^T A$ 可逆，则
+\[
+    x^\star=(A^T A)^{-1}A^T b.
+\]
+\end{example}
+
+\begin{example}[KKT 求解]
+求解
+\[
+\begin{aligned}
+    \min_x\quad & x^2\\
+    \st\quad & x\ge1.
+\end{aligned}
+\]
+
+\textbf{解：}
+
+将约束写成标准形式：
+\[
+    1-x\le0.
+\]
+
+拉格朗日函数：
+\[
+    L(x,\lambda)=x^2+\lambda(1-x),
+    \quad \lambda\ge0.
+\]
+
+KKT 条件：
+
+原始可行性：
+\[
+    1-x^\star\le0.
+\]
+
+对偶可行性：
+\[
+    \lambda^\star\ge0.
+\]
+
+互补松弛：
+\[
+    \lambda^\star(1-x^\star)=0.
+\]
+
+驻点条件：
+\[
+    2x^\star-\lambda^\star=0.
+\]
+
+由直觉可知约束紧：
+\[
+    x^\star=1.
+\]
+
+于是：
+\[
+    \lambda^\star=2.
+\]
+
+所以最优解为
+\[
+    x^\star=1,\quad p^\star=1.
+\]
+\end{example}
+
+\begin{example}[拉格朗日对偶]
+求问题
+\[
+\begin{aligned}
+    \min_x\quad & x^2\\
+    \st\quad & x\ge1
+\end{aligned}
+\]
+的对偶问题。
+
+\textbf{解：}
+
+标准形式：
+\[
+    1-x\le0.
+\]
+
+拉格朗日函数：
+\[
+    L(x,\lambda)=x^2+\lambda(1-x),
+    \quad \lambda\ge0.
+\]
+
+对偶函数：
+\[
+    g(\lambda)=\inf_x \{x^2+\lambda(1-x)\}.
+\]
+
+对 $x$ 求导：
+\[
+    2x-\lambda=0
+    \Rightarrow
+    x=\frac{\lambda}{2}.
+\]
+
+代回：
+\[
+    g(\lambda)
+    =
+    \left(\frac{\lambda}{2}\right)^2
+    +
+    \lambda
+    \left(1-\frac{\lambda}{2}\right)
+    =
+    \lambda-\frac{\lambda^2}{4}.
+\]
+
+因此对偶问题为：
+\[
+\begin{aligned}
+    \max_\lambda\quad & \lambda-\frac{\lambda^2}{4}\\
+    \st\quad & \lambda\ge0.
+\end{aligned}
+\]
+
+求导：
+\[
+    1-\frac{\lambda}{2}=0
+    \Rightarrow
+    \lambda^\star=2.
+\]
+
+对偶最优值：
+\[
+    d^\star=2-\frac{4}{4}=1.
+\]
+
+原问题最优值也是 $1$，所以强对偶成立。
+\end{example}
+
+\begin{example}[求共轭函数]
+求
+\[
+    f(x)=\frac12 x^2
+\]
+的共轭函数。
+
+\textbf{解：}
+
+根据定义：
+\[
+    f^\ast(y)=\sup_x \left\{yx-\frac12x^2\right\}.
+\]
+
+对 $x$ 求导：
+\[
+    y-x=0
+    \Rightarrow
+    x=y.
+\]
+
+代回：
+\[
+    f^\ast(y)=y^2-\frac12 y^2=\frac12 y^2.
+\]
+
+所以
+\[
+    f^\ast(y)=\frac12 y^2.
+\]
+\end{example}
+
+\begin{example}[$\ell_1$ 正则化的近端算子]
+求
+\[
+    \prox_{\lambda |\cdot|}(v)
+    =
+    \argmin_x
+    \left\{
+    \lambda |x|+\frac12(x-v)^2
+    \right\}.
+\]
+
+\textbf{解：}
+
+分三种情况讨论。
+
+若 $x>0$，目标函数为
+\[
+    \lambda x+\frac12(x-v)^2.
+\]
+一阶条件：
+\[
+    \lambda+x-v=0
+    \Rightarrow
+    x=v-\lambda.
+\]
+要求 $x>0$，即 $v>\lambda$。
+
+若 $x<0$，目标函数为
+\[
+    -\lambda x+\frac12(x-v)^2.
+\]
+一阶条件：
+\[
+    -\lambda+x-v=0
+    \Rightarrow
+    x=v+\lambda.
+\]
+要求 $x<0$，即 $v<-\lambda$。
+
+若 $x=0$，对应 $|v|\le\lambda$。
+
+因此：
+\[
+    \prox_{\lambda |\cdot|}(v)
+    =
+    \begin{cases}
+        v-\lambda, & v>\lambda,\\
+        0, & |v|\le\lambda,\\
+        v+\lambda, & v<-\lambda.
+    \end{cases}
+\]
+
+即：
+\[
+    \prox_{\lambda |\cdot|}(v)
+    =
+    \operatorname{sign}(v)\max\{|v|-\lambda,0\}.
+\]
+\end{example}
+
+\section{综合练习题}
+
+\begin{exercise}[凸集判断]
+判断下列集合是否为凸集，并说明理由：
+\[
+    C_1=\{x\in\R^n\mid \norm{x}_2\le1\},
+\]
+\[
+    C_2=\{x\in\R^2\mid x_1x_2\ge1,\ x_1>0,\ x_2>0\},
+\]
+\[
+    C_3=\{X\in S^n\mid X\succeq0,\ \tr(X)=1\}.
+\]
+\end{exercise}
+
+\begin{exercise}[凸函数判断]
+判断下列函数是否凸：
+\[
+    f_1(x)=e^{a^Tx+b},
+\]
+\[
+    f_2(x)=-\sum_{i=1}^n \log x_i,\quad x_i>0,
+\]
+\[
+    f_3(x)=\log\left(\sum_{i=1}^n e^{x_i}\right).
+\]
+\end{exercise}
+
+\begin{exercise}[KKT 条件]
+求解
+\[
+\begin{aligned}
+    \min_x\quad & (x-2)^2\\
+    \st\quad & x\le1.
+\end{aligned}
+\]
+要求写出完整 KKT 条件。
+\end{exercise}
+
+\begin{exercise}[对偶问题]
+推导下面问题的对偶：
+\[
+\begin{aligned}
+    \min_x\quad & \frac12\norm{x}_2^2\\
+    \st\quad & Ax=b.
+\end{aligned}
+\]
+\end{exercise}
+
+\begin{exercise}[投影]
+求点 $v\in\R^n$ 到非负正交锥
+\[
+    C=\{x\mid x_i\ge0,\ i=1,\dots,n\}
+\]
+的欧氏投影。
+\end{exercise}
+
+\begin{exercise}[近端算子]
+求
+\[
+    \prox_{\lambda \norm{\cdot}_2}(v).
+\]
+提示：答案具有分段形式。
+\end{exercise}
+
+\section{练习题参考答案}
+
+\subsection*{练习 1}
+
+$C_1$ 是凸集，因为范数球是凸集。
+
+$C_2$ 是凸集。因为在正象限中，
+\[
+    x_1x_2\ge1
+    \Longleftrightarrow
+    \log x_1+\log x_2\ge0.
+\]
+由于 $\log x_1+\log x_2$ 是凹函数，其上水平集是凸集。
+
+$C_3$ 是凸集，因为半正定锥是凸集，$\tr(X)=1$ 是仿射等式约束，二者交集仍然凸。
+
+\subsection*{练习 2}
+
+$f_1$ 是凸函数，因为指数函数凸且单调递增，$a^Tx+b$ 是仿射函数。
+
+$f_2$ 是凸函数，因为 $-\log x_i$ 在 $x_i>0$ 上凸，非负和保持凸性。
+
+$f_3$ 是凸函数，这是经典的 log-sum-exp 函数。
+
+\subsection*{练习 3}
+
+问题：
+\[
+\begin{aligned}
+    \min_x\quad & (x-2)^2\\
+    \st\quad & x-1\le0.
+\end{aligned}
+\]
+
+拉格朗日函数：
+\[
+    L(x,\lambda)=(x-2)^2+\lambda(x-1).
+\]
+
+KKT 条件：
+
+\[
+    x^\star-1\le0,
+\]
+\[
+    \lambda^\star\ge0,
+\]
+\[
+    \lambda^\star(x^\star-1)=0,
+\]
+\[
+    2(x^\star-2)+\lambda^\star=0.
+\]
+
+因为无约束最优点为 $x=2$，不可行，所以约束紧：
+\[
+    x^\star=1.
+\]
+
+代入驻点条件：
+\[
+    2(1-2)+\lambda^\star=0
+    \Rightarrow
+    \lambda^\star=2.
+\]
+
+所以：
+\[
+    x^\star=1,\quad p^\star=1.
+\]
+
+\subsection*{练习 4}
+
+拉格朗日函数：
+\[
+    L(x,\nu)=\frac12\norm{x}_2^2+\nu^T(Ax-b).
+\]
+
+对偶函数：
+\[
+    g(\nu)=\inf_x
+    \left\{
+    \frac12\norm{x}_2^2+\nu^T A x-\nu^T b
+    \right\}.
+\]
+
+对 $x$ 求导：
+\[
+    x+A^T\nu=0
+    \Rightarrow
+    x=-A^T\nu.
+\]
+
+代回：
+\[
+    g(\nu)
+    =
+    -\frac12\norm{A^T\nu}_2^2-\nu^Tb.
+\]
+
+对偶问题：
+\[
+    \max_\nu
+    \left\{
+    -\frac12\norm{A^T\nu}_2^2-\nu^Tb
+    \right\}.
+\]
+
+\subsection*{练习 5}
+
+投影为逐元素取正部：
+\[
+    [\Pi_C(v)]_i=\max\{v_i,0\}.
+\]
+
+\subsection*{练习 6}
+
+答案为向量 shrinkage：
+\[
+    \prox_{\lambda \norm{\cdot}_2}(v)
+    =
+    \begin{cases}
+    \left(1-\frac{\lambda}{\norm{v}_2}\right)v,
+    & \norm{v}_2>\lambda,\\
+    0,
+    & \norm{v}_2\le\lambda.
+    \end{cases}
+\]
+
+\section{考前速记清单}
+
+\subsection*{必须背熟}
+
+\begin{enumerate}
+    \item 凸集定义：
+    \[
+        \theta x+(1-\theta)y\in C.
+    \]
+    \item 凸函数定义：
+    \[
+        f(\theta x+(1-\theta)y)
+        \le
+        \theta f(x)+(1-\theta)f(y).
+    \]
+    \item 一阶凸性条件：
+    \[
+        f(y)\ge f(x)+\nabla f(x)^T(y-x).
+    \]
+    \item 二阶凸性条件：
+    \[
+        \nabla^2 f(x)\succeq0.
+    \]
+    \item 无约束最优性：
+    \[
+        \nabla f(x^\star)=0.
+    \]
+    \item 不可微最优性：
+    \[
+        0\in\partial f(x^\star).
+    \]
+    \item 拉格朗日函数：
+    \[
+        L=f_0+\sum_i\lambda_i f_i+\sum_j\nu_j h_j.
+    \]
+    \item 对偶函数：
+    \[
+        g(\lambda,\nu)=\inf_x L(x,\lambda,\nu).
+    \]
+    \item 弱对偶：
+    \[
+        d^\star\le p^\star.
+    \]
+    \item Slater 条件推出强对偶。
+    \item KKT 四条件：
+    \[
+        \text{原始可行、对偶可行、互补松弛、驻点条件}.
+    \]
+\end{enumerate}
+
+\subsection*{高频易错点}
+
+\begin{enumerate}
+    \item 凸优化中的等式约束必须是仿射约束。
+    \item 不等式约束必须写成 $f_i(x)\le0$，且 $f_i$ 要凸。
+    \item 最大值保持凸性，最小值一般不保持凸性。
+    \item 非负加权和保持凸性，负权重不一定。
+    \item 严格凸函数最优解唯一，但唯一最优解不一定要求严格凸。
+    \item KKT 中不等式乘子必须满足 $\lambda_i\ge0$。
+    \item 互补松弛是 $\lambda_i f_i(x)=0$，不是 $\lambda_i+f_i(x)=0$。
+    \item Slater 条件要求严格可行点，不是最优点。
+    \item 对偶函数总是凹函数，即使原问题不是凸问题。
+    \item 弱对偶永远成立，强对偶需要额外条件。
+\end{enumerate}
+
+\section{建议复习顺序}
+
+\begin{enumerate}
+    \item 第一天：凸集、凸函数、保凸规则。重点做判断题。
+    \item 第二天：标准凸优化问题、LP/QP/SOCP/SDP。
+    \item 第三天：拉格朗日对偶、弱对偶、强对偶、Slater 条件。
+    \item 第四天：KKT 条件，重点练习手算题。
+    \item 第五天：梯度下降、牛顿法、次梯度、投影。
+    \item 第六天：近端算子、Fenchel 共轭、综合题。
+    \item 考前一天：背速记清单，重做错题。
+\end{enumerate}
+
+\end{document}
